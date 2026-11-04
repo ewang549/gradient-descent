@@ -1,0 +1,27 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Warehouse: rebuilt from nflverse by `make ingest`, never committed
+data/
+*.duckdb
+*.duckdb.wal
+
+# dbt build artifacts
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+dbt/.user.yml
+logs/
+
+# Generated sanity-check output
+analysis/output/
+
+# OS / editors / secrets
+.DS_Store
+.vscode/
+.idea/
+.env

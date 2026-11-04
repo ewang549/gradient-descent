@@ -1,0 +1,18 @@
+[project]
+name = "nfl-analytics"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "dbt-duckdb>=1.11.1",
+    "duckdb>=2.0.0",
+    "matplotlib>=3.11.2",
+    "nflreadpy>=0.1.5",
+    "polars>=2.1.0",
+    "pyarrow>=26.0.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "ruff>=0.17.3",
+]

@@ -8,22 +8,28 @@ coaches giving away by playing it safe?"), plus broader ML findings from the sam
 | Phase | What | Status |
 |---|---|---|
 | 1 | Data pipeline: nflverse → DuckDB → dbt marts, tests, weekly refresh | done |
-| 2 | Win-probability, conversion, FG and punt models + decision engine | in progress |
+| 2 | Win-probability, conversion, FG and punt models + decision engine + exports | done |
 | 3 | Next.js site: 4th-down calculator, "You Make the Call", WP charts, leaderboard | planned |
 
 ## Quickstart
 
 Requires [uv](https://docs.astral.sh/uv/). Everything else (Python 3.12, dbt, DuckDB) is installed by it.
+On macOS, XGBoost also needs the OpenMP runtime: `brew install libomp`.
 
 ```bash
 make setup     # Python deps + dbt packages
 make ingest    # nflverse -> data/nfl.duckdb (first run backfills 1999-present, ~2-3 min)
-make dbt       # build staging -> intermediate -> marts and run 71 data tests
-make check     # sanity checks + analysis/output/go_rate_by_season.png
-make test      # Python unit tests (no network)
+make dbt       # staging -> intermediate -> marts -> features, with data tests
+make train     # train + evaluate the 4 models -> models/artifacts, models/reports (~40 s)
+make score     # decision engine with the saved models, then dbt's scored models (~5 s)
+make findings  # go-rate trend, famous 4th downs, coach leaderboard -> models/reports
+make export    # JSON for the web app -> exports/
+make check     # Phase 1 sanity checks
+make test      # pytest (ingest logic, feature parity, model + engine behaviour)
 ```
 
-`make refresh` runs ingest → dbt → check. That's what the GitHub Action runs every Tuesday morning.
+`make refresh` runs ingest → dbt → score → export → check in about 30 seconds. It never retrains.
+That's what the GitHub Action runs every Tuesday morning.
 
 ## How it fits together
 
@@ -57,6 +63,8 @@ flowchart LR
 | `intermediate.int_team_strength` | 1 row per team-game | **Pre-game** rolling EPA/play (last 8 games + season-to-date) |
 | `marts.fct_plays` | 1 row per play | Pre-snap game state + team strength + play result + game outcome |
 | `marts.fct_fourth_downs` | 1 row per 4th-down decision | go / punt / field_goal, situation, and what happened |
+| `features.feat_*` | 1 row per model example | Phase 2 feature tables + data-driven engine lookups |
+| `marts.fct_fourth_down_decisions` | 1 row per regulation decision | WP of each option, recommendation, `wp_lost` (built after scoring) |
 
 `fct_plays` columns come in four groups, in order: **game state** (known before the snap),
 **team strength** (known before kickoff), **play result** (post-snap, never a feature), and
@@ -105,13 +113,81 @@ penalties + 84 kneels/spikes.
   On 4th & 1-2 in quarters 1-3, the rate rose from ~25% to **62%**.
 - Clean go attempts convert **50.9%** of the time; field goals are made **83.6%** of the time.
 
+## Phase 2: models and the decision engine
+
+![Coaches go for it twice as often as in 2006, and it's still not enough](models/reports/go_rate_vs_model.png)
+
+**Findings (regulation 4th downs, 2006-2025):**
+- Coaches went for it on **11.4%** of 4th downs in 2006 and **23.7%** in 2025. The model says go on ~41-50% every year.
+- On "clear go" spots, where going is worth at least 1 point of win probability, coaches went for it
+  **24%** of the time in 2006 and **50%** in 2025.
+- Almost all of the win probability lost comes from conservatism: kicking when the model says go
+  costs about **0.5 wins per team per season**, while going when it says kick costs about 0.02.
+- [Ten famous 4th downs, graded](models/reports/famous_fourth_downs.md): the model agrees with the coach
+  on 7, including Belichick's 2009 4th & 2 (+1.5 pts). It disagrees with LaFleur's 2020 NFC title game FG (-5.0 pts).
+- [2025 coach leaderboard](models/reports/coach_leaderboard_2025.png): wins lost range from 0.24 (Pete Carroll)
+  to 0.99 (Raheem Morris).
+
+### The models
+
+All four use the same season-based split: **train 2006-2022, validate 2023, test 2024**. Plays are
+never shuffled across seasons. The models that grade 2025 and 2026 decisions have never seen those
+seasons, or 2023-2024.
+
+| Model | Method | Held-out 2024 result |
+|---|---|---|
+| Win probability | XGBoost, 13 pre-snap features incl. score diff / sqrt(sec + 1), monotone constraints | Brier **0.1389** vs nflverse `vegas_wp` 0.1364 (fit *with* 2024) and `wp` 0.1569; [calibration](models/reports/wp_calibration.png), [importance](models/reports/wp_feature_importance.png), [SHAP](models/reports/wp_shap_summary.png) |
+| 4th-down conversion | shallow XGBoost (monotone) + Platt calibration on 2023 | Brier 0.2221 vs 0.2241 for a yards-to-go-only baseline; [calibration](models/reports/conversion_calibration.png) |
+| Field goal | logistic regression (distance, distance^2, indoors, turf, wind, temp, distance x wind, era trend) | 84.2% made vs 84.9% predicted; [by distance](models/reports/fg_make_by_distance.png) |
+| Punt | isotonic regression, recalibrated on 2023 | 7.25 yd mean error, +0.01 yd bias (naive: 8.74); [curve](models/reports/punt_outcome.png) |
+
+Sanity states pass: an opening drive at even spread is 0.514, and up 21 with 2:00 left is 0.999. The WP
+model is exported to ONNX (`models/artifacts/wp.onnx`) and verified against XGBoost to 3e-7. The input
+contract for the browser calculator is in `models/artifacts/wp_onnx_contract.json`.
+
+### The decision engine
+
+For every regulation 4th down:
+
+```
+WP(go)   = p_convert * WP(1st down after the average conversion gain) + (1 - p_convert) * WP(turnover on downs)
+WP(punt) = WP(opponent's ball where punts from this spot leave them)
+WP(FG)   = p_make * WP(+3, then kick off) + (1 - p_make) * WP(opponent's ball at the spot of the kick)
+```
+
+When the opponent gets the ball, the state is flipped (score, spread, timeouts, home, 2nd-half kickoff)
+and scored as 1 - their WP. The constants (conversion gains, clock used per outcome, kickoff starts by
+season) come from dbt tables built from the data. The engine refuses to write scores unless five
+consensus situations come out right. dbt's `fct_fourth_down_decisions` picks the best option and
+computes `wp_lost`.
+
+### Limitations, stated plainly
+
+- **Overtime is not graded**: different rules and its own clock. Neither are the **final 30 seconds of
+  a half** (3.8% of decisions), where the engine's average clock-runoff assumptions break down.
+- **Fakes are graded as ordinary go attempts.** The model can't price surprise.
+- **Era drift.** 2024 teams converted 57.5% of go attempts vs 54.7% predicted, so the engine is, if
+  anything, *conservative* about going for it. Punting improvement was corrected (see the punt model).
+- **Late, tied, in field-goal range**: both this model and nflverse's underrate the offense's chances
+  in the final minute (~80% predicted vs ~95% actual, small samples).
+- **Grades for 2006-2022 are in-sample for the WP model.** It's regularized, but the cleanest
+  numbers are 2023 onward.
+
+### Exports for the web app
+
+`make export` writes `exports/`: `meta.json`, `leaderboard/{season}.json`,
+`worst_decisions/{season}/week_NN.json` (+ `latest.json`), and `games/{season}/{game_id}.json`
+(columnar home-team WP series + key plays + 4th-down grades), for 2025 and 2026 to date.
+
 ## Repo layout
 
 ```
 ingest/      Python: nflverse -> DuckDB raw tables (incremental)
 dbt/         dbt-duckdb project: staging / intermediate / marts + tests
 analysis/    sanity check + shared dark chart theme
-models/      Phase 2: WP, conversion, FG, punt models + decision engine
+models/      Phase 2: WP, conversion, FG, punt models, decision engine, findings, exports
+  artifacts/   saved models (joblib, wp.onnx) + punt lookup + ONNX input contract
+  reports/     evaluation plots (dark theme) + metrics JSON + findings
 exports/     precomputed JSON for the web app
 web/         Phase 3: Next.js site
 tests/       pytest (ingest logic, no network)

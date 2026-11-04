@@ -3,7 +3,7 @@
 NFL_DUCKDB_PATH ?= $(CURDIR)/data/nfl.duckdb
 export NFL_DUCKDB_PATH
 
-.PHONY: setup ingest dbt check test train score findings refresh
+.PHONY: setup ingest dbt check test train score findings export refresh
 
 setup:  ## install Python deps and dbt packages
 	uv sync
@@ -31,4 +31,7 @@ score:  ## run the decision engine with the saved models, then build the dbt mod
 findings:  ## go-rate trend, famous 4th downs, coach leaderboard -> models/reports
 	uv run python -m models.findings
 
-refresh: ingest dbt score check  ## the weekly pipeline (no retraining)
+export:  ## JSON for the web app -> exports/ (leaderboards, worst decisions, per-game WP)
+	uv run python -m models.export
+
+refresh: ingest dbt score export check  ## the weekly pipeline (no retraining)

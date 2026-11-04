@@ -29,6 +29,8 @@ def split(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
 
 def write_table(df: pd.DataFrame, table: str) -> int:
     """Replace ml.<table> with df. dbt reads these tables as sources."""
+    # XGBoost returns float32; widen so values don't surface as 0.7710000276565552 downstream
+    df = df.astype({c: "float64" for c in df.select_dtypes("float32").columns})
     with connect(read_only=False) as con:
         con.execute(f"create schema if not exists {ML_SCHEMA}")
         con.register("_df", df)

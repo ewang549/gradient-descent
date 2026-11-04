@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-11-04T23:29:01+00:00",
+  "data_through": {
+    "season": 2026,
+    "week": 8
+  },
+  "counts": {
+    "2025": {
+      "leaderboard_coaches": 32,
+      "worst_decision_weeks": 22,
+      "games": 285
+    },
+    "2026": {
+      "leaderboard_coaches": 32,
+      "worst_decision_weeks": 8,
+      "games": 121
+    }
+  },
+  "models": {
+    "win_probability": {
+      "trained": {
+        "train": "2006-2022",
+        "val": 2023,
+        "test": 2024
+      },
+      "test_brier": 0.13891485333442688,
+      "nflverse_vegas_wp_test_brier": 0.13641643445738597
+    },
+    "conversion": {
+      "test_brier": 0.22211779791618635
+    },
+    "field_goal": {
+      "test_brier": 0.11807295415409683
+    },
+    "punt": {
+      "test_mae_yards": 7.248379675952575
+    }
+  },
+  "notes": [
+    "Graded decisions exclude overtime and the final 30 seconds of each half.",
+    "Fakes are graded as ordinary go-for-it attempts."
+  ]
+}

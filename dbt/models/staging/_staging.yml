@@ -1,0 +1,109 @@
+version: 2
+
+models:
+  - name: stg_pbp
+    description: One row per real play (snaps, kicks, penalty no-plays). See the model header for data quirks.
+    columns:
+      - name: play_uid
+        description: game_id + play_id. Unique per play.
+        data_tests: [unique, not_null]
+      - name: game_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_schedules')
+                field: game_id
+      - name: posteam
+        description: Team with possession (on kickoffs, the receiving team).
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: "{{ var('nfl_teams') }}"
+      - name: defteam
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: "{{ var('nfl_teams') }}"
+      - name: play_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [pass, run, punt, field_goal, kickoff, extra_point, qb_kneel, qb_spike, no_play]
+      - name: down
+        description: Null on kickoffs, extra points and two-point tries.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+      - name: yardline_100
+        description: Yards from the opponent's end zone (1 = opponent's 1-yard line).
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 100
+      - name: posteam_timeouts_remaining
+        description: Timeouts BEFORE the snap (nflverse's own column can already include a timeout called after the play).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1, 2, 3]
+                quote: false
+      - name: score_differential
+        description: posteam score minus defteam score BEFORE the snap.
+        data_tests: [not_null]
+
+  - name: stg_schedules
+    description: One row per game, 1999-present, including upcoming games.
+    columns:
+      - name: game_id
+        data_tests: [unique, not_null]
+      - name: game_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [REG, WC, DIV, CON, SB]
+      - name: home_team
+        description: Current franchise abbreviation (OAK->LV, SD->LAC, STL->LA), matching play-by-play.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: "{{ var('nfl_teams') }}"
+      - name: away_team
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: "{{ var('nfl_teams') }}"
+      - name: home_coach
+        data_tests: [not_null]
+      - name: away_coach
+        data_tests: [not_null]
+      - name: spread_line
+        description: Closing line. Positive = home team favored.
+        data_tests:
+          - not_null:
+              config:
+                where: is_final
+
+  - name: stg_rosters
+    description: One row per player per team per season.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [season, team, player_id]
+          config:
+            where: player_id is not null
+
+  - name: stg_teams
+    description: One row per team abbreviation, with franchise id and branding.
+    columns:
+      - name: team_abbr
+        data_tests: [unique, not_null]
+      - name: franchise_id
+        data_tests: [not_null]

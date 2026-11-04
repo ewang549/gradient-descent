@@ -1,0 +1,9 @@
+# dbt looks for profiles.yml in the current directory first, so running dbt from dbt/ just works.
+# NFL_DUCKDB_PATH is shared with the ingest step (the Makefile sets it to an absolute path).
+nfl:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('NFL_DUCKDB_PATH', '../data/nfl.duckdb') }}"
+      threads: 4

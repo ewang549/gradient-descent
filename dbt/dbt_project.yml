@@ -1,0 +1,31 @@
+name: nfl
+version: "1.0.0"
+profile: nfl
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  nfl:
+    # staging: 1:1 cleanups of raw tables -> views (cheap, always fresh)
+    staging:
+      +schema: staging
+      +materialized: view
+    # intermediate: reusable building blocks -> views
+    intermediate:
+      +schema: intermediate
+      +materialized: view
+    # marts: what models / analysis / the web app read -> tables. Full rebuild every run:
+    # DuckDB rebuilds ~1.3M plays in seconds, and window features stay correct without the
+    # bookkeeping an incremental model would need.
+    marts:
+      +schema: marts
+      +materialized: table
+
+vars:
+  # Current franchise abbreviations (nflverse play-by-play uses these for every season).
+  # Quoted on purpose: unquoted NO (New Orleans) is parsed by YAML as boolean false.
+  nfl_teams: ["ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", "DAL", "DEN", "DET", "GB", "HOU", "IND", "JAX", "KC",
+              "LA", "LAC", "LV", "MIA", "MIN", "NE", "NO", "NYG", "NYJ", "PHI", "PIT", "SEA", "SF", "TB", "TEN", "WAS"]

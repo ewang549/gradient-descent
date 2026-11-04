@@ -1,0 +1,83 @@
+version: 2
+
+models:
+  - name: fct_plays
+    description: >
+      One row per real play with pre-snap game state (model features), pre-game team strength,
+      the play's result (never a feature), and the game outcome (the WP label).
+    columns:
+      - name: play_uid
+        data_tests: [unique, not_null]
+      - name: game_type
+        description: Not null proves every play joined to its schedule row.
+        data_tests: [not_null]
+      - name: posteam_coach
+        data_tests: [not_null]
+      - name: posteam_spread_line
+        description: Closing Vegas line from the possession team's view; positive = posteam favored.
+        data_tests: [not_null]
+      - name: score_differential
+        description: posteam minus defteam score BEFORE the snap.
+        data_tests: [not_null]
+      - name: posteam_timeouts_remaining
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [0, 1, 2, 3]
+                quote: false
+      - name: defteam_timeouts_remaining
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [0, 1, 2, 3]
+                quote: false
+      - name: elapsed_share
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: is_receiving_2h_kickoff
+        data_tests: [not_null]
+      - name: posteam_game_result
+        description: win / loss / tie for the possession team (the WP label).
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [win, loss, tie]
+
+  - name: fct_fourth_downs
+    description: One row per 4th-down decision (go / punt / field_goal), excluding pre-snap penalties and kneels.
+    columns:
+      - name: play_uid
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fct_plays')
+                field: play_uid
+      - name: decision
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [go, punt, field_goal]
+      - name: ydstogo
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 1
+      - name: posteam_coach
+        data_tests: [not_null]
+      - name: is_converted
+        description: For go decisions - new set of downs or own TD, without losing the ball.
+        data_tests:
+          - not_null:
+              config:
+                where: decision = 'go'

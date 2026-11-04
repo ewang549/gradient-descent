@@ -37,3 +37,14 @@ def test_saved_wp_model_respects_monotone_constraints():
     by_field = pd.DataFrame([{**base, "yardline_100": y} for y in range(1, 100)])
     assert np.all(np.diff(wp.predict(model, wp.derive_features(by_score))) >= -1e-9)
     assert np.all(np.diff(wp.predict(model, wp.derive_features(by_field))) <= 1e-9)
+
+
+@pytest.mark.skipif(not __import__("models.conversion").conversion.ARTIFACT.exists(), reason="run `make train` first")
+def test_conversion_odds_fall_with_distance():
+    from models import conversion
+
+    bundle = joblib.load(conversion.ARTIFACT)
+    rows = pd.DataFrame([{"ydstogo": d, "yardline_100": 40, "posteam_off_epa_last_8": 0.0,
+                          "defteam_def_epa_last_8": 0.0, "is_indoors": 0, "is_turf": 0} for d in range(1, 16)])
+    p = conversion.predict(bundle, rows)
+    assert np.all(np.diff(p) <= 1e-9) and 0.6 < p[0] < 0.85 and p[-1] < 0.35

@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.cm import ScalarMappable
 from matplotlib.colors import LinearSegmentedColormap, Normalize
+from matplotlib.lines import Line2D
 from matplotlib.patches import FancyBboxPatch, Rectangle
 from matplotlib.ticker import PercentFormatter
 
@@ -25,12 +26,13 @@ def calibration(curves: Sequence[dict], *, title: str, subtitle: str, source: st
     """Reliability diagram. curves: [{label, pred, obs, color}], pred/obs are per-bin means."""
     theme.apply_theme()
     fig, ax = plt.subplots(figsize=(6.6, 6.2))
-    ax.plot([0, 1], [0, 1], color=theme.AXIS, linewidth=1.0, zorder=1)
-    ax.text(0.80, 0.74, "perfectly calibrated", rotation=45, rotation_mode="anchor", ha="center",
-            fontsize=8.5, color=theme.MUTED)
+    ax.plot([0, 1], [0, 1], color=theme.MUTED, linewidth=1.0, zorder=1)
+    handles = [Line2D([], [], color=theme.MUTED, linewidth=1.0, label="Perfect calibration")]
     for c in curves:
-        ax.plot(c["pred"], c["obs"], color=c["color"], label=c["label"], marker="o", markersize=theme.MARKER_SIZE,
+        ax.plot(c["pred"], c["obs"], color=c["color"], marker="o", markersize=theme.MARKER_SIZE,
                 markeredgecolor=theme.SURFACE, markeredgewidth=2, zorder=3)
+        # legend key without the surface ring, which would make the key look dashed
+        handles.append(Line2D([], [], color=c["color"], marker="o", markersize=7, markeredgewidth=0, label=c["label"]))
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.set_aspect("equal")
@@ -39,7 +41,7 @@ def calibration(curves: Sequence[dict], *, title: str, subtitle: str, source: st
         axis.set_major_formatter(PercentFormatter(1.0, decimals=0))
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
-    ax.legend(loc="upper left", handlelength=1.6)
+    ax.legend(handles=handles[1:] + handles[:1], loc="upper left", handlelength=2.0)
     theme.headline(fig, title, subtitle, source)
     return theme.save(fig, path)
 

@@ -10,9 +10,9 @@ import sys
 import time
 import warnings
 
-from models import conversion, field_goal, wp
+from models import conversion, field_goal, punt, wp
 
-STEPS = {"wp": wp.run, "conversion": conversion.run, "fg": field_goal.run}
+STEPS = {"wp": wp.run, "conversion": conversion.run, "fg": field_goal.run, "punt": punt.run}
 
 
 def main(argv: list[str]) -> int:

@@ -61,3 +61,13 @@ def test_fg_odds_fall_with_distance_and_wind():
     p_calm, p_windy = field_goal.predict(bundle, calm), field_goal.predict(bundle, windy)
     assert np.all(np.diff(p_calm) < 0) and np.all(p_windy < p_calm)
     assert field_goal.predict(bundle, calm.assign(kick_distance=75))[0] == 0.0  # beyond any make in the data
+
+
+@pytest.mark.skipif(not __import__("models.punt").punt.ARTIFACT.exists(), reason="run `make train` first")
+def test_punting_from_deeper_never_helps_the_punting_team():
+    from models import punt
+
+    model = joblib.load(punt.ARTIFACT)
+    receiving = punt.predict(model, np.arange(20, 100))  # receiving team's distance to the end zone it attacks
+    assert np.all(np.diff(receiving) <= 1e-9)
+    assert 55 < punt.predict(model, [70])[0] < 85  # own 30 -> opponent starts somewhere around its own 25

@@ -1,0 +1,35 @@
+{
+  "model": "isotonic regression (decreasing) + constant shift fit on the validation season",
+  "shift_yards": 1.5101699363714705,
+  "rows": {
+    "train": 40575,
+    "val": 2314,
+    "test": 2082
+  },
+  "results": {
+    "test": {
+      "punts": 2082,
+      "isotonic_recalibrated": {
+        "mae_yards": 7.248379675952575,
+        "bias_yards": 0.008677905432151883
+      },
+      "isotonic_uncalibrated": {
+        "mae_yards": 7.500551014241469,
+        "bias_yards": -1.5014920309393172
+      },
+      "naive_average_net": {
+        "mae_yards": 8.740082081367564,
+        "bias_yards": -5.02483138931652
+      }
+    }
+  },
+  "lookup_sample": {
+    "30": 90.34,
+    "40": 89.94,
+    "50": 87.24,
+    "60": 83.05,
+    "70": 74.21,
+    "80": 64.68,
+    "90": 54.64
+  }
+}

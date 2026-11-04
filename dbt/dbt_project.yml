@@ -23,6 +23,10 @@ models:
     marts:
       +schema: marts
       +materialized: table
+    # features: one table per ML model (Phase 2). Python reads these; it never re-derives features.
+    features:
+      +schema: features
+      +materialized: table
 
 vars:
   # Current franchise abbreviations (nflverse play-by-play uses these for every season).

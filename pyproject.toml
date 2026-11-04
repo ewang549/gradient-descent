@@ -7,8 +7,15 @@ dependencies = [
     "duckdb>=2.0.0",
     "matplotlib>=3.11.2",
     "nflreadpy>=0.1.5",
+    "onnx>=1.23.2",
+    "onnxmltools>=1.16.0",
+    "onnxruntime>=1.31.1",
+    "pandas>=3.1.1",
     "polars>=2.1.0",
     "pyarrow>=26.0.1",
+    "scikit-learn>=1.9.1",
+    "shap>=0.54.1",
+    "xgboost>=3.4.1",
 ]
 
 [dependency-groups]

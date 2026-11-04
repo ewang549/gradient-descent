@@ -1,0 +1,217 @@
+{
+  "model": "XGBoost classifier, monotone constraints",
+  "features": [
+    "score_differential",
+    "score_diff_per_sqrt_sec",
+    "game_seconds_remaining",
+    "half_seconds_remaining",
+    "down",
+    "ydstogo",
+    "yardline_100",
+    "posteam_timeouts_remaining",
+    "defteam_timeouts_remaining",
+    "home",
+    "posteam_spread_line",
+    "spread_time",
+    "is_receiving_2h_kickoff"
+  ],
+  "monotone_constraints": {
+    "score_differential": 1,
+    "score_diff_per_sqrt_sec": 1,
+    "game_seconds_remaining": 0,
+    "half_seconds_remaining": 0,
+    "down": -1,
+    "ydstogo": -1,
+    "yardline_100": -1,
+    "posteam_timeouts_remaining": 1,
+    "defteam_timeouts_remaining": -1,
+    "home": 1,
+    "posteam_spread_line": 1,
+    "spread_time": 1,
+    "is_receiving_2h_kickoff": 1
+  },
+  "split": {
+    "train": "2006-2022",
+    "val": 2023,
+    "test": 2024
+  },
+  "rows": {
+    "train": 674246,
+    "val": 41698,
+    "test": 41283
+  },
+  "search": [
+    {
+      "max_depth": 4,
+      "min_child_weight": 50,
+      "trees": 388,
+      "val_log_loss": 0.4538608193397522,
+      "seconds": 6.7
+    },
+    {
+      "max_depth": 4,
+      "min_child_weight": 300,
+      "trees": 222,
+      "val_log_loss": 0.4548192024230957,
+      "seconds": 4.6
+    },
+    {
+      "max_depth": 6,
+      "min_child_weight": 50,
+      "trees": 215,
+      "val_log_loss": 0.45357024669647217,
+      "seconds": 6.0
+    },
+    {
+      "max_depth": 6,
+      "min_child_weight": 300,
+      "trees": 203,
+      "val_log_loss": 0.45451706647872925,
+      "seconds": 5.6
+    }
+  ],
+  "chosen": {
+    "max_depth": 6,
+    "min_child_weight": 50,
+    "n_estimators": 215
+  },
+  "test": {
+    "plays": 41283,
+    "games": 285,
+    "metrics": {
+      "this_model": {
+        "brier": 0.13891485333442688,
+        "log_loss": 0.42212358117103577,
+        "auc": 0.8856286359111132,
+        "brier_4th_quarter": 0.08231619745492935
+      },
+      "nflverse_vegas_wp": {
+        "brier": 0.13641643445738597,
+        "log_loss": 0.41533036005031587,
+        "auc": 0.8896910853308507,
+        "brier_4th_quarter": 0.07926377938972043
+      },
+      "nflverse_wp": {
+        "brier": 0.15690569249364877,
+        "log_loss": 0.4630883379399757,
+        "auc": 0.8508068901442704
+      }
+    },
+    "calibration": {
+      "this_model": {
+        "pred": [
+          0.03369246193861282,
+          0.15192472311062577,
+          0.2509132709463339,
+          0.350650620033569,
+          0.4482041098074745,
+          0.5516879481383281,
+          0.6514865111719078,
+          0.7498407660630568,
+          0.8498555996094863,
+          0.9662134018429694
+        ],
+        "obs": [
+          0.014557872034507549,
+          0.11944531988654271,
+          0.20679265954533005,
+          0.28906449146061686,
+          0.4318529862174579,
+          0.5499723909442297,
+          0.6811770428015564,
+          0.7921419518377694,
+          0.8791928006544859,
+          0.9784512964260687
+        ]
+      },
+      "nflverse_vegas_wp": {
+        "pred": [
+          0.03255428522355679,
+          0.15010381910678713,
+          0.2504692308537595,
+          0.35116369351624027,
+          0.4497995994150455,
+          0.5504082656721673,
+          0.6501128414683217,
+          0.7493560000503263,
+          0.849853892039569,
+          0.966172453901105
+        ],
+        "obs": [
+          0.018279944289693595,
+          0.10787518573551264,
+          0.20045045045045046,
+          0.3035617916891527,
+          0.4442446043165468,
+          0.5366250678241997,
+          0.6749098402885111,
+          0.7936550253265796,
+          0.8866171003717472,
+          0.9799629567267216
+        ]
+      },
+      "nflverse_wp": {
+        "pred": [
+          0.032809280606155296,
+          0.15131124694503442,
+          0.2510917177017866,
+          0.3511950013152451,
+          0.448348427681786,
+          0.5512655431413188,
+          0.6487296615377869,
+          0.7467323769381977,
+          0.8500549075070092,
+          0.9650741653318025
+        ],
+        "obs": [
+          0.003602458147912693,
+          0.11092604930046636,
+          0.25121084920891185,
+          0.36376571022053594,
+          0.436163714111179,
+          0.547991292301603,
+          0.6300292200494493,
+          0.7264705882352941,
+          0.8842171320991528,
+          0.9896088019559902
+        ]
+      }
+    }
+  },
+  "sanity": {
+    "wp": {
+      "opening drive, even spread, neutral site": 0.5144686102867126,
+      "opening drive, even spread, home team": 0.5184713006019592,
+      "opening drive, even spread, away team": 0.5122895836830139,
+      "up 21, 2:00 left, own ball": 0.9985095858573914,
+      "down 21, 2:00 left, own ball": 0.0016987959388643503
+    },
+    "passed": {
+      "opening drive near 0.5": true,
+      "home > neutral > away": true,
+      "up 21 with 2:00 left >= 0.99": true,
+      "down 21 with 2:00 left <= 0.01": true
+    }
+  },
+  "onnx": {
+    "path": "models/artifacts/wp.onnx",
+    "max_abs_diff_vs_xgboost": 2.7567148208618164e-07,
+    "input_name": "features",
+    "feature_order": [
+      "score_differential",
+      "score_diff_per_sqrt_sec",
+      "game_seconds_remaining",
+      "half_seconds_remaining",
+      "down",
+      "ydstogo",
+      "yardline_100",
+      "posteam_timeouts_remaining",
+      "defteam_timeouts_remaining",
+      "home",
+      "posteam_spread_line",
+      "spread_time",
+      "is_receiving_2h_kickoff"
+    ]
+  },
+  "caveat": "nflverse's WP models were fit on data that includes the test season, so the benchmark favors them."
+}

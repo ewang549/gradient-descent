@@ -1,0 +1,73 @@
+version: 2
+
+models:
+  - name: feat_wp_plays
+    description: Win-probability rows (regulation scrimmage plays). label_win is null for tied games.
+    columns:
+      - name: play_uid
+        data_tests: [unique, not_null]
+      - name: label_win
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
+      - name: posteam_spread_line
+        data_tests: [not_null]
+      - name: score_diff_per_sqrt_sec
+        data_tests: [not_null]
+
+  - name: feat_go_attempts
+    description: Clean 4th-down go attempts (no fakes, no penalty-nullified snaps).
+    columns:
+      - name: play_uid
+        data_tests: [unique, not_null]
+      - name: label_converted
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
+
+  - name: feat_fg_attempts
+    description: Every field-goal attempt 18-70 yards, with imputed indoor/missing weather.
+    columns:
+      - name: play_uid
+        data_tests: [unique, not_null]
+      - name: wind_mph
+        data_tests: [not_null]
+      - name: temp_f
+        data_tests: [not_null]
+
+  - name: feat_punts
+    description: Clean punts and the receiving team's field position at its first snap.
+    columns:
+      - name: play_uid
+        data_tests: [unique, not_null]
+      - name: receiving_yardline_100
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 1
+                max_value: 99
+
+  - name: feat_kickoff_starts
+    description: Average receiving-team start position after a kickoff, by season.
+    columns:
+      - name: season
+        data_tests: [unique, not_null]
+
+  - name: feat_clock_runoff
+    description: Median clock runoff from a 4th-down snap to the next snap, by outcome and late-half flag.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [outcome, is_final_two_minutes]
+
+  - name: feat_conversion_gains
+    description: Average yards gained on successful (non goal-to-go) 4th-down conversions, by yards to go.
+    columns:
+      - name: ydstogo_capped
+        data_tests: [unique, not_null]

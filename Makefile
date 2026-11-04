@@ -3,7 +3,7 @@
 NFL_DUCKDB_PATH ?= $(CURDIR)/data/nfl.duckdb
 export NFL_DUCKDB_PATH
 
-.PHONY: setup ingest dbt check test refresh
+.PHONY: setup ingest dbt check test train refresh
 
 setup:  ## install Python deps and dbt packages
 	uv sync
@@ -18,7 +18,10 @@ dbt:  ## rebuild every dbt model and run the data tests
 check:  ## sanity-check the marts and redraw the go-rate chart
 	uv run python -m analysis.sanity_check
 
-test:  ## Python unit tests (no network)
+test:  ## Python tests (no network; model tests skip until the warehouse/artifacts exist)
 	uv run pytest -q
+
+train:  ## train + evaluate the Phase 2 models -> models/artifacts, models/reports
+	uv run python -m models.train
 
 refresh: ingest dbt check  ## the weekly pipeline

@@ -73,7 +73,9 @@ def headline(fig, title: str, subtitle: str | None = None, source: str | None = 
     fig.text(0.0, 1.0, title, ha="left", va="bottom", fontsize=15, fontweight="bold", color=INK,
              transform=fig.transFigure)
     if subtitle:
-        fig.text(0.0, 0.985, subtitle, ha="left", va="top", fontsize=10.5, color=INK_2, transform=fig.transFigure)
+        # fixed 0.07in below the title, whatever the figure height (a fraction drifts on tall charts)
+        fig.text(0.0, 1.0 - 0.07 / fig.get_figheight(), subtitle, ha="left", va="top", fontsize=10.5, color=INK_2,
+                 transform=fig.transFigure)
     if source:
         fig.text(0.0, -0.02, source, ha="left", va="top", fontsize=8, color=MUTED, transform=fig.transFigure)
 

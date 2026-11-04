@@ -46,28 +46,28 @@
       "min_child_weight": 50,
       "trees": 388,
       "val_log_loss": 0.4538608193397522,
-      "seconds": 6.9
+      "seconds": 8.4
     },
     {
       "max_depth": 4,
       "min_child_weight": 300,
       "trees": 222,
       "val_log_loss": 0.4548192024230957,
-      "seconds": 4.9
+      "seconds": 4.7
     },
     {
       "max_depth": 6,
       "min_child_weight": 50,
       "trees": 215,
       "val_log_loss": 0.45357024669647217,
-      "seconds": 5.9
+      "seconds": 6.0
     },
     {
       "max_depth": 6,
       "min_child_weight": 300,
       "trees": 203,
       "val_log_loss": 0.45451706647872925,
-      "seconds": 5.9
+      "seconds": 5.6
     }
   ],
   "chosen": {

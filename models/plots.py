@@ -66,7 +66,10 @@ def hbars(labels: Sequence[str], values: Sequence[float], *, title: str, subtitl
     labels = [labels[i] for i in order]
     values = [values[i] for i in order]
     n = len(values)
-    fig, ax = plt.subplots(figsize=(7.4, 1.0 + 0.36 * n))
+    height = 1.0 + 0.36 * n
+    fig, ax = plt.subplots(figsize=(7.4, height))
+    # margins in inches, not fractions: a tall ranked chart would otherwise open with a big empty band
+    fig.subplots_adjust(top=1 - 0.55 / height, bottom=0.15 / height)
     ax.set_xlim(0, max(values) * 1.16)
     ax.set_ylim(-0.6, n - 0.4)
     fig.canvas.draw()  # fix the layout so pixel -> data conversions for the rounded ends are right

@@ -81,3 +81,48 @@ models:
           - not_null:
               config:
                 where: decision = 'go'
+
+  - name: fct_fourth_down_decisions
+    description: >
+      Every regulation 4th-down decision with the win probability of go / punt / FG, the model's
+      recommendation, and wp_lost = best option's WP minus the WP of what the coach chose.
+    columns:
+      - name: play_uid
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fct_fourth_downs')
+                field: play_uid
+      - name: recommendation
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [go, punt, field_goal]
+      - name: wp_lost
+        description: Win probability given up by the actual choice (0 when the coach picked the best option).
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: best_wp
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: p_convert
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: is_graded
+        description: False in the final 30 seconds of a half (kept, but excluded from leaderboards and exports).
+        data_tests: [not_null]

@@ -19,3 +19,12 @@ sources:
         description: >
           Final games that nflverse's play-by-play doesn't contain (three 1999-2000 games), as
           recorded by the ingest the last time it downloaded that season.
+
+  - name: ml
+    description: Model outputs written by `python -m models.score` (Phase 2). Read by the `scored` dbt models.
+    schema: ml
+    tables:
+      - name: fourth_down_options
+        description: WP of go / punt / FG for every regulation 4th-down decision, plus their ingredients.
+      - name: play_wp
+        description: This project's WP model output before every regulation scrimmage play.

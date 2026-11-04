@@ -3,7 +3,7 @@
 NFL_DUCKDB_PATH ?= $(CURDIR)/data/nfl.duckdb
 export NFL_DUCKDB_PATH
 
-.PHONY: setup ingest dbt check test train refresh
+.PHONY: setup ingest dbt check test train score refresh
 
 setup:  ## install Python deps and dbt packages
 	uv sync
@@ -12,8 +12,8 @@ setup:  ## install Python deps and dbt packages
 ingest:  ## load newly final games from nflverse into DuckDB (incremental)
 	uv run python -m ingest
 
-dbt:  ## rebuild every dbt model and run the data tests
-	cd dbt && uv run dbt build
+dbt:  ## rebuild every dbt model and run the data tests (models that need scores wait for `make score`)
+	cd dbt && uv run dbt build --exclude tag:scored
 
 check:  ## sanity-check the marts and redraw the go-rate chart
 	uv run python -m analysis.sanity_check
@@ -24,4 +24,8 @@ test:  ## Python tests (no network; model tests skip until the warehouse/artifac
 train:  ## train + evaluate the Phase 2 models -> models/artifacts, models/reports
 	uv run python -m models.train
 
-refresh: ingest dbt check  ## the weekly pipeline
+score:  ## run the decision engine with the saved models, then build the dbt models that read the scores
+	uv run python -m models.score
+	cd dbt && uv run dbt build --select tag:scored
+
+refresh: ingest dbt score check  ## the weekly pipeline (no retraining)

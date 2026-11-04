@@ -71,3 +71,38 @@ def test_punting_from_deeper_never_helps_the_punting_team():
     receiving = punt.predict(model, np.arange(20, 100))  # receiving team's distance to the end zone it attacks
     assert np.all(np.diff(receiving) <= 1e-9)
     assert 55 < punt.predict(model, [70])[0] < 85  # own 30 -> opponent starts somewhere around its own 25
+
+
+def test_engine_flips_the_state_when_the_opponent_gets_the_ball():
+    from models import decision_engine as engine
+
+    d = pd.DataFrame([{"score_differential": 3, "game_seconds_remaining": 1500, "half_seconds_remaining": 1500,
+                       "ydstogo": 2, "yardline_100": 45, "posteam_timeouts_remaining": 3, "defteam_timeouts_remaining": 1,
+                       "is_posteam_home": True, "is_neutral_site": False, "posteam_spread_line": 4.5, "qtr": 2,
+                       "is_receiving_2h_kickoff": False}])
+    s = engine.opponent_gets_ball(d, offense_points=np.array([3]), opp_yardline=np.array([75.0]), runoff=np.array([8]))
+    row = s.iloc[0]
+    assert row["score_differential"] == -6          # offense was up 3, then kicked a FG: opponent down 6
+    assert (row["posteam_timeouts_remaining"], row["defteam_timeouts_remaining"]) == (1, 3)
+    assert row["home"] == -1 and row["posteam_spread_line"] == -4.5
+    assert row["is_receiving_2h_kickoff"] == 1      # 1st half: the team that didn't have it gets the 2nd-half kickoff
+    assert (row["down"], row["ydstogo"], row["yardline_100"]) == (1, 10, 75)
+    assert row["half_seconds_remaining"] == 1492 and row["game_seconds_remaining"] == 1492
+
+
+def test_clock_never_runs_past_the_end_of_the_half():
+    from models import decision_engine as engine
+
+    d = pd.DataFrame({"half_seconds_remaining": [7, 600], "game_seconds_remaining": [1807, 600]})
+    clock = engine._clock(d, np.array([14, 14]))
+    assert list(clock["half_seconds_remaining"]) == [1, 586] and list(clock["game_seconds_remaining"]) == [1801, 586]
+
+
+@needs_warehouse
+@needs_wp_model
+def test_engine_agrees_with_consensus_situations():
+    from models import decision_engine as engine
+    from models import score
+
+    for name, expected, pick, _ in score.sanity_check(engine.load_models(), engine.load_lookups()):
+        assert pick == expected, name

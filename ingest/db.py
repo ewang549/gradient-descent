@@ -88,9 +88,9 @@ def _reconcile_schema(con: duckdb.DuckDBPyConnection, fq: str, incoming: dict[st
         old_type = existing.get(col)
         if old_type is None:
             con.execute(f'alter table {fq} add column "{col}" {new_type}')
-        elif old_type == new_type or new_type == '"NULL"':  # all-null column inserts into anything
-            continue
-        elif old_type == "VARCHAR":  # anything converts to text losslessly (e.g. rosters.jersey_number)
+        elif old_type == new_type or new_type == '"NULL"' or old_type == "VARCHAR":
+            # same type; an all-null column (inserts into anything); or a text column, which
+            # anything converts into losslessly (e.g. rosters.jersey_number)
             continue
         elif old_type in _NUMERIC and new_type in _NUMERIC:
             if old_type != "DOUBLE":

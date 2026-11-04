@@ -1,0 +1,34 @@
+name: weekly-refresh
+
+on:
+  schedule:
+    - cron: "0 12 * * 2"  # Tuesdays 12:00 UTC (7-8am ET), after Monday Night Football
+  workflow_dispatch: {}    # adds a "Run workflow" button for manual runs
+
+permissions:
+  contents: read
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: astral-sh/setup-uv@v10
+        with:
+          enable-cache: true
+
+      # Restore last week's warehouse so the ingest only fetches new games. Correctness never
+      # depends on this cache: on a miss (first run, or GitHub evicted it) the ingest simply
+      # backfills every season, which takes a few minutes.
+      - name: Restore DuckDB warehouse
+        uses: actions/cache@v6
+        with:
+          path: data/nfl.duckdb
+          key: warehouse-${{ github.run_id }}
+          restore-keys: warehouse-
+
+      - run: uv sync --frozen
+      - run: cd dbt && uv run dbt deps
+      - run: make refresh

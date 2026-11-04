@@ -48,3 +48,16 @@ def test_conversion_odds_fall_with_distance():
                           "defteam_def_epa_last_8": 0.0, "is_indoors": 0, "is_turf": 0} for d in range(1, 16)])
     p = conversion.predict(bundle, rows)
     assert np.all(np.diff(p) <= 1e-9) and 0.6 < p[0] < 0.85 and p[-1] < 0.35
+
+
+@pytest.mark.skipif(not __import__("models.field_goal").field_goal.ARTIFACT.exists(), reason="run `make train` first")
+def test_fg_odds_fall_with_distance_and_wind():
+    from models import field_goal
+
+    bundle = joblib.load(field_goal.ARTIFACT)
+    calm = pd.DataFrame({"kick_distance": range(20, 66), "is_indoors": 1, "is_turf": 1, "wind_mph": 0, "temp_f": 70,
+                         "season": 2026})
+    windy = calm.assign(is_indoors=0, wind_mph=20, temp_f=30)
+    p_calm, p_windy = field_goal.predict(bundle, calm), field_goal.predict(bundle, windy)
+    assert np.all(np.diff(p_calm) < 0) and np.all(p_windy < p_calm)
+    assert field_goal.predict(bundle, calm.assign(kick_distance=75))[0] == 0.0  # beyond any make in the data

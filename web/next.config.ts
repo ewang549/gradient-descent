@@ -32,6 +32,7 @@ const nextConfig: NextConfig = {
       { source: "/models/:path*", headers: MODEL_CACHE },
       { source: "/ort/:path*", headers: MODEL_CACHE },
       { source: "/cards/:path*", headers: MODEL_CACHE },
+      { source: "/data/:path*", headers: MODEL_CACHE },
     ];
   },
 };

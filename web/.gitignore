@@ -43,3 +43,4 @@ next-env.d.ts
 # onnxruntime-web WASM, copied from node_modules by scripts/copy-ort.mjs
 /public/ort/
 /public/cards/
+/public/data/

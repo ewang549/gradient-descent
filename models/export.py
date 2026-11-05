@@ -7,6 +7,7 @@ exports/
   worst_decisions/latest.json                the most recent week
   games/{season}/index.json                  every game in the season (for navigation)
   games/{season}/{game_id}.json              home-team WP series + key plays, for WP charts
+  play/pool.json                             "You Make the Call" situations (see models/play.py)
 The site reads these at build time; nothing here needs a database at request time.
 """
 
@@ -19,7 +20,7 @@ from datetime import UTC, datetime
 
 import pandas as pd
 
-from models import data, findings
+from models import data, findings, play
 from models.config import ARTIFACTS_DIR, EXPORTS_DIR, REPORTS_DIR
 
 WORST_PER_WEEK = 10
@@ -209,6 +210,7 @@ def main(argv: list[str]) -> int:
         counts[s] = {"leaderboard_coaches": export_leaderboard(s), "worst_decision_weeks": export_worst_decisions(s),
                      "games": export_games(s, colors)}
         print(f"{s}: {counts[s]}")
+    play.export()
     export_model_contract()
     export_meta(season, week, counts)
     size = sum(f.stat().st_size for f in EXPORTS_DIR.rglob("*.json"))

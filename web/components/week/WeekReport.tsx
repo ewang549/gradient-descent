@@ -5,23 +5,14 @@
  */
 import Image from "next/image";
 import Link from "next/link";
+import { TeamChip } from "@/components/TeamChip";
 import type { Option } from "@/lib/engine/types";
 import {
-  OPTION_SHORT, calcPath, clockLabel, didPhrase, opponentLabel, pct, pts, scoreLabel, teamChip, weekPath,
+  OPTION_SHORT, calcPath, clockLabel, didPhrase, opponentLabel, pct, pts, scoreLabel, weekPath,
 } from "@/lib/weekly/format";
-import type { Call, CoachRow, TeamInfo, WeekExport } from "@/lib/weekly/types";
+import type { Call, CoachRow, WeekExport } from "@/lib/weekly/types";
 
 const pad = (n: number) => String(n).padStart(2, "0");
-
-function Chip({ abbr, team }: { abbr: string; team?: TeamInfo }) {
-  const { bg, fg, border } = teamChip(team);
-  return (
-    <span className="inline-flex min-w-11 items-center justify-center rounded-md px-1.5 py-0.5 font-display text-sm font-black tracking-wider"
-      style={{ background: bg, color: fg, boxShadow: `inset 0 0 0 2px ${border}` }}>
-      {abbr}
-    </span>
-  );
-}
 
 function WPLine({ c }: { c: Call }) {
   const wp: Record<Option, number> = { go: c.wp_go, punt: c.wp_punt, field_goal: c.wp_fg };
@@ -44,7 +35,7 @@ function CallRow({ c, i, w, stat, statLabel }: { c: Call; i: number; w: WeekExpo
       <span className="font-display text-2xl font-black text-muted">{i + 1}</span>
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-          <Chip abbr={c.posteam} team={w.teams[c.posteam]} />
+          <TeamChip abbr={c.posteam} team={w.teams[c.posteam]} />
           <span className="font-semibold">{c.coach}</span>
           <span className="text-ink-2">{didPhrase(c)} on {c.situation}</span>
         </div>
@@ -84,7 +75,7 @@ function Board({ rows, w, title }: { rows: CoachRow[]; w: WeekExport; title: str
           return (
             <li key={r.coach} className="flex items-center gap-3 rounded-lg bg-night-2/70 px-3 py-2">
               <span className="w-6 font-display text-lg font-black text-muted">{r.rank}</span>
-              <Chip abbr={team} team={w.teams[team]} />
+              <TeamChip abbr={team} team={w.teams[team]} />
               <span className="min-w-0 flex-1 truncate font-semibold">{r.coach}</span>
               <span className="hidden text-xs text-muted sm:inline">{r.decisions} calls</span>
               <span className="num w-12 text-right font-display text-xl font-black">{r.wins_lost.toFixed(2)}</span>

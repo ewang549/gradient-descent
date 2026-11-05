@@ -2,6 +2,7 @@
 /**
  * The field, broadcast style: offense drives left to right. Drag the ball (or focus it and use the
  * arrow keys) to set the line of scrimmage. Blue = line of scrimmage, yellow = line to gain.
+ * Without onChange it's a picture of the spot (used by "You Make the Call").
  */
 import { useRef, useSyncExternalStore, type KeyboardEvent, type PointerEvent } from "react";
 import { fieldLabel } from "@/lib/calculator/state";
@@ -38,10 +39,13 @@ const yardlineAt = (x: number) => Math.min(99, Math.max(1, Math.round(110 - x / 
 interface Props {
   yardline100: number;
   ydstogo: number;
-  onChange: (yardline100: number) => void;
+  onChange?: (yardline100: number) => void;
+  /** text on the line-of-scrimmage chip; defaults to "OWN 25" / "OPP 40" */
+  label?: string;
 }
 
-export function Field({ yardline100, ydstogo, onChange }: Props) {
+export function Field({ yardline100, ydstogo, onChange, label }: Props) {
+  const interactive = !!onChange;
   const narrow = useNarrow();
   const H = narrow ? 520 : 240;
   const numSize = narrow ? 64 : 30;
@@ -53,9 +57,10 @@ export function Field({ yardline100, ydstogo, onChange }: Props) {
 
   const fromPointer = (e: PointerEvent) => {
     const r = svg.current!.getBoundingClientRect();
-    onChange(yardlineAt(((e.clientX - r.left) / r.width) * W));
+    onChange?.(yardlineAt(((e.clientX - r.left) / r.width) * W));
   };
   const onKey = (e: KeyboardEvent) => {
+    if (!onChange) return;
     const step = e.shiftKey ? 5 : 1;
     if (e.key === "ArrowRight" || e.key === "ArrowUp") onChange(Math.max(1, yardline100 - step));
     else if (e.key === "ArrowLeft" || e.key === "ArrowDown") onChange(Math.min(99, yardline100 + step));
@@ -68,15 +73,17 @@ export function Field({ yardline100, ydstogo, onChange }: Props) {
       <svg
         ref={svg}
         viewBox={`0 0 ${W} ${H}`}
-        className="block w-full cursor-grab touch-none rounded-xl active:cursor-grabbing"
-        onPointerDown={(e) => {
-          dragging.current = true;
-          (e.target as Element).setPointerCapture?.(e.pointerId);
-          fromPointer(e);
-        }}
-        onPointerMove={(e) => dragging.current && fromPointer(e)}
-        onPointerUp={() => (dragging.current = false)}
-        onPointerCancel={() => (dragging.current = false)}
+        className={`block w-full rounded-xl ${interactive ? "cursor-grab touch-none active:cursor-grabbing" : ""}`}
+        {...(interactive && {
+          onPointerDown: (e: PointerEvent) => {
+            dragging.current = true;
+            (e.target as Element).setPointerCapture?.(e.pointerId);
+            fromPointer(e);
+          },
+          onPointerMove: (e: PointerEvent) => dragging.current && fromPointer(e),
+          onPointerUp: () => (dragging.current = false),
+          onPointerCancel: () => (dragging.current = false),
+        })}
         aria-hidden
       >
         <defs>
@@ -153,7 +160,7 @@ export function Field({ yardline100, ydstogo, onChange }: Props) {
         className="pointer-events-none absolute top-2 whitespace-nowrap rounded-md bg-los px-2 py-0.5 font-display text-sm font-extrabold tracking-wider text-white shadow-lg transition-[left] duration-150 ease-out sm:text-base"
         style={chipPosition(ballX / W)}
       >
-        {fieldLabel(yardline100)}
+        {label ?? fieldLabel(yardline100)}
       </div>
       <div
         className="pointer-events-none absolute bottom-2 whitespace-nowrap rounded-md bg-yellow px-2 py-0.5 font-display text-sm font-extrabold tracking-wider text-night shadow-lg transition-[left] duration-150 ease-out sm:text-base"
@@ -163,7 +170,7 @@ export function Field({ yardline100, ydstogo, onChange }: Props) {
       </div>
 
       {/* keyboard / screen-reader handle */}
-      <div
+      {interactive && <div
         role="slider"
         tabIndex={0}
         aria-label="Line of scrimmage"
@@ -174,7 +181,7 @@ export function Field({ yardline100, ydstogo, onChange }: Props) {
         onKeyDown={onKey}
         className="absolute inset-0 rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-yellow/70"
         style={{ pointerEvents: "none" }}
-      />
+      />}
     </div>
   );
 }

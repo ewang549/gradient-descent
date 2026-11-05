@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "predev": "node scripts/copy-ort.mjs && node scripts/copy-cards.mjs",
-    "prebuild": "node scripts/copy-ort.mjs && node scripts/copy-cards.mjs",
+    "predev": "node scripts/copy-ort.mjs && node scripts/copy-exports.mjs",
+    "prebuild": "node scripts/copy-ort.mjs && node scripts/copy-exports.mjs",
     "cards": "tsx --tsconfig tsconfig.json scripts/render-cards.tsx"
   },
   "dependencies": {

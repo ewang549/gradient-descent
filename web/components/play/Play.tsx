@@ -9,6 +9,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Field } from "@/components/Field";
 import { TeamChip } from "@/components/TeamChip";
 import { fromEngineInput, toQuery } from "@/lib/calculator/state";
+import { gamePath } from "@/lib/games/chart";
 import { confidenceColor, confidenceLabel } from "@/lib/confidence";
 import type { Option } from "@/lib/engine/types";
 import {
@@ -361,6 +362,7 @@ function Reveal({ s, pick, onNext, last }: { s: Situation; pick: Option; onNext:
         </p>
         <p className="mt-1.5 text-xs leading-relaxed text-muted">{s.description}</p>
         <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs font-semibold">
+          <Link href={gamePath(s.season, s.game_id)} className="text-ink-2 hover:text-ink hover:underline">Full game chart</Link>
           <Link href={calcHref(s)} className="text-los hover:underline">Open in calculator →</Link>
         </div>
       </div>

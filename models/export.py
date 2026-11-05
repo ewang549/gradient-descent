@@ -21,10 +21,18 @@ from datetime import UTC, datetime
 import pandas as pd
 
 from models import data, findings, play
+from models.export_web import engine_inputs
 from models.config import ARTIFACTS_DIR, EXPORTS_DIR, REPORTS_DIR
 
 WORST_PER_WEEK = 10
 KEY_PLAY_WP_SWING = 0.05  # a play gets a description in the game file if it moved WP at least this much
+TOP_SWINGS = 5
+FOURTH_DOWN_COLUMNS = [
+    "play_seq", "posteam", "defteam", "posteam_coach", "qtr", "clock", "posteam_score", "defteam_score", "ydstogo",
+    "is_goal_to_go", "yardline_100", "yardline_label", "decision", "recommendation", "wp_now", "wp_go", "wp_punt",
+    "wp_fg", "p_convert", "p_fg_make", "fg_distance_1", "wp_lost", "recommendation_margin", "is_graded", "is_converted",
+    "is_fg_made", "play_description",
+]
 
 
 def _records(df: pd.DataFrame) -> list[dict]:
@@ -37,9 +45,9 @@ def _compact(obj, path) -> None:
 
 
 def team_colors() -> dict:
-    t = data.query("select team_abbr, color_primary, color_secondary, logo_url from staging.stg_teams")
-    return {r.team_abbr: {"primary": r.color_primary, "secondary": r.color_secondary, "logo": r.logo_url}
-            for r in t.itertuples()}
+    t = data.query("select team_abbr, team_name, color_primary, color_secondary, logo_url from staging.stg_teams")
+    return {r.team_abbr: {"name": r.team_name, "primary": r.color_primary, "secondary": r.color_secondary,
+                          "logo": r.logo_url} for r in t.itertuples()}
 
 
 def current_season_and_week() -> tuple[int, int]:
@@ -98,6 +106,31 @@ def export_worst_decisions(season: int) -> int:
 # ---------------------------------------------------------------------------- per-game WP series
 
 
+def _fourth_downs(rows: pd.DataFrame, inputs: dict) -> list[dict]:
+    """Every 4th down of the game with what the page's tooltip needs, plus the calculator input."""
+    out = rows[FOURTH_DOWN_COLUMNS].rename(columns={"posteam_coach": "coach", "fg_distance_1": "fg_distance"})
+    out = out.assign(play_description=out["play_description"].str.slice(0, 220),
+                     yardline_label=out["yardline_label"].replace({"MID 50": "midfield"}))
+    records = _records(out)
+    for rec, uid in zip(records, rows["play_uid"]):
+        rec["situation"] = f"4th & {'goal' if rec['is_goal_to_go'] else rec['ydstogo']} at {rec['yardline_label']}"
+        rec["input"] = inputs[uid]
+    return records
+
+
+def _swings(g: pd.DataFrame, result: float, went_to_ot: bool) -> list[dict]:
+    """The plays that moved home WP the most: pre-snap WP to the next snap's (the final result after the last
+    snap). In an overtime game the last regulation snap is left out: what follows it is a whole overtime."""
+    nxt = g["home_wp"].shift(-1)
+    if not went_to_ot:
+        nxt.iloc[-1] = result
+    d = g.assign(wp_after=nxt, delta=nxt - g["home_wp"]).dropna(subset=["delta"])
+    top = d.reindex(d["delta"].abs().sort_values(ascending=False).index).head(TOP_SWINGS)
+    return _records(top[["play_seq", "qtr", "clock", "posteam", "home_wp", "wp_after", "delta", "play_description"]]
+                    .rename(columns={"home_wp": "wp_before"})
+                    .assign(play_description=top["play_description"].str.slice(0, 220)).sort_values("play_seq"))
+
+
 def export_games(season: int, colors: dict) -> int:
     games = data.query(f"""
         select game_id, season, week, game_type, game_date, home_team, away_team, home_score, away_score,
@@ -116,10 +149,8 @@ def export_games(season: int, colors: dict) -> int:
         where p.season = {season}
         order by p.game_id, p.play_seq
     """)
-    fourth = data.query(f"""
-        select game_id, play_seq, posteam, decision, recommendation, wp_lost, is_graded
-        from marts.fct_fourth_down_decisions where season = {season}
-    """)
+    fourth = data.query(f"select * from marts.fct_fourth_down_decisions where season = {season} order by game_id, play_seq")
+    fourth_inputs = dict(zip(fourth["play_uid"], engine_inputs(fourth)))
     index = []
     for game in games.itertuples():
         g = plays[plays["game_id"] == game.game_id]
@@ -141,18 +172,27 @@ def export_games(season: int, colors: dict) -> int:
                 "play_seq": [*g["play_seq"].tolist(), None],
                 "game_seconds_remaining": [*g["game_seconds_remaining"].tolist(), 0],
                 "home_wp": [*g["home_wp"].round(4).tolist(), result],
+                "home_score": [*g["home_score"].tolist(), int(game.home_score)],  # pre-snap score
+                "away_score": [*g["away_score"].tolist(), int(game.away_score)],
             },
             "key_plays": _records(key[["play_seq", "qtr", "clock", "posteam", "home_score", "away_score",
                                        "home_wp", "play_description"]].assign(
                 play_description=key["play_description"].str.slice(0, 220))),
-            "fourth_downs": _records(fourth[fourth["game_id"] == game.game_id].drop(columns=["game_id"])
-                                     .sort_values("play_seq")),
+            "fourth_downs": _fourth_downs(fourth[fourth["game_id"] == game.game_id], fourth_inputs),
+            "swings": _swings(g, result, went_to_ot=bool(game.is_overtime)),
         }
         _compact(payload, EXPORTS_DIR / "games" / str(season) / f"{game.game_id}.json")
-        index.append({"game_id": game.game_id, "week": int(game.week), "date": payload["date"],
-                      "home": game.home_team, "away": game.away_team, "home_score": int(game.home_score),
-                      "away_score": int(game.away_score)})
-    data.write_json({"season": season, "games": index}, EXPORTS_DIR / "games" / str(season) / "index.json")
+        graded = [f for f in payload["fourth_downs"] if f["is_graded"]]
+        index.append({"game_id": game.game_id, "week": int(game.week), "game_type": game.game_type,
+                      "date": payload["date"], "home": game.home_team, "away": game.away_team,
+                      "home_score": int(game.home_score), "away_score": int(game.away_score),
+                      "overtime": bool(game.is_overtime), "graded": len(graded),
+                      "wp_lost": {side: round(sum(f["wp_lost"] for f in graded if f["posteam"] == team), 4)
+                                  for side, team in (("home", game.home_team), ("away", game.away_team))}})
+    teams = {t for g in index for t in (g["home"], g["away"])}
+    data.write_json({"season": season, "teams": {t: {k: colors[t][k] for k in ("name", "primary", "secondary")}
+                                                  for t in sorted(teams) if t in colors},
+                     "games": index}, EXPORTS_DIR / "games" / str(season) / "index.json")
     return len(index)
 
 

@@ -1,1094 +1,2103 @@
 {
   "season": 2026,
+  "teams": {
+    "ARI": {
+      "name": "Arizona Cardinals",
+      "primary": "#97233F",
+      "secondary": "#000000"
+    },
+    "ATL": {
+      "name": "Atlanta Falcons",
+      "primary": "#A71930",
+      "secondary": "#000000"
+    },
+    "BAL": {
+      "name": "Baltimore Ravens",
+      "primary": "#241773",
+      "secondary": "#9E7C0C"
+    },
+    "BUF": {
+      "name": "Buffalo Bills",
+      "primary": "#00338D",
+      "secondary": "#C60C30"
+    },
+    "CAR": {
+      "name": "Carolina Panthers",
+      "primary": "#0085CA",
+      "secondary": "#000000"
+    },
+    "CHI": {
+      "name": "Chicago Bears",
+      "primary": "#0B162A",
+      "secondary": "#E64100"
+    },
+    "CIN": {
+      "name": "Cincinnati Bengals",
+      "primary": "#FB4F14",
+      "secondary": "#000000"
+    },
+    "CLE": {
+      "name": "Cleveland Browns",
+      "primary": "#FF3C00",
+      "secondary": "#311D00"
+    },
+    "DAL": {
+      "name": "Dallas Cowboys",
+      "primary": "#002244",
+      "secondary": "#B0B7BC"
+    },
+    "DEN": {
+      "name": "Denver Broncos",
+      "primary": "#002244",
+      "secondary": "#FB4F14"
+    },
+    "DET": {
+      "name": "Detroit Lions",
+      "primary": "#0076B6",
+      "secondary": "#B0B7BC"
+    },
+    "GB": {
+      "name": "Green Bay Packers",
+      "primary": "#203731",
+      "secondary": "#FFB612"
+    },
+    "HOU": {
+      "name": "Houston Texans",
+      "primary": "#03202F",
+      "secondary": "#A71930"
+    },
+    "IND": {
+      "name": "Indianapolis Colts",
+      "primary": "#002C5F",
+      "secondary": "#a5acaf"
+    },
+    "JAX": {
+      "name": "Jacksonville Jaguars",
+      "primary": "#006778",
+      "secondary": "#000000"
+    },
+    "KC": {
+      "name": "Kansas City Chiefs",
+      "primary": "#E31837",
+      "secondary": "#FFB612"
+    },
+    "LA": {
+      "name": "Los Angeles Rams",
+      "primary": "#003594",
+      "secondary": "#FFD100"
+    },
+    "LAC": {
+      "name": "Los Angeles Chargers",
+      "primary": "#007BC7",
+      "secondary": "#ffc20e"
+    },
+    "LV": {
+      "name": "Las Vegas Raiders",
+      "primary": "#000000",
+      "secondary": "#A5ACAF"
+    },
+    "MIA": {
+      "name": "Miami Dolphins",
+      "primary": "#008E97",
+      "secondary": "#F58220"
+    },
+    "MIN": {
+      "name": "Minnesota Vikings",
+      "primary": "#4F2683",
+      "secondary": "#FFC62F"
+    },
+    "NE": {
+      "name": "New England Patriots",
+      "primary": "#002244",
+      "secondary": "#C60C30"
+    },
+    "NO": {
+      "name": "New Orleans Saints",
+      "primary": "#D3BC8D",
+      "secondary": "#000000"
+    },
+    "NYG": {
+      "name": "New York Giants",
+      "primary": "#0B2265",
+      "secondary": "#A71930"
+    },
+    "NYJ": {
+      "name": "New York Jets",
+      "primary": "#003F2D",
+      "secondary": "#000000"
+    },
+    "PHI": {
+      "name": "Philadelphia Eagles",
+      "primary": "#004C54",
+      "secondary": "#A5ACAF"
+    },
+    "PIT": {
+      "name": "Pittsburgh Steelers",
+      "primary": "#000000",
+      "secondary": "#FFB612"
+    },
+    "SEA": {
+      "name": "Seattle Seahawks",
+      "primary": "#002244",
+      "secondary": "#69be28"
+    },
+    "SF": {
+      "name": "San Francisco 49ers",
+      "primary": "#AA0000",
+      "secondary": "#B3995D"
+    },
+    "TB": {
+      "name": "Tampa Bay Buccaneers",
+      "primary": "#A71930",
+      "secondary": "#322F2B"
+    },
+    "TEN": {
+      "name": "Tennessee Titans",
+      "primary": "#4495D2",
+      "secondary": "#D50A0A"
+    },
+    "WAS": {
+      "name": "Washington Commanders",
+      "primary": "#5A1414",
+      "secondary": "#FFB612"
+    }
+  },
   "games": [
     {
       "game_id": "2026_01_NE_SEA",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-09",
       "home": "SEA",
       "away": "NE",
       "home_score": 13,
-      "away_score": 10
+      "away_score": 10,
+      "overtime": false,
+      "graded": 17,
+      "wp_lost": {
+        "home": 0.0746,
+        "away": 0.0064
+      }
     },
     {
       "game_id": "2026_01_SF_LA",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-10",
       "home": "LA",
       "away": "SF",
       "home_score": 7,
-      "away_score": 27
+      "away_score": 27,
+      "overtime": false,
+      "graded": 10,
+      "wp_lost": {
+        "home": 0.0332,
+        "away": 0.0133
+      }
     },
     {
       "game_id": "2026_01_ARI_LAC",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-13",
       "home": "LAC",
       "away": "ARI",
       "home_score": 14,
-      "away_score": 26
+      "away_score": 26,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0382,
+        "away": 0.0702
+      }
     },
     {
       "game_id": "2026_01_ATL_PIT",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-13",
       "home": "PIT",
       "away": "ATL",
       "home_score": 20,
-      "away_score": 13
+      "away_score": 13,
+      "overtime": false,
+      "graded": 19,
+      "wp_lost": {
+        "home": 0.0534,
+        "away": 0.057
+      }
     },
     {
       "game_id": "2026_01_BAL_IND",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-13",
       "home": "IND",
       "away": "BAL",
       "home_score": 23,
-      "away_score": 41
+      "away_score": 41,
+      "overtime": false,
+      "graded": 12,
+      "wp_lost": {
+        "home": 0.0187,
+        "away": 0.0
+      }
     },
     {
       "game_id": "2026_01_BUF_HOU",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-13",
       "home": "HOU",
       "away": "BUF",
       "home_score": 31,
-      "away_score": 36
+      "away_score": 36,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0637,
+        "away": 0.0
+      }
     },
     {
       "game_id": "2026_01_CHI_CAR",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-13",
       "home": "CAR",
       "away": "CHI",
       "home_score": 37,
-      "away_score": 59
+      "away_score": 59,
+      "overtime": false,
+      "graded": 9,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0089
+      }
     },
     {
       "game_id": "2026_01_CLE_JAX",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-13",
       "home": "JAX",
       "away": "CLE",
       "home_score": 34,
-      "away_score": 10
+      "away_score": 10,
+      "overtime": false,
+      "graded": 10,
+      "wp_lost": {
+        "home": 0.008,
+        "away": 0.0
+      }
     },
     {
       "game_id": "2026_01_DAL_NYG",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-13",
       "home": "NYG",
       "away": "DAL",
       "home_score": 28,
-      "away_score": 20
+      "away_score": 20,
+      "overtime": false,
+      "graded": 3,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0195
+      }
     },
     {
       "game_id": "2026_01_GB_MIN",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-13",
       "home": "MIN",
       "away": "GB",
       "home_score": 39,
-      "away_score": 22
+      "away_score": 22,
+      "overtime": false,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0078,
+        "away": 0.0053
+      }
     },
     {
       "game_id": "2026_01_MIA_LV",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-13",
       "home": "LV",
       "away": "MIA",
       "home_score": 27,
-      "away_score": 13
+      "away_score": 13,
+      "overtime": false,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0409
+      }
     },
     {
       "game_id": "2026_01_NO_DET",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-13",
       "home": "DET",
       "away": "NO",
       "home_score": 31,
-      "away_score": 30
+      "away_score": 30,
+      "overtime": true,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0629,
+        "away": 0.074
+      }
     },
     {
       "game_id": "2026_01_NYJ_TEN",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-13",
       "home": "TEN",
       "away": "NYJ",
       "home_score": 10,
-      "away_score": 23
+      "away_score": 23,
+      "overtime": false,
+      "graded": 18,
+      "wp_lost": {
+        "home": 0.1413,
+        "away": 0.0162
+      }
     },
     {
       "game_id": "2026_01_TB_CIN",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-13",
       "home": "CIN",
       "away": "TB",
       "home_score": 33,
-      "away_score": 27
+      "away_score": 27,
+      "overtime": false,
+      "graded": 7,
+      "wp_lost": {
+        "home": 0.0132,
+        "away": 0.0229
+      }
     },
     {
       "game_id": "2026_01_WAS_PHI",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-13",
       "home": "PHI",
       "away": "WAS",
       "home_score": 24,
-      "away_score": 22
+      "away_score": 22,
+      "overtime": false,
+      "graded": 18,
+      "wp_lost": {
+        "home": 0.0654,
+        "away": 0.091
+      }
     },
     {
       "game_id": "2026_01_DEN_KC",
       "week": 1,
+      "game_type": "REG",
       "date": "2026-09-14",
       "home": "KC",
       "away": "DEN",
       "home_score": 31,
-      "away_score": 10
+      "away_score": 10,
+      "overtime": false,
+      "graded": 17,
+      "wp_lost": {
+        "home": 0.0147,
+        "away": 0.0471
+      }
     },
     {
       "game_id": "2026_02_DET_BUF",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-17",
       "home": "BUF",
       "away": "DET",
       "home_score": 41,
-      "away_score": 31
+      "away_score": 31,
+      "overtime": false,
+      "graded": 9,
+      "wp_lost": {
+        "home": 0.0178,
+        "away": 0.0112
+      }
     },
     {
       "game_id": "2026_02_CAR_ATL",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-20",
       "home": "ATL",
       "away": "CAR",
       "home_score": 3,
-      "away_score": 34
+      "away_score": 34,
+      "overtime": false,
+      "graded": 16,
+      "wp_lost": {
+        "home": 0.0092,
+        "away": 0.0
+      }
     },
     {
       "game_id": "2026_02_CIN_HOU",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-20",
       "home": "HOU",
       "away": "CIN",
       "home_score": 6,
-      "away_score": 20
+      "away_score": 20,
+      "overtime": false,
+      "graded": 21,
+      "wp_lost": {
+        "home": 0.084,
+        "away": 0.0063
+      }
     },
     {
       "game_id": "2026_02_CLE_TB",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-20",
       "home": "TB",
       "away": "CLE",
       "home_score": 19,
-      "away_score": 23
+      "away_score": 23,
+      "overtime": false,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.0349,
+        "away": 0.0
+      }
     },
     {
       "game_id": "2026_02_GB_NYJ",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-20",
       "home": "NYJ",
       "away": "GB",
       "home_score": 17,
-      "away_score": 20
+      "away_score": 20,
+      "overtime": true,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.0077,
+        "away": 0.027
+      }
     },
     {
       "game_id": "2026_02_IND_KC",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-20",
       "home": "KC",
       "away": "IND",
       "home_score": 33,
-      "away_score": 30
+      "away_score": 30,
+      "overtime": true,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0093,
+        "away": 0.1156
+      }
     },
     {
       "game_id": "2026_02_JAX_DEN",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-20",
       "home": "DEN",
       "away": "JAX",
       "home_score": 20,
-      "away_score": 13
+      "away_score": 13,
+      "overtime": false,
+      "graded": 11,
+      "wp_lost": {
+        "home": 0.0419,
+        "away": 0.0548
+      }
     },
     {
       "game_id": "2026_02_LV_LAC",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-20",
       "home": "LAC",
       "away": "LV",
       "home_score": 14,
-      "away_score": 26
+      "away_score": 26,
+      "overtime": false,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0852,
+        "away": 0.0889
+      }
     },
     {
       "game_id": "2026_02_MIA_SF",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-20",
       "home": "SF",
       "away": "MIA",
       "home_score": 35,
-      "away_score": 13
+      "away_score": 13,
+      "overtime": false,
+      "graded": 10,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.019
+      }
     },
     {
       "game_id": "2026_02_MIN_CHI",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-20",
       "home": "CHI",
       "away": "MIN",
       "home_score": 3,
-      "away_score": 9
+      "away_score": 9,
+      "overtime": false,
+      "graded": 18,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0839
+      }
     },
     {
       "game_id": "2026_02_NO_BAL",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-20",
       "home": "BAL",
       "away": "NO",
       "home_score": 17,
-      "away_score": 24
+      "away_score": 24,
+      "overtime": false,
+      "graded": 12,
+      "wp_lost": {
+        "home": 0.0394,
+        "away": 0.0256
+      }
     },
     {
       "game_id": "2026_02_PHI_TEN",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-20",
       "home": "TEN",
       "away": "PHI",
       "home_score": 20,
-      "away_score": 24
+      "away_score": 24,
+      "overtime": false,
+      "graded": 11,
+      "wp_lost": {
+        "home": 0.0004,
+        "away": 0.0
+      }
     },
     {
       "game_id": "2026_02_PIT_NE",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-20",
       "home": "NE",
       "away": "PIT",
       "home_score": 20,
-      "away_score": 3
+      "away_score": 3,
+      "overtime": false,
+      "graded": 17,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0242
+      }
     },
     {
       "game_id": "2026_02_SEA_ARI",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-20",
       "home": "ARI",
       "away": "SEA",
       "home_score": 7,
-      "away_score": 31
+      "away_score": 31,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0438,
+        "away": 0.0032
+      }
     },
     {
       "game_id": "2026_02_WAS_DAL",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-20",
       "home": "DAL",
       "away": "WAS",
       "home_score": 37,
-      "away_score": 20
+      "away_score": 20,
+      "overtime": false,
+      "graded": 8,
+      "wp_lost": {
+        "home": 0.0156,
+        "away": 0.0179
+      }
     },
     {
       "game_id": "2026_02_NYG_LA",
       "week": 2,
+      "game_type": "REG",
       "date": "2026-09-21",
       "home": "LA",
       "away": "NYG",
       "home_score": 28,
-      "away_score": 6
+      "away_score": 6,
+      "overtime": false,
+      "graded": 12,
+      "wp_lost": {
+        "home": 0.01,
+        "away": 0.0367
+      }
     },
     {
       "game_id": "2026_03_ATL_GB",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-24",
       "home": "GB",
       "away": "ATL",
       "home_score": 14,
-      "away_score": 35
+      "away_score": 35,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0111,
+        "away": 0.0435
+      }
     },
     {
       "game_id": "2026_03_ARI_SF",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-27",
       "home": "SF",
       "away": "ARI",
       "home_score": 36,
-      "away_score": 30
+      "away_score": 30,
+      "overtime": false,
+      "graded": 11,
+      "wp_lost": {
+        "home": 0.0054,
+        "away": 0.0183
+      }
     },
     {
       "game_id": "2026_03_BAL_DAL",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-27",
       "home": "DAL",
       "away": "BAL",
       "home_score": 31,
-      "away_score": 34
+      "away_score": 34,
+      "overtime": false,
+      "graded": 12,
+      "wp_lost": {
+        "home": 0.0524,
+        "away": 0.1077
+      }
     },
     {
       "game_id": "2026_03_CAR_CLE",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-27",
       "home": "CLE",
       "away": "CAR",
       "home_score": 21,
-      "away_score": 18
+      "away_score": 18,
+      "overtime": false,
+      "graded": 20,
+      "wp_lost": {
+        "home": 0.0083,
+        "away": 0.059
+      }
     },
     {
       "game_id": "2026_03_CIN_PIT",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-27",
       "home": "PIT",
       "away": "CIN",
       "home_score": 30,
-      "away_score": 27
+      "away_score": 27,
+      "overtime": false,
+      "graded": 11,
+      "wp_lost": {
+        "home": 0.0301,
+        "away": 0.1301
+      }
     },
     {
       "game_id": "2026_03_HOU_IND",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-27",
       "home": "IND",
       "away": "HOU",
       "home_score": 19,
-      "away_score": 17
+      "away_score": 17,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0576
+      }
     },
     {
       "game_id": "2026_03_KC_MIA",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-27",
       "home": "MIA",
       "away": "KC",
       "home_score": 10,
-      "away_score": 24
+      "away_score": 24,
+      "overtime": false,
+      "graded": 11,
+      "wp_lost": {
+        "home": 0.0174,
+        "away": 0.0001
+      }
     },
     {
       "game_id": "2026_03_LAC_BUF",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-27",
       "home": "BUF",
       "away": "LAC",
       "home_score": 24,
-      "away_score": 16
+      "away_score": 16,
+      "overtime": false,
+      "graded": 12,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0277
+      }
     },
     {
       "game_id": "2026_03_LA_DEN",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-27",
       "home": "DEN",
       "away": "LA",
       "home_score": 30,
-      "away_score": 26
+      "away_score": 26,
+      "overtime": false,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.0846,
+        "away": 0.0112
+      }
     },
     {
       "game_id": "2026_03_LV_NO",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-27",
       "home": "NO",
       "away": "LV",
       "home_score": 27,
-      "away_score": 35
+      "away_score": 35,
+      "overtime": false,
+      "graded": 9,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0
+      }
     },
     {
       "game_id": "2026_03_MIN_TB",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-27",
       "home": "TB",
       "away": "MIN",
       "home_score": 16,
-      "away_score": 23
+      "away_score": 23,
+      "overtime": false,
+      "graded": 24,
+      "wp_lost": {
+        "home": 0.0266,
+        "away": 0.0057
+      }
     },
     {
       "game_id": "2026_03_NE_JAX",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-27",
       "home": "JAX",
       "away": "NE",
       "home_score": 35,
-      "away_score": 6
+      "away_score": 6,
+      "overtime": false,
+      "graded": 10,
+      "wp_lost": {
+        "home": 0.0208,
+        "away": 0.0222
+      }
     },
     {
       "game_id": "2026_03_NYJ_DET",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-27",
       "home": "DET",
       "away": "NYJ",
       "home_score": 31,
-      "away_score": 24
+      "away_score": 24,
+      "overtime": false,
+      "graded": 10,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0189
+      }
     },
     {
       "game_id": "2026_03_SEA_WAS",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-27",
       "home": "WAS",
       "away": "SEA",
       "home_score": 33,
-      "away_score": 31
+      "away_score": 31,
+      "overtime": false,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.0187,
+        "away": 0.116
+      }
     },
     {
       "game_id": "2026_03_TEN_NYG",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-27",
       "home": "NYG",
       "away": "TEN",
       "home_score": 12,
-      "away_score": 7
+      "away_score": 7,
+      "overtime": false,
+      "graded": 16,
+      "wp_lost": {
+        "home": 0.0063,
+        "away": 0.0183
+      }
     },
     {
       "game_id": "2026_03_PHI_CHI",
       "week": 3,
+      "game_type": "REG",
       "date": "2026-09-28",
       "home": "CHI",
       "away": "PHI",
       "home_score": 27,
-      "away_score": 7
+      "away_score": 7,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.049,
+        "away": 0.0162
+      }
     },
     {
       "game_id": "2026_04_PIT_CLE",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-01",
       "home": "CLE",
       "away": "PIT",
       "home_score": 27,
-      "away_score": 24
+      "away_score": 24,
+      "overtime": false,
+      "graded": 12,
+      "wp_lost": {
+        "home": 0.0429,
+        "away": 0.0139
+      }
     },
     {
       "game_id": "2026_04_ARI_NYG",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-04",
       "home": "NYG",
       "away": "ARI",
       "home_score": 36,
-      "away_score": 24
+      "away_score": 24,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.098,
+        "away": 0.0451
+      }
     },
     {
       "game_id": "2026_04_DAL_HOU",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-04",
       "home": "HOU",
       "away": "DAL",
       "home_score": 30,
-      "away_score": 34
+      "away_score": 34,
+      "overtime": false,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0137,
+        "away": 0.0826
+      }
     },
     {
       "game_id": "2026_04_DEN_SF",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-04",
       "home": "SF",
       "away": "DEN",
       "home_score": 24,
-      "away_score": 14
+      "away_score": 14,
+      "overtime": false,
+      "graded": 16,
+      "wp_lost": {
+        "home": 0.0265,
+        "away": 0.0696
+      }
     },
     {
       "game_id": "2026_04_DET_CAR",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-04",
       "home": "CAR",
       "away": "DET",
       "home_score": 32,
-      "away_score": 26
+      "away_score": 26,
+      "overtime": false,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.012,
+        "away": 0.0648
+      }
     },
     {
       "game_id": "2026_04_GB_TB",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-04",
       "home": "TB",
       "away": "GB",
       "home_score": 14,
-      "away_score": 17
+      "away_score": 17,
+      "overtime": false,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0139,
+        "away": 0.0436
+      }
     },
     {
       "game_id": "2026_04_IND_WAS",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-04",
       "home": "WAS",
       "away": "IND",
       "home_score": 13,
-      "away_score": 30
+      "away_score": 30,
+      "overtime": false,
+      "graded": 19,
+      "wp_lost": {
+        "home": 0.0788,
+        "away": 0.0547
+      }
     },
     {
       "game_id": "2026_04_JAX_CIN",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-04",
       "home": "CIN",
       "away": "JAX",
       "home_score": 17,
-      "away_score": 22
+      "away_score": 22,
+      "overtime": false,
+      "graded": 10,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0448
+      }
     },
     {
       "game_id": "2026_04_KC_LV",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-04",
       "home": "LV",
       "away": "KC",
       "home_score": 27,
-      "away_score": 30
+      "away_score": 30,
+      "overtime": false,
+      "graded": 19,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0344
+      }
     },
     {
       "game_id": "2026_04_LAC_SEA",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-04",
       "home": "SEA",
       "away": "LAC",
       "home_score": 30,
-      "away_score": 23
+      "away_score": 23,
+      "overtime": false,
+      "graded": 17,
+      "wp_lost": {
+        "home": 0.0131,
+        "away": 0.0215
+      }
     },
     {
       "game_id": "2026_04_LA_PHI",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-04",
       "home": "PHI",
       "away": "LA",
       "home_score": 20,
-      "away_score": 24
+      "away_score": 24,
+      "overtime": false,
+      "graded": 20,
+      "wp_lost": {
+        "home": 0.0127,
+        "away": 0.0069
+      }
     },
     {
       "game_id": "2026_04_MIA_MIN",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-04",
       "home": "MIN",
       "away": "MIA",
       "home_score": 15,
-      "away_score": 10
+      "away_score": 10,
+      "overtime": false,
+      "graded": 16,
+      "wp_lost": {
+        "home": 0.0388,
+        "away": 0.0226
+      }
     },
     {
       "game_id": "2026_04_NE_BUF",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-04",
       "home": "BUF",
       "away": "NE",
       "home_score": 26,
-      "away_score": 29
+      "away_score": 29,
+      "overtime": false,
+      "graded": 12,
+      "wp_lost": {
+        "home": 0.0282,
+        "away": 0.1318
+      }
     },
     {
       "game_id": "2026_04_NYJ_CHI",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-04",
       "home": "CHI",
       "away": "NYJ",
       "home_score": 23,
-      "away_score": 12
+      "away_score": 12,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.048,
+        "away": 0.0702
+      }
     },
     {
       "game_id": "2026_04_TEN_BAL",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-04",
       "home": "BAL",
       "away": "TEN",
       "home_score": 24,
-      "away_score": 18
+      "away_score": 18,
+      "overtime": false,
+      "graded": 16,
+      "wp_lost": {
+        "home": 0.006,
+        "away": 0.0061
+      }
     },
     {
       "game_id": "2026_04_ATL_NO",
       "week": 4,
+      "game_type": "REG",
       "date": "2026-10-05",
       "home": "NO",
       "away": "ATL",
       "home_score": 24,
-      "away_score": 45
+      "away_score": 45,
+      "overtime": false,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0418,
+        "away": 0.0656
+      }
     },
     {
       "game_id": "2026_05_TB_DAL",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-08",
       "home": "DAL",
       "away": "TB",
       "home_score": 16,
-      "away_score": 24
+      "away_score": 24,
+      "overtime": false,
+      "graded": 10,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0068
+      }
     },
     {
       "game_id": "2026_05_BAL_ATL",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-11",
       "home": "ATL",
       "away": "BAL",
       "home_score": 23,
-      "away_score": 30
+      "away_score": 30,
+      "overtime": true,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.1267
+      }
     },
     {
       "game_id": "2026_05_CHI_GB",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-11",
       "home": "GB",
       "away": "CHI",
       "home_score": 31,
-      "away_score": 7
+      "away_score": 7,
+      "overtime": false,
+      "graded": 18,
+      "wp_lost": {
+        "home": 0.0002,
+        "away": 0.0275
+      }
     },
     {
       "game_id": "2026_05_CIN_MIA",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-11",
       "home": "MIA",
       "away": "CIN",
       "home_score": 24,
-      "away_score": 31
+      "away_score": 31,
+      "overtime": false,
+      "graded": 8,
+      "wp_lost": {
+        "home": 0.0116,
+        "away": 0.021
+      }
     },
     {
       "game_id": "2026_05_CLE_NYJ",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-11",
       "home": "NYJ",
       "away": "CLE",
       "home_score": 17,
-      "away_score": 12
+      "away_score": 12,
+      "overtime": false,
+      "graded": 19,
+      "wp_lost": {
+        "home": 0.0675,
+        "away": 0.0802
+      }
     },
     {
       "game_id": "2026_05_DEN_LAC",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-11",
       "home": "LAC",
       "away": "DEN",
       "home_score": 17,
-      "away_score": 23
+      "away_score": 23,
+      "overtime": false,
+      "graded": 19,
+      "wp_lost": {
+        "home": 0.0279,
+        "away": 0.0438
+      }
     },
     {
       "game_id": "2026_05_DET_ARI",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-11",
       "home": "ARI",
       "away": "DET",
       "home_score": 21,
-      "away_score": 45
+      "away_score": 45,
+      "overtime": false,
+      "graded": 18,
+      "wp_lost": {
+        "home": 0.0136,
+        "away": 0.0228
+      }
     },
     {
       "game_id": "2026_05_HOU_TEN",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-11",
       "home": "TEN",
       "away": "HOU",
       "home_score": 3,
-      "away_score": 26
+      "away_score": 26,
+      "overtime": false,
+      "graded": 11,
+      "wp_lost": {
+        "home": 0.0459,
+        "away": 0.0338
+      }
     },
     {
       "game_id": "2026_05_IND_PIT",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-11",
       "home": "PIT",
       "away": "IND",
       "home_score": 34,
-      "away_score": 22
+      "away_score": 22,
+      "overtime": false,
+      "graded": 17,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0746
+      }
     },
     {
       "game_id": "2026_05_LV_NE",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-11",
       "home": "NE",
       "away": "LV",
       "home_score": 45,
-      "away_score": 17
+      "away_score": 17,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0124,
+        "away": 0.0093
+      }
     },
     {
       "game_id": "2026_05_MIN_NO",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-11",
       "home": "NO",
       "away": "MIN",
       "home_score": 13,
-      "away_score": 23
+      "away_score": 23,
+      "overtime": false,
+      "graded": 12,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0362
+      }
     },
     {
       "game_id": "2026_05_NYG_WAS",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-11",
       "home": "WAS",
       "away": "NYG",
       "home_score": 27,
-      "away_score": 27
+      "away_score": 27,
+      "overtime": true,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0053,
+        "away": 0.0408
+      }
     },
     {
       "game_id": "2026_05_PHI_JAX",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-11",
       "home": "JAX",
       "away": "PHI",
       "home_score": 19,
-      "away_score": 17
+      "away_score": 17,
+      "overtime": false,
+      "graded": 17,
+      "wp_lost": {
+        "home": 0.0699,
+        "away": 0.005
+      }
     },
     {
       "game_id": "2026_05_SF_SEA",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-11",
       "home": "SEA",
       "away": "SF",
       "home_score": 29,
-      "away_score": 32
+      "away_score": 32,
+      "overtime": false,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0577,
+        "away": 0.0362
+      }
     },
     {
       "game_id": "2026_05_BUF_LA",
       "week": 5,
+      "game_type": "REG",
       "date": "2026-10-12",
       "home": "LA",
       "away": "BUF",
       "home_score": 34,
-      "away_score": 37
+      "away_score": 37,
+      "overtime": true,
+      "graded": 8,
+      "wp_lost": {
+        "home": 0.0802,
+        "away": 0.0283
+      }
     },
     {
       "game_id": "2026_06_SEA_DEN",
       "week": 6,
+      "game_type": "REG",
       "date": "2026-10-15",
       "home": "DEN",
       "away": "SEA",
       "home_score": 17,
-      "away_score": 14
+      "away_score": 14,
+      "overtime": true,
+      "graded": 17,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0276
+      }
     },
     {
       "game_id": "2026_06_ARI_LA",
       "week": 6,
+      "game_type": "REG",
       "date": "2026-10-18",
       "home": "LA",
       "away": "ARI",
       "home_score": 16,
-      "away_score": 18
+      "away_score": 18,
+      "overtime": false,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0295,
+        "away": 0.0673
+      }
     },
     {
       "game_id": "2026_06_BAL_CLE",
       "week": 6,
+      "game_type": "REG",
       "date": "2026-10-18",
       "home": "CLE",
       "away": "BAL",
       "home_score": 13,
-      "away_score": 10
+      "away_score": 10,
+      "overtime": false,
+      "graded": 19,
+      "wp_lost": {
+        "home": 0.0395,
+        "away": 0.0482
+      }
     },
     {
       "game_id": "2026_06_BUF_LV",
       "week": 6,
+      "game_type": "REG",
       "date": "2026-10-18",
       "home": "LV",
       "away": "BUF",
       "home_score": 30,
-      "away_score": 33
+      "away_score": 33,
+      "overtime": false,
+      "graded": 12,
+      "wp_lost": {
+        "home": 0.05,
+        "away": 0.0171
+      }
     },
     {
       "game_id": "2026_06_CAR_PHI",
       "week": 6,
+      "game_type": "REG",
       "date": "2026-10-18",
       "home": "PHI",
       "away": "CAR",
       "home_score": 14,
-      "away_score": 25
+      "away_score": 25,
+      "overtime": false,
+      "graded": 18,
+      "wp_lost": {
+        "home": 0.0118,
+        "away": 0.0656
+      }
     },
     {
       "game_id": "2026_06_CHI_ATL",
       "week": 6,
+      "game_type": "REG",
       "date": "2026-10-18",
       "home": "ATL",
       "away": "CHI",
       "home_score": 23,
-      "away_score": 31
+      "away_score": 31,
+      "overtime": false,
+      "graded": 17,
+      "wp_lost": {
+        "home": 0.0158,
+        "away": 0.0234
+      }
     },
     {
       "game_id": "2026_06_DAL_GB",
       "week": 6,
+      "game_type": "REG",
       "date": "2026-10-18",
       "home": "GB",
       "away": "DAL",
       "home_score": 23,
-      "away_score": 13
+      "away_score": 13,
+      "overtime": false,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0295
+      }
     },
     {
       "game_id": "2026_06_HOU_JAX",
       "week": 6,
+      "game_type": "REG",
       "date": "2026-10-18",
       "home": "JAX",
       "away": "HOU",
       "home_score": 31,
-      "away_score": 34
+      "away_score": 34,
+      "overtime": false,
+      "graded": 9,
+      "wp_lost": {
+        "home": 0.0756,
+        "away": 0.0518
+      }
     },
     {
       "game_id": "2026_06_LAC_KC",
       "week": 6,
+      "game_type": "REG",
       "date": "2026-10-18",
       "home": "KC",
       "away": "LAC",
       "home_score": 22,
-      "away_score": 6
+      "away_score": 6,
+      "overtime": false,
+      "graded": 16,
+      "wp_lost": {
+        "home": 0.0561,
+        "away": 0.0192
+      }
     },
     {
       "game_id": "2026_06_NO_NYG",
       "week": 6,
+      "game_type": "REG",
       "date": "2026-10-18",
       "home": "NYG",
       "away": "NO",
       "home_score": 27,
-      "away_score": 34
+      "away_score": 34,
+      "overtime": false,
+      "graded": 18,
+      "wp_lost": {
+        "home": 0.0015,
+        "away": 0.0289
+      }
     },
     {
       "game_id": "2026_06_NYJ_NE",
       "week": 6,
+      "game_type": "REG",
       "date": "2026-10-18",
       "home": "NE",
       "away": "NYJ",
       "home_score": 26,
-      "away_score": 19
+      "away_score": 19,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.023,
+        "away": 0.0033
+      }
     },
     {
       "game_id": "2026_06_PIT_TB",
       "week": 6,
+      "game_type": "REG",
       "date": "2026-10-18",
       "home": "TB",
       "away": "PIT",
       "home_score": 19,
-      "away_score": 26
+      "away_score": 26,
+      "overtime": true,
+      "graded": 19,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0571
+      }
     },
     {
       "game_id": "2026_06_TEN_IND",
       "week": 6,
+      "game_type": "REG",
       "date": "2026-10-18",
       "home": "IND",
       "away": "TEN",
       "home_score": 20,
-      "away_score": 26
+      "away_score": 26,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0494,
+        "away": 0.054
+      }
     },
     {
       "game_id": "2026_06_WAS_SF",
       "week": 6,
+      "game_type": "REG",
       "date": "2026-10-19",
       "home": "SF",
       "away": "WAS",
       "home_score": 23,
-      "away_score": 17
+      "away_score": 17,
+      "overtime": false,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.0035,
+        "away": 0.0097
+      }
     },
     {
       "game_id": "2026_07_NE_CHI",
       "week": 7,
+      "game_type": "REG",
       "date": "2026-10-22",
       "home": "CHI",
       "away": "NE",
       "home_score": 30,
-      "away_score": 24
+      "away_score": 24,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0006,
+        "away": 0.0575
+      }
     },
     {
       "game_id": "2026_07_CIN_BAL",
       "week": 7,
+      "game_type": "REG",
       "date": "2026-10-25",
       "home": "BAL",
       "away": "CIN",
       "home_score": 13,
-      "away_score": 35
+      "away_score": 35,
+      "overtime": false,
+      "graded": 11,
+      "wp_lost": {
+        "home": 0.0589,
+        "away": 0.0699
+      }
     },
     {
       "game_id": "2026_07_CLE_TEN",
       "week": 7,
+      "game_type": "REG",
       "date": "2026-10-25",
       "home": "TEN",
       "away": "CLE",
       "home_score": 24,
-      "away_score": 27
+      "away_score": 27,
+      "overtime": false,
+      "graded": 11,
+      "wp_lost": {
+        "home": 0.0019,
+        "away": 0.0331
+      }
     },
     {
       "game_id": "2026_07_DEN_ARI",
       "week": 7,
+      "game_type": "REG",
       "date": "2026-10-25",
       "home": "ARI",
       "away": "DEN",
       "home_score": 16,
-      "away_score": 30
+      "away_score": 30,
+      "overtime": false,
+      "graded": 19,
+      "wp_lost": {
+        "home": 0.0476,
+        "away": 0.0568
+      }
     },
     {
       "game_id": "2026_07_GB_DET",
       "week": 7,
+      "game_type": "REG",
       "date": "2026-10-25",
       "home": "DET",
       "away": "GB",
       "home_score": 20,
-      "away_score": 17
+      "away_score": 17,
+      "overtime": false,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0126,
+        "away": 0.0029
+      }
     },
     {
       "game_id": "2026_07_IND_MIN",
       "week": 7,
+      "game_type": "REG",
       "date": "2026-10-25",
       "home": "MIN",
       "away": "IND",
       "home_score": 16,
-      "away_score": 10
+      "away_score": 10,
+      "overtime": false,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.0701,
+        "away": 0.0199
+      }
     },
     {
       "game_id": "2026_07_KC_SEA",
       "week": 7,
+      "game_type": "REG",
       "date": "2026-10-25",
       "home": "SEA",
       "away": "KC",
       "home_score": 20,
-      "away_score": 3
+      "away_score": 3,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0017,
+        "away": 0.0413
+      }
     },
     {
       "game_id": "2026_07_LA_LV",
       "week": 7,
+      "game_type": "REG",
       "date": "2026-10-25",
       "home": "LV",
       "away": "LA",
       "home_score": 21,
-      "away_score": 35
+      "away_score": 35,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0239,
+        "away": 0.0
+      }
     },
     {
       "game_id": "2026_07_MIA_NYJ",
       "week": 7,
+      "game_type": "REG",
       "date": "2026-10-25",
       "home": "NYJ",
       "away": "MIA",
       "home_score": 25,
-      "away_score": 28
+      "away_score": 28,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.073,
+        "away": 0.0124
+      }
     },
     {
       "game_id": "2026_07_NYG_HOU",
       "week": 7,
+      "game_type": "REG",
       "date": "2026-10-25",
       "home": "HOU",
       "away": "NYG",
       "home_score": 21,
-      "away_score": 27
+      "away_score": 27,
+      "overtime": true,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.0937,
+        "away": 0.0142
+      }
     },
     {
       "game_id": "2026_07_PIT_NO",
       "week": 7,
+      "game_type": "REG",
       "date": "2026-10-25",
       "home": "NO",
       "away": "PIT",
       "home_score": 10,
-      "away_score": 16
+      "away_score": 16,
+      "overtime": false,
+      "graded": 11,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0328
+      }
     },
     {
       "game_id": "2026_07_SF_ATL",
       "week": 7,
+      "game_type": "REG",
       "date": "2026-10-25",
       "home": "ATL",
       "away": "SF",
       "home_score": 29,
-      "away_score": 20
+      "away_score": 20,
+      "overtime": false,
+      "graded": 10,
+      "wp_lost": {
+        "home": 0.0133,
+        "away": 0.0567
+      }
     },
     {
       "game_id": "2026_07_TB_CAR",
       "week": 7,
+      "game_type": "REG",
       "date": "2026-10-25",
       "home": "CAR",
       "away": "TB",
       "home_score": 13,
-      "away_score": 43
+      "away_score": 43,
+      "overtime": false,
+      "graded": 9,
+      "wp_lost": {
+        "home": 0.0134,
+        "away": 0.0193
+      }
     },
     {
       "game_id": "2026_07_DAL_PHI",
       "week": 7,
+      "game_type": "REG",
       "date": "2026-10-26",
       "home": "PHI",
       "away": "DAL",
       "home_score": 21,
-      "away_score": 38
+      "away_score": 38,
+      "overtime": false,
+      "graded": 12,
+      "wp_lost": {
+        "home": 0.0276,
+        "away": 0.0375
+      }
     },
     {
       "game_id": "2026_08_CAR_GB",
       "week": 8,
+      "game_type": "REG",
       "date": "2026-10-29",
       "home": "GB",
       "away": "CAR",
       "home_score": 27,
-      "away_score": 19
+      "away_score": 19,
+      "overtime": false,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.0074,
+        "away": 0.0029
+      }
     },
     {
       "game_id": "2026_08_ARI_DAL",
       "week": 8,
+      "game_type": "REG",
       "date": "2026-11-01",
       "home": "DAL",
       "away": "ARI",
       "home_score": 30,
-      "away_score": 33
+      "away_score": 33,
+      "overtime": true,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0014,
+        "away": 0.0039
+      }
     },
     {
       "game_id": "2026_08_ATL_TB",
       "week": 8,
+      "game_type": "REG",
       "date": "2026-11-01",
       "home": "TB",
       "away": "ATL",
       "home_score": 16,
-      "away_score": 0
+      "away_score": 0,
+      "overtime": false,
+      "graded": 20,
+      "wp_lost": {
+        "home": 0.0003,
+        "away": 0.0232
+      }
     },
     {
       "game_id": "2026_08_BAL_BUF",
       "week": 8,
+      "game_type": "REG",
       "date": "2026-11-01",
       "home": "BUF",
       "away": "BAL",
       "home_score": 36,
-      "away_score": 10
+      "away_score": 10,
+      "overtime": false,
+      "graded": 18,
+      "wp_lost": {
+        "home": 0.0214,
+        "away": 0.051
+      }
     },
     {
       "game_id": "2026_08_CLE_PIT",
       "week": 8,
+      "game_type": "REG",
       "date": "2026-11-01",
       "home": "PIT",
       "away": "CLE",
       "home_score": 27,
-      "away_score": 6
+      "away_score": 6,
+      "overtime": false,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.0415,
+        "away": 0.0309
+      }
     },
     {
       "game_id": "2026_08_IND_JAX",
       "week": 8,
+      "game_type": "REG",
       "date": "2026-11-01",
       "home": "JAX",
       "away": "IND",
       "home_score": 42,
-      "away_score": 7
+      "away_score": 7,
+      "overtime": false,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.0109,
+        "away": 0.0154
+      }
     },
     {
       "game_id": "2026_08_KC_DEN",
       "week": 8,
+      "game_type": "REG",
       "date": "2026-11-01",
       "home": "DEN",
       "away": "KC",
       "home_score": 28,
-      "away_score": 24
+      "away_score": 24,
+      "overtime": false,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.0459,
+        "away": 0.02
+      }
     },
     {
       "game_id": "2026_08_LAC_LA",
       "week": 8,
+      "game_type": "REG",
       "date": "2026-11-01",
       "home": "LA",
       "away": "LAC",
       "home_score": 24,
-      "away_score": 9
+      "away_score": 9,
+      "overtime": false,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0591,
+        "away": 0.0309
+      }
     },
     {
       "game_id": "2026_08_LV_NYJ",
       "week": 8,
+      "game_type": "REG",
       "date": "2026-11-01",
       "home": "NYJ",
       "away": "LV",
       "home_score": 33,
-      "away_score": 38
+      "away_score": 38,
+      "overtime": false,
+      "graded": 10,
+      "wp_lost": {
+        "home": 0.0752,
+        "away": 0.007
+      }
     },
     {
       "game_id": "2026_08_MIN_DET",
       "week": 8,
+      "game_type": "REG",
       "date": "2026-11-01",
       "home": "DET",
       "away": "MIN",
       "home_score": 19,
-      "away_score": 15
+      "away_score": 15,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0196,
+        "away": 0.0958
+      }
     },
     {
       "game_id": "2026_08_NE_MIA",
       "week": 8,
+      "game_type": "REG",
       "date": "2026-11-01",
       "home": "MIA",
       "away": "NE",
       "home_score": 19,
-      "away_score": 24
+      "away_score": 24,
+      "overtime": false,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0078,
+        "away": 0.034
+      }
     },
     {
       "game_id": "2026_08_PHI_WAS",
       "week": 8,
+      "game_type": "REG",
       "date": "2026-11-01",
       "home": "WAS",
       "away": "PHI",
       "home_score": 27,
-      "away_score": 10
+      "away_score": 10,
+      "overtime": false,
+      "graded": 16,
+      "wp_lost": {
+        "home": 0.0528,
+        "away": 0.044
+      }
     },
     {
       "game_id": "2026_08_TEN_CIN",
       "week": 8,
+      "game_type": "REG",
       "date": "2026-11-01",
       "home": "CIN",
       "away": "TEN",
       "home_score": 43,
-      "away_score": 36
+      "away_score": 36,
+      "overtime": true,
+      "graded": 8,
+      "wp_lost": {
+        "home": 0.0163,
+        "away": 0.0199
+      }
     },
     {
       "game_id": "2026_08_CHI_SEA",
       "week": 8,
+      "game_type": "REG",
       "date": "2026-11-02",
       "home": "SEA",
       "away": "CHI",
       "home_score": 17,
-      "away_score": 34
+      "away_score": 34,
+      "overtime": false,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.0267,
+        "away": 0.0166
+      }
     }
   ]
 }

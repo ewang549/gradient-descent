@@ -6,6 +6,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { TeamChip } from "@/components/TeamChip";
+import { gamePath } from "@/lib/games/chart";
 import type { Option } from "@/lib/engine/types";
 import {
   OPTION_SHORT, calcPath, clockLabel, didPhrase, opponentLabel, pct, pts, scoreLabel, weekPath,
@@ -47,9 +48,10 @@ function CallRow({ c, i, w, stat, statLabel }: { c: Call; i: number; w: WeekExpo
       <div className="col-start-2 flex items-baseline gap-2 sm:col-start-3 sm:row-start-1 sm:block sm:text-right">
         <div className="font-display text-2xl font-black leading-none">{stat}</div>
         <div className="text-[11px] text-muted">{statLabel}</div>
-        <Link href={calcPath(c)} className="ml-auto inline-block text-xs font-semibold text-los hover:underline sm:mt-1">
-          Open in calculator →
-        </Link>
+        <span className="ml-auto flex gap-3 text-xs font-semibold sm:mt-1 sm:justify-end">
+          <Link href={gamePath(w.season, c.game_id)} className="text-ink-2 hover:text-ink hover:underline">Game</Link>
+          <Link href={calcPath(c)} className="text-los hover:underline">Calculator →</Link>
+        </span>
       </div>
     </li>
   );

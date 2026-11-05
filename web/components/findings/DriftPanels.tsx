@@ -63,6 +63,11 @@ function One({ p, hover, setHover, partialSeason }: { p: Panel; hover: number | 
     [...full].reverse().map((q, j) => `L${(x(full.length - 1 - j) * W).toFixed(1)} ${(y(Math.max(q.mean - q.sd, lo)) * H).toFixed(1)}`).join("") + "Z";
   const h = hover !== null ? p.points[hover] : null;
   const s = p.spread;
+  const nearest = (e: React.PointerEvent<HTMLElement>) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    const f = (e.clientX - r.left) / r.width;
+    return Math.min(n - 1, Math.max(0, Math.round(((f - 0.02) / 0.96) * (n - 1))));
+  };
   const yearTicks = p.points.map((q, i) => ({ q, i })).filter(({ q }) => q.season % 5 === 0 || q.season === p.points[0].season);
 
   return (
@@ -98,11 +103,19 @@ function One({ p, hover, setHover, partialSeason }: { p: Panel; hover: number | 
           <span aria-hidden className="absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-panel"
             style={{ left: `${x(hover!) * 100}%`, top: `${y(h.mean) * 100}%`, background: LINE }} />
         )}
-        {p.points.map((q, i) => (
-          <button key={q.season} type="button" aria-label={`${q.season}: league average ${fmt(q.mean, p.unit, 1)}, spread between teams ${fmtSpread(q.sd, p.unit)}`}
-            onPointerEnter={() => setHover(i)} onFocus={() => setHover(i)} onClick={() => setHover(i)}
-            className="absolute inset-y-0 -translate-x-1/2 outline-none focus-visible:bg-ink/5" style={{ left: `${x(i) * 100}%`, width: `${100 / n}%` }} />
-        ))}
+        {/* one target for the whole plot: the pointer picks the nearest season, arrow keys step through them */}
+        <div role="slider" tabIndex={0} aria-label={`${p.title} by season`}
+          aria-valuemin={p.points[0].season} aria-valuemax={p.points[n - 1].season} aria-valuenow={h?.season ?? p.points[n - 1].season}
+          aria-valuetext={h ? `${h.season}: league average ${fmt(h.mean, p.unit, 1)}, spread between teams ${fmtSpread(h.sd, p.unit)}` : "Use arrow keys to read each season"}
+          className="absolute inset-0 cursor-crosshair rounded outline-none focus-visible:ring-2 focus-visible:ring-yellow/60"
+          onPointerMove={(e) => setHover(nearest(e))} onPointerDown={(e) => setHover(nearest(e))}
+          onBlur={() => setHover(null)}
+          onKeyDown={(e) => {
+            const d = e.key === "ArrowRight" || e.key === "ArrowUp" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowDown" ? -1 : 0;
+            if (!d) return;
+            e.preventDefault();
+            setHover(Math.min(n - 1, Math.max(0, (hover ?? (d > 0 ? -1 : n)) + d)));
+          }} />
         {h && (
           <div className="pointer-events-none absolute -top-2 z-10 whitespace-nowrap rounded-md border border-line bg-night/95 px-2 py-1 text-[11px] shadow-lg"
             style={{ left: `${x(hover!) * 100}%`, transform: `translate(${x(hover!) > 0.65 ? "-100%" : x(hover!) < 0.35 ? "0" : "-50%"}, -100%)` }}>

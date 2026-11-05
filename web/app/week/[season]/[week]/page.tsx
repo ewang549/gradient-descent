@@ -28,5 +28,9 @@ export default async function WeekPage({ params }: PageProps<"/week/[season]/[we
   const { season, week } = await params;
   const w = loadWeek(Number(season), Number(week));
   if (!w) notFound();
-  return <WeekReport w={w} weeks={seasonIndex(w.season).weeks} />;
+  return (
+    <main className="relative">
+      <WeekReport w={w} weeks={seasonIndex(w.season).weeks} />
+    </main>
+  );
 }

@@ -7,6 +7,7 @@ Reproduce with `uv run python -m models.nfl4th_benchmark`.
 
 ## Summary
 
+- **On clear calls the two engines almost always agree.** On the 5,763 plays (47%) where both models have one option ahead by 1+ WP point, they make the same call 96.1% of the time. Confident opposite calls are 1.8% of all plays, and 91% of all disagreements involve a call one model rates as within 1 point. When both clearly say go, coaches went for it 60% of the time.
 - **The high go rate is mostly shared with nfl4th.** nfl4th says go on 40.1% of these 4th downs, this engine on 45.7%, coaches went for it on 21.5%. Both models say teams should go about twice as often as they do. The gap between the models is 5.6 points, and the two make the same call on 80.3% of plays.
 - **Yes, this engine is systematically more aggressive, and the conversion model is why.** Swapping in nfl4th's P(first down) alone takes the go rate from 45.7% to 41.8%. Swapping every other component (FG, punt, clock, kickoff) moves it by 0.8 points or less each. With every swap, the go rate is 40.5%, within 0.4 points of nfl4th's.
 - **Real outcomes back our conversion odds, not nfl4th's lower ones.** On every real go attempt, our model's average prediction is within 2.8 points of the actual rate in each season; nfl4th's is 2.1-5.5 points low. At 4-10 yards to go, where most of the gap lives, teams converted 43.1% (2024) and 42.9% (2025); we predicted 39.7% and 40.6%, nfl4th 38.2% and 38.9%. Brier scores on 2024-2025 attempts are a tie (0.2258 vs 0.2259).

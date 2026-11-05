@@ -29,13 +29,13 @@ function Stepper({ value, onChange, min, max, step = 1, display }: {
   );
 }
 
-function Segmented<T extends string | number>({ options, value, onChange, label }: {
-  options: { value: T; label: string }[]; value: T; onChange: (v: T) => void; label: string;
+function Segmented<T extends string | number>({ options, value, onChange, label, disabled }: {
+  options: { value: T; label: string }[]; value: T; onChange: (v: T) => void; label: string; disabled?: boolean;
 }) {
   return (
-    <div role="radiogroup" aria-label={label} className="flex rounded-lg bg-night p-1">
+    <div role="radiogroup" aria-label={label} aria-disabled={disabled || undefined} className="flex rounded-lg bg-night p-1">
       {options.map((o) => (
-        <button key={String(o.value)} type="button" role="radio" aria-checked={o.value === value} onClick={() => onChange(o.value)}
+        <button key={String(o.value)} type="button" role="radio" aria-checked={o.value === value} onClick={() => onChange(o.value)} disabled={disabled}
           className={`flex-1 rounded-md px-2 py-1.5 font-display text-base font-extrabold uppercase tracking-wider transition ${
             o.value === value ? "bg-ink text-night shadow" : "text-ink-2 hover:text-ink"}`}>
           {o.label}
@@ -118,9 +118,10 @@ export function Controls({ s, set }: { s: CalcState; set: Set }) {
             <Segmented<Venue> label="Venue" value={s.venue} onChange={(v) => set({ venue: v })}
               options={[{ value: "home", label: "Home" }, { value: "away", label: "Away" }, { value: "neutral", label: "Neutral" }]} />
           </div>
-          <div className={s.qtr <= 2 ? "" : "pointer-events-none opacity-35"}>
+          {/* only matters before halftime; disabled (not just faded) so it's skipped by keyboard and screen readers */}
+          <div className={s.qtr <= 2 ? "" : "opacity-35"}>
             <Label>Gets the 2nd-half kickoff</Label>
-            <Segmented<"yes" | "no"> label="Gets the 2nd-half kickoff" value={s.receives2hKickoff ? "yes" : "no"}
+            <Segmented<"yes" | "no"> label="Gets the 2nd-half kickoff" value={s.receives2hKickoff ? "yes" : "no"} disabled={s.qtr > 2}
               onChange={(v) => set({ receives2hKickoff: v === "yes" })}
               options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }]} />
           </div>

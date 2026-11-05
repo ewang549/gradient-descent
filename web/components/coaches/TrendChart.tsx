@@ -56,6 +56,12 @@ export function TrendChart({ title, sub, points, format: fmt, nLabel, colors, co
     });
     return d;
   };
+  const nearest = (e: React.PointerEvent<HTMLElement>) => {
+    if (n === 1) return 0;
+    const r = e.currentTarget.getBoundingClientRect();
+    const f = (e.clientX - r.left) / r.width;
+    return Math.min(n - 1, Math.max(0, Math.round(((f - 0.04) / 0.92) * (n - 1))));
+  };
   const firstOos = points.findIndex((p) => p.season >= outOfSampleFrom);
   const shadeTo = firstOos === -1 ? 1 : firstOos === 0 ? 0 : (x(firstOos - 1) + x(firstOos)) / 2;
   const h = hover !== null ? points[hover] : null;
@@ -89,13 +95,18 @@ export function TrendChart({ title, sub, points, format: fmt, nLabel, colors, co
           <span key={p.season} aria-hidden className="absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-panel"
             style={{ left: `${x(i) * 100}%`, top: `${y(p.coach) * 100}%`, background: p.thin ? "#151e33" : colors.team, border: `2px solid ${colors.team}` }} />
         ))}
-        {/* one hit column per season */}
-        {points.map((p, i) => (
-          <button key={p.season} type="button" aria-label={`${p.season}: ${coachLabel} ${p.coach === null ? "no data" : format(p.coach)}, league ${format(p.league)}, ${p.coachN} ${nLabel}`}
-            onPointerEnter={() => setHover(i)} onFocus={() => setHover(i)} onClick={() => setHover(i)}
-            className="absolute inset-y-0 -translate-x-1/2 outline-none focus-visible:bg-ink/5"
-            style={{ left: `${x(i) * 100}%`, width: `${Math.max(100 / Math.max(n, 1), 4)}%` }} />
-        ))}
+        {/* one target for the whole plot: the pointer picks the nearest season, arrow keys step through them */}
+        <div role="slider" tabIndex={0} aria-label={`${title} by season`}
+          aria-valuemin={points[0]?.season} aria-valuemax={points[n - 1]?.season} aria-valuenow={h?.season ?? points[n - 1]?.season}
+          aria-valuetext={h ? `${h.season}: ${coachLabel} ${h.coach === null ? "no data" : format(h.coach)}, league ${format(h.league)}, ${h.coachN} ${nLabel}` : "Use arrow keys to read each season"}
+          className="absolute inset-0 cursor-crosshair rounded outline-none focus-visible:ring-2 focus-visible:ring-yellow/60"
+          onPointerMove={(e) => setHover(nearest(e))} onPointerDown={(e) => setHover(nearest(e))} onBlur={() => setHover(null)}
+          onKeyDown={(e) => {
+            const d = e.key === "ArrowRight" || e.key === "ArrowUp" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowDown" ? -1 : 0;
+            if (!d) return;
+            e.preventDefault();
+            setHover(Math.min(n - 1, Math.max(0, (hover ?? (d > 0 ? -1 : n)) + d)));
+          }} />
         {h && (
           <div className="pointer-events-none absolute top-1 z-10 whitespace-nowrap rounded-md border border-line bg-night/95 px-2 py-1 text-[11px] shadow-lg"
             style={{ left: `${x(hover!) * 100}%`, transform: `translateX(${x(hover!) > 0.65 ? "-100%" : x(hover!) < 0.35 ? "0" : "-50%"})` }}>

@@ -127,9 +127,13 @@ export function GameChart({ g, colors }: Props) {
               aria-label={`${fd.posteam} ${fd.situation}, ${clockAt(g.series.game_seconds_remaining[i])}: ${OPTION_LABEL[fd.decision]}. ${GRADE_LABEL[grade]}`}
               aria-pressed={on}
               onClick={() => setSelected(fd.play_seq)} onPointerEnter={(e) => e.pointerType === "mouse" && setSelected(fd.play_seq)}
-              className="absolute flex h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-[8px] font-black sm:h-[18px] sm:w-[18px] sm:text-[9px] text-night outline-none ring-2 ring-night transition-transform focus-visible:ring-yellow before:absolute before:-inset-2.5 before:content-['']"
-              style={{ left: `${p.x * 100}%`, top: `${p.y * 100}%`, background: GRADE_HEX[grade], transform: `translate(-50%,-50%) scale(${on ? 1.35 : 1})`, zIndex: on ? 3 : 2 }}>
-              {LETTER[fd.decision]}
+              className="group absolute flex h-6 w-6 items-center justify-center rounded-full outline-none"
+              style={{ left: `${p.x * 100}%`, top: `${p.y * 100}%`, transform: "translate(-50%,-50%)", zIndex: on ? 3 : 2 }}>
+              {/* the button is a 24px tap target; the visible dot inside it stays small */}
+              <span aria-hidden className="flex h-3.5 w-3.5 items-center justify-center rounded-full text-[8px] font-black text-night ring-2 ring-night transition-transform group-focus-visible:ring-yellow sm:h-[18px] sm:w-[18px] sm:text-[9px]"
+                style={{ background: GRADE_HEX[grade], transform: `scale(${on ? 1.35 : 1})` }}>
+                {LETTER[fd.decision]}
+              </span>
             </button>
           );
         })}

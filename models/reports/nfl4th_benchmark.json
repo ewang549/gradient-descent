@@ -1,0 +1,23 @@
+{
+  "threshold_wp": 0.01,
+  "plays": 12347,
+  "agree_all": 0.803353041224589,
+  "both_clear": 5763,
+  "both_clear_share": 0.4667530574228558,
+  "agree_when_both_clear": 0.9614783966684018,
+  "opposite_clear_share": 0.01798007613185389,
+  "disagreements": 2428,
+  "disagreements_with_a_close_call": 0.9085667215815486,
+  "both_clearly_go": 2091,
+  "coaches_went_when_both_clearly_go": 0.5978000956480153,
+  "go_rate_ours": 0.45662914068194704,
+  "go_rate_nfl4th": 0.40106908560783994,
+  "go_rate_coaches": 0.21535595691261036,
+  "seasons": [
+    2023,
+    2024,
+    2025
+  ],
+  "generated": "2026-11-05",
+  "nfl4th_downloaded": "2026-11-04"
+}

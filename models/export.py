@@ -222,6 +222,9 @@ def export_model_contract() -> None:
     }, ARTIFACTS_DIR / "wp_onnx_contract.json")
 
 
+BENCHMARK = REPORTS_DIR / "nfl4th_benchmark.json"  # written by `make benchmark`
+
+
 def export_meta(season: int, week: int, counts: dict) -> None:
     reports = {name: json.loads((REPORTS_DIR / f"{name}_metrics.json").read_text())
                for name in ("wp", "conversion", "fg", "punt")}
@@ -237,6 +240,20 @@ def export_meta(season: int, week: int, counts: dict) -> None:
             "field_goal": {"test_brier": reports["fg"]["test"]["brier"]},
             "punt": {"test_mae_yards": reports["punt"]["results"]["test"]["isotonic_recalibrated"]["mae_yards"]},
         },
+        # plain-language numbers for the site's /methodology page
+        "held_out": {
+            "win_probability": {k: reports["wp"]["test"]["metrics"][k] for k in ("this_model", "nflverse_vegas_wp", "nflverse_wp")}
+                               | {"plays": reports["wp"]["test"]["plays"], "games": reports["wp"]["test"]["games"]},
+            "conversion": {"attempts": reports["conversion"]["test"]["attempts"],
+                           "actual_rate": reports["conversion"]["test"]["actual_rate"],
+                           "mean_pred": reports["conversion"]["test"]["metrics"]["calibrated_model"]["mean_pred"]},
+            "field_goal": {"attempts": reports["fg"]["test"]["attempts"], "actual_rate": reports["fg"]["test"]["actual_rate"],
+                           "mean_pred": reports["fg"]["test"]["mean_pred"]},
+            "punt": {"punts": reports["punt"]["results"]["test"]["punts"],
+                     "mae_yards": reports["punt"]["results"]["test"]["isotonic_recalibrated"]["mae_yards"],
+                     "naive_mae_yards": reports["punt"]["results"]["test"]["naive_average_net"]["mae_yards"]},
+        },
+        "nfl4th_benchmark": (json.loads(BENCHMARK.read_text()) if BENCHMARK.exists() else None),
         "notes": ["Graded decisions exclude overtime and the final 30 seconds of each half.",
                   "Fakes are graded as ordinary go-for-it attempts."],
     }, EXPORTS_DIR / "meta.json")

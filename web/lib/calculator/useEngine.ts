@@ -1,32 +1,35 @@
 "use client";
 /**
- * Loads the models (JSON + wp.onnx through onnxruntime-web) once, then evaluates situations as
- * inputs change. Only the latest request's result is kept, so dragging the ball never shows a
- * stale answer.
+ * Evaluates situations as inputs change. The models (JSON + wp.onnx through onnxruntime-web) load
+ * and run in a Web Worker (engine.worker.ts), so the page stays responsive while the WASM compiles.
+ * Only the latest request's result is kept, so dragging the ball never shows a stale answer.
  */
 import { useEffect, useRef, useState } from "react";
-import { evaluateOptions } from "@/lib/engine/engine";
-import { loadModels, type Models } from "@/lib/engine/models";
-import type { EngineInput, EngineOutput, PredictWP } from "@/lib/engine/types";
-import { onnxPredictor } from "@/lib/engine/wpOnnx";
+import type { EngineInput, EngineOutput } from "@/lib/engine/types";
 
-interface Loaded { models: Models; predict: PredictWP }
+type Reply = { id: number; out?: EngineOutput; error?: string };
 
-let loading: Promise<Loaded> | null = null;
+let worker: Worker | null = null;
+let nextId = 0;
+const pending = new Map<number, (r: Reply) => void>();
 
-function loadEngine(): Promise<Loaded> {
-  loading ??= (async () => {
-    const ort = await import("onnxruntime-web/wasm");
-    // self-hosted WASM (copied by scripts/copy-ort.mjs); one thread = no cross-origin isolation needed
-    ort.env.wasm.wasmPaths = { wasm: "/ort/ort-wasm-simd-threaded.wasm" };
-    ort.env.wasm.numThreads = 1;
-    const [models, session] = await Promise.all([
-      loadModels(async (f) => (await fetch(`/models/${f}`)).json()),
-      ort.InferenceSession.create("/models/wp.onnx", { executionProviders: ["wasm"] }),
-    ]);
-    return { models, predict: onnxPredictor(session, ort.Tensor, models.contract) };
-  })();
-  return loading;
+function engineWorker(): Worker {
+  if (!worker) {
+    worker = new Worker(new URL("./engine.worker.ts", import.meta.url), { type: "module" });
+    worker.onmessage = (e: MessageEvent<Reply>) => {
+      pending.get(e.data.id)?.(e.data);
+      pending.delete(e.data.id);
+    };
+  }
+  return worker;
+}
+
+function evaluate(input: EngineInput): Promise<EngineOutput> {
+  const id = ++nextId;
+  return new Promise((resolve, reject) => {
+    pending.set(id, (r) => (r.out ? resolve(r.out) : reject(new Error(r.error ?? "engine failed"))));
+    engineWorker().postMessage({ id, input });
+  });
 }
 
 export function useEngine(input: EngineInput) {
@@ -37,9 +40,8 @@ export function useEngine(input: EngineInput) {
 
   useEffect(() => {
     const id = ++latest.current;
-    loadEngine()
-      .then(({ models, predict }) => evaluateOptions([JSON.parse(key)], models, predict))
-      .then(([out]) => {
+    evaluate(JSON.parse(key))
+      .then((out) => {
         if (id === latest.current) setResult(out);
       })
       .catch((e: unknown) => setError(e instanceof Error ? e.message : String(e)));

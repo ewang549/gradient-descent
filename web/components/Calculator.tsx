@@ -2,11 +2,11 @@
 /**
  * The calculator: state <-> URL, the field, the controls, the answer.
  *
- * State is read from the URL once, then mirrored back with history.replaceState on every change
- * (a router navigation per drag frame would be wasteful), so the address bar is always a link to
- * exactly what's on screen.
+ * State is read from the URL once (the server passes the query string, so the first HTML is the
+ * real calculator rather than an empty client-only shell), then mirrored back with
+ * history.replaceState on every change (a router navigation per drag frame would be wasteful), so
+ * the address bar is always a link to exactly what's on screen.
  */
-import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import presetData from "@/public/models/presets.json";
 import { Controls } from "@/components/Controls";
@@ -39,9 +39,8 @@ const SHORT: Record<string, string> = {
 };
 const COACH: Record<Preset["coach"], string> = { go: "went for it", punt: "punted", field_goal: "kicked the field goal" };
 
-export function Calculator() {
-  const params = useSearchParams();
-  const [state, setState] = useState<CalcState>(() => parseQuery(new URLSearchParams(params.toString())));
+export function Calculator({ query }: { query: string }) {
+  const [state, setState] = useState<CalcState>(() => parseQuery(new URLSearchParams(query)));
   const s = useMemo(() => normalize(state), [state]);
   const input = useMemo(() => toEngineInput(s), [s]);
   const { result, error } = useEngine(input);
@@ -73,7 +72,8 @@ export function Calculator() {
   return (
     <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-5 px-4 py-6 sm:px-6 sm:py-10">
       {/* masthead */}
-      <header className="rise flex flex-wrap items-end justify-between gap-3">
+      {/* no fade-in on the headline: it is the largest paint, and an element that first paints at opacity 0 never counts as LCP */}
+      <header className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-orange">Win probability · live</div>
           <h1 className="font-display text-5xl font-black uppercase leading-[0.85] tracking-wide sm:text-7xl">
@@ -132,7 +132,7 @@ export function Calculator() {
         <div className="rise lg:order-2 [animation-delay:200ms]">
           <Results result={result} error={error} />
         </div>
-        <div className="rise lg:order-1 [animation-delay:260ms]">
+        <div className="lg:order-1">
           <Controls s={s} set={set} />
         </div>
       </div>

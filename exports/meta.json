@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T00:46:52+00:00",
+  "generated_at": "2026-11-05T22:05:19+00:00",
   "data_through": {
     "season": 2026,
     "week": 8
@@ -35,6 +35,67 @@
     "punt": {
       "test_mae_yards": 7.248379675952575
     }
+  },
+  "held_out": {
+    "win_probability": {
+      "this_model": {
+        "brier": 0.13891485333442688,
+        "log_loss": 0.42212358117103577,
+        "auc": 0.8856286359111132,
+        "brier_4th_quarter": 0.08231619745492935
+      },
+      "nflverse_vegas_wp": {
+        "brier": 0.13641643445738597,
+        "log_loss": 0.41533036005031587,
+        "auc": 0.8896910853308507,
+        "brier_4th_quarter": 0.07926377938972043
+      },
+      "nflverse_wp": {
+        "brier": 0.15690569249364877,
+        "log_loss": 0.4630883379399757,
+        "auc": 0.8508068901442704
+      },
+      "plays": 41283,
+      "games": 285
+    },
+    "conversion": {
+      "attempts": 790,
+      "actual_rate": 0.5746835443037974,
+      "mean_pred": 0.5474578281451913
+    },
+    "field_goal": {
+      "attempts": 1166,
+      "actual_rate": 0.8421955403087479,
+      "mean_pred": 0.8435128442846673
+    },
+    "punt": {
+      "punts": 2082,
+      "mae_yards": 7.248379675952575,
+      "naive_mae_yards": 8.740082081367564
+    }
+  },
+  "nfl4th_benchmark": {
+    "threshold_wp": 0.01,
+    "plays": 12347,
+    "agree_all": 0.803353041224589,
+    "both_clear": 5763,
+    "both_clear_share": 0.4667530574228558,
+    "agree_when_both_clear": 0.9614783966684018,
+    "opposite_clear_share": 0.01798007613185389,
+    "disagreements": 2428,
+    "disagreements_with_a_close_call": 0.9085667215815486,
+    "both_clearly_go": 2091,
+    "coaches_went_when_both_clearly_go": 0.5978000956480153,
+    "go_rate_ours": 0.45662914068194704,
+    "go_rate_nfl4th": 0.40106908560783994,
+    "go_rate_coaches": 0.21535595691261036,
+    "seasons": [
+      2023,
+      2024,
+      2025
+    ],
+    "generated": "2026-11-05",
+    "nfl4th_downloaded": "2026-11-04"
   },
   "notes": [
     "Graded decisions exclude overtime and the final 30 seconds of each half.",

@@ -44,11 +44,18 @@ SOURCES = {
 GAINS = np.arange(-10, 66)  # the first-down model's 76 classes: yards gained on a go attempt
 NFL4TH_RUNOFF = 6           # nfl4th runs 6 seconds off every outcome (no extra after a conversion by default)
 REPORT = REPORTS_DIR / "nfl4th_benchmark.md"
+SUMMARY = REPORTS_DIR / "nfl4th_benchmark.json"  # headline numbers for the site's /methodology page
+CLEAR_WP = 0.01  # a "clear call": the best option beats the runner-up by at least 1 WP point
 CHART = REPORTS_DIR / "nfl4th_go_rate_by_distance.png"
 OPTIONS = ("go", "punt", "field_goal")
 
 
 # ----------------------------------------------------------------------------------- nfl4th files
+
+
+def _downloaded() -> str:
+    """When the precomputed release file was fetched (its mtime), not when the report ran."""
+    return date.fromtimestamp((NFL4TH_DIR / "pre_computed_go_boost.rds").stat().st_mtime).isoformat()
 
 
 def fetch(force: bool = False) -> None:
@@ -508,7 +515,7 @@ def write_report(m: pd.DataFrame, table: pd.DataFrame, conv: pd.DataFrame, fg: p
 
 Regulation 4th downs, {SEASONS[0]}-{SEASONS[-1]}: {len(m):,} plays matched to nfl4th by game and play id
 ({m.attrs.get('unmatched', 0)} of ours had no nfl4th row). nfl4th numbers come from its precomputed release file
-(downloaded {date.today().isoformat()}); its component tables are pinned to commit `{NFL4TH_COMMIT[:7]}`.
+(downloaded {_downloaded()}); its component tables are pinned to commit `{NFL4TH_COMMIT[:7]}`.
 Reproduce with `uv run python -m models.nfl4th_benchmark`.
 
 ## Summary
@@ -596,6 +603,38 @@ WP is for the team with the ball. nfl4th has no punt option inside the opponent'
     print(f"  wrote {REPORT.relative_to(REPO_ROOT)}")
 
 
+def _margin(m: pd.DataFrame, cols: tuple[str, str, str]) -> np.ndarray:
+    """Best option's WP minus the runner-up's (nfl4th has no punt inside the opponent's 31: NaN, skipped)."""
+    v = np.sort(np.nan_to_num(m[list(cols)].to_numpy(dtype=float), nan=-np.inf), axis=1)
+    return v[:, -1] - v[:, -2]
+
+
+def clear_calls(m: pd.DataFrame) -> dict:
+    """How the two engines compare when they're sure: plays where the best option beats the runner-up by
+    CLEAR_WP or more. Disagreements on coin flips say little; disagreements on clear calls would be real."""
+    ours, n4 = _margin(m, ("wp_go", "wp_punt", "wp_fg")), _margin(m, ("n4_go", "n4_punt", "n4_fg"))
+    same = (m["recommendation"] == m["n4_rec"]).to_numpy()
+    both = (ours >= CLEAR_WP) & (n4 >= CLEAR_WP)
+    both_go = both & same & (m["recommendation"] == "go").to_numpy()
+    return {
+        "threshold_wp": CLEAR_WP,
+        "plays": len(m),
+        "agree_all": float(same.mean()),
+        "both_clear": int(both.sum()),
+        "both_clear_share": float(both.mean()),
+        "agree_when_both_clear": float(same[both].mean()),
+        "opposite_clear_share": float((both & ~same).mean()),
+        "disagreements": int((~same).sum()),
+        "disagreements_with_a_close_call": float(((ours < CLEAR_WP) | (n4 < CLEAR_WP))[~same].mean()),
+        "both_clearly_go": int(both_go.sum()),
+        "coaches_went_when_both_clearly_go": float(m["is_go"].to_numpy()[both_go].mean()),
+        "go_rate_ours": float((m["recommendation"] == "go").mean()),
+        "go_rate_nfl4th": float((m["n4_rec"] == "go").mean()),
+        "go_rate_coaches": float(m["is_go"].mean()),
+        "seasons": list(SEASONS),
+    }
+
+
 def summarize(m: pd.DataFrame, table: pd.DataFrame, conv: pd.DataFrame) -> list[str]:
     """The summary bullets, computed so they can't drift from the tables."""
     row = table.set_index("variant")
@@ -610,7 +649,15 @@ def summarize(m: pd.DataFrame, table: pd.DataFrame, conv: pd.DataFrame) -> list[
     bs = conv.attrs["by_season"]
     mid = bs[bs["distance"] == "4-10"].set_index("season")
     allr = bs[bs["distance"] == "All"].set_index("season")
+    cc = clear_calls(m)
     return [
+        (f"**On clear calls the two engines almost always agree.** On the {cc['both_clear']:,} plays "
+         f"({_pct(cc['both_clear_share'], 0)}) where both models have one option ahead by "
+         f"{100 * CLEAR_WP:.0f}+ WP point, they make the same call {_pct(cc['agree_when_both_clear'])} of the time. "
+         f"Confident opposite calls are {_pct(cc['opposite_clear_share'])} of all plays, and "
+         f"{_pct(cc['disagreements_with_a_close_call'], 0)} of all disagreements involve a call one model rates as "
+         f"within 1 point. When both clearly say go, coaches went for it {_pct(cc['coaches_went_when_both_clearly_go'], 0)} "
+         f"of the time."),
         (f"**The high go rate is mostly shared with nfl4th.** nfl4th says go on {_pct(n4)} of these 4th downs, this "
          f"engine on {_pct(ours)}, coaches went for it on {_pct(coaches)}. Both models say teams should go about twice "
          f"as often as they do. The gap between the models is {100 * (ours - n4):.1f} points, and the two make the "
@@ -659,6 +706,7 @@ def run() -> dict:
     chart(go_rates(m, "yards_bucket"))
     findings = summarize(m, table, conv)
     write_report(m, table, conv, fg, dis, findings)
+    data.write_json({**clear_calls(m), "generated": str(date.today()), "nfl4th_downloaded": _downloaded()}, SUMMARY)
     return {"m": m, "table": table, "conv": conv, "fg": fg, "dis": dis}
 
 

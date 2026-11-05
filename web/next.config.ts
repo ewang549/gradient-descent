@@ -15,10 +15,23 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  // the link-preview route reads the models, the ORT WASM binary and the card fonts from disk
+  outputFileTracingIncludes: {
+    "/og/**": [
+      "./public/models/**",
+      "./assets/fonts/**",
+      "./node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.wasm",
+    ],
+  },
+  // calculator links from before it moved to /calculator (any URL with a situation in it)
+  async redirects() {
+    return [{ source: "/", has: [{ type: "query", key: "yl" }], destination: "/calculator", permanent: true }];
+  },
   async headers() {
     return [
       { source: "/models/:path*", headers: MODEL_CACHE },
       { source: "/ort/:path*", headers: MODEL_CACHE },
+      { source: "/cards/:path*", headers: MODEL_CACHE },
     ];
   },
 };

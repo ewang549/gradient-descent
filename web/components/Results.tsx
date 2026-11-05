@@ -5,36 +5,8 @@
  * orange = toss-up, yellow = lean, green = clear call.
  */
 import { useEffect, useRef, useState } from "react";
+import { confidenceColor, confidenceLabel } from "@/lib/confidence";
 import type { EngineOutput, Option } from "@/lib/engine/types";
-
-// ----------------------------------------------------------------------------- confidence scale
-
-const STOPS: [number, [number, number, number]][] = [
-  [0, [255, 122, 69]], // #ff7a45
-  [3, [229, 200, 74]], // #e5c84a
-  [7, [57, 217, 138]], // #39d98a
-];
-
-export function confidenceColor(gapPts: number): string {
-  const g = Math.min(Math.max(gapPts, 0), STOPS[STOPS.length - 1][0]);
-  for (let i = 1; i < STOPS.length; i++) {
-    const [x1, c1] = STOPS[i];
-    const [x0, c0] = STOPS[i - 1];
-    if (g <= x1) {
-      const t = (g - x0) / (x1 - x0);
-      const c = c0.map((v, k) => Math.round(v + (c1[k] - v) * t));
-      return `rgb(${c.join(" ")})`;
-    }
-  }
-  return "rgb(57 217 138)";
-}
-
-export function confidenceLabel(gapPts: number): string {
-  if (gapPts < 1) return "Toss-up";
-  if (gapPts < 3) return "Lean";
-  if (gapPts < 7) return "Clear call";
-  return "No-brainer";
-}
 
 const withAlpha = (rgb: string, a: number) => rgb.replace(")", ` / ${a})`);
 

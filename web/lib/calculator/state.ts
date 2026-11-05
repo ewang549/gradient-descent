@@ -144,8 +144,8 @@ export function toQuery(s: CalcState): string {
   if (s.qtr <= 2 && s.receives2hKickoff) q.set("rk", "1");
   const c = CONTEXT_DEFAULTS;
   if (s.season !== c.season) q.set("yr", String(s.season));
-  if (s.offEpa !== c.offEpa) q.set("oe", s.offEpa === null ? "na" : round(s.offEpa, 4));
-  if (s.defEpa !== c.defEpa) q.set("de", s.defEpa === null ? "na" : round(s.defEpa, 4));
+  if (s.offEpa !== c.offEpa) q.set("oe", s.offEpa === null ? "na" : round(s.offEpa, 6)); // 6 places: 4 can cross a tree split
+  if (s.defEpa !== c.defEpa) q.set("de", s.defEpa === null ? "na" : round(s.defEpa, 6));
   if (s.indoors) q.set("in", "1");
   if (s.turf) q.set("tf", "1");
   if (!s.indoors && s.windMph !== c.windMph) q.set("w", round(s.windMph, 1));

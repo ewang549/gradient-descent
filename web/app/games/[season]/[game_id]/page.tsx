@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps<"/games/[season]/[g
   const graded = g.fourth_downs.filter((f) => f.is_graded);
   const worst = [...graded].sort((a, b) => (b.wp_lost ?? 0) - (a.wp_lost ?? 0))[0];
   const description = `${g.away.team} ${g.away.score}, ${g.home.team} ${g.home.score}. Win probability play by play and all ${graded.length} graded 4th downs` +
-    (worst && worst.wp_lost! > 0.001 ? `; the costliest: ${worst.coach}'s ${OPTION_SHORT[worst.decision].toLowerCase()} on ${worst.situation} (-${pts(worst.wp_lost!)} WP points).` : ".");
+    (worst && worst.wp_lost! > 0.001 ? `; the costliest: ${worst.coach}'s ${worst.decision === "field_goal" ? "field goal" : worst.decision} on ${worst.situation} (-${pts(worst.wp_lost!)} WP points).` : ".");
   return { title, description, openGraph: { title, description }, twitter: { card: "summary_large_image", title, description } };
 }
 

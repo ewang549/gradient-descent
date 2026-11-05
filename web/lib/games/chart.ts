@@ -165,3 +165,9 @@ export function clockAt(gameSecondsRemaining: number): string {
 
 export const gamePath = (season: number, gameId: string) => `/games/${season}/${gameId}`;
 export const seasonGamesPath = (season: number) => `/games/${season}`;
+
+/** A team's line color that stays distinct from the league-average line (the neutral gray). */
+export function colorVsLeague(t: TeamInfo | undefined): { team: string; league: string } {
+  const c = t && candidates(t).find((x) => colorDistance(x, NEUTRAL) >= MIN_DISTANCE);
+  return { team: c ?? FALLBACK[0], league: NEUTRAL };
+}

@@ -156,6 +156,17 @@ select
     epa,
     success = 1                                                                    as is_success,
 
+    -- passing detail (post-play; Phase 4 findings)
+    coalesce(qb_dropback, 0) = 1                                                   as is_qb_dropback,
+    coalesce(qb_scramble, 0) = 1                                                   as is_qb_scramble,
+    coalesce(sack, 0) = 1                                                          as is_sack,
+    coalesce(pass_attempt, 0) = 1 and coalesce(sack, 0) = 0                        as is_pass_attempt,
+    air_yards,
+    cpoe,
+    passer_player_id,
+    passer_player_name,
+    xpass                                                                          as nflverse_xpass,
+
     -- nflverse model outputs: Phase 2 benchmarks (note: their models were fit on every season)
     ep                                                                             as nflverse_ep,
     wp                                                                             as nflverse_wp,

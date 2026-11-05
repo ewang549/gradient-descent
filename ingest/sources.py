@@ -35,6 +35,21 @@ def rosters(seasons: list[int]) -> pl.DataFrame:
     return nfl.load_rosters(seasons)
 
 
+# Seasons each per-play supplement exists for (nflreadpy raises outside these).
+FTN_FIRST_SEASON = 2022            # FTN Data hand charting; CC-BY-SA 4.0, credit "FTN Data via nflverse"
+PARTICIPATION_SEASONS = (2016, 2025)  # personnel/formation; not published for the current season
+
+
+def ftn_charting(seasons: list[int]) -> pl.DataFrame:
+    """Play-action, motion, RPO, screens, box counts: one row per play, keyed by nflverse ids."""
+    return nfl.load_ftn_charting(seasons)
+
+
+def participation(seasons: list[int]) -> pl.DataFrame:
+    """Offensive personnel and formation per play."""
+    return nfl.load_participation(seasons)
+
+
 def teams() -> pl.DataFrame:
     """Team abbreviations, franchise ids (`team_id` links OAK->LV, SD->LAC, STL->LA), colors, logos."""
     return nfl.load_teams()

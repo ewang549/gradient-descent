@@ -84,7 +84,7 @@ def run(
 
     con.execute(f"create schema if not exists {RAW}")
     if full_refresh:
-        for table in ("pbp", "schedules", "rosters", "teams"):
+        for table in ("pbp", "schedules", "rosters", "teams", "ftn_charting", "participation"):
             con.execute(f"drop table if exists {RAW}.{table}")
         log.info("full refresh: dropped raw tables")
 
@@ -96,6 +96,7 @@ def run(
 
     _load_pbp(con, src, schedule, seasons, end_season, refresh, summary)
     _load_rosters(con, src, seasons, end_season, refresh, summary)
+    _load_supplements(con, src, seasons, end_season, refresh, summary)
     _write_log(con, summary)
     return summary
 
@@ -164,20 +165,36 @@ def _loaded_games(con) -> dict[int, set[str]]:
 
 
 def _load_rosters(con, src, seasons: list[int], current_season: int, refresh: set[int], summary: RunSummary) -> None:
+    _load_by_season(con, "rosters", src.rosters, seasons, current_season, refresh, summary)
+
+
+def _load_supplements(con, src, seasons: list[int], current_season: int, refresh: set[int], summary: RunSummary) -> None:
+    """Per-play add-ons that only exist for some seasons: FTN charting and participation."""
+    ftn = [s for s in seasons if s >= src.FTN_FIRST_SEASON]
+    lo, hi = src.PARTICIPATION_SEASONS
+    part = [s for s in seasons if lo <= s <= hi]
+    _load_by_season(con, "ftn_charting", src.ftn_charting, ftn, current_season, refresh, summary)
+    _load_by_season(con, "participation", src.participation, part, current_season, refresh, summary,
+                    season_sql="cast(left(nflverse_game_id, 4) as integer)")
+
+
+def _load_by_season(con, table: str, fetch, seasons: list[int], current_season: int, refresh: set[int],
+                    summary: RunSummary, season_sql: str = "season") -> None:
+    """Season-snapshot tables: load missing seasons, always re-pull the current one (it changes weekly)."""
     have: set[int] = set()
-    if db.table_exists(con, RAW, "rosters"):
-        have = {s for (s,) in con.execute(f"select distinct season from {RAW}.rosters").fetchall()}
+    if db.table_exists(con, RAW, table):
+        have = {s for (s,) in con.execute(f"select distinct {season_sql} from {RAW}.{table}").fetchall()}
     todo = sorted(s for s in seasons if s not in have or s == current_season or s in refresh)
-    summary.rows["rosters"] = 0
+    summary.rows[table] = 0
     if not todo:
-        log.info("rosters: up to date")
+        log.info("%s: up to date", table)
         return
-    df = src.rosters(todo)
+    df = fetch(todo)
     with db.transaction(con):
         if have:
-            con.execute(f"delete from {RAW}.rosters where season in ({', '.join(map(str, todo))})")
-        summary.rows["rosters"] = db.append(con, RAW, "rosters", df)
-    log.info("rosters: %d rows for %d season(s)", summary.rows["rosters"], len(todo))
+            con.execute(f"delete from {RAW}.{table} where {season_sql} in ({', '.join(map(str, todo))})")
+        summary.rows[table] = db.append(con, RAW, table, df)
+    log.info("%s: %d rows for %d season(s)", table, summary.rows[table], len(todo))
 
 
 def _write_log(con, summary: RunSummary) -> None:

@@ -1,0 +1,551 @@
+{
+  "slug": "offense-archetypes",
+  "k": 4,
+  "features": [
+    "proe",
+    "early_down_pass",
+    "adot",
+    "shotgun",
+    "no_huddle",
+    "pace",
+    "go_when_model_says_go",
+    "epa_dropback",
+    "epa_rush"
+  ],
+  "ftn_features": [
+    "play_action",
+    "motion"
+  ],
+  "labels": {
+    "proe": "Pass rate over expected",
+    "early_down_pass": "Early-down pass rate",
+    "adot": "Avg depth of target",
+    "shotgun": "Shotgun rate",
+    "no_huddle": "No-huddle rate",
+    "pace": "Seconds between snaps",
+    "go_when_model_says_go": "4th-down go rate (model says go)",
+    "epa_dropback": "EPA per dropback",
+    "epa_rush": "EPA per designed run",
+    "play_action": "Play-action rate",
+    "motion": "Motion rate"
+  },
+  "team_seasons": 671,
+  "seasons": [
+    2006,
+    2026
+  ],
+  "search": [
+    {
+      "k": 2,
+      "kmeans_silhouette": 0.15493532301287508,
+      "null_silhouette": 0.15584818694522734,
+      "cluster_jaccard": [
+        0.8551548302143337,
+        0.8597526428411969
+      ],
+      "bootstrap_ari_mean": 0.7184894352571436,
+      "bootstrap_ari_p10": 0.5523816103907079,
+      "inertia": 5031.4182916281425,
+      "gmm_bic": 14680.633811857746,
+      "gmm_silhouette": 0.12454481843854334,
+      "kmeans_vs_gmm_ari": 0.04560202345901622
+    },
+    {
+      "k": 3,
+      "kmeans_silhouette": 0.1428372458271366,
+      "null_silhouette": 0.13043775228730026,
+      "cluster_jaccard": [
+        0.6159361150459182,
+        0.7774332971374806,
+        0.6889665466576312
+      ],
+      "bootstrap_ari_mean": 0.5851565874560777,
+      "bootstrap_ari_p10": 0.3329620390744778,
+      "inertia": 4486.848640541664,
+      "gmm_bic": 14605.219651726442,
+      "gmm_silhouette": 0.05019006515006703,
+      "kmeans_vs_gmm_ari": 0.12230165150853363
+    },
+    {
+      "k": 4,
+      "kmeans_silhouette": 0.15378232852425275,
+      "null_silhouette": 0.12059532688126195,
+      "cluster_jaccard": [
+        0.8355794321449753,
+        0.8692353950159286,
+        0.7833203207034097,
+        0.8547396113692671
+      ],
+      "bootstrap_ari_mean": 0.7864227227517326,
+      "bootstrap_ari_p10": 0.6772025278623438,
+      "inertia": 3973.1089192301433,
+      "gmm_bic": 14756.51641022577,
+      "gmm_silhouette": 0.049864078897519,
+      "kmeans_vs_gmm_ari": 0.20528236882296755
+    },
+    {
+      "k": 5,
+      "kmeans_silhouette": 0.12781970112880262,
+      "null_silhouette": 0.11864797211538805,
+      "cluster_jaccard": [
+        0.560096664281032,
+        0.7973933212913863,
+        0.6329894454078716,
+        0.7463190773353569,
+        0.7633787090152889
+      ],
+      "bootstrap_ari_mean": 0.5904884209577871,
+      "bootstrap_ari_p10": 0.4128965657700114,
+      "inertia": 3711.3907500545647,
+      "gmm_bic": 14942.912070801407,
+      "gmm_silhouette": 0.010916718247251756,
+      "kmeans_vs_gmm_ari": 0.22807567063652578
+    },
+    {
+      "k": 6,
+      "kmeans_silhouette": 0.1250876899275026,
+      "null_silhouette": 0.11702731492709992,
+      "cluster_jaccard": [
+        0.6700386723879521,
+        0.3912212711098531,
+        0.6406316152870924,
+        0.5117366046636591,
+        0.7907312457287123,
+        0.6365636734192283
+      ],
+      "bootstrap_ari_mean": 0.5010050107654441,
+      "bootstrap_ari_p10": 0.3816357697447523,
+      "inertia": 3511.196639067157,
+      "gmm_bic": 15186.728688174482,
+      "gmm_silhouette": 0.016755622110371515,
+      "kmeans_vs_gmm_ari": 0.12798518815633964
+    },
+    {
+      "k": 7,
+      "kmeans_silhouette": 0.12396588729244841,
+      "null_silhouette": 0.11439583322114202,
+      "cluster_jaccard": [
+        0.36275495126316926,
+        0.5003509050112485,
+        0.6233070097381432,
+        0.5571019104426087,
+        0.4896929270219799,
+        0.3491457266953266,
+        0.8210489005978806
+      ],
+      "bootstrap_ari_mean": 0.41641909211290984,
+      "bootstrap_ari_p10": 0.3081086790281546,
+      "inertia": 3348.4304838921007,
+      "gmm_bic": 15407.681821208887,
+      "gmm_silhouette": 0.008222797095240915,
+      "kmeans_vs_gmm_ari": 0.15043497824591023
+    },
+    {
+      "k": 8,
+      "kmeans_silhouette": 0.11685232946487967,
+      "null_silhouette": 0.11425027245949648,
+      "cluster_jaccard": [
+        0.39417422262616386,
+        0.45649617224623923,
+        0.529251161630082,
+        0.43912756923925683,
+        0.5616054434597653,
+        0.4317031822855623,
+        0.44856890763639007,
+        0.7728466177341179
+      ],
+      "bootstrap_ari_mean": 0.40610656521516103,
+      "bootstrap_ari_p10": 0.3035869470900163,
+      "inertia": 3222.654886520896,
+      "gmm_bic": 15667.628223586235,
+      "gmm_silhouette": 0.0017640345519364048,
+      "kmeans_vs_gmm_ari": 0.1681349209428324
+    }
+  ],
+  "robustness": {
+    "holdout_ari": 0.5448967904843347,
+    "late_only_fit_ari": 0.19832591730010096,
+    "kmeans_vs_gmm_ari": 0.20528236882296755,
+    "gmm_mean_max_posterior": 0.8870286525436817,
+    "style_only_ari": 0.8227208940499816,
+    "within_season_ari": 0.27989280666059946,
+    "ftn_2022_plus_ari": 0.06111852097722577,
+    "ftn_2022_plus_team_seasons": 159
+  },
+  "era_vs_team": [
+    {
+      "feature": "proe",
+      "season_r2": 0.051980562510901995,
+      "chance_r2": 0.029850746268656716,
+      "next_season_r": 0.3943780398585292,
+      "next_season_r_ci": [
+        0.3268119806663534,
+        0.4579332152365895
+      ],
+      "pairs": 639,
+      "team_seasons": 671
+    },
+    {
+      "feature": "early_down_pass",
+      "season_r2": 0.057665650961164716,
+      "chance_r2": 0.029850746268656716,
+      "next_season_r": 0.41990233863592574,
+      "next_season_r_ci": [
+        0.35386434704175757,
+        0.48177444358938676
+      ],
+      "pairs": 639,
+      "team_seasons": 671
+    },
+    {
+      "feature": "adot",
+      "season_r2": 0.15522144991073983,
+      "chance_r2": 0.029850746268656716,
+      "next_season_r": 0.2506339129946024,
+      "next_season_r_ci": [
+        0.17650214647540888,
+        0.32193841216805014
+      ],
+      "pairs": 639,
+      "team_seasons": 671
+    },
+    {
+      "feature": "shotgun",
+      "season_r2": 0.617304957628308,
+      "chance_r2": 0.029850746268656716,
+      "next_season_r": 0.6212829763420249,
+      "next_season_r_ci": [
+        0.5712476140080288,
+        0.666717771054316
+      ],
+      "pairs": 639,
+      "team_seasons": 671
+    },
+    {
+      "feature": "no_huddle",
+      "season_r2": 0.0795744604015417,
+      "chance_r2": 0.029850746268656716,
+      "next_season_r": 0.5053179359262865,
+      "next_season_r_ci": [
+        0.4452042996008144,
+        0.5608971138023039
+      ],
+      "pairs": 639,
+      "team_seasons": 671
+    },
+    {
+      "feature": "pace",
+      "season_r2": 0.08618359619897886,
+      "chance_r2": 0.029850746268656716,
+      "next_season_r": 0.5019606896937476,
+      "next_season_r_ci": [
+        0.4415904219972618,
+        0.5578062618625453
+      ],
+      "pairs": 639,
+      "team_seasons": 671
+    },
+    {
+      "feature": "go_when_model_says_go",
+      "season_r2": 0.4709731892467537,
+      "chance_r2": 0.029850746268656716,
+      "next_season_r": 0.2708133957440229,
+      "next_season_r_ci": [
+        0.1973967804889257,
+        0.34120921832762463
+      ],
+      "pairs": 639,
+      "team_seasons": 671
+    },
+    {
+      "feature": "epa_dropback",
+      "season_r2": 0.029545750643502955,
+      "chance_r2": 0.029850746268656716,
+      "next_season_r": 0.3016236215384193,
+      "next_season_r_ci": [
+        0.22942809856593435,
+        0.37051836339018135
+      ],
+      "pairs": 639,
+      "team_seasons": 671
+    },
+    {
+      "feature": "epa_rush",
+      "season_r2": 0.057641559544374665,
+      "chance_r2": 0.029850746268656716,
+      "next_season_r": 0.13842536482389822,
+      "next_season_r_ci": [
+        0.061522965540619486,
+        0.2136939529283144
+      ],
+      "pairs": 639,
+      "team_seasons": 671
+    },
+    {
+      "feature": "play_action",
+      "season_r2": 0.0503832578026735,
+      "chance_r2": 0.02531645569620253,
+      "next_season_r": 0.33064435547705145,
+      "next_season_r_ci": [
+        0.1659881848466573,
+        0.47736399537332097
+      ],
+      "pairs": 127,
+      "team_seasons": 159
+    },
+    {
+      "feature": "motion",
+      "season_r2": 0.36470769554571003,
+      "chance_r2": 0.02531645569620253,
+      "next_season_r": 0.6576659400663892,
+      "next_season_r_ci": [
+        0.546008199668642,
+        0.7463671353564284
+      ],
+      "pairs": 127,
+      "team_seasons": 159
+    }
+  ],
+  "clusters": [
+    {
+      "id": 0,
+      "size": 233,
+      "z": {
+        "proe": -0.641,
+        "early_down_pass": -0.832,
+        "adot": 0.447,
+        "shotgun": -0.812,
+        "no_huddle": -0.341,
+        "pace": 0.003,
+        "go_when_model_says_go": -0.514,
+        "epa_dropback": -0.381,
+        "epa_rush": -0.116
+      },
+      "raw": {
+        "proe": -0.0364,
+        "early_down_pass": 0.4671,
+        "adot": 8.4902,
+        "shotgun": 0.3376,
+        "no_huddle": 0.0325,
+        "pace": 38.279,
+        "go_when_model_says_go": 0.23,
+        "epa_dropback": -0.0011,
+        "epa_rush": -0.1031,
+        "play_action": 0.2376,
+        "motion": 0.4355
+      }
+    },
+    {
+      "id": 1,
+      "size": 211,
+      "z": {
+        "proe": -0.269,
+        "early_down_pass": -0.05,
+        "adot": -0.703,
+        "shotgun": 0.551,
+        "no_huddle": -0.017,
+        "pace": 0.197,
+        "go_when_model_says_go": 0.918,
+        "epa_dropback": -0.253,
+        "epa_rush": 0.064
+      },
+      "raw": {
+        "proe": -0.0182,
+        "early_down_pass": 0.5135,
+        "adot": 7.2605,
+        "shotgun": 0.6145,
+        "no_huddle": 0.0647,
+        "pace": 38.6303,
+        "go_when_model_says_go": 0.3811,
+        "epa_dropback": 0.0167,
+        "epa_rush": -0.0885,
+        "play_action": 0.2191,
+        "motion": 0.4934
+      }
+    },
+    {
+      "id": 2,
+      "size": 26,
+      "z": {
+        "proe": 0.237,
+        "early_down_pass": 0.328,
+        "adot": 0.08,
+        "shotgun": 1.206,
+        "no_huddle": 3.869,
+        "pace": -2.278,
+        "go_when_model_says_go": 0.007,
+        "epa_dropback": 0.235,
+        "epa_rush": -0.065
+      },
+      "raw": {
+        "proe": 0.0064,
+        "early_down_pass": 0.5359,
+        "adot": 8.098,
+        "shotgun": 0.7476,
+        "no_huddle": 0.4505,
+        "pace": 34.1538,
+        "go_when_model_says_go": 0.285,
+        "epa_dropback": 0.085,
+        "epa_rush": -0.099,
+        "play_action": 0.2079,
+        "motion": 0.3624
+      }
+    },
+    {
+      "id": 3,
+      "size": 201,
+      "z": {
+        "proe": 0.995,
+        "early_down_pass": 0.974,
+        "adot": 0.21,
+        "shotgun": 0.206,
+        "no_huddle": -0.087,
+        "pace": 0.085,
+        "go_when_model_says_go": -0.369,
+        "epa_dropback": 0.677,
+        "epa_rush": 0.076
+      },
+      "raw": {
+        "proe": 0.0434,
+        "early_down_pass": 0.5743,
+        "adot": 8.2371,
+        "shotgun": 0.5445,
+        "no_huddle": 0.0577,
+        "pace": 38.4279,
+        "go_when_model_says_go": 0.2453,
+        "epa_dropback": 0.1466,
+        "epa_rush": -0.0875,
+        "play_action": 0.2298,
+        "motion": 0.5129
+      }
+    }
+  ],
+  "mix_by_season": {
+    "2006": [
+      0.8438,
+      0.0,
+      0.0312,
+      0.125
+    ],
+    "2007": [
+      0.75,
+      0.0,
+      0.0,
+      0.25
+    ],
+    "2008": [
+      0.6875,
+      0.0,
+      0.0,
+      0.3125
+    ],
+    "2009": [
+      0.6875,
+      0.0312,
+      0.0,
+      0.2812
+    ],
+    "2010": [
+      0.625,
+      0.0938,
+      0.0,
+      0.2812
+    ],
+    "2011": [
+      0.5625,
+      0.0312,
+      0.0,
+      0.4062
+    ],
+    "2012": [
+      0.4375,
+      0.0,
+      0.0312,
+      0.5312
+    ],
+    "2013": [
+      0.3438,
+      0.0625,
+      0.125,
+      0.4688
+    ],
+    "2014": [
+      0.375,
+      0.1562,
+      0.125,
+      0.3438
+    ],
+    "2015": [
+      0.25,
+      0.125,
+      0.125,
+      0.5
+    ],
+    "2016": [
+      0.2812,
+      0.125,
+      0.0625,
+      0.5312
+    ],
+    "2017": [
+      0.4688,
+      0.1562,
+      0.0625,
+      0.3125
+    ],
+    "2018": [
+      0.2188,
+      0.4375,
+      0.0,
+      0.3438
+    ],
+    "2019": [
+      0.1562,
+      0.5625,
+      0.0312,
+      0.25
+    ],
+    "2020": [
+      0.1562,
+      0.5312,
+      0.0312,
+      0.2812
+    ],
+    "2021": [
+      0.125,
+      0.625,
+      0.0625,
+      0.1875
+    ],
+    "2022": [
+      0.1875,
+      0.5625,
+      0.0625,
+      0.1875
+    ],
+    "2023": [
+      0.0,
+      0.7812,
+      0.0,
+      0.2188
+    ],
+    "2024": [
+      0.0312,
+      0.7812,
+      0.0312,
+      0.1562
+    ],
+    "2025": [
+      0.0312,
+      0.7812,
+      0.0312,
+      0.1562
+    ],
+    "2026": [
+      0.0645,
+      0.7742,
+      0.0,
+      0.1613
+    ]
+  }
+}

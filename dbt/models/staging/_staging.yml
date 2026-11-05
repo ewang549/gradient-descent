@@ -107,3 +107,15 @@ models:
         data_tests: [unique, not_null]
       - name: franchise_id
         data_tests: [not_null]
+
+  - name: stg_ftn_charting
+    description: FTN hand charting (play-action, motion, RPO...), one row per play, 2022+.
+    columns:
+      - name: play_uid
+        data_tests: [unique, not_null]
+
+  - name: stg_participation
+    description: Offensive personnel and formation, one row per play, 2016-2025.
+    columns:
+      - name: play_uid
+        data_tests: [unique, not_null]

@@ -95,6 +95,15 @@ class FakeNflverse:
         self.roster_calls.append(list(seasons))
         return pl.DataFrame({"season": seasons, "team": ["A"] * len(seasons)})
 
+    FTN_FIRST_SEASON = 2026
+    PARTICIPATION_SEASONS = (2016, 2025)
+
+    def ftn_charting(self, seasons):
+        return pl.DataFrame({"season": seasons, "nflverse_play_id": [1] * len(seasons)})
+
+    def participation(self, seasons):
+        return pl.DataFrame({"nflverse_game_id": [f"{s}_01_A_B" for s in seasons], "play_id": [1] * len(seasons)})
+
 
 def _games(con):
     return sorted(g for (g,) in con.execute("select distinct game_id from raw.pbp").fetchall())
@@ -119,6 +128,10 @@ def test_run_is_incremental():
     assert third.pbp_games == 1 and third.rows["pbp"] == 3
     assert _games(con) == ["2025_01_A_B", "2026_01_A_B", "2026_02_C_D"]
     assert con.execute("select count(*) from raw.rosters").fetchone()[0] == 2  # replaced, not duplicated
+    # supplements only for the seasons they exist; past participation is never re-pulled
+    assert con.execute("select list(season) from raw.ftn_charting").fetchone()[0] == [2026]
+    assert con.execute("select count(*) from raw.participation").fetchone()[0] == 1
+    assert third.rows["participation"] == 0
 
 
 def test_plan_skips_games_known_to_be_unavailable_unless_refreshed():

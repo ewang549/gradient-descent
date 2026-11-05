@@ -160,6 +160,14 @@ select
     s.score_differential_post,
     s.epa,
     s.is_success,
+    s.is_qb_dropback,
+    s.is_qb_scramble,
+    s.is_sack,
+    s.is_pass_attempt,
+    s.air_yards,
+    s.cpoe,
+    s.passer_player_id,
+    s.passer_player_name,
     s.drive_number,
     s.drive_result,
     -- nflverse model outputs, kept as Phase 2 benchmarks
@@ -167,6 +175,7 @@ select
     s.nflverse_wp,
     s.nflverse_vegas_wp,
     s.nflverse_wpa,
+    s.nflverse_xpass,  -- nflverse's pass-probability model (fit on every season)
 
     -- 4. game outcome: the WP label, never a feature ----------------------------------------
     s.posteam_final_margin,

@@ -16,6 +16,7 @@ dependencies = [
     "pyreadr>=0.5.9",
     "scikit-learn>=1.9.1",
     "shap>=0.54.1",
+    "umap-learn>=0.5.12",
     "xgboost>=3.4.1",
 ]
 

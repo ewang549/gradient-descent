@@ -13,6 +13,14 @@ sources:
         description: Every game 1999-present including upcoming ones. Replaced in full each run.
       - name: rosters
         description: Season-level roster snapshots. The current season is re-pulled each run.
+      - name: ftn_charting
+        description: >
+          FTN Data's hand charting (2022+): play-action, motion, RPO, screens, box counts. One row
+          per play. License CC-BY-SA 4.0: credit "FTN Data via nflverse" wherever it is shown.
+      - name: participation
+        description: >
+          Per-play personnel and formation (2016-2025; the NFL no longer publishes it for the
+          current season). One row per play.
       - name: teams
         description: Team abbreviations, franchise ids, colors and logos.
       - name: pbp_unavailable_games

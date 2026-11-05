@@ -8,8 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "predev": "node scripts/copy-ort.mjs",
-    "prebuild": "node scripts/copy-ort.mjs"
+    "predev": "node scripts/copy-ort.mjs && node scripts/copy-cards.mjs",
+    "prebuild": "node scripts/copy-ort.mjs && node scripts/copy-cards.mjs",
+    "cards": "tsx --tsconfig tsconfig.json scripts/render-cards.tsx"
   },
   "dependencies": {
     "next": "16.4.5",
@@ -26,6 +27,7 @@
     "eslint-config-next": "16.4.5",
     "onnxruntime-node": "^1.31.1",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5",
     "vitest": "^5.1.0"
   }

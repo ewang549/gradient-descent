@@ -3,7 +3,7 @@
 NFL_DUCKDB_PATH ?= $(CURDIR)/data/nfl.duckdb
 export NFL_DUCKDB_PATH
 
-.PHONY: setup ingest dbt check test train score findings export benchmark refresh
+.PHONY: setup ingest dbt check test train score findings export benchmark refresh gate weekly
 
 setup:  ## install Python deps and dbt packages
 	uv sync
@@ -38,3 +38,10 @@ benchmark:  ## compare the engine with nfl4th (downloads its public release file
 	uv run python -m models.nfl4th_benchmark
 
 refresh: ingest dbt score export check  ## the weekly pipeline (no retraining)
+
+gate:  ## publish gate: engine sanity situations pass and every scheduled game of the latest week is in (exit 1 = don't publish)
+	uv run python -m models.weekly --check
+
+weekly: gate  ## weekly content: exports/weekly JSON for the season, then the latest week's cards + draft posts
+	uv run python -m models.weekly
+	cd web && npm run cards

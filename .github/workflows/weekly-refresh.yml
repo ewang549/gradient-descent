@@ -6,18 +6,30 @@ on:
   workflow_dispatch: {}    # adds a "Run workflow" button for manual runs
 
 permissions:
-  contents: read
+  contents: write  # commits the new exports back to the repo
+
+concurrency:
+  group: weekly-refresh
+  cancel-in-progress: false
 
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
+    env:
+      NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}  # links in the draft posts and on the cards
     steps:
       - uses: actions/checkout@v7
 
       - uses: astral-sh/setup-uv@v10
         with:
           enable-cache: true
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
 
       # Restore last week's warehouse so the ingest only fetches new games. Correctness never
       # depends on this cache: on a miss (first run, or GitHub evicted it) the ingest simply
@@ -31,4 +43,48 @@ jobs:
 
       - run: uv sync --frozen
       - run: cd dbt && uv run dbt deps
+      - run: cd web && npm ci
+
+      # Fails (and stops the job before anything is committed) if the engine's sanity situations
+      # fail: models.score refuses to write scores.
       - run: make refresh
+
+      # The publish gate runs first inside `make weekly`: sanity situations again, and every
+      # scheduled game of the latest week must be final with play-by-play and graded 4th downs.
+      # Then: weekly JSON, the latest week's cards and draft posts (posts that break the rules fail here).
+      - run: make weekly
+
+      # Commit as the repo owner (GitHub noreply address). Vercel only deploys commits whose author
+      # owns the Vercel account (Hobby) or is on the team (Pro), and this push IS the deploy trigger.
+      - name: Commit exports
+        id: commit
+        run: |
+          git config user.name "${{ github.repository_owner }}"
+          git config user.email "${{ github.repository_owner_id }}+${{ github.repository_owner }}@users.noreply.github.com"
+          git add exports
+          if git diff --cached --quiet; then
+            echo "No new exports; nothing to publish."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          read SEASON WEEK < <(python3 -c "import json; m=json.load(open('exports/meta.json'))['data_through']; print(m['season'], m['week'])")
+          git commit -m "data: weekly refresh through ${SEASON} week ${WEEK}" -m "Automated by the weekly-refresh workflow."
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "card=cards/${SEASON}/week_$(printf %02d "$WEEK")/worst-call.png" >> "$GITHUB_OUTPUT"
+
+      # Vercel's GitHub integration deploys the push above. Wait until the new week's card is live,
+      # so a failed or blocked deploy fails this run (and GitHub emails you) instead of passing quietly.
+      - name: Wait for the Vercel deploy
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          CARD: ${{ steps.commit.outputs.card }}
+        run: |
+          if [ -z "$SITE_URL" ]; then echo "::error::Set the SITE_URL repository variable (e.g. https://your-app.vercel.app)"; exit 1; fi
+          for i in $(seq 1 40); do
+            if curl -fsS -o /dev/null "$SITE_URL/$CARD"; then echo "Live: $SITE_URL/$CARD"; exit 0; fi
+            sleep 15
+          done
+          echo "::error::$SITE_URL/$CARD not live after 10 minutes. Check the deployment in the Vercel dashboard."
+          exit 1

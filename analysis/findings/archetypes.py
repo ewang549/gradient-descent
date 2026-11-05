@@ -1,4 +1,10 @@
-"""Finding 1: offense archetypes. `python -m analysis.findings.archetypes`
+"""SUPERSEDED by offense_style.py. Kept as the record of the first pass and as the home of the shared
+feature definitions (STYLE, LABELS, profiles) that offense_style.py imports. It no longer writes
+exports: the discrete clusters didn't survive robustness checks (silhouette barely above a null,
+late-season refit ARI 0.20, clusters 0/1 mostly early vs late era), so nothing on the site uses them.
+`python -m analysis.findings.archetypes` still prints the original checks.
+
+Finding 1 (first pass): offense archetypes.
 
 One row per team-season (regular season, 2006 onward; the current season to date), profiled on how
 an offense plays, then clustered. The question is whether there are a few recognizable kinds of
@@ -303,8 +309,7 @@ def run() -> dict:
                       "raw": raw_means.loc[c].round(4).to_dict()} for c in range(k)],
         "mix_by_season": {int(s): row.round(4).tolist() for s, row in mix.iterrows()},
     }
-    common.write(SLUG, "result.json", result)
-    common.write(SLUG, "team_seasons.json", df.round(4).to_dict(orient="records"))
+    # superseded: print-only, so the discrete-cluster version never reaches exports/ or the site
     return result
 
 

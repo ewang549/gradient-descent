@@ -10,7 +10,8 @@
     "test": "vitest run",
     "predev": "node scripts/copy-ort.mjs && node scripts/copy-exports.mjs",
     "prebuild": "node scripts/copy-ort.mjs && node scripts/copy-exports.mjs",
-    "cards": "tsx --tsconfig tsconfig.json scripts/render-cards.tsx"
+    "cards": "tsx --tsconfig tsconfig.json scripts/render-cards.tsx",
+    "findings": "tsx --tsconfig tsconfig.json scripts/render-findings.tsx"
   },
   "dependencies": {
     "next": "16.4.5",

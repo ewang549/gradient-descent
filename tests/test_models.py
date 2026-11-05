@@ -90,12 +90,55 @@ def test_engine_flips_the_state_when_the_opponent_gets_the_ball():
     assert row["half_seconds_remaining"] == 1492 and row["game_seconds_remaining"] == 1492
 
 
-def test_clock_never_runs_past_the_end_of_the_half():
+def test_clock_stops_at_the_end_of_the_half():
     from models import decision_engine as engine
 
     d = pd.DataFrame({"half_seconds_remaining": [7, 600], "game_seconds_remaining": [1807, 600]})
     clock = engine._clock(d, np.array([14, 14]))
-    assert list(clock["half_seconds_remaining"]) == [1, 586] and list(clock["game_seconds_remaining"]) == [1801, 586]
+    assert list(clock["half_seconds_remaining"]) == [0, 586] and list(clock["game_seconds_remaining"]) == [1800, 586]
+
+
+def test_kneel_out_rule():
+    from models import decision_engine as engine
+
+    base = {"down": 1, "score_differential": 3, "game_seconds_remaining": 100, "defteam_timeouts_remaining": 0}
+    s = pd.DataFrame([base, {**base, "defteam_timeouts_remaining": 1}, {**base, "game_seconds_remaining": 70,
+                      "defteam_timeouts_remaining": 1}, {**base, "score_differential": 0}, {**base, "down": 4}])
+    assert list(engine.kneel_out(s)) == [True, False, True, False, False]
+
+
+@needs_wp_model
+def test_clock_expiry_resolves_to_halftime_or_final():
+    from models import decision_engine as engine
+
+    model = joblib.load(wp.ARTIFACT)
+    common = {"down": 1, "ydstogo": 10, "yardline_100": 30, "half_seconds_remaining": 0, "posteam_timeouts_remaining": 2,
+              "defteam_timeouts_remaining": 2, "home": 0, "posteam_spread_line": 0.0}
+    s = pd.DataFrame([
+        {**common, "score_differential": 0, "game_seconds_remaining": 1800, "is_receiving_2h_kickoff": 1},
+        {**common, "score_differential": 0, "game_seconds_remaining": 1800, "is_receiving_2h_kickoff": 0},
+        {**common, "score_differential": 3, "game_seconds_remaining": 0, "is_receiving_2h_kickoff": 0},
+        {**common, "score_differential": -3, "game_seconds_remaining": 0, "is_receiving_2h_kickoff": 0},
+        {**common, "score_differential": 0, "game_seconds_remaining": 0, "is_receiving_2h_kickoff": 0},
+    ])
+    p = engine.clock_expiry_wp(s, np.full(len(s), 70.0), model)
+    assert p[0] > 0.5 > p[1] and abs(p[0] + p[1] - 1) < 1e-6  # same halftime game, seen from each side
+    assert list(p[2:]) == [1.0, 0.0, 0.5]
+
+
+@pytest.mark.skipif(not __import__("models.field_goal").field_goal.ARTIFACT.exists(), reason="run `make train` first")
+def test_long_fg_correction_only_lowers_and_tapers_to_zero():
+    from models import field_goal
+
+    bundle = joblib.load(field_goal.ARTIFACT)
+    kicks = pd.DataFrame({"kick_distance": range(18, 76), "is_indoors": 0, "is_turf": 0, "wind_mph": 8, "temp_f": 59,
+                          "season": 2024})
+    p = field_goal.predict(bundle, kicks)
+    raw = bundle["model"].predict_proba(kicks[bundle["columns"]])[:, 1]
+    assert np.all(np.diff(p) <= 1e-12)                     # never easier from farther out
+    assert np.all(p <= raw + 1e-12)                        # the correction only pulls down
+    assert np.allclose(p[:26], raw[:26], atol=1e-4)        # ~untouched where everyone kicks (18-43 yds)
+    assert p[kicks["kick_distance"] == 69][0] == 0.0       # one past the longest make in the data
 
 
 @needs_warehouse

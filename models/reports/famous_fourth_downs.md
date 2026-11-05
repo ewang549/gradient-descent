@@ -8,9 +8,9 @@
 | **The Philly Special**<br>Super Bowl LII | Q2 00:38, up 3, 4th & goal at NE 1 (PHI) | Go | Go | 61.5% / 48.7% / 52.9% | 8.6 pts | 0.0 pts | agrees |
 | **Eagles' 4th & 1 at their own 45**<br>Super Bowl LII | Q4 05:39, down 1, 4th & 1 at PHI 45 (PHI) | Go | Go | 43.0% / 33.7% / 21.2% | 9.3 pts | 0.0 pts | agrees |
 | **LaFleur kicks a FG down 8, 2:09 left**<br>2020 NFC Championship | Q4 02:09, down 8, 4th & goal at TB 8 (GB) | FG | Go | 11.6% / 1.9% / 6.5% | 5.0 pts | 5.0 pts | disagrees |
-| **Ravens' 4th & 1 to ice the Chiefs**<br>Chiefs @ Ravens, 2021 wk 2 | Q4 01:05, up 1, 4th & 1 at BAL 43 (BAL) | Go | Go | 72.9% / 59.5% / 27.3% | 13.4 pts | 0.0 pts | agrees |
+| **Ravens' 4th & 1 to ice the Chiefs**<br>Chiefs @ Ravens, 2021 wk 2 | Q4 01:05, up 1, 4th & 1 at BAL 43 (BAL) | Go | Go | 87.4% / 59.5% / 27.3% | 27.9 pts | 0.0 pts | agrees |
 | **Ravens go for it at the 2, tied**<br>Bills @ Ravens, 2022 wk 4 | Q4 04:15, tied, 4th & goal at BUF 2 (BAL) | Go | Go | 67.0% / 50.4% / 66.0% | 1.0 pts | 0.0 pts | agrees |
 | **Lions pass up a 46-yd FG, up 14**<br>2023 NFC Championship | Q3 07:03, up 14, 4th & 2 at SF 28 (DET) | Go | FG | 80.5% / 78.6% / 82.3% | 1.7 pts | 1.7 pts | disagrees |
-| **Allen's 4th & 1 sneak at the KC 41**<br>2024 AFC Championship | Q4 13:01, up 1, 4th & 1 at KC 41 (BUF) | Go | Go | 63.6% / 48.7% / 53.2% | 10.4 pts | 0.0 pts | agrees |
+| **Allen's 4th & 1 sneak at the KC 41**<br>2024 AFC Championship | Q4 13:01, up 1, 4th & 1 at KC 41 (BUF) | Go | Go | 63.6% / 48.7% / 52.0% | 11.6 pts | 0.0 pts | agrees |
 
 WP = this project's win probability for the team with the ball. Model's edge = best option minus second best. Fakes are graded as ordinary go attempts (the surprise factor isn't modeled).

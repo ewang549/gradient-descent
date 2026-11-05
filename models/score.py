@@ -27,6 +27,19 @@ SANITY = [
                                               "game_seconds_remaining": 2400, "half_seconds_remaining": 600}, "field_goal"),
     ("4th & 2 at opp 30, down 4, 1:30 left", {"ydstogo": 2, "yardline_100": 30, "qtr": 4, "score_differential": -4,
                                               "game_seconds_remaining": 90, "half_seconds_remaining": 90}, "go"),
+    # the clock-expiry rule: a conversion with 3 seconds left in the half can't be followed by a snap
+    ("4th & 2 at opp 30, tied, 0:03 before half", {"ydstogo": 2, "yardline_100": 30, "qtr": 2,
+                                                   "game_seconds_remaining": 1803, "half_seconds_remaining": 3},
+     "field_goal"),
+    # the kneel-out rule: convert and the game is over; punt and the opponent gets a last drive
+    ("4th & 1 at own 45, up 3, 1:05 left, opp 0 TOs", {"ydstogo": 1, "yardline_100": 55, "qtr": 4,
+                                                       "score_differential": 3, "game_seconds_remaining": 65,
+                                                       "half_seconds_remaining": 65, "defteam_timeouts_remaining": 0},
+     "go"),
+    # the kneel-out rule from the other side: punting down 1 with 0:40 left hands the leader a kneel-down
+    ("4th & 10 at own 30, down 1, 0:40 left", {"ydstogo": 10, "yardline_100": 70, "qtr": 4, "score_differential": -1,
+                                               "game_seconds_remaining": 40, "half_seconds_remaining": 40,
+                                               "posteam_timeouts_remaining": 1}, "go"),
 ]
 SANITY_BASE = {"play_uid": "sanity", "season": 2024, "week": 5, "qtr": 3, "decision": None, "is_posteam_home": True,
                "is_neutral_site": False, "score_differential": 0, "game_seconds_remaining": 1200,

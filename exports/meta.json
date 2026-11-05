@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-04T23:29:01+00:00",
+  "generated_at": "2026-11-05T00:46:52+00:00",
   "data_through": {
     "season": 2026,
     "week": 8
@@ -30,7 +30,7 @@
       "test_brier": 0.22211779791618635
     },
     "field_goal": {
-      "test_brier": 0.11807295415409683
+      "test_brier": 0.11834525566882748
     },
     "punt": {
       "test_mae_yards": 7.248379675952575

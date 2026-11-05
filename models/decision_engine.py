@@ -6,6 +6,12 @@
 
 Every "after" state goes through the same WP model from the side of whoever has the ball. When the
 opponent has it, the state is flipped (score, spread, timeouts, home) and WP = 1 - their WP.
+Two football rules override the model, both sharp edges a tree model can't learn from the few plays
+where they happen (both found by benchmarking against nfl4th, models/reports/nfl4th_benchmark.md):
+  - kneel_out: a team that leads with a fresh set of downs, late, against an opponent without
+    enough timeouts, kneels out the clock and wins.
+  - clock expiry: if an outcome uses up the rest of the half, there is no next snap. At the end of
+    the 2nd quarter the state becomes the 2nd-half kickoff; at the end of the 4th the game is over.
 Constants such as yards gained on a conversion, clock used per outcome, and drive starts after a
 kickoff come from dbt lookup tables built from the data, not hand-typed numbers.
 """
@@ -63,8 +69,8 @@ def _home(d: pd.DataFrame) -> np.ndarray:
 
 
 def _clock(d: pd.DataFrame, runoff: np.ndarray) -> dict:
-    """Run the clock forward, stopping one second short of the end of the half."""
-    half_left = np.maximum(d["half_seconds_remaining"].to_numpy() - runoff, 1)
+    """Run the clock forward. A state that reaches 0 is resolved by clock_expiry_wp()."""
+    half_left = np.maximum(d["half_seconds_remaining"].to_numpy() - runoff, 0)
     used = d["half_seconds_remaining"].to_numpy() - half_left
     return {"half_seconds_remaining": half_left, "game_seconds_remaining": d["game_seconds_remaining"].to_numpy() - used}
 
@@ -115,6 +121,44 @@ def opponent_gets_ball(d: pd.DataFrame, *, offense_points: np.ndarray, opp_yardl
     return state
 
 
+def kneel_out(state: pd.DataFrame) -> np.ndarray:
+    """True where the team with the ball (1st down, leading) can kneel out the game: three kneels
+    burn ~40 seconds each and every defensive timeout saves one of them. Same rule as nfl4th."""
+    lead, gsr = state["score_differential"].to_numpy() > 0, state["game_seconds_remaining"].to_numpy()
+    tos = state["defteam_timeouts_remaining"].to_numpy()
+    fresh_downs = state["down"].to_numpy() == 1
+    return fresh_downs & lead & (((gsr < 120) & (tos == 0)) | ((gsr < 80) & (tos == 1)) | ((gsr < 40) & (tos == 2)))
+
+
+def clock_expiry_wp(state: pd.DataFrame, kickoff_start: np.ndarray, wp_model) -> np.ndarray:
+    """WP (side with the ball in `state`) for states where the half ran out before the next snap.
+    End of the 2nd quarter: the 2nd-half kickoff, timeouts reset to 3, from the receiving team's
+    side. End of the 4th: final score (a tie goes to overtime, scored as a coin flip)."""
+    score = state["score_differential"].to_numpy()
+    receives = state["is_receiving_2h_kickoff"].to_numpy() == 1
+    flip = np.where(receives, 1, -1)
+    second_half = pd.DataFrame({
+        "score_differential": score * flip, "game_seconds_remaining": 1800, "half_seconds_remaining": 1800,
+        "down": 1, "ydstogo": 10, "yardline_100": kickoff_start,
+        "posteam_timeouts_remaining": 3, "defteam_timeouts_remaining": 3,
+        "home": state["home"].to_numpy() * flip, "posteam_spread_line": state["posteam_spread_line"].to_numpy() * flip,
+        "is_receiving_2h_kickoff": 0,
+    })
+    p = wp.predict(wp_model, wp.derive_features(second_half))
+    halftime = np.where(receives, p, 1 - p)
+    final = np.where(score > 0, 1.0, np.where(score < 0, 0.0, 0.5))
+    return np.where(state["game_seconds_remaining"].to_numpy() > 0, halftime, final)
+
+
+def apply_football_rules(stacked: pd.DataFrame, probs: np.ndarray, wp_model) -> np.ndarray:
+    """The two overrides from the module docstring. stacked needs a kickoff_start column."""
+    probs = np.where(kneel_out(stacked), 1.0, probs)
+    expired = stacked["half_seconds_remaining"].to_numpy() <= 0
+    if expired.any():
+        probs[expired] = clock_expiry_wp(stacked[expired], stacked["kickoff_start"].to_numpy()[expired], wp_model)
+    return probs
+
+
 # ----------------------------------------------------------------------------------- the engine
 
 
@@ -144,8 +188,9 @@ def evaluate_options(d: pd.DataFrame, models: dict, lookups: dict) -> pd.DataFra
                                       runoff=_runoff(d, lookups, "fg_missed")),
     }
     # one batched WP call for every state of every play
-    stacked = pd.concat(states.values(), keys=states.keys())
-    probs = pd.Series(wp.predict(models["wp"], wp.derive_features(stacked)), index=stacked.index)
+    stacked = pd.concat([s.assign(kickoff_start=kickoff_start) for s in states.values()], keys=states.keys())
+    raw = wp.predict(models["wp"], wp.derive_features(stacked))
+    probs = pd.Series(apply_football_rules(stacked, raw, models["wp"]), index=stacked.index)
     p = {name: probs.loc[name].to_numpy() for name in states}
 
     p_convert = conversion.predict(models["conversion"], d.assign(is_turf=(d["surface_type"] == "turf").astype(int),

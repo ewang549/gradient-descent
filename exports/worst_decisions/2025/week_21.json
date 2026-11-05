@@ -141,34 +141,6 @@
       "recommendation_margin": 0.0029,
       "play_description": "(:58) 5-J.Myers 27 yard field goal is GOOD, Center-41-C.Stoll, Holder-4-M.Dickson.",
       "situation": "4th & goal at LA 9"
-    },
-    {
-      "season": 2025,
-      "week": 21,
-      "game_id": "2025_21_LA_SEA",
-      "play_uid": "2025_21_LA_SEA_3362",
-      "posteam": "SEA",
-      "defteam": "LA",
-      "coach": "Mike Macdonald",
-      "qtr": 4,
-      "clock": "12:24",
-      "posteam_score": 31,
-      "defteam_score": 27,
-      "ydstogo": 10,
-      "yardline_label": "LA 44",
-      "decision": "punt",
-      "recommendation": "field_goal",
-      "wp_now": 0.7068,
-      "wp_go": 0.6922,
-      "wp_punt": 0.6985,
-      "wp_fg": 0.7003,
-      "p_convert": 0.2753,
-      "p_fg_make": 0.5215,
-      "fg_distance": null,
-      "wp_lost": 0.0017,
-      "recommendation_margin": 0.0017,
-      "play_description": "(12:24) 4-M.Dickson punts 34 yards to LA 10, Center-41-C.Stoll, fair catch by 23-K.Williams.",
-      "situation": "4th & 10 at LA 44"
     }
   ]
 }

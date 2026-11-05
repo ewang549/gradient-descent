@@ -1,0 +1,42 @@
+{
+  "file": "wp.onnx",
+  "input": {
+    "name": "features",
+    "dtype": "float32",
+    "shape": [
+      null,
+      13
+    ]
+  },
+  "output": "probabilities[:, 1] = P(the team with the ball wins); regulation only",
+  "feature_order": [
+    "score_differential",
+    "score_diff_per_sqrt_sec",
+    "game_seconds_remaining",
+    "half_seconds_remaining",
+    "down",
+    "ydstogo",
+    "yardline_100",
+    "posteam_timeouts_remaining",
+    "defteam_timeouts_remaining",
+    "home",
+    "posteam_spread_line",
+    "spread_time",
+    "is_receiving_2h_kickoff"
+  ],
+  "derived_features": {
+    "score_diff_per_sqrt_sec": "score_differential / sqrt(game_seconds_remaining + 1)",
+    "spread_time": "posteam_spread_line * exp(-4 * (3600 - game_seconds_remaining) / 3600)"
+  },
+  "conventions": {
+    "yardline_100": "yards from the opponent's end zone (1-99)",
+    "posteam_spread_line": "closing spread from the offense's view, + = offense favored",
+    "home": "+1 home, 0 neutral site, -1 away"
+  },
+  "trained_on": {
+    "train": "2006-2022",
+    "val": 2023,
+    "test": 2024
+  },
+  "verified_max_abs_diff_vs_xgboost": 2.7567148208618164e-07
+}

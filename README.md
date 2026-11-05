@@ -179,6 +179,19 @@ computes `wp_lost`.
 `worst_decisions/{season}/week_NN.json` (+ `latest.json`), and `games/{season}/{game_id}.json`
 (columnar home-team WP series + key plays + 4th-down grades), for 2025 and 2026 to date.
 
+### Benchmark against nfl4th
+
+`make benchmark` compares every 2023-2025 call with Ben Baldwin's nfl4th and attributes the gap
+component by component: `models/reports/nfl4th_benchmark.md`. This engine says go a bit more
+often (46% vs 40%), driven by its conversion model, which real 2023-2025 conversion rates support.
+
+## Phase 3a: the 4th-down calculator (`web/`)
+
+Next.js + TypeScript, fully client-side: win probability via `wp.onnx` in onnxruntime-web, and the
+rest of the engine ported to TypeScript. `make export-web` writes the browser models and a parity
+fixture; `cd web && npm test` checks the TS engine against the Python one on 600 real 4th downs
+(max difference 2.4e-7). See `web/README.md`.
+
 ## Repo layout
 
 ```
@@ -189,7 +202,7 @@ models/      Phase 2: WP, conversion, FG, punt models, decision engine, findings
   artifacts/   saved models (joblib, wp.onnx) + punt lookup + ONNX input contract
   reports/     evaluation plots (dark theme) + metrics JSON + findings
 exports/     precomputed JSON for the web app
-web/         Phase 3: Next.js site
+web/         Phase 3: Next.js site (4th-down calculator)
 tests/       pytest (ingest logic, no network)
 ```
 

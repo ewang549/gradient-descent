@@ -15,7 +15,7 @@ import type { PredictWP } from "@/lib/engine/types";
 import { onnxPredictor } from "@/lib/engine/wpOnnx";
 import { allWeeks, loadWeek } from "@/lib/weekly/data";
 import { calcPath } from "@/lib/weekly/format";
-import { checkPost, gutsiestPost, leaderboardPost, top3Post, worstCallPost, worstCallThread } from "@/lib/weekly/posts";
+import { autoPosts, checkPost, gutsiestPost, leaderboardPost, top3Post, worstCallPost, worstCallThread } from "@/lib/weekly/posts";
 import type { Call, WeekExport } from "@/lib/weekly/types";
 
 const MODELS_DIR = path.join(__dirname, "..", "public", "models");
@@ -50,6 +50,15 @@ describe.each(weeks.map((w) => [`${w.season} week ${w.week}`, w] as const))("%s"
     const posts = [worstCallPost(w), top3Post(w), leaderboardPost(w), gutsiestPost(w)]
       .filter((p) => p !== null).map((p) => p.text);
     for (const text of [...posts, ...worstCallThread(w)]) expect(checkPost(text), text).toEqual([]);
+  });
+
+  it("the auto-posts (models/x_post.py) have no links, mentions or bare domains and pass the post rules", () => {
+    const auto = autoPosts(w, ["worst-call.png", "leaderboard.png"]);
+    expect(auto.map((p) => p.card)).toEqual(w.leaderboard ? ["worst-call.png", "leaderboard.png"] : ["worst-call.png"]);
+    for (const { text } of auto) {
+      expect(checkPost(text), text).toEqual([]);
+      expect(text).not.toMatch(/https?:\/\/|www\.|@\w|\b[a-z0-9-]+\.[a-z]{2,}\b/i);
+    }
   });
 });
 

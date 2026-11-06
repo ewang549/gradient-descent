@@ -6,7 +6,8 @@
  *   npm run cards -- 2026 all          every exported week of 2026 (the backfill)
  *   npm run cards -- 2026 8 --out DIR  write somewhere else (samples)
  *
- * Writes worst-call.png, top-3.png, leaderboard.png (from week 4), gutsiest.png and posts.md.
+ * Writes worst-call.png, top-3.png, leaderboard.png (from week 4), gutsiest.png, posts.md (drafts) and
+ * posts.json (the link-free posts the weekly Action sends to X, see models/x_post.py).
  * Fails (exit 1) without writing that week's posts.md if any draft breaks the post rules.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -15,7 +16,7 @@ import type { ReactElement } from "react";
 import { GutsiestCard, LeaderboardCard, Top3Card, WorstCallCard } from "@/lib/cards/cards";
 import { renderPng } from "@/lib/cards/render";
 import { EXPORTS_DIR, latestWeek, loadWeek, seasonIndex } from "@/lib/weekly/data";
-import { postsMarkdown } from "@/lib/weekly/posts";
+import { autoPosts, postsMarkdown } from "@/lib/weekly/posts";
 import type { WeekExport } from "@/lib/weekly/types";
 
 function cardsFor(w: WeekExport): [string, ReactElement][] {
@@ -37,7 +38,9 @@ async function renderWeek(season: number, week: number, outRoot: string) {
   const md = postsMarkdown(w, cards.map(([name]) => name)); // throws before anything is written if a post breaks the rules
   for (const [name, el] of cards) writeFileSync(path.join(dir, name), await renderPng(el));
   writeFileSync(path.join(dir, "posts.md"), md);
-  console.log(`${season} week ${week}: ${cards.map(([n]) => n).join(", ")}, posts.md -> ${path.relative(process.cwd(), dir)}`);
+  const auto = { season, week, posts: autoPosts(w, cards.map(([name]) => name)) };
+  writeFileSync(path.join(dir, "posts.json"), JSON.stringify(auto, null, 2) + "\n");
+  console.log(`${season} week ${week}: ${cards.map(([n]) => n).join(", ")}, posts.md, posts.json -> ${path.relative(process.cwd(), dir)}`);
 }
 
 async function main() {

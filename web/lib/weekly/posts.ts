@@ -160,6 +160,19 @@ export function worstCallThread(w: WeekExport): string[] {
   ];
 }
 
+// ----------------------------------------------------------------------------- auto-posts
+
+/** Drop every link: X charges more for a post that has one, and the card carries the story. */
+export const stripLinks = (text: string) => text.replace(/\s*https?:\/\/\S+/g, "").trim();
+
+/** What the weekly Action posts to X (models/x_post.py, which re-checks its own rules): the worst-call card,
+ *  then the leaderboard card as a reply. Same templates as posts.md, without links. */
+export function autoPosts(w: WeekExport, cards: string[]): Post[] {
+  return [worstCallPost(w), leaderboardPost(w)]
+    .filter((p): p is Post => p !== null && cards.includes(p.card))
+    .map((p) => ({ card: p.card, text: stripLinks(p.text) }));
+}
+
 // ----------------------------------------------------------------------------- posts.md
 
 export function postsMarkdown(w: WeekExport, cards: string[]): string {

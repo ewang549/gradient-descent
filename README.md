@@ -50,7 +50,9 @@ make test      # pytest (ingest logic, feature parity, model + engine behaviour)
 `make refresh` runs ingest → dbt → score → export → check in about 30 seconds. It never retrains.
 That's what the GitHub Action runs every Tuesday morning. The Action also runs `make grade`, which
 grades finding 2's timestamped 2026 predictions (exports/findings/luck-skill) once the regular season
-is over and draws the results card; before that it does nothing.
+is over and draws the results card; before that it does nothing. Once the deploy is live it posts the
+week's worst-call card to X with the leaderboard card as a reply (`models/x_post.py`; a dry run into
+the run summary until the `X_POST_ENABLED` secret is `true`, see [docs/x_setup.md](docs/x_setup.md)).
 
 ## How it fits together
 

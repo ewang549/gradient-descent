@@ -85,6 +85,8 @@ jobs:
           git commit -m "data: weekly refresh through ${SEASON} week ${WEEK}" -m "Automated by the weekly-refresh workflow."
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "season=${SEASON}" >> "$GITHUB_OUTPUT"
+          echo "week=${WEEK}" >> "$GITHUB_OUTPUT"
           echo "card=cards/${SEASON}/week_$(printf %02d "$WEEK")/worst-call.png" >> "$GITHUB_OUTPUT"
 
       # Vercel's GitHub integration deploys the push above. Wait until the new week's card is live,
@@ -101,3 +103,29 @@ jobs:
           done
           echo "::error::$SITE_URL/$CARD not live after 10 minutes. Check the deployment in the Vercel dashboard."
           exit 1
+
+      # Only reached when the deploy above went live (any failed step stops the job first, including the
+      # publish gate inside `make weekly`). Posts the worst-call card, then the leaderboard card as a reply.
+      # DRY RUN unless the X_POST_ENABLED secret is "true": then it only writes the posts to the run summary.
+      # The rules (no links or @mentions, max 1 hashtag, max 3 posts, gate re-checked, never the same week
+      # twice) live in models/x_post.py. Setup: docs/x_setup.md.
+      - name: Post to X
+        id: post
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          X_POST_ENABLED: ${{ secrets.X_POST_ENABLED }}
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+        run: uv run python -m models.x_post ${{ steps.commit.outputs.season }} ${{ steps.commit.outputs.week }}
+
+      # Commit the posted log even if posting failed halfway, so a retry can't post the same week twice.
+      # (Dry runs write no log, so this is a no-op until posting is enabled.)
+      - name: Commit the posted log
+        if: always() && steps.post.outcome != 'skipped'
+        run: |
+          git add exports/social
+          if git diff --cached --quiet; then echo "No posts logged."; exit 0; fi
+          git commit -m "data: log X posts for week ${{ steps.commit.outputs.week }}" -m "Automated by the weekly-refresh workflow."
+          git push

@@ -13,7 +13,8 @@
     "cards": "tsx --tsconfig tsconfig.json scripts/render-cards.tsx",
     "findings": "tsx --tsconfig tsconfig.json scripts/render-findings.tsx",
     "sync-url": "node scripts/sync-site-url.mjs",
-    "smoke": "node scripts/smoke.mjs"
+    "smoke": "node scripts/smoke.mjs",
+    "tnf": "tsx --tsconfig tsconfig.json scripts/render-tnf.tsx"
   },
   "dependencies": {
     "next": "16.4.5",

@@ -38,10 +38,11 @@ function Context({ c, size = 22 }: { c: Call; size?: number }) {
 
 // ------------------------------------------------------------------------- worst call
 
-export function WorstCallCard({ w, c = w.worst[0] }: { w: WeekExport; c?: Call }) {
+/** eyebrow/title default to the weekly card's; the TNF card (scripts/render-tnf.tsx) overrides them. */
+export function WorstCallCard({ w, c = w.worst[0], eyebrow, title }: { w: WeekExport; c?: Call; eyebrow?: string; title?: string }) {
   return (
-    <Frame eyebrow={`${w.season} · Week ${w.week} · ${w.summary.graded_decisions} graded 4th downs`}
-      title={`Worst call of Week ${w.week}`}>
+    <Frame eyebrow={eyebrow ?? `${w.season} · Week ${w.week} · ${w.summary.graded_decisions} graded 4th downs`}
+      title={title ?? `Worst call of Week ${w.week}`}>
       <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
         <div style={{ display: "flex", flexDirection: "column", width: 480 }}>
           <CoachLine c={c} w={w} />
@@ -156,12 +157,11 @@ export function LeaderboardCard({ w }: { w: WeekExport }) {
 
 // ------------------------------------------------------------------------- gutsiest
 
-export function GutsiestCard({ w }: { w: WeekExport }) {
-  const c = w.gutsiest!;
+export function GutsiestCard({ w, c = w.gutsiest!, eyebrow, title }: { w: WeekExport; c?: Call; eyebrow?: string; title?: string }) {
   const kick: Option = c.wp_punt >= c.wp_fg ? "punt" : "field_goal";
   const result = c.is_converted ? "Converted" : "Stopped";
   return (
-    <Frame eyebrow={`${w.season} · Week ${w.week} · the model agreed`} title={`Gutsiest correct call of Week ${w.week}`}>
+    <Frame eyebrow={eyebrow ?? `${w.season} · Week ${w.week} · the model agreed`} title={title ?? `Gutsiest correct call of Week ${w.week}`}>
       <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
         <div style={{ display: "flex", flexDirection: "column", width: 480 }}>
           <CoachLine c={c} w={w} />

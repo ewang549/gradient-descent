@@ -31,4 +31,4 @@ Both dials hold up when we resample teams (congruence 0.99 and 0.98) or fit 2006
 The outliers are on the tempo dial. Washington ran no-huddle on 67% of neutral snaps in 2024 and 64% in 2025. The 2013-15 Eagles and 2010 Colts are out there too.
 
 Full map, filterable by season:
-https://gradient-descent.vercel.app/findings/offense-style
+https://your-app.vercel.app/findings/offense-style

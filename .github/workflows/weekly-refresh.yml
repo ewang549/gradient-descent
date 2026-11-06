@@ -16,8 +16,6 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 60
-    env:
-      NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}  # links in the draft posts and on the cards
     steps:
       - uses: actions/checkout@v7
 
@@ -94,10 +92,9 @@ jobs:
       - name: Wait for the Vercel deploy
         if: steps.commit.outputs.changed == 'true'
         env:
-          SITE_URL: ${{ vars.SITE_URL }}
           CARD: ${{ steps.commit.outputs.card }}
         run: |
-          if [ -z "$SITE_URL" ]; then echo "::error::Set the SITE_URL repository variable (e.g. https://your-app.vercel.app)"; exit 1; fi
+          SITE_URL=$(python3 -c "import json; print(json.load(open('web/site.json'))['url'].rstrip('/'))")
           for i in $(seq 1 40); do
             if curl -fsS -o /dev/null "$SITE_URL/$CARD"; then echo "Live: $SITE_URL/$CARD"; exit 0; fi
             sleep 15

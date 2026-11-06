@@ -16,8 +16,8 @@ const description = d
 export const metadata: Metadata = {
   title: { absolute: `${title} | Finding ${entry.number}` },
   description,
-  openGraph: { title, description, type: "article" },
-  twitter: { card: "summary_large_image", title, description },
+  openGraph: { title, description, type: "article", images: [{ url: entry.image, width: 1200, height: 675 }] },
+  twitter: { card: "summary_large_image", title, description, images: [entry.image] },
 };
 
 const pctInt = (v: number) => `${Math.round(v * 100)}%`;

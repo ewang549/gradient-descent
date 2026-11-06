@@ -9,8 +9,9 @@ const description = "The models behind every grade, how they did on seasons they
 export const metadata: Metadata = {
   title: { absolute: `Methodology: ${title}` },
   description,
-  openGraph: { title, description },
-  twitter: { card: "summary", title, description },
+  // The default calculator card: the methodology page explains the numbers on it.
+  openGraph: { title, description, images: [{ url: "/og/calculator", width: 1200, height: 675 }] },
+  twitter: { card: "summary_large_image", title, description, images: ["/og/calculator"] },
 };
 
 const pct = (v: number, d = 1) => `${(v * 100).toFixed(d)}%`;

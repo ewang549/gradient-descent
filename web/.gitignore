@@ -45,3 +45,6 @@ next-env.d.ts
 /public/cards/
 /public/data/
 /public/findings/
+
+# smoke-test screenshots (npm run smoke)
+.smoke/

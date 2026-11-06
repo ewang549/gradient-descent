@@ -2,13 +2,20 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Leaderboard, type Row } from "@/components/coaches/Leaderboard";
 import { coachesIndex } from "@/lib/coaches/data";
+import { latestWeek, loadWeek } from "@/lib/weekly/data";
 
 const idx = coachesIndex();
 const title = "Coach leaderboard: wins given away on 4th down";
 const description = `Every NFL head coach since 2006, ranked by win probability lost on 4th down, with aggressiveness and sample sizes. ${idx?.out_of_sample_from ?? 2023}+ is out of sample.`;
 
+// Unfurls with the latest weekly leaderboard card (this season's wins lost by coach), else the calculator card.
+const w = latestWeek();
+const image = w && loadWeek(w.season, w.week)?.leaderboard ? `/cards/${w.season}/week_${String(w.week).padStart(2, "0")}/leaderboard.png` : "/og/calculator";
+
 export const metadata: Metadata = {
-  title: { absolute: title }, description, openGraph: { title, description }, twitter: { card: "summary_large_image", title, description },
+  title: { absolute: title }, description,
+  openGraph: { title, description, images: [{ url: image, width: 1200, height: 675 }] },
+  twitter: { card: "summary_large_image", title, description, images: [image] },
 };
 
 export default function CoachesPage() {

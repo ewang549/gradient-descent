@@ -6,7 +6,8 @@
 import type { ReactNode } from "react";
 import { confidenceHex as confidenceColor } from "@/lib/confidence";
 import type { Option } from "@/lib/engine/types";
-import { BRAND, SITE_URL, teamChip } from "@/lib/weekly/format";
+import { SITE_HOST } from "@/lib/site";
+import { BRAND, teamChip } from "@/lib/weekly/format";
 import type { TeamInfo } from "@/lib/weekly/types";
 
 export const C = {
@@ -25,7 +26,6 @@ export const C = {
 export const DISPLAY = "Big Shoulders";
 export const SANS = "Instrument Sans";
 
-const SITE_HOST = SITE_URL.replace(/^https?:\/\//, "");
 
 // ------------------------------------------------------------------------------- the frame
 

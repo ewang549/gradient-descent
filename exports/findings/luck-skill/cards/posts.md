@@ -31,4 +31,4 @@ Point diff says TB, JAX, HOU, NYJ, DAL beat their record. CLE, DEN, BUF, NYG, AR
 Recorded Nov 6, 2026, 00:31 UTC, before week 9 kicked off, and graded automatically after week 18. Run on every season since 2006, the same rule went point differential's way 66% of the time.
 
 Write-up and the timestamped file:
-https://gradient-descent.vercel.app/findings/luck-skill
+https://your-app.vercel.app/findings/luck-skill

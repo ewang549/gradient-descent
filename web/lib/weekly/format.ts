@@ -3,7 +3,9 @@ import { fromEngineInput, toQuery } from "@/lib/calculator/state";
 import type { Option } from "@/lib/engine/types";
 import type { Call, TeamInfo } from "./types";
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://gradient-descent.vercel.app").replace(/\/$/, "");
+import { SITE_URL } from "@/lib/site";
+
+export { SITE_URL };
 export const BRAND = "Gradient Descent";
 
 export const OPTION_LABEL: Record<Option, string> = { go: "Go for it", punt: "Punt", field_goal: "Field goal" };

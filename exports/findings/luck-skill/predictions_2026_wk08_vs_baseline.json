@@ -1,0 +1,3644 @@
+{
+  "slug": "luck-skill",
+  "season": 2026,
+  "generated_at": "2026-11-06T00:31:41+00:00",
+  "companion_of": "predictions_2026_wk08.json",
+  "parent_commit": "803bc472ce235247e4263d4c0eff578bb8f9de09",
+  "code_sha256": {
+    "analysis/findings/luck_baseline.py": "9d6119cdbe4f5ae6a9c825b64acc68d415ddf12a9b89b368df78954ec166cf2f",
+    "analysis/findings/luck_skill.py": "4bbed49b6e9b0d672b7a735f40664e755549732f80fb07eb0886bb96609e86f5"
+  },
+  "data_through_week": 8,
+  "claim": "Point differential forecasts each team's remaining games better than its record does, after the record is regressed toward .500 by the same held-out fit. Cooling off / heating up relative to the current pace is mostly regression to the mean and is not the claim.",
+  "remaining_games_rule": "games that had not kicked off at generated_at; earlier games are in excluded_started_games",
+  "excluded_started_games": [],
+  "forecasts": {
+    "baseline": "regressed record: linear map from first-k win% to rest-of-season win%, fitted on 2006-2025 at the team's k",
+    "point_diff": "the same map from Pythagorean win% (PF^2.37 / (PF^2.37 + PA^2.37)); identical to predictions_2026_wk08.json",
+    "market": "team ratings from 2026 point spreads (recency half-life 4 weeks, ridge 2); a game's own line when nflverse has one, else the ratings; spread -> win probability by a logistic fitted on 2006-2025",
+    "same_pace": "reference only: current win% x remaining games",
+    "coin_flip": "reference only: half of remaining games"
+  },
+  "p_beats_baseline": "P(actual rest-of-season wins > baseline_rest_wins), from a logistic on gap_wins (point_diff_rest_wins - baseline_rest_wins) fitted on held-out 2006-2025 forecasts at the same k",
+  "highlighted": {
+    "point_diff_above_baseline": [
+      "TB",
+      "JAX",
+      "HOU",
+      "NYJ",
+      "DAL"
+    ],
+    "point_diff_below_baseline": [
+      "CLE",
+      "DEN",
+      "BUF",
+      "NYG",
+      "ARI"
+    ]
+  },
+  "grading": {
+    "when": "after week 18 of 2026",
+    "rules": [
+      "1. MAE: mean absolute error of rest-of-season wins over all 32 teams for baseline, point_diff and market (same_pace and coin_flip reported for reference). A forecast's rest wins = its rest win% x the listed remaining games actually played (the market: the sum of its per-game probabilities over games played). Ties count half. Point differential passes if its MAE is lower than the baseline's.",
+      "2. Hit rate on the 10 highlighted teams: a point_diff_above_baseline team is a hit if its actual rest wins are above baseline_rest_wins, a point_diff_below_baseline team if they are below. Reported with the expected hits (the sum of the P(beats baseline) calls) and 5 of 10 as chance."
+    ]
+  },
+  "teams": [
+    {
+      "team": "TB",
+      "games_played": 8,
+      "wins": 3.0,
+      "losses": 5.0,
+      "win_pct": 0.375,
+      "pyth": 0.5963,
+      "point_diff_pg": 3.375,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.446,
+      "point_diff_rest_win_pct": 0.5604,
+      "market_rest_win_pct": 0.4317,
+      "baseline_rest_wins": 4.0142,
+      "point_diff_rest_wins": 5.0435,
+      "market_rest_wins": 3.8856,
+      "same_pace_rest_wins": 3.375,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": 1.0293,
+      "market_gap_wins": -0.1286,
+      "p_beats_baseline": 0.7193,
+      "baseline_final_wins": 7.0142,
+      "point_diff_final_wins": 8.0435,
+      "market_final_wins": 6.8856
+    },
+    {
+      "team": "JAX",
+      "games_played": 7,
+      "wins": 5.0,
+      "losses": 2.0,
+      "win_pct": 0.7143,
+      "pyth": 0.7937,
+      "point_diff_pg": 12.1429,
+      "remaining_games": 10,
+      "baseline_rest_win_pct": 0.5863,
+      "point_diff_rest_win_pct": 0.6825,
+      "market_rest_win_pct": 0.6851,
+      "baseline_rest_wins": 5.8635,
+      "point_diff_rest_wins": 6.8254,
+      "market_rest_wins": 6.8512,
+      "same_pace_rest_wins": 7.1429,
+      "coin_flip_rest_wins": 5.0,
+      "gap_wins": 0.9619,
+      "market_gap_wins": 0.9877,
+      "p_beats_baseline": 0.6974,
+      "baseline_final_wins": 10.8635,
+      "point_diff_final_wins": 11.8254,
+      "market_final_wins": 11.8512
+    },
+    {
+      "team": "HOU",
+      "games_played": 7,
+      "wins": 2.0,
+      "losses": 5.0,
+      "win_pct": 0.2857,
+      "pyth": 0.4823,
+      "point_diff_pg": -0.7143,
+      "remaining_games": 10,
+      "baseline_rest_win_pct": 0.4101,
+      "point_diff_rest_win_pct": 0.4884,
+      "market_rest_win_pct": 0.6226,
+      "baseline_rest_wins": 4.1005,
+      "point_diff_rest_wins": 4.8842,
+      "market_rest_wins": 6.2255,
+      "same_pace_rest_wins": 2.8571,
+      "coin_flip_rest_wins": 5.0,
+      "gap_wins": 0.7836,
+      "market_gap_wins": 2.125,
+      "p_beats_baseline": 0.6657,
+      "baseline_final_wins": 6.1005,
+      "point_diff_final_wins": 6.8842,
+      "market_final_wins": 8.2255
+    },
+    {
+      "team": "NYJ",
+      "games_played": 8,
+      "wins": 2.0,
+      "losses": 6.0,
+      "win_pct": 0.25,
+      "pyth": 0.4406,
+      "point_diff_pg": -2.25,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.3931,
+      "point_diff_rest_win_pct": 0.4631,
+      "market_rest_win_pct": 0.3644,
+      "baseline_rest_wins": 3.5381,
+      "point_diff_rest_wins": 4.1678,
+      "market_rest_wins": 3.2794,
+      "same_pace_rest_wins": 2.25,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": 0.6297,
+      "market_gap_wins": -0.2587,
+      "p_beats_baseline": 0.6442,
+      "baseline_final_wins": 5.5381,
+      "point_diff_final_wins": 6.1678,
+      "market_final_wins": 5.2794
+    },
+    {
+      "team": "DAL",
+      "games_played": 8,
+      "wins": 3.0,
+      "losses": 5.0,
+      "win_pct": 0.375,
+      "pyth": 0.5165,
+      "point_diff_pg": 0.75,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.446,
+      "point_diff_rest_win_pct": 0.5105,
+      "market_rest_win_pct": 0.549,
+      "baseline_rest_wins": 4.0142,
+      "point_diff_rest_wins": 4.5944,
+      "market_rest_wins": 4.9414,
+      "same_pace_rest_wins": 3.375,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": 0.5802,
+      "market_gap_wins": 0.9272,
+      "p_beats_baseline": 0.6342,
+      "baseline_final_wins": 7.0142,
+      "point_diff_final_wins": 7.5944,
+      "market_final_wins": 7.9414
+    },
+    {
+      "team": "SEA",
+      "games_played": 8,
+      "wins": 4.0,
+      "losses": 4.0,
+      "win_pct": 0.5,
+      "pyth": 0.5888,
+      "point_diff_pg": 3.25,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.4989,
+      "point_diff_rest_win_pct": 0.5557,
+      "market_rest_win_pct": 0.5947,
+      "baseline_rest_wins": 4.4902,
+      "point_diff_rest_wins": 5.0014,
+      "market_rest_wins": 5.3522,
+      "same_pace_rest_wins": 4.5,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": 0.5112,
+      "market_gap_wins": 0.862,
+      "p_beats_baseline": 0.6202,
+      "baseline_final_wins": 8.4902,
+      "point_diff_final_wins": 9.0014,
+      "market_final_wins": 9.3522
+    },
+    {
+      "team": "LA",
+      "games_played": 8,
+      "wins": 4.0,
+      "losses": 4.0,
+      "win_pct": 0.5,
+      "pyth": 0.5844,
+      "point_diff_pg": 3.25,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.4989,
+      "point_diff_rest_win_pct": 0.553,
+      "market_rest_win_pct": 0.6016,
+      "baseline_rest_wins": 4.4902,
+      "point_diff_rest_wins": 4.977,
+      "market_rest_wins": 5.4145,
+      "same_pace_rest_wins": 4.5,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": 0.4868,
+      "market_gap_wins": 0.9243,
+      "p_beats_baseline": 0.6152,
+      "baseline_final_wins": 8.4902,
+      "point_diff_final_wins": 8.977,
+      "market_final_wins": 9.4145
+    },
+    {
+      "team": "TEN",
+      "games_played": 8,
+      "wins": 1.0,
+      "losses": 7.0,
+      "win_pct": 0.125,
+      "pyth": 0.3172,
+      "point_diff_pg": -6.875,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.3402,
+      "point_diff_rest_win_pct": 0.3859,
+      "market_rest_win_pct": 0.3008,
+      "baseline_rest_wins": 3.062,
+      "point_diff_rest_wins": 3.473,
+      "market_rest_wins": 2.7069,
+      "same_pace_rest_wins": 1.125,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": 0.411,
+      "market_gap_wins": -0.3551,
+      "p_beats_baseline": 0.5995,
+      "baseline_final_wins": 4.062,
+      "point_diff_final_wins": 4.473,
+      "market_final_wins": 3.7069
+    },
+    {
+      "team": "NO",
+      "games_played": 7,
+      "wins": 2.0,
+      "losses": 5.0,
+      "win_pct": 0.2857,
+      "pyth": 0.3948,
+      "point_diff_pg": -4.5714,
+      "remaining_games": 10,
+      "baseline_rest_win_pct": 0.4101,
+      "point_diff_rest_win_pct": 0.4339,
+      "market_rest_win_pct": 0.4687,
+      "baseline_rest_wins": 4.1005,
+      "point_diff_rest_wins": 4.3385,
+      "market_rest_wins": 4.687,
+      "same_pace_rest_wins": 2.8571,
+      "coin_flip_rest_wins": 5.0,
+      "gap_wins": 0.238,
+      "market_gap_wins": 0.5865,
+      "p_beats_baseline": 0.56,
+      "baseline_final_wins": 6.1005,
+      "point_diff_final_wins": 6.3385,
+      "market_final_wins": 6.687
+    },
+    {
+      "team": "LAC",
+      "games_played": 7,
+      "wins": 0.0,
+      "losses": 7.0,
+      "win_pct": 0.0,
+      "pyth": 0.2059,
+      "point_diff_pg": -10.8571,
+      "remaining_games": 10,
+      "baseline_rest_win_pct": 0.2925,
+      "point_diff_rest_win_pct": 0.3161,
+      "market_rest_win_pct": 0.4505,
+      "baseline_rest_wins": 2.9252,
+      "point_diff_rest_wins": 3.1607,
+      "market_rest_wins": 4.5049,
+      "same_pace_rest_wins": 0.0,
+      "coin_flip_rest_wins": 5.0,
+      "gap_wins": 0.2355,
+      "market_gap_wins": 1.5797,
+      "p_beats_baseline": 0.5595,
+      "baseline_final_wins": 2.9252,
+      "point_diff_final_wins": 3.1607,
+      "market_final_wins": 4.5049
+    },
+    {
+      "team": "ATL",
+      "games_played": 8,
+      "wins": 3.0,
+      "losses": 5.0,
+      "win_pct": 0.375,
+      "pyth": 0.441,
+      "point_diff_pg": -2.25,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.446,
+      "point_diff_rest_win_pct": 0.4633,
+      "market_rest_win_pct": 0.4596,
+      "baseline_rest_wins": 4.0142,
+      "point_diff_rest_wins": 4.1696,
+      "market_rest_wins": 4.1368,
+      "same_pace_rest_wins": 3.375,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": 0.1555,
+      "market_gap_wins": 0.1226,
+      "p_beats_baseline": 0.5451,
+      "baseline_final_wins": 7.0142,
+      "point_diff_final_wins": 7.1696,
+      "market_final_wins": 7.1368
+    },
+    {
+      "team": "WAS",
+      "games_played": 7,
+      "wins": 2.5,
+      "losses": 4.5,
+      "win_pct": 0.3571,
+      "pyth": 0.4206,
+      "point_diff_pg": -3.2857,
+      "remaining_games": 10,
+      "baseline_rest_win_pct": 0.4394,
+      "point_diff_rest_win_pct": 0.45,
+      "market_rest_win_pct": 0.4246,
+      "baseline_rest_wins": 4.3944,
+      "point_diff_rest_wins": 4.4996,
+      "market_rest_wins": 4.2462,
+      "same_pace_rest_wins": 3.5714,
+      "coin_flip_rest_wins": 5.0,
+      "gap_wins": 0.1053,
+      "market_gap_wins": -0.1482,
+      "p_beats_baseline": 0.533,
+      "baseline_final_wins": 6.8944,
+      "point_diff_final_wins": 6.9996,
+      "market_final_wins": 6.7462
+    },
+    {
+      "team": "CIN",
+      "games_played": 7,
+      "wins": 5.0,
+      "losses": 2.0,
+      "win_pct": 0.7143,
+      "pyth": 0.6522,
+      "point_diff_pg": 6.8571,
+      "remaining_games": 10,
+      "baseline_rest_win_pct": 0.5863,
+      "point_diff_rest_win_pct": 0.5943,
+      "market_rest_win_pct": 0.6255,
+      "baseline_rest_wins": 5.8635,
+      "point_diff_rest_wins": 5.9432,
+      "market_rest_wins": 6.2545,
+      "same_pace_rest_wins": 7.1429,
+      "coin_flip_rest_wins": 5.0,
+      "gap_wins": 0.0797,
+      "market_gap_wins": 0.391,
+      "p_beats_baseline": 0.5278,
+      "baseline_final_wins": 10.8635,
+      "point_diff_final_wins": 10.9432,
+      "market_final_wins": 11.2545
+    },
+    {
+      "team": "CAR",
+      "games_played": 7,
+      "wins": 3.0,
+      "losses": 4.0,
+      "win_pct": 0.4286,
+      "pyth": 0.4522,
+      "point_diff_pg": -2.1429,
+      "remaining_games": 10,
+      "baseline_rest_win_pct": 0.4688,
+      "point_diff_rest_win_pct": 0.4696,
+      "market_rest_win_pct": 0.4896,
+      "baseline_rest_wins": 4.6882,
+      "point_diff_rest_wins": 4.6965,
+      "market_rest_wins": 4.8965,
+      "same_pace_rest_wins": 4.2857,
+      "coin_flip_rest_wins": 5.0,
+      "gap_wins": 0.0083,
+      "market_gap_wins": 0.2083,
+      "p_beats_baseline": 0.5132,
+      "baseline_final_wins": 7.6882,
+      "point_diff_final_wins": 7.6965,
+      "market_final_wins": 7.8965
+    },
+    {
+      "team": "KC",
+      "games_played": 7,
+      "wins": 5.0,
+      "losses": 2.0,
+      "win_pct": 0.7143,
+      "pyth": 0.64,
+      "point_diff_pg": 5.1429,
+      "remaining_games": 10,
+      "baseline_rest_win_pct": 0.5863,
+      "point_diff_rest_win_pct": 0.5867,
+      "market_rest_win_pct": 0.5882,
+      "baseline_rest_wins": 5.8635,
+      "point_diff_rest_wins": 5.8672,
+      "market_rest_wins": 5.8819,
+      "same_pace_rest_wins": 7.1429,
+      "coin_flip_rest_wins": 5.0,
+      "gap_wins": 0.0037,
+      "market_gap_wins": 0.0184,
+      "p_beats_baseline": 0.5122,
+      "baseline_final_wins": 10.8635,
+      "point_diff_final_wins": 10.8672,
+      "market_final_wins": 10.8819
+    },
+    {
+      "team": "MIA",
+      "games_played": 7,
+      "wins": 1.0,
+      "losses": 6.0,
+      "win_pct": 0.1429,
+      "pyth": 0.2623,
+      "point_diff_pg": -9.1429,
+      "remaining_games": 10,
+      "baseline_rest_win_pct": 0.3513,
+      "point_diff_rest_win_pct": 0.3513,
+      "market_rest_win_pct": 0.3314,
+      "baseline_rest_wins": 3.5129,
+      "point_diff_rest_wins": 3.5126,
+      "market_rest_wins": 3.3138,
+      "same_pace_rest_wins": 1.4286,
+      "coin_flip_rest_wins": 5.0,
+      "gap_wins": -0.0003,
+      "market_gap_wins": -0.1991,
+      "p_beats_baseline": 0.5114,
+      "baseline_final_wins": 4.5129,
+      "point_diff_final_wins": 4.5126,
+      "market_final_wins": 4.3138
+    },
+    {
+      "team": "CHI",
+      "games_played": 8,
+      "wins": 6.0,
+      "losses": 2.0,
+      "win_pct": 0.75,
+      "pyth": 0.6658,
+      "point_diff_pg": 6.75,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.6047,
+      "point_diff_rest_win_pct": 0.6039,
+      "market_rest_win_pct": 0.5347,
+      "baseline_rest_wins": 5.4423,
+      "point_diff_rest_wins": 5.4348,
+      "market_rest_wins": 4.8122,
+      "same_pace_rest_wins": 6.75,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": -0.0075,
+      "market_gap_wins": -0.6301,
+      "p_beats_baseline": 0.5098,
+      "baseline_final_wins": 11.4423,
+      "point_diff_final_wins": 11.4348,
+      "market_final_wins": 10.8122
+    },
+    {
+      "team": "NE",
+      "games_played": 8,
+      "wins": 5.0,
+      "losses": 3.0,
+      "win_pct": 0.625,
+      "pyth": 0.5749,
+      "point_diff_pg": 2.75,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.5518,
+      "point_diff_rest_win_pct": 0.547,
+      "market_rest_win_pct": 0.5658,
+      "baseline_rest_wins": 4.9663,
+      "point_diff_rest_wins": 4.9232,
+      "market_rest_wins": 5.0921,
+      "same_pace_rest_wins": 5.625,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": -0.0431,
+      "market_gap_wins": 0.1258,
+      "p_beats_baseline": 0.5021,
+      "baseline_final_wins": 9.9663,
+      "point_diff_final_wins": 9.9232,
+      "market_final_wins": 10.0921
+    },
+    {
+      "team": "MIN",
+      "games_played": 7,
+      "wins": 6.0,
+      "losses": 1.0,
+      "win_pct": 0.8571,
+      "pyth": 0.725,
+      "point_diff_pg": 6.7143,
+      "remaining_games": 10,
+      "baseline_rest_win_pct": 0.6451,
+      "point_diff_rest_win_pct": 0.6397,
+      "market_rest_win_pct": 0.493,
+      "baseline_rest_wins": 6.4512,
+      "point_diff_rest_wins": 6.397,
+      "market_rest_wins": 4.9299,
+      "same_pace_rest_wins": 8.5714,
+      "coin_flip_rest_wins": 5.0,
+      "gap_wins": -0.0541,
+      "market_gap_wins": -1.5213,
+      "p_beats_baseline": 0.5004,
+      "baseline_final_wins": 12.4512,
+      "point_diff_final_wins": 12.397,
+      "market_final_wins": 10.9299
+    },
+    {
+      "team": "IND",
+      "games_played": 8,
+      "wins": 2.0,
+      "losses": 6.0,
+      "win_pct": 0.25,
+      "pyth": 0.3183,
+      "point_diff_pg": -7.625,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.3931,
+      "point_diff_rest_win_pct": 0.3866,
+      "market_rest_win_pct": 0.4357,
+      "baseline_rest_wins": 3.5381,
+      "point_diff_rest_wins": 3.4794,
+      "market_rest_wins": 3.9217,
+      "same_pace_rest_wins": 2.25,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": -0.0587,
+      "market_gap_wins": 0.3836,
+      "p_beats_baseline": 0.4987,
+      "baseline_final_wins": 5.5381,
+      "point_diff_final_wins": 5.4794,
+      "market_final_wins": 5.9217
+    },
+    {
+      "team": "LV",
+      "games_played": 8,
+      "wins": 4.0,
+      "losses": 4.0,
+      "win_pct": 0.5,
+      "pyth": 0.4764,
+      "point_diff_pg": -1.125,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.4989,
+      "point_diff_rest_win_pct": 0.4854,
+      "market_rest_win_pct": 0.4048,
+      "baseline_rest_wins": 4.4902,
+      "point_diff_rest_wins": 4.3688,
+      "market_rest_wins": 3.6431,
+      "same_pace_rest_wins": 4.5,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": -0.1214,
+      "market_gap_wins": -0.8471,
+      "p_beats_baseline": 0.4851,
+      "baseline_final_wins": 8.4902,
+      "point_diff_final_wins": 8.3688,
+      "market_final_wins": 7.6431
+    },
+    {
+      "team": "PIT",
+      "games_played": 8,
+      "wins": 6.0,
+      "losses": 2.0,
+      "win_pct": 0.75,
+      "pyth": 0.6292,
+      "point_diff_pg": 4.5,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.6047,
+      "point_diff_rest_win_pct": 0.581,
+      "market_rest_win_pct": 0.4975,
+      "baseline_rest_wins": 5.4423,
+      "point_diff_rest_wins": 5.229,
+      "market_rest_wins": 4.4771,
+      "same_pace_rest_wins": 6.75,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": -0.2133,
+      "market_gap_wins": -0.9652,
+      "p_beats_baseline": 0.4651,
+      "baseline_final_wins": 11.4423,
+      "point_diff_final_wins": 11.229,
+      "market_final_wins": 10.4771
+    },
+    {
+      "team": "SF",
+      "games_played": 7,
+      "wins": 6.0,
+      "losses": 1.0,
+      "win_pct": 0.8571,
+      "pyth": 0.6956,
+      "point_diff_pg": 8.2857,
+      "remaining_games": 10,
+      "baseline_rest_win_pct": 0.6451,
+      "point_diff_rest_win_pct": 0.6214,
+      "market_rest_win_pct": 0.6241,
+      "baseline_rest_wins": 6.4512,
+      "point_diff_rest_wins": 6.2138,
+      "market_rest_wins": 6.241,
+      "same_pace_rest_wins": 8.5714,
+      "coin_flip_rest_wins": 5.0,
+      "gap_wins": -0.2374,
+      "market_gap_wins": -0.2102,
+      "p_beats_baseline": 0.4628,
+      "baseline_final_wins": 12.4512,
+      "point_diff_final_wins": 12.2138,
+      "market_final_wins": 12.241
+    },
+    {
+      "team": "PHI",
+      "games_played": 8,
+      "wins": 2.0,
+      "losses": 6.0,
+      "win_pct": 0.25,
+      "pyth": 0.2849,
+      "point_diff_pg": -8.125,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.3931,
+      "point_diff_rest_win_pct": 0.3657,
+      "market_rest_win_pct": 0.4041,
+      "baseline_rest_wins": 3.5381,
+      "point_diff_rest_wins": 3.2913,
+      "market_rest_wins": 3.6372,
+      "same_pace_rest_wins": 2.25,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": -0.2468,
+      "market_gap_wins": 0.0991,
+      "p_beats_baseline": 0.4579,
+      "baseline_final_wins": 5.5381,
+      "point_diff_final_wins": 5.2913,
+      "market_final_wins": 5.6372
+    },
+    {
+      "team": "GB",
+      "games_played": 8,
+      "wins": 5.0,
+      "losses": 3.0,
+      "win_pct": 0.625,
+      "pyth": 0.5247,
+      "point_diff_pg": 0.875,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.5518,
+      "point_diff_rest_win_pct": 0.5157,
+      "market_rest_win_pct": 0.4851,
+      "baseline_rest_wins": 4.9663,
+      "point_diff_rest_wins": 4.641,
+      "market_rest_wins": 4.3656,
+      "same_pace_rest_wins": 5.625,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": -0.3252,
+      "market_gap_wins": -0.6007,
+      "p_beats_baseline": 0.441,
+      "baseline_final_wins": 9.9663,
+      "point_diff_final_wins": 9.641,
+      "market_final_wins": 9.3656
+    },
+    {
+      "team": "BAL",
+      "games_played": 8,
+      "wins": 4.0,
+      "losses": 4.0,
+      "win_pct": 0.5,
+      "pyth": 0.426,
+      "point_diff_pg": -3.0,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.4989,
+      "point_diff_rest_win_pct": 0.4539,
+      "market_rest_win_pct": 0.4506,
+      "baseline_rest_wins": 4.4902,
+      "point_diff_rest_wins": 4.0853,
+      "market_rest_wins": 4.0553,
+      "same_pace_rest_wins": 4.5,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": -0.4049,
+      "market_gap_wins": -0.4349,
+      "p_beats_baseline": 0.424,
+      "baseline_final_wins": 8.4902,
+      "point_diff_final_wins": 8.0853,
+      "market_final_wins": 8.0553
+    },
+    {
+      "team": "DET",
+      "games_played": 7,
+      "wins": 5.0,
+      "losses": 2.0,
+      "win_pct": 0.7143,
+      "pyth": 0.5708,
+      "point_diff_pg": 3.2857,
+      "remaining_games": 10,
+      "baseline_rest_win_pct": 0.5863,
+      "point_diff_rest_win_pct": 0.5436,
+      "market_rest_win_pct": 0.5871,
+      "baseline_rest_wins": 5.8635,
+      "point_diff_rest_wins": 5.4356,
+      "market_rest_wins": 5.8712,
+      "same_pace_rest_wins": 7.1429,
+      "coin_flip_rest_wins": 5.0,
+      "gap_wins": -0.4279,
+      "market_gap_wins": 0.0077,
+      "p_beats_baseline": 0.4243,
+      "baseline_final_wins": 10.8635,
+      "point_diff_final_wins": 10.4356,
+      "market_final_wins": 10.8712
+    },
+    {
+      "team": "ARI",
+      "games_played": 8,
+      "wins": 3.0,
+      "losses": 5.0,
+      "win_pct": 0.375,
+      "pyth": 0.3255,
+      "point_diff_pg": -7.875,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.446,
+      "point_diff_rest_win_pct": 0.3911,
+      "market_rest_win_pct": 0.383,
+      "baseline_rest_wins": 4.0142,
+      "point_diff_rest_wins": 3.5196,
+      "market_rest_wins": 3.4474,
+      "same_pace_rest_wins": 3.375,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": -0.4946,
+      "market_gap_wins": -0.5668,
+      "p_beats_baseline": 0.4051,
+      "baseline_final_wins": 7.0142,
+      "point_diff_final_wins": 6.5196,
+      "market_final_wins": 6.4474
+    },
+    {
+      "team": "NYG",
+      "games_played": 7,
+      "wins": 4.5,
+      "losses": 2.5,
+      "win_pct": 0.6429,
+      "pyth": 0.5073,
+      "point_diff_pg": 0.2857,
+      "remaining_games": 10,
+      "baseline_rest_win_pct": 0.557,
+      "point_diff_rest_win_pct": 0.504,
+      "market_rest_win_pct": 0.446,
+      "baseline_rest_wins": 5.5697,
+      "point_diff_rest_wins": 5.04,
+      "market_rest_wins": 4.4604,
+      "same_pace_rest_wins": 6.4286,
+      "coin_flip_rest_wins": 5.0,
+      "gap_wins": -0.5297,
+      "market_gap_wins": -1.1093,
+      "p_beats_baseline": 0.404,
+      "baseline_final_wins": 10.0697,
+      "point_diff_final_wins": 9.54,
+      "market_final_wins": 8.9604
+    },
+    {
+      "team": "BUF",
+      "games_played": 7,
+      "wins": 6.0,
+      "losses": 1.0,
+      "win_pct": 0.8571,
+      "pyth": 0.6453,
+      "point_diff_pg": 7.4286,
+      "remaining_games": 10,
+      "baseline_rest_win_pct": 0.6451,
+      "point_diff_rest_win_pct": 0.59,
+      "market_rest_win_pct": 0.6375,
+      "baseline_rest_wins": 6.4512,
+      "point_diff_rest_wins": 5.9003,
+      "market_rest_wins": 6.3746,
+      "same_pace_rest_wins": 8.5714,
+      "coin_flip_rest_wins": 5.0,
+      "gap_wins": -0.5509,
+      "market_gap_wins": -0.0766,
+      "p_beats_baseline": 0.3998,
+      "baseline_final_wins": 12.4512,
+      "point_diff_final_wins": 11.9003,
+      "market_final_wins": 12.3746
+    },
+    {
+      "team": "DEN",
+      "games_played": 8,
+      "wins": 6.0,
+      "losses": 2.0,
+      "win_pct": 0.75,
+      "pyth": 0.5246,
+      "point_diff_pg": 0.875,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.6047,
+      "point_diff_rest_win_pct": 0.5156,
+      "market_rest_win_pct": 0.5953,
+      "baseline_rest_wins": 5.4423,
+      "point_diff_rest_wins": 4.6402,
+      "market_rest_wins": 5.3581,
+      "same_pace_rest_wins": 6.75,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": -0.8021,
+      "market_gap_wins": -0.0842,
+      "p_beats_baseline": 0.3426,
+      "baseline_final_wins": 11.4423,
+      "point_diff_final_wins": 10.6402,
+      "market_final_wins": 11.3581
+    },
+    {
+      "team": "CLE",
+      "games_played": 8,
+      "wins": 5.0,
+      "losses": 3.0,
+      "win_pct": 0.625,
+      "pyth": 0.3732,
+      "point_diff_pg": -4.25,
+      "remaining_games": 9,
+      "baseline_rest_win_pct": 0.5518,
+      "point_diff_rest_win_pct": 0.4209,
+      "market_rest_win_pct": 0.415,
+      "baseline_rest_wins": 4.9663,
+      "point_diff_rest_wins": 3.7881,
+      "market_rest_wins": 3.7348,
+      "same_pace_rest_wins": 5.625,
+      "coin_flip_rest_wins": 4.5,
+      "gap_wins": -1.1782,
+      "market_gap_wins": -1.2315,
+      "p_beats_baseline": 0.2731,
+      "baseline_final_wins": 9.9663,
+      "point_diff_final_wins": 8.7881,
+      "market_final_wins": 8.7348
+    }
+  ],
+  "market": {
+    "ratings": {
+      "JAX": 4.14,
+      "LA": 3.36,
+      "BUF": 3.1,
+      "SF": 3.08,
+      "SEA": 2.9,
+      "CIN": 2.61,
+      "KC": 2.52,
+      "HOU": 2.45,
+      "DEN": 1.72,
+      "DET": 1.72,
+      "NE": 1.48,
+      "DAL": 1.48,
+      "CHI": 1.15,
+      "GB": 0.4,
+      "PIT": 0.38,
+      "MIN": 0.34,
+      "CAR": -0.23,
+      "BAL": -0.31,
+      "ATL": -1.09,
+      "LAC": -1.22,
+      "NO": -1.4,
+      "TB": -1.53,
+      "WAS": -1.57,
+      "NYG": -1.72,
+      "IND": -2.0,
+      "PHI": -2.15,
+      "LV": -2.31,
+      "CLE": -2.47,
+      "NYJ": -2.79,
+      "ARI": -3.21,
+      "MIA": -4.1,
+      "TEN": -4.76
+    },
+    "home_field": 1.23,
+    "spread_logistic": {
+      "a": -0.04666606604572624,
+      "b": 0.14674219961759574
+    },
+    "lines_through_week": 10,
+    "games_with_lines": 149,
+    "per_game": {
+      "ARI": [
+        {
+          "game_id": "2026_09_ARI_SEA",
+          "week": 9,
+          "opp": "SEA",
+          "home": false,
+          "home_spread": 8.5,
+          "source": "line",
+          "p_win": 0.2314
+        },
+        {
+          "game_id": "2026_10_LA_ARI",
+          "week": 10,
+          "opp": "LA",
+          "home": true,
+          "home_spread": -7.5,
+          "source": "line",
+          "p_win": 0.241
+        },
+        {
+          "game_id": "2026_11_ARI_KC",
+          "week": 11,
+          "opp": "KC",
+          "home": false,
+          "home_spread": 6.96,
+          "source": "ratings",
+          "p_win": 0.2739
+        },
+        {
+          "game_id": "2026_12_WAS_ARI",
+          "week": 12,
+          "opp": "WAS",
+          "home": true,
+          "home_spread": -0.41,
+          "source": "ratings",
+          "p_win": 0.4734
+        },
+        {
+          "game_id": "2026_13_PHI_ARI",
+          "week": 13,
+          "opp": "PHI",
+          "home": true,
+          "home_spread": 0.17,
+          "source": "ratings",
+          "p_win": 0.4947
+        },
+        {
+          "game_id": "2026_15_NYJ_ARI",
+          "week": 15,
+          "opp": "NYJ",
+          "home": true,
+          "home_spread": 0.82,
+          "source": "ratings",
+          "p_win": 0.5184
+        },
+        {
+          "game_id": "2026_16_ARI_NO",
+          "week": 16,
+          "opp": "NO",
+          "home": false,
+          "home_spread": 3.04,
+          "source": "ratings",
+          "p_win": 0.4016
+        },
+        {
+          "game_id": "2026_17_LV_ARI",
+          "week": 17,
+          "opp": "LV",
+          "home": true,
+          "home_spread": 0.33,
+          "source": "ratings",
+          "p_win": 0.5006
+        },
+        {
+          "game_id": "2026_18_SF_ARI",
+          "week": 18,
+          "opp": "SF",
+          "home": true,
+          "home_spread": -5.06,
+          "source": "ratings",
+          "p_win": 0.3124
+        }
+      ],
+      "ATL": [
+        {
+          "game_id": "2026_09_CIN_ATL",
+          "week": 9,
+          "opp": "CIN",
+          "home": true,
+          "home_spread": -3.0,
+          "source": "line",
+          "p_win": 0.3806
+        },
+        {
+          "game_id": "2026_10_KC_ATL",
+          "week": 10,
+          "opp": "KC",
+          "home": true,
+          "home_spread": -3.0,
+          "source": "line",
+          "p_win": 0.3806
+        },
+        {
+          "game_id": "2026_12_ATL_MIN",
+          "week": 12,
+          "opp": "MIN",
+          "home": false,
+          "home_spread": 2.66,
+          "source": "ratings",
+          "p_win": 0.4148
+        },
+        {
+          "game_id": "2026_13_DET_ATL",
+          "week": 13,
+          "opp": "DET",
+          "home": true,
+          "home_spread": -1.58,
+          "source": "ratings",
+          "p_win": 0.4309
+        },
+        {
+          "game_id": "2026_14_ATL_CLE",
+          "week": 14,
+          "opp": "CLE",
+          "home": false,
+          "home_spread": -0.14,
+          "source": "ratings",
+          "p_win": 0.5168
+        },
+        {
+          "game_id": "2026_15_ATL_WAS",
+          "week": 15,
+          "opp": "WAS",
+          "home": false,
+          "home_spread": 0.76,
+          "source": "ratings",
+          "p_win": 0.4839
+        },
+        {
+          "game_id": "2026_16_TB_ATL",
+          "week": 16,
+          "opp": "TB",
+          "home": true,
+          "home_spread": 1.67,
+          "source": "ratings",
+          "p_win": 0.5493
+        },
+        {
+          "game_id": "2026_17_NO_ATL",
+          "week": 17,
+          "opp": "NO",
+          "home": true,
+          "home_spread": 1.54,
+          "source": "ratings",
+          "p_win": 0.5448
+        },
+        {
+          "game_id": "2026_18_ATL_CAR",
+          "week": 18,
+          "opp": "CAR",
+          "home": false,
+          "home_spread": 2.1,
+          "source": "ratings",
+          "p_win": 0.4351
+        }
+      ],
+      "BAL": [
+        {
+          "game_id": "2026_09_JAX_BAL",
+          "week": 9,
+          "opp": "JAX",
+          "home": true,
+          "home_spread": -10.0,
+          "source": "line",
+          "p_win": 0.1803
+        },
+        {
+          "game_id": "2026_10_LAC_BAL",
+          "week": 10,
+          "opp": "LAC",
+          "home": true,
+          "home_spread": 1.5,
+          "source": "line",
+          "p_win": 0.5433
+        },
+        {
+          "game_id": "2026_11_BAL_CAR",
+          "week": 11,
+          "opp": "CAR",
+          "home": false,
+          "home_spread": 1.32,
+          "source": "ratings",
+          "p_win": 0.4633
+        },
+        {
+          "game_id": "2026_12_BAL_HOU",
+          "week": 12,
+          "opp": "HOU",
+          "home": false,
+          "home_spread": 4.0,
+          "source": "ratings",
+          "p_win": 0.3681
+        },
+        {
+          "game_id": "2026_14_TB_BAL",
+          "week": 14,
+          "opp": "TB",
+          "home": true,
+          "home_spread": 2.44,
+          "source": "ratings",
+          "p_win": 0.5774
+        },
+        {
+          "game_id": "2026_15_BAL_PIT",
+          "week": 15,
+          "opp": "PIT",
+          "home": false,
+          "home_spread": 1.93,
+          "source": "ratings",
+          "p_win": 0.4413
+        },
+        {
+          "game_id": "2026_16_CLE_BAL",
+          "week": 16,
+          "opp": "CLE",
+          "home": true,
+          "home_spread": 3.38,
+          "source": "ratings",
+          "p_win": 0.6106
+        },
+        {
+          "game_id": "2026_17_BAL_CIN",
+          "week": 17,
+          "opp": "CIN",
+          "home": false,
+          "home_spread": 4.15,
+          "source": "ratings",
+          "p_win": 0.3629
+        },
+        {
+          "game_id": "2026_18_PIT_BAL",
+          "week": 18,
+          "opp": "PIT",
+          "home": true,
+          "home_spread": 0.54,
+          "source": "ratings",
+          "p_win": 0.5081
+        }
+      ],
+      "BUF": [
+        {
+          "game_id": "2026_09_BUF_MIN",
+          "week": 9,
+          "opp": "MIN",
+          "home": false,
+          "home_spread": -3.5,
+          "source": "line",
+          "p_win": 0.6365
+        },
+        {
+          "game_id": "2026_10_BUF_NYJ",
+          "week": 10,
+          "opp": "NYJ",
+          "home": false,
+          "home_spread": -7.5,
+          "source": "line",
+          "p_win": 0.759
+        },
+        {
+          "game_id": "2026_11_MIA_BUF",
+          "week": 11,
+          "opp": "MIA",
+          "home": true,
+          "home_spread": 8.43,
+          "source": "ratings",
+          "p_win": 0.7669
+        },
+        {
+          "game_id": "2026_12_KC_BUF",
+          "week": 12,
+          "opp": "KC",
+          "home": true,
+          "home_spread": 1.81,
+          "source": "ratings",
+          "p_win": 0.5545
+        },
+        {
+          "game_id": "2026_13_BUF_NE",
+          "week": 13,
+          "opp": "NE",
+          "home": false,
+          "home_spread": -0.38,
+          "source": "ratings",
+          "p_win": 0.5257
+        },
+        {
+          "game_id": "2026_14_BUF_GB",
+          "week": 14,
+          "opp": "GB",
+          "home": false,
+          "home_spread": -1.47,
+          "source": "ratings",
+          "p_win": 0.5651
+        },
+        {
+          "game_id": "2026_15_CHI_BUF",
+          "week": 15,
+          "opp": "CHI",
+          "home": true,
+          "home_spread": 3.18,
+          "source": "ratings",
+          "p_win": 0.6035
+        },
+        {
+          "game_id": "2026_16_BUF_DEN",
+          "week": 16,
+          "opp": "DEN",
+          "home": false,
+          "home_spread": -0.15,
+          "source": "ratings",
+          "p_win": 0.517
+        },
+        {
+          "game_id": "2026_17_BUF_MIA",
+          "week": 17,
+          "opp": "MIA",
+          "home": false,
+          "home_spread": -5.97,
+          "source": "ratings",
+          "p_win": 0.7155
+        },
+        {
+          "game_id": "2026_18_NYJ_BUF",
+          "week": 18,
+          "opp": "NYJ",
+          "home": true,
+          "home_spread": 7.13,
+          "source": "ratings",
+          "p_win": 0.7309
+        }
+      ],
+      "CAR": [
+        {
+          "game_id": "2026_09_DEN_CAR",
+          "week": 9,
+          "opp": "DEN",
+          "home": true,
+          "home_spread": -2.5,
+          "source": "line",
+          "p_win": 0.3981
+        },
+        {
+          "game_id": "2026_10_CAR_NO",
+          "week": 10,
+          "opp": "NO",
+          "home": false,
+          "home_spread": -1.5,
+          "source": "line",
+          "p_win": 0.5663
+        },
+        {
+          "game_id": "2026_11_BAL_CAR",
+          "week": 11,
+          "opp": "BAL",
+          "home": true,
+          "home_spread": 1.32,
+          "source": "ratings",
+          "p_win": 0.5367
+        },
+        {
+          "game_id": "2026_12_CAR_TB",
+          "week": 12,
+          "opp": "TB",
+          "home": false,
+          "home_spread": -0.07,
+          "source": "ratings",
+          "p_win": 0.5142
+        },
+        {
+          "game_id": "2026_13_CAR_MIN",
+          "week": 13,
+          "opp": "MIN",
+          "home": false,
+          "home_spread": 1.8,
+          "source": "ratings",
+          "p_win": 0.4459
+        },
+        {
+          "game_id": "2026_14_NO_CAR",
+          "week": 14,
+          "opp": "NO",
+          "home": true,
+          "home_spread": 2.41,
+          "source": "ratings",
+          "p_win": 0.5761
+        },
+        {
+          "game_id": "2026_15_CIN_CAR",
+          "week": 15,
+          "opp": "CIN",
+          "home": true,
+          "home_spread": -1.6,
+          "source": "ratings",
+          "p_win": 0.4302
+        },
+        {
+          "game_id": "2026_16_CAR_PIT",
+          "week": 16,
+          "opp": "PIT",
+          "home": false,
+          "home_spread": 1.84,
+          "source": "ratings",
+          "p_win": 0.4445
+        },
+        {
+          "game_id": "2026_17_SEA_CAR",
+          "week": 17,
+          "opp": "SEA",
+          "home": true,
+          "home_spread": -1.89,
+          "source": "ratings",
+          "p_win": 0.4196
+        },
+        {
+          "game_id": "2026_18_ATL_CAR",
+          "week": 18,
+          "opp": "ATL",
+          "home": true,
+          "home_spread": 2.1,
+          "source": "ratings",
+          "p_win": 0.5649
+        }
+      ],
+      "CHI": [
+        {
+          "game_id": "2026_09_TB_CHI",
+          "week": 9,
+          "opp": "TB",
+          "home": true,
+          "home_spread": 6.0,
+          "source": "line",
+          "p_win": 0.6972
+        },
+        {
+          "game_id": "2026_11_NO_CHI",
+          "week": 11,
+          "opp": "NO",
+          "home": true,
+          "home_spread": 3.79,
+          "source": "ratings",
+          "p_win": 0.6246
+        },
+        {
+          "game_id": "2026_12_CHI_DET",
+          "week": 12,
+          "opp": "DET",
+          "home": false,
+          "home_spread": 1.8,
+          "source": "ratings",
+          "p_win": 0.4458
+        },
+        {
+          "game_id": "2026_13_JAX_CHI",
+          "week": 13,
+          "opp": "JAX",
+          "home": true,
+          "home_spread": -1.76,
+          "source": "ratings",
+          "p_win": 0.4245
+        },
+        {
+          "game_id": "2026_14_CHI_MIA",
+          "week": 14,
+          "opp": "MIA",
+          "home": false,
+          "home_spread": -4.02,
+          "source": "ratings",
+          "p_win": 0.6539
+        },
+        {
+          "game_id": "2026_15_CHI_BUF",
+          "week": 15,
+          "opp": "BUF",
+          "home": false,
+          "home_spread": 3.18,
+          "source": "ratings",
+          "p_win": 0.3965
+        },
+        {
+          "game_id": "2026_16_GB_CHI",
+          "week": 16,
+          "opp": "GB",
+          "home": true,
+          "home_spread": 1.98,
+          "source": "ratings",
+          "p_win": 0.5608
+        },
+        {
+          "game_id": "2026_17_DET_CHI",
+          "week": 17,
+          "opp": "DET",
+          "home": true,
+          "home_spread": 0.66,
+          "source": "ratings",
+          "p_win": 0.5127
+        },
+        {
+          "game_id": "2026_18_CHI_MIN",
+          "week": 18,
+          "opp": "MIN",
+          "home": false,
+          "home_spread": 0.42,
+          "source": "ratings",
+          "p_win": 0.4962
+        }
+      ],
+      "CIN": [
+        {
+          "game_id": "2026_09_CIN_ATL",
+          "week": 9,
+          "opp": "ATL",
+          "home": false,
+          "home_spread": -3.0,
+          "source": "line",
+          "p_win": 0.6194
+        },
+        {
+          "game_id": "2026_10_PIT_CIN",
+          "week": 10,
+          "opp": "PIT",
+          "home": true,
+          "home_spread": 3.5,
+          "source": "line",
+          "p_win": 0.6147
+        },
+        {
+          "game_id": "2026_11_CIN_WAS",
+          "week": 11,
+          "opp": "WAS",
+          "home": false,
+          "home_spread": -2.94,
+          "source": "ratings",
+          "p_win": 0.6173
+        },
+        {
+          "game_id": "2026_12_NO_CIN",
+          "week": 12,
+          "opp": "NO",
+          "home": true,
+          "home_spread": 5.24,
+          "source": "ratings",
+          "p_win": 0.6731
+        },
+        {
+          "game_id": "2026_13_CIN_CLE",
+          "week": 13,
+          "opp": "CLE",
+          "home": false,
+          "home_spread": -3.84,
+          "source": "ratings",
+          "p_win": 0.6479
+        },
+        {
+          "game_id": "2026_14_KC_CIN",
+          "week": 14,
+          "opp": "KC",
+          "home": true,
+          "home_spread": 1.31,
+          "source": "ratings",
+          "p_win": 0.5365
+        },
+        {
+          "game_id": "2026_15_CIN_CAR",
+          "week": 15,
+          "opp": "CAR",
+          "home": false,
+          "home_spread": -1.6,
+          "source": "ratings",
+          "p_win": 0.5698
+        },
+        {
+          "game_id": "2026_16_CIN_IND",
+          "week": 16,
+          "opp": "IND",
+          "home": false,
+          "home_spread": -3.37,
+          "source": "ratings",
+          "p_win": 0.6322
+        },
+        {
+          "game_id": "2026_17_BAL_CIN",
+          "week": 17,
+          "opp": "BAL",
+          "home": true,
+          "home_spread": 4.15,
+          "source": "ratings",
+          "p_win": 0.6371
+        },
+        {
+          "game_id": "2026_18_CLE_CIN",
+          "week": 18,
+          "opp": "CLE",
+          "home": true,
+          "home_spread": 6.3,
+          "source": "ratings",
+          "p_win": 0.7065
+        }
+      ],
+      "CLE": [
+        {
+          "game_id": "2026_09_CLE_NO",
+          "week": 9,
+          "opp": "NO",
+          "home": false,
+          "home_spread": 3.0,
+          "source": "line",
+          "p_win": 0.4029
+        },
+        {
+          "game_id": "2026_10_HOU_CLE",
+          "week": 10,
+          "opp": "HOU",
+          "home": true,
+          "home_spread": -4.5,
+          "source": "line",
+          "p_win": 0.3303
+        },
+        {
+          "game_id": "2026_12_LV_CLE",
+          "week": 12,
+          "opp": "LV",
+          "home": true,
+          "home_spread": 1.07,
+          "source": "ratings",
+          "p_win": 0.5277
+        },
+        {
+          "game_id": "2026_13_CIN_CLE",
+          "week": 13,
+          "opp": "CIN",
+          "home": true,
+          "home_spread": -3.84,
+          "source": "ratings",
+          "p_win": 0.3521
+        },
+        {
+          "game_id": "2026_14_ATL_CLE",
+          "week": 14,
+          "opp": "ATL",
+          "home": true,
+          "home_spread": -0.14,
+          "source": "ratings",
+          "p_win": 0.4832
+        },
+        {
+          "game_id": "2026_15_CLE_NYG",
+          "week": 15,
+          "opp": "NYG",
+          "home": false,
+          "home_spread": 1.98,
+          "source": "ratings",
+          "p_win": 0.4393
+        },
+        {
+          "game_id": "2026_16_CLE_BAL",
+          "week": 16,
+          "opp": "BAL",
+          "home": false,
+          "home_spread": 3.38,
+          "source": "ratings",
+          "p_win": 0.3894
+        },
+        {
+          "game_id": "2026_17_IND_CLE",
+          "week": 17,
+          "opp": "IND",
+          "home": true,
+          "home_spread": 0.77,
+          "source": "ratings",
+          "p_win": 0.5164
+        },
+        {
+          "game_id": "2026_18_CLE_CIN",
+          "week": 18,
+          "opp": "CIN",
+          "home": false,
+          "home_spread": 6.3,
+          "source": "ratings",
+          "p_win": 0.2935
+        }
+      ],
+      "DAL": [
+        {
+          "game_id": "2026_09_DAL_IND",
+          "week": 9,
+          "opp": "IND",
+          "home": false,
+          "home_spread": -5.5,
+          "source": "line",
+          "p_win": 0.7014
+        },
+        {
+          "game_id": "2026_10_SF_DAL",
+          "week": 10,
+          "opp": "SF",
+          "home": true,
+          "home_spread": -3.5,
+          "source": "line",
+          "p_win": 0.3635
+        },
+        {
+          "game_id": "2026_11_TEN_DAL",
+          "week": 11,
+          "opp": "TEN",
+          "home": true,
+          "home_spread": 7.47,
+          "source": "ratings",
+          "p_win": 0.7407
+        },
+        {
+          "game_id": "2026_12_PHI_DAL",
+          "week": 12,
+          "opp": "PHI",
+          "home": true,
+          "home_spread": 4.86,
+          "source": "ratings",
+          "p_win": 0.6608
+        },
+        {
+          "game_id": "2026_13_DAL_SEA",
+          "week": 13,
+          "opp": "SEA",
+          "home": false,
+          "home_spread": 2.65,
+          "source": "ratings",
+          "p_win": 0.4153
+        },
+        {
+          "game_id": "2026_15_DAL_LA",
+          "week": 15,
+          "opp": "LA",
+          "home": false,
+          "home_spread": 3.11,
+          "source": "ratings",
+          "p_win": 0.3991
+        },
+        {
+          "game_id": "2026_16_JAX_DAL",
+          "week": 16,
+          "opp": "JAX",
+          "home": true,
+          "home_spread": -1.42,
+          "source": "ratings",
+          "p_win": 0.4364
+        },
+        {
+          "game_id": "2026_17_NYG_DAL",
+          "week": 17,
+          "opp": "NYG",
+          "home": true,
+          "home_spread": 4.43,
+          "source": "ratings",
+          "p_win": 0.6465
+        },
+        {
+          "game_id": "2026_18_DAL_WAS",
+          "week": 18,
+          "opp": "WAS",
+          "home": false,
+          "home_spread": -1.82,
+          "source": "ratings",
+          "p_win": 0.5777
+        }
+      ],
+      "DEN": [
+        {
+          "game_id": "2026_09_DEN_CAR",
+          "week": 9,
+          "opp": "CAR",
+          "home": false,
+          "home_spread": -2.5,
+          "source": "line",
+          "p_win": 0.6019
+        },
+        {
+          "game_id": "2026_11_LV_DEN",
+          "week": 11,
+          "opp": "LV",
+          "home": true,
+          "home_spread": 5.26,
+          "source": "ratings",
+          "p_win": 0.6739
+        },
+        {
+          "game_id": "2026_12_DEN_PIT",
+          "week": 12,
+          "opp": "PIT",
+          "home": false,
+          "home_spread": -0.11,
+          "source": "ratings",
+          "p_win": 0.5158
+        },
+        {
+          "game_id": "2026_13_MIA_DEN",
+          "week": 13,
+          "opp": "MIA",
+          "home": true,
+          "home_spread": 7.06,
+          "source": "ratings",
+          "p_win": 0.7288
+        },
+        {
+          "game_id": "2026_14_DEN_NYJ",
+          "week": 14,
+          "opp": "NYJ",
+          "home": false,
+          "home_spread": -3.29,
+          "source": "ratings",
+          "p_win": 0.6292
+        },
+        {
+          "game_id": "2026_15_DEN_LV",
+          "week": 15,
+          "opp": "LV",
+          "home": false,
+          "home_spread": -2.8,
+          "source": "ratings",
+          "p_win": 0.6124
+        },
+        {
+          "game_id": "2026_16_BUF_DEN",
+          "week": 16,
+          "opp": "BUF",
+          "home": true,
+          "home_spread": -0.15,
+          "source": "ratings",
+          "p_win": 0.483
+        },
+        {
+          "game_id": "2026_17_DEN_NE",
+          "week": 17,
+          "opp": "NE",
+          "home": false,
+          "home_spread": 0.99,
+          "source": "ratings",
+          "p_win": 0.4752
+        },
+        {
+          "game_id": "2026_18_LAC_DEN",
+          "week": 18,
+          "opp": "LAC",
+          "home": true,
+          "home_spread": 4.18,
+          "source": "ratings",
+          "p_win": 0.6379
+        }
+      ],
+      "DET": [
+        {
+          "game_id": "2026_09_DET_MIA",
+          "week": 9,
+          "opp": "MIA",
+          "home": false,
+          "home_spread": -7.0,
+          "source": "line",
+          "p_win": 0.7453
+        },
+        {
+          "game_id": "2026_10_NE_DET",
+          "week": 10,
+          "opp": "NE",
+          "home": true,
+          "home_spread": -1.5,
+          "source": "line",
+          "p_win": 0.4337
+        },
+        {
+          "game_id": "2026_11_TB_DET",
+          "week": 11,
+          "opp": "TB",
+          "home": true,
+          "home_spread": 4.48,
+          "source": "ratings",
+          "p_win": 0.6481
+        },
+        {
+          "game_id": "2026_12_CHI_DET",
+          "week": 12,
+          "opp": "CHI",
+          "home": true,
+          "home_spread": 1.8,
+          "source": "ratings",
+          "p_win": 0.5542
+        },
+        {
+          "game_id": "2026_13_DET_ATL",
+          "week": 13,
+          "opp": "ATL",
+          "home": false,
+          "home_spread": -1.58,
+          "source": "ratings",
+          "p_win": 0.5691
+        },
+        {
+          "game_id": "2026_14_TEN_DET",
+          "week": 14,
+          "opp": "TEN",
+          "home": true,
+          "home_spread": 7.71,
+          "source": "ratings",
+          "p_win": 0.7473
+        },
+        {
+          "game_id": "2026_15_DET_MIN",
+          "week": 15,
+          "opp": "MIN",
+          "home": false,
+          "home_spread": -0.15,
+          "source": "ratings",
+          "p_win": 0.517
+        },
+        {
+          "game_id": "2026_16_NYG_DET",
+          "week": 16,
+          "opp": "NYG",
+          "home": true,
+          "home_spread": 4.67,
+          "source": "ratings",
+          "p_win": 0.6544
+        },
+        {
+          "game_id": "2026_17_DET_CHI",
+          "week": 17,
+          "opp": "CHI",
+          "home": false,
+          "home_spread": 0.66,
+          "source": "ratings",
+          "p_win": 0.4873
+        },
+        {
+          "game_id": "2026_18_DET_GB",
+          "week": 18,
+          "opp": "GB",
+          "home": false,
+          "home_spread": -0.09,
+          "source": "ratings",
+          "p_win": 0.5148
+        }
+      ],
+      "GB": [
+        {
+          "game_id": "2026_09_GB_NE",
+          "week": 9,
+          "opp": "NE",
+          "home": false,
+          "home_spread": 3.5,
+          "source": "line",
+          "p_win": 0.3853
+        },
+        {
+          "game_id": "2026_10_MIN_GB",
+          "week": 10,
+          "opp": "MIN",
+          "home": true,
+          "home_spread": 2.5,
+          "source": "line",
+          "p_win": 0.5794
+        },
+        {
+          "game_id": "2026_12_GB_LA",
+          "week": 12,
+          "opp": "LA",
+          "home": false,
+          "home_spread": 4.19,
+          "source": "ratings",
+          "p_win": 0.3618
+        },
+        {
+          "game_id": "2026_13_GB_NO",
+          "week": 13,
+          "opp": "NO",
+          "home": false,
+          "home_spread": -0.57,
+          "source": "ratings",
+          "p_win": 0.5326
+        },
+        {
+          "game_id": "2026_14_BUF_GB",
+          "week": 14,
+          "opp": "BUF",
+          "home": true,
+          "home_spread": -1.47,
+          "source": "ratings",
+          "p_win": 0.4349
+        },
+        {
+          "game_id": "2026_15_MIA_GB",
+          "week": 15,
+          "opp": "MIA",
+          "home": true,
+          "home_spread": 5.73,
+          "source": "ratings",
+          "p_win": 0.6888
+        },
+        {
+          "game_id": "2026_16_GB_CHI",
+          "week": 16,
+          "opp": "CHI",
+          "home": false,
+          "home_spread": 1.98,
+          "source": "ratings",
+          "p_win": 0.4392
+        },
+        {
+          "game_id": "2026_17_HOU_GB",
+          "week": 17,
+          "opp": "HOU",
+          "home": true,
+          "home_spread": -0.82,
+          "source": "ratings",
+          "p_win": 0.4584
+        },
+        {
+          "game_id": "2026_18_DET_GB",
+          "week": 18,
+          "opp": "DET",
+          "home": true,
+          "home_spread": -0.09,
+          "source": "ratings",
+          "p_win": 0.4852
+        }
+      ],
+      "HOU": [
+        {
+          "game_id": "2026_09_HOU_LAC",
+          "week": 9,
+          "opp": "LAC",
+          "home": false,
+          "home_spread": -4.5,
+          "source": "line",
+          "p_win": 0.6697
+        },
+        {
+          "game_id": "2026_10_HOU_CLE",
+          "week": 10,
+          "opp": "CLE",
+          "home": false,
+          "home_spread": -4.5,
+          "source": "line",
+          "p_win": 0.6697
+        },
+        {
+          "game_id": "2026_11_IND_HOU",
+          "week": 11,
+          "opp": "IND",
+          "home": true,
+          "home_spread": 5.68,
+          "source": "ratings",
+          "p_win": 0.6873
+        },
+        {
+          "game_id": "2026_12_BAL_HOU",
+          "week": 12,
+          "opp": "BAL",
+          "home": true,
+          "home_spread": 4.0,
+          "source": "ratings",
+          "p_win": 0.6319
+        },
+        {
+          "game_id": "2026_13_HOU_PIT",
+          "week": 13,
+          "opp": "PIT",
+          "home": false,
+          "home_spread": -0.84,
+          "source": "ratings",
+          "p_win": 0.5424
+        },
+        {
+          "game_id": "2026_14_HOU_WAS",
+          "week": 14,
+          "opp": "WAS",
+          "home": false,
+          "home_spread": -2.79,
+          "source": "ratings",
+          "p_win": 0.612
+        },
+        {
+          "game_id": "2026_15_JAX_HOU",
+          "week": 15,
+          "opp": "JAX",
+          "home": true,
+          "home_spread": -0.45,
+          "source": "ratings",
+          "p_win": 0.4717
+        },
+        {
+          "game_id": "2026_16_HOU_PHI",
+          "week": 16,
+          "opp": "PHI",
+          "home": false,
+          "home_spread": -3.37,
+          "source": "ratings",
+          "p_win": 0.6321
+        },
+        {
+          "game_id": "2026_17_HOU_GB",
+          "week": 17,
+          "opp": "GB",
+          "home": false,
+          "home_spread": -0.82,
+          "source": "ratings",
+          "p_win": 0.5416
+        },
+        {
+          "game_id": "2026_18_TEN_HOU",
+          "week": 18,
+          "opp": "TEN",
+          "home": true,
+          "home_spread": 8.44,
+          "source": "ratings",
+          "p_win": 0.7671
+        }
+      ],
+      "IND": [
+        {
+          "game_id": "2026_09_DAL_IND",
+          "week": 9,
+          "opp": "DAL",
+          "home": true,
+          "home_spread": -5.5,
+          "source": "line",
+          "p_win": 0.2986
+        },
+        {
+          "game_id": "2026_10_MIA_IND",
+          "week": 10,
+          "opp": "MIA",
+          "home": true,
+          "home_spread": 2.5,
+          "source": "line",
+          "p_win": 0.5794
+        },
+        {
+          "game_id": "2026_11_IND_HOU",
+          "week": 11,
+          "opp": "HOU",
+          "home": false,
+          "home_spread": 5.68,
+          "source": "ratings",
+          "p_win": 0.3127
+        },
+        {
+          "game_id": "2026_12_NYG_IND",
+          "week": 12,
+          "opp": "NYG",
+          "home": true,
+          "home_spread": 0.95,
+          "source": "ratings",
+          "p_win": 0.5232
+        },
+        {
+          "game_id": "2026_14_IND_PHI",
+          "week": 14,
+          "opp": "PHI",
+          "home": false,
+          "home_spread": 1.08,
+          "source": "ratings",
+          "p_win": 0.472
+        },
+        {
+          "game_id": "2026_15_IND_TEN",
+          "week": 15,
+          "opp": "TEN",
+          "home": false,
+          "home_spread": -1.53,
+          "source": "ratings",
+          "p_win": 0.5672
+        },
+        {
+          "game_id": "2026_16_CIN_IND",
+          "week": 16,
+          "opp": "CIN",
+          "home": true,
+          "home_spread": -3.37,
+          "source": "ratings",
+          "p_win": 0.3678
+        },
+        {
+          "game_id": "2026_17_IND_CLE",
+          "week": 17,
+          "opp": "CLE",
+          "home": false,
+          "home_spread": 0.77,
+          "source": "ratings",
+          "p_win": 0.4836
+        },
+        {
+          "game_id": "2026_18_JAX_IND",
+          "week": 18,
+          "opp": "JAX",
+          "home": true,
+          "home_spread": -4.91,
+          "source": "ratings",
+          "p_win": 0.3172
+        }
+      ],
+      "JAX": [
+        {
+          "game_id": "2026_09_JAX_BAL",
+          "week": 9,
+          "opp": "BAL",
+          "home": false,
+          "home_spread": -10.0,
+          "source": "line",
+          "p_win": 0.8197
+        },
+        {
+          "game_id": "2026_10_JAX_TEN",
+          "week": 10,
+          "opp": "TEN",
+          "home": false,
+          "home_spread": -9.5,
+          "source": "line",
+          "p_win": 0.8086
+        },
+        {
+          "game_id": "2026_11_JAX_NYG",
+          "week": 11,
+          "opp": "NYG",
+          "home": false,
+          "home_spread": -4.62,
+          "source": "ratings",
+          "p_win": 0.6738
+        },
+        {
+          "game_id": "2026_12_TEN_JAX",
+          "week": 12,
+          "opp": "TEN",
+          "home": true,
+          "home_spread": 10.13,
+          "source": "ratings",
+          "p_win": 0.8084
+        },
+        {
+          "game_id": "2026_13_JAX_CHI",
+          "week": 13,
+          "opp": "CHI",
+          "home": false,
+          "home_spread": -1.76,
+          "source": "ratings",
+          "p_win": 0.5755
+        },
+        {
+          "game_id": "2026_14_PIT_JAX",
+          "week": 14,
+          "opp": "PIT",
+          "home": true,
+          "home_spread": 4.99,
+          "source": "ratings",
+          "p_win": 0.6651
+        },
+        {
+          "game_id": "2026_15_JAX_HOU",
+          "week": 15,
+          "opp": "HOU",
+          "home": false,
+          "home_spread": -0.45,
+          "source": "ratings",
+          "p_win": 0.5283
+        },
+        {
+          "game_id": "2026_16_JAX_DAL",
+          "week": 16,
+          "opp": "DAL",
+          "home": false,
+          "home_spread": -1.42,
+          "source": "ratings",
+          "p_win": 0.5636
+        },
+        {
+          "game_id": "2026_17_WAS_JAX",
+          "week": 17,
+          "opp": "WAS",
+          "home": true,
+          "home_spread": 6.94,
+          "source": "ratings",
+          "p_win": 0.7254
+        },
+        {
+          "game_id": "2026_18_JAX_IND",
+          "week": 18,
+          "opp": "IND",
+          "home": false,
+          "home_spread": -4.91,
+          "source": "ratings",
+          "p_win": 0.6828
+        }
+      ],
+      "KC": [
+        {
+          "game_id": "2026_09_NYJ_KC",
+          "week": 9,
+          "opp": "NYJ",
+          "home": true,
+          "home_spread": 10.0,
+          "source": "line",
+          "p_win": 0.8055
+        },
+        {
+          "game_id": "2026_10_KC_ATL",
+          "week": 10,
+          "opp": "ATL",
+          "home": false,
+          "home_spread": -3.0,
+          "source": "line",
+          "p_win": 0.6194
+        },
+        {
+          "game_id": "2026_11_ARI_KC",
+          "week": 11,
+          "opp": "ARI",
+          "home": true,
+          "home_spread": 6.96,
+          "source": "ratings",
+          "p_win": 0.7261
+        },
+        {
+          "game_id": "2026_12_KC_BUF",
+          "week": 12,
+          "opp": "BUF",
+          "home": false,
+          "home_spread": 1.81,
+          "source": "ratings",
+          "p_win": 0.4455
+        },
+        {
+          "game_id": "2026_13_KC_LA",
+          "week": 13,
+          "opp": "LA",
+          "home": false,
+          "home_spread": 2.07,
+          "source": "ratings",
+          "p_win": 0.4363
+        },
+        {
+          "game_id": "2026_14_KC_CIN",
+          "week": 14,
+          "opp": "CIN",
+          "home": false,
+          "home_spread": 1.31,
+          "source": "ratings",
+          "p_win": 0.4635
+        },
+        {
+          "game_id": "2026_15_NE_KC",
+          "week": 15,
+          "opp": "NE",
+          "home": true,
+          "home_spread": 2.27,
+          "source": "ratings",
+          "p_win": 0.5712
+        },
+        {
+          "game_id": "2026_16_SF_KC",
+          "week": 16,
+          "opp": "SF",
+          "home": true,
+          "home_spread": 0.67,
+          "source": "ratings",
+          "p_win": 0.5129
+        },
+        {
+          "game_id": "2026_17_KC_LAC",
+          "week": 17,
+          "opp": "LAC",
+          "home": false,
+          "home_spread": -2.51,
+          "source": "ratings",
+          "p_win": 0.6024
+        },
+        {
+          "game_id": "2026_18_LV_KC",
+          "week": 18,
+          "opp": "LV",
+          "home": true,
+          "home_spread": 6.06,
+          "source": "ratings",
+          "p_win": 0.6991
+        }
+      ],
+      "LA": [
+        {
+          "game_id": "2026_09_LA_WAS",
+          "week": 9,
+          "opp": "WAS",
+          "home": false,
+          "home_spread": -5.5,
+          "source": "line",
+          "p_win": 0.7014
+        },
+        {
+          "game_id": "2026_10_LA_ARI",
+          "week": 10,
+          "opp": "ARI",
+          "home": false,
+          "home_spread": -7.5,
+          "source": "line",
+          "p_win": 0.759
+        },
+        {
+          "game_id": "2026_12_GB_LA",
+          "week": 12,
+          "opp": "GB",
+          "home": true,
+          "home_spread": 4.19,
+          "source": "ratings",
+          "p_win": 0.6382
+        },
+        {
+          "game_id": "2026_13_KC_LA",
+          "week": 13,
+          "opp": "KC",
+          "home": true,
+          "home_spread": 2.07,
+          "source": "ratings",
+          "p_win": 0.5637
+        },
+        {
+          "game_id": "2026_14_LA_SF",
+          "week": 14,
+          "opp": "SF",
+          "home": false,
+          "home_spread": 0.96,
+          "source": "ratings",
+          "p_win": 0.4764
+        },
+        {
+          "game_id": "2026_15_DAL_LA",
+          "week": 15,
+          "opp": "DAL",
+          "home": true,
+          "home_spread": 3.11,
+          "source": "ratings",
+          "p_win": 0.6009
+        },
+        {
+          "game_id": "2026_16_LA_SEA",
+          "week": 16,
+          "opp": "SEA",
+          "home": false,
+          "home_spread": 0.78,
+          "source": "ratings",
+          "p_win": 0.4832
+        },
+        {
+          "game_id": "2026_17_LA_TB",
+          "week": 17,
+          "opp": "TB",
+          "home": false,
+          "home_spread": -3.65,
+          "source": "ratings",
+          "p_win": 0.6416
+        },
+        {
+          "game_id": "2026_18_SEA_LA",
+          "week": 18,
+          "opp": "SEA",
+          "home": true,
+          "home_spread": 1.69,
+          "source": "ratings",
+          "p_win": 0.5501
+        }
+      ],
+      "LAC": [
+        {
+          "game_id": "2026_09_HOU_LAC",
+          "week": 9,
+          "opp": "HOU",
+          "home": true,
+          "home_spread": -4.5,
+          "source": "line",
+          "p_win": 0.3303
+        },
+        {
+          "game_id": "2026_10_LAC_BAL",
+          "week": 10,
+          "opp": "BAL",
+          "home": false,
+          "home_spread": 1.5,
+          "source": "line",
+          "p_win": 0.4567
+        },
+        {
+          "game_id": "2026_11_NYJ_LAC",
+          "week": 11,
+          "opp": "NYJ",
+          "home": true,
+          "home_spread": 2.8,
+          "source": "ratings",
+          "p_win": 0.5902
+        },
+        {
+          "game_id": "2026_12_NE_LAC",
+          "week": 12,
+          "opp": "NE",
+          "home": true,
+          "home_spread": -1.47,
+          "source": "ratings",
+          "p_win": 0.4346
+        },
+        {
+          "game_id": "2026_13_LAC_TB",
+          "week": 13,
+          "opp": "TB",
+          "home": false,
+          "home_spread": 0.93,
+          "source": "ratings",
+          "p_win": 0.4776
+        },
+        {
+          "game_id": "2026_14_LAC_LV",
+          "week": 14,
+          "opp": "LV",
+          "home": false,
+          "home_spread": 0.15,
+          "source": "ratings",
+          "p_win": 0.5063
+        },
+        {
+          "game_id": "2026_15_SF_LAC",
+          "week": 15,
+          "opp": "SF",
+          "home": true,
+          "home_spread": -3.07,
+          "source": "ratings",
+          "p_win": 0.378
+        },
+        {
+          "game_id": "2026_16_LAC_MIA",
+          "week": 16,
+          "opp": "MIA",
+          "home": false,
+          "home_spread": -1.64,
+          "source": "ratings",
+          "p_win": 0.5715
+        },
+        {
+          "game_id": "2026_17_KC_LAC",
+          "week": 17,
+          "opp": "KC",
+          "home": true,
+          "home_spread": -2.51,
+          "source": "ratings",
+          "p_win": 0.3976
+        },
+        {
+          "game_id": "2026_18_LAC_DEN",
+          "week": 18,
+          "opp": "DEN",
+          "home": false,
+          "home_spread": 4.18,
+          "source": "ratings",
+          "p_win": 0.3621
+        }
+      ],
+      "LV": [
+        {
+          "game_id": "2026_09_LV_SF",
+          "week": 9,
+          "opp": "SF",
+          "home": false,
+          "home_spread": 10.0,
+          "source": "line",
+          "p_win": 0.1945
+        },
+        {
+          "game_id": "2026_10_SEA_LV",
+          "week": 10,
+          "opp": "SEA",
+          "home": true,
+          "home_spread": -3.97,
+          "source": "ratings",
+          "p_win": 0.3476
+        },
+        {
+          "game_id": "2026_11_LV_DEN",
+          "week": 11,
+          "opp": "DEN",
+          "home": false,
+          "home_spread": 5.26,
+          "source": "ratings",
+          "p_win": 0.3261
+        },
+        {
+          "game_id": "2026_12_LV_CLE",
+          "week": 12,
+          "opp": "CLE",
+          "home": false,
+          "home_spread": 1.07,
+          "source": "ratings",
+          "p_win": 0.4723
+        },
+        {
+          "game_id": "2026_14_LAC_LV",
+          "week": 14,
+          "opp": "LAC",
+          "home": true,
+          "home_spread": 0.15,
+          "source": "ratings",
+          "p_win": 0.4937
+        },
+        {
+          "game_id": "2026_15_DEN_LV",
+          "week": 15,
+          "opp": "DEN",
+          "home": true,
+          "home_spread": -2.8,
+          "source": "ratings",
+          "p_win": 0.3876
+        },
+        {
+          "game_id": "2026_16_TEN_LV",
+          "week": 16,
+          "opp": "TEN",
+          "home": true,
+          "home_spread": 3.68,
+          "source": "ratings",
+          "p_win": 0.621
+        },
+        {
+          "game_id": "2026_17_LV_ARI",
+          "week": 17,
+          "opp": "ARI",
+          "home": false,
+          "home_spread": 0.33,
+          "source": "ratings",
+          "p_win": 0.4994
+        },
+        {
+          "game_id": "2026_18_LV_KC",
+          "week": 18,
+          "opp": "KC",
+          "home": false,
+          "home_spread": 6.06,
+          "source": "ratings",
+          "p_win": 0.3009
+        }
+      ],
+      "MIA": [
+        {
+          "game_id": "2026_09_DET_MIA",
+          "week": 9,
+          "opp": "DET",
+          "home": true,
+          "home_spread": -7.0,
+          "source": "line",
+          "p_win": 0.2547
+        },
+        {
+          "game_id": "2026_10_MIA_IND",
+          "week": 10,
+          "opp": "IND",
+          "home": false,
+          "home_spread": 2.5,
+          "source": "line",
+          "p_win": 0.4206
+        },
+        {
+          "game_id": "2026_11_MIA_BUF",
+          "week": 11,
+          "opp": "BUF",
+          "home": false,
+          "home_spread": 8.43,
+          "source": "ratings",
+          "p_win": 0.2331
+        },
+        {
+          "game_id": "2026_12_NYJ_MIA",
+          "week": 12,
+          "opp": "NYJ",
+          "home": true,
+          "home_spread": -0.07,
+          "source": "ratings",
+          "p_win": 0.4857
+        },
+        {
+          "game_id": "2026_13_MIA_DEN",
+          "week": 13,
+          "opp": "DEN",
+          "home": false,
+          "home_spread": 7.06,
+          "source": "ratings",
+          "p_win": 0.2712
+        },
+        {
+          "game_id": "2026_14_CHI_MIA",
+          "week": 14,
+          "opp": "CHI",
+          "home": true,
+          "home_spread": -4.02,
+          "source": "ratings",
+          "p_win": 0.3461
+        },
+        {
+          "game_id": "2026_15_MIA_GB",
+          "week": 15,
+          "opp": "GB",
+          "home": false,
+          "home_spread": 5.73,
+          "source": "ratings",
+          "p_win": 0.3112
+        },
+        {
+          "game_id": "2026_16_LAC_MIA",
+          "week": 16,
+          "opp": "LAC",
+          "home": true,
+          "home_spread": -1.64,
+          "source": "ratings",
+          "p_win": 0.4285
+        },
+        {
+          "game_id": "2026_17_BUF_MIA",
+          "week": 17,
+          "opp": "BUF",
+          "home": true,
+          "home_spread": -5.97,
+          "source": "ratings",
+          "p_win": 0.2845
+        },
+        {
+          "game_id": "2026_18_MIA_NE",
+          "week": 18,
+          "opp": "NE",
+          "home": false,
+          "home_spread": 6.82,
+          "source": "ratings",
+          "p_win": 0.2782
+        }
+      ],
+      "MIN": [
+        {
+          "game_id": "2026_09_BUF_MIN",
+          "week": 9,
+          "opp": "BUF",
+          "home": true,
+          "home_spread": -3.5,
+          "source": "line",
+          "p_win": 0.3635
+        },
+        {
+          "game_id": "2026_10_MIN_GB",
+          "week": 10,
+          "opp": "GB",
+          "home": false,
+          "home_spread": 2.5,
+          "source": "line",
+          "p_win": 0.4206
+        },
+        {
+          "game_id": "2026_11_MIN_SF",
+          "week": 11,
+          "opp": "SF",
+          "home": false,
+          "home_spread": 2.74,
+          "source": "ratings",
+          "p_win": 0.4119
+        },
+        {
+          "game_id": "2026_12_ATL_MIN",
+          "week": 12,
+          "opp": "ATL",
+          "home": true,
+          "home_spread": 2.66,
+          "source": "ratings",
+          "p_win": 0.5852
+        },
+        {
+          "game_id": "2026_13_CAR_MIN",
+          "week": 13,
+          "opp": "CAR",
+          "home": true,
+          "home_spread": 1.8,
+          "source": "ratings",
+          "p_win": 0.5541
+        },
+        {
+          "game_id": "2026_14_MIN_NE",
+          "week": 14,
+          "opp": "NE",
+          "home": false,
+          "home_spread": 2.38,
+          "source": "ratings",
+          "p_win": 0.425
+        },
+        {
+          "game_id": "2026_15_DET_MIN",
+          "week": 15,
+          "opp": "DET",
+          "home": true,
+          "home_spread": -0.15,
+          "source": "ratings",
+          "p_win": 0.483
+        },
+        {
+          "game_id": "2026_16_WAS_MIN",
+          "week": 16,
+          "opp": "WAS",
+          "home": true,
+          "home_spread": 3.14,
+          "source": "ratings",
+          "p_win": 0.6021
+        },
+        {
+          "game_id": "2026_17_MIN_NYJ",
+          "week": 17,
+          "opp": "NYJ",
+          "home": false,
+          "home_spread": -1.9,
+          "source": "ratings",
+          "p_win": 0.5807
+        },
+        {
+          "game_id": "2026_18_CHI_MIN",
+          "week": 18,
+          "opp": "CHI",
+          "home": true,
+          "home_spread": 0.42,
+          "source": "ratings",
+          "p_win": 0.5038
+        }
+      ],
+      "NE": [
+        {
+          "game_id": "2026_09_GB_NE",
+          "week": 9,
+          "opp": "GB",
+          "home": true,
+          "home_spread": 3.5,
+          "source": "line",
+          "p_win": 0.6147
+        },
+        {
+          "game_id": "2026_10_NE_DET",
+          "week": 10,
+          "opp": "DET",
+          "home": false,
+          "home_spread": -1.5,
+          "source": "line",
+          "p_win": 0.5663
+        },
+        {
+          "game_id": "2026_12_NE_LAC",
+          "week": 12,
+          "opp": "LAC",
+          "home": false,
+          "home_spread": -1.47,
+          "source": "ratings",
+          "p_win": 0.5654
+        },
+        {
+          "game_id": "2026_13_BUF_NE",
+          "week": 13,
+          "opp": "BUF",
+          "home": true,
+          "home_spread": -0.38,
+          "source": "ratings",
+          "p_win": 0.4743
+        },
+        {
+          "game_id": "2026_14_MIN_NE",
+          "week": 14,
+          "opp": "MIN",
+          "home": true,
+          "home_spread": 2.38,
+          "source": "ratings",
+          "p_win": 0.575
+        },
+        {
+          "game_id": "2026_15_NE_KC",
+          "week": 15,
+          "opp": "KC",
+          "home": false,
+          "home_spread": 2.27,
+          "source": "ratings",
+          "p_win": 0.4288
+        },
+        {
+          "game_id": "2026_16_NE_NYJ",
+          "week": 16,
+          "opp": "NYJ",
+          "home": false,
+          "home_spread": -3.05,
+          "source": "ratings",
+          "p_win": 0.621
+        },
+        {
+          "game_id": "2026_17_DEN_NE",
+          "week": 17,
+          "opp": "DEN",
+          "home": true,
+          "home_spread": 0.99,
+          "source": "ratings",
+          "p_win": 0.5248
+        },
+        {
+          "game_id": "2026_18_MIA_NE",
+          "week": 18,
+          "opp": "MIA",
+          "home": true,
+          "home_spread": 6.82,
+          "source": "ratings",
+          "p_win": 0.7218
+        }
+      ],
+      "NO": [
+        {
+          "game_id": "2026_09_CLE_NO",
+          "week": 9,
+          "opp": "CLE",
+          "home": true,
+          "home_spread": 3.0,
+          "source": "line",
+          "p_win": 0.5971
+        },
+        {
+          "game_id": "2026_10_CAR_NO",
+          "week": 10,
+          "opp": "CAR",
+          "home": true,
+          "home_spread": -1.5,
+          "source": "line",
+          "p_win": 0.4337
+        },
+        {
+          "game_id": "2026_11_NO_CHI",
+          "week": 11,
+          "opp": "CHI",
+          "home": false,
+          "home_spread": 3.79,
+          "source": "ratings",
+          "p_win": 0.3754
+        },
+        {
+          "game_id": "2026_12_NO_CIN",
+          "week": 12,
+          "opp": "CIN",
+          "home": false,
+          "home_spread": 5.24,
+          "source": "ratings",
+          "p_win": 0.3269
+        },
+        {
+          "game_id": "2026_13_GB_NO",
+          "week": 13,
+          "opp": "GB",
+          "home": true,
+          "home_spread": -0.57,
+          "source": "ratings",
+          "p_win": 0.4674
+        },
+        {
+          "game_id": "2026_14_NO_CAR",
+          "week": 14,
+          "opp": "CAR",
+          "home": false,
+          "home_spread": 2.41,
+          "source": "ratings",
+          "p_win": 0.4239
+        },
+        {
+          "game_id": "2026_15_NO_TB",
+          "week": 15,
+          "opp": "TB",
+          "home": false,
+          "home_spread": 1.11,
+          "source": "ratings",
+          "p_win": 0.471
+        },
+        {
+          "game_id": "2026_16_ARI_NO",
+          "week": 16,
+          "opp": "ARI",
+          "home": true,
+          "home_spread": 3.04,
+          "source": "ratings",
+          "p_win": 0.5984
+        },
+        {
+          "game_id": "2026_17_NO_ATL",
+          "week": 17,
+          "opp": "ATL",
+          "home": false,
+          "home_spread": 1.54,
+          "source": "ratings",
+          "p_win": 0.4552
+        },
+        {
+          "game_id": "2026_18_TB_NO",
+          "week": 18,
+          "opp": "TB",
+          "home": true,
+          "home_spread": 1.36,
+          "source": "ratings",
+          "p_win": 0.538
+        }
+      ],
+      "NYG": [
+        {
+          "game_id": "2026_09_NYG_PHI",
+          "week": 9,
+          "opp": "PHI",
+          "home": false,
+          "home_spread": -3.5,
+          "source": "line",
+          "p_win": 0.6365
+        },
+        {
+          "game_id": "2026_10_WAS_NYG",
+          "week": 10,
+          "opp": "WAS",
+          "home": true,
+          "home_spread": 1.5,
+          "source": "line",
+          "p_win": 0.5433
+        },
+        {
+          "game_id": "2026_11_JAX_NYG",
+          "week": 11,
+          "opp": "JAX",
+          "home": true,
+          "home_spread": -4.62,
+          "source": "ratings",
+          "p_win": 0.3262
+        },
+        {
+          "game_id": "2026_12_NYG_IND",
+          "week": 12,
+          "opp": "IND",
+          "home": false,
+          "home_spread": 0.95,
+          "source": "ratings",
+          "p_win": 0.4768
+        },
+        {
+          "game_id": "2026_13_SF_NYG",
+          "week": 13,
+          "opp": "SF",
+          "home": true,
+          "home_spread": -3.57,
+          "source": "ratings",
+          "p_win": 0.3611
+        },
+        {
+          "game_id": "2026_14_NYG_SEA",
+          "week": 14,
+          "opp": "SEA",
+          "home": false,
+          "home_spread": 5.85,
+          "source": "ratings",
+          "p_win": 0.3075
+        },
+        {
+          "game_id": "2026_15_CLE_NYG",
+          "week": 15,
+          "opp": "CLE",
+          "home": true,
+          "home_spread": 1.98,
+          "source": "ratings",
+          "p_win": 0.5607
+        },
+        {
+          "game_id": "2026_16_NYG_DET",
+          "week": 16,
+          "opp": "DET",
+          "home": false,
+          "home_spread": 4.67,
+          "source": "ratings",
+          "p_win": 0.3456
+        },
+        {
+          "game_id": "2026_17_NYG_DAL",
+          "week": 17,
+          "opp": "DAL",
+          "home": false,
+          "home_spread": 4.43,
+          "source": "ratings",
+          "p_win": 0.3535
+        },
+        {
+          "game_id": "2026_18_PHI_NYG",
+          "week": 18,
+          "opp": "PHI",
+          "home": true,
+          "home_spread": 1.66,
+          "source": "ratings",
+          "p_win": 0.5492
+        }
+      ],
+      "NYJ": [
+        {
+          "game_id": "2026_09_NYJ_KC",
+          "week": 9,
+          "opp": "KC",
+          "home": false,
+          "home_spread": 10.0,
+          "source": "line",
+          "p_win": 0.1945
+        },
+        {
+          "game_id": "2026_10_BUF_NYJ",
+          "week": 10,
+          "opp": "BUF",
+          "home": true,
+          "home_spread": -7.5,
+          "source": "line",
+          "p_win": 0.241
+        },
+        {
+          "game_id": "2026_11_NYJ_LAC",
+          "week": 11,
+          "opp": "LAC",
+          "home": false,
+          "home_spread": 2.8,
+          "source": "ratings",
+          "p_win": 0.4098
+        },
+        {
+          "game_id": "2026_12_NYJ_MIA",
+          "week": 12,
+          "opp": "MIA",
+          "home": false,
+          "home_spread": -0.07,
+          "source": "ratings",
+          "p_win": 0.5143
+        },
+        {
+          "game_id": "2026_14_DEN_NYJ",
+          "week": 14,
+          "opp": "DEN",
+          "home": true,
+          "home_spread": -3.29,
+          "source": "ratings",
+          "p_win": 0.3708
+        },
+        {
+          "game_id": "2026_15_NYJ_ARI",
+          "week": 15,
+          "opp": "ARI",
+          "home": false,
+          "home_spread": 0.82,
+          "source": "ratings",
+          "p_win": 0.4816
+        },
+        {
+          "game_id": "2026_16_NE_NYJ",
+          "week": 16,
+          "opp": "NE",
+          "home": true,
+          "home_spread": -3.05,
+          "source": "ratings",
+          "p_win": 0.379
+        },
+        {
+          "game_id": "2026_17_MIN_NYJ",
+          "week": 17,
+          "opp": "MIN",
+          "home": true,
+          "home_spread": -1.9,
+          "source": "ratings",
+          "p_win": 0.4193
+        },
+        {
+          "game_id": "2026_18_NYJ_BUF",
+          "week": 18,
+          "opp": "BUF",
+          "home": false,
+          "home_spread": 7.13,
+          "source": "ratings",
+          "p_win": 0.2691
+        }
+      ],
+      "PHI": [
+        {
+          "game_id": "2026_09_NYG_PHI",
+          "week": 9,
+          "opp": "NYG",
+          "home": true,
+          "home_spread": -3.5,
+          "source": "line",
+          "p_win": 0.3635
+        },
+        {
+          "game_id": "2026_11_PIT_PHI",
+          "week": 11,
+          "opp": "PIT",
+          "home": true,
+          "home_spread": -1.3,
+          "source": "ratings",
+          "p_win": 0.4411
+        },
+        {
+          "game_id": "2026_12_PHI_DAL",
+          "week": 12,
+          "opp": "DAL",
+          "home": false,
+          "home_spread": 4.86,
+          "source": "ratings",
+          "p_win": 0.3392
+        },
+        {
+          "game_id": "2026_13_PHI_ARI",
+          "week": 13,
+          "opp": "ARI",
+          "home": false,
+          "home_spread": 0.17,
+          "source": "ratings",
+          "p_win": 0.5053
+        },
+        {
+          "game_id": "2026_14_IND_PHI",
+          "week": 14,
+          "opp": "IND",
+          "home": true,
+          "home_spread": 1.08,
+          "source": "ratings",
+          "p_win": 0.528
+        },
+        {
+          "game_id": "2026_15_SEA_PHI",
+          "week": 15,
+          "opp": "SEA",
+          "home": true,
+          "home_spread": -3.82,
+          "source": "ratings",
+          "p_win": 0.3528
+        },
+        {
+          "game_id": "2026_16_HOU_PHI",
+          "week": 16,
+          "opp": "HOU",
+          "home": true,
+          "home_spread": -3.37,
+          "source": "ratings",
+          "p_win": 0.3679
+        },
+        {
+          "game_id": "2026_17_PHI_SF",
+          "week": 17,
+          "opp": "SF",
+          "home": false,
+          "home_spread": 6.47,
+          "source": "ratings",
+          "p_win": 0.2886
+        },
+        {
+          "game_id": "2026_18_PHI_NYG",
+          "week": 18,
+          "opp": "NYG",
+          "home": false,
+          "home_spread": 1.66,
+          "source": "ratings",
+          "p_win": 0.4508
+        }
+      ],
+      "PIT": [
+        {
+          "game_id": "2026_10_PIT_CIN",
+          "week": 10,
+          "opp": "CIN",
+          "home": false,
+          "home_spread": 3.5,
+          "source": "line",
+          "p_win": 0.3853
+        },
+        {
+          "game_id": "2026_11_PIT_PHI",
+          "week": 11,
+          "opp": "PHI",
+          "home": false,
+          "home_spread": -1.3,
+          "source": "ratings",
+          "p_win": 0.5589
+        },
+        {
+          "game_id": "2026_12_DEN_PIT",
+          "week": 12,
+          "opp": "DEN",
+          "home": true,
+          "home_spread": -0.11,
+          "source": "ratings",
+          "p_win": 0.4842
+        },
+        {
+          "game_id": "2026_13_HOU_PIT",
+          "week": 13,
+          "opp": "HOU",
+          "home": true,
+          "home_spread": -0.84,
+          "source": "ratings",
+          "p_win": 0.4576
+        },
+        {
+          "game_id": "2026_14_PIT_JAX",
+          "week": 14,
+          "opp": "JAX",
+          "home": false,
+          "home_spread": 4.99,
+          "source": "ratings",
+          "p_win": 0.3349
+        },
+        {
+          "game_id": "2026_15_BAL_PIT",
+          "week": 15,
+          "opp": "BAL",
+          "home": true,
+          "home_spread": 1.93,
+          "source": "ratings",
+          "p_win": 0.5587
+        },
+        {
+          "game_id": "2026_16_CAR_PIT",
+          "week": 16,
+          "opp": "CAR",
+          "home": true,
+          "home_spread": 1.84,
+          "source": "ratings",
+          "p_win": 0.5555
+        },
+        {
+          "game_id": "2026_17_PIT_TEN",
+          "week": 17,
+          "opp": "TEN",
+          "home": false,
+          "home_spread": -3.9,
+          "source": "ratings",
+          "p_win": 0.6501
+        },
+        {
+          "game_id": "2026_18_PIT_BAL",
+          "week": 18,
+          "opp": "BAL",
+          "home": false,
+          "home_spread": 0.54,
+          "source": "ratings",
+          "p_win": 0.4919
+        }
+      ],
+      "SEA": [
+        {
+          "game_id": "2026_09_ARI_SEA",
+          "week": 9,
+          "opp": "ARI",
+          "home": true,
+          "home_spread": 8.5,
+          "source": "line",
+          "p_win": 0.7686
+        },
+        {
+          "game_id": "2026_10_SEA_LV",
+          "week": 10,
+          "opp": "LV",
+          "home": false,
+          "home_spread": -3.97,
+          "source": "ratings",
+          "p_win": 0.6524
+        },
+        {
+          "game_id": "2026_12_SEA_SF",
+          "week": 12,
+          "opp": "SF",
+          "home": false,
+          "home_spread": 1.42,
+          "source": "ratings",
+          "p_win": 0.4597
+        },
+        {
+          "game_id": "2026_13_DAL_SEA",
+          "week": 13,
+          "opp": "DAL",
+          "home": true,
+          "home_spread": 2.65,
+          "source": "ratings",
+          "p_win": 0.5847
+        },
+        {
+          "game_id": "2026_14_NYG_SEA",
+          "week": 14,
+          "opp": "NYG",
+          "home": true,
+          "home_spread": 5.85,
+          "source": "ratings",
+          "p_win": 0.6925
+        },
+        {
+          "game_id": "2026_15_SEA_PHI",
+          "week": 15,
+          "opp": "PHI",
+          "home": false,
+          "home_spread": -3.82,
+          "source": "ratings",
+          "p_win": 0.6472
+        },
+        {
+          "game_id": "2026_16_LA_SEA",
+          "week": 16,
+          "opp": "LA",
+          "home": true,
+          "home_spread": 0.78,
+          "source": "ratings",
+          "p_win": 0.5168
+        },
+        {
+          "game_id": "2026_17_SEA_CAR",
+          "week": 17,
+          "opp": "CAR",
+          "home": false,
+          "home_spread": -1.89,
+          "source": "ratings",
+          "p_win": 0.5804
+        },
+        {
+          "game_id": "2026_18_SEA_LA",
+          "week": 18,
+          "opp": "LA",
+          "home": false,
+          "home_spread": 1.69,
+          "source": "ratings",
+          "p_win": 0.4499
+        }
+      ],
+      "SF": [
+        {
+          "game_id": "2026_09_LV_SF",
+          "week": 9,
+          "opp": "LV",
+          "home": true,
+          "home_spread": 10.0,
+          "source": "line",
+          "p_win": 0.8055
+        },
+        {
+          "game_id": "2026_10_SF_DAL",
+          "week": 10,
+          "opp": "DAL",
+          "home": false,
+          "home_spread": -3.5,
+          "source": "line",
+          "p_win": 0.6365
+        },
+        {
+          "game_id": "2026_11_MIN_SF",
+          "week": 11,
+          "opp": "MIN",
+          "home": true,
+          "home_spread": 2.74,
+          "source": "ratings",
+          "p_win": 0.5881
+        },
+        {
+          "game_id": "2026_12_SEA_SF",
+          "week": 12,
+          "opp": "SEA",
+          "home": true,
+          "home_spread": 1.42,
+          "source": "ratings",
+          "p_win": 0.5403
+        },
+        {
+          "game_id": "2026_13_SF_NYG",
+          "week": 13,
+          "opp": "NYG",
+          "home": false,
+          "home_spread": -3.57,
+          "source": "ratings",
+          "p_win": 0.6389
+        },
+        {
+          "game_id": "2026_14_LA_SF",
+          "week": 14,
+          "opp": "LA",
+          "home": true,
+          "home_spread": 0.96,
+          "source": "ratings",
+          "p_win": 0.5236
+        },
+        {
+          "game_id": "2026_15_SF_LAC",
+          "week": 15,
+          "opp": "LAC",
+          "home": false,
+          "home_spread": -3.07,
+          "source": "ratings",
+          "p_win": 0.622
+        },
+        {
+          "game_id": "2026_16_SF_KC",
+          "week": 16,
+          "opp": "KC",
+          "home": false,
+          "home_spread": 0.67,
+          "source": "ratings",
+          "p_win": 0.4871
+        },
+        {
+          "game_id": "2026_17_PHI_SF",
+          "week": 17,
+          "opp": "PHI",
+          "home": true,
+          "home_spread": 6.47,
+          "source": "ratings",
+          "p_win": 0.7114
+        },
+        {
+          "game_id": "2026_18_SF_ARI",
+          "week": 18,
+          "opp": "ARI",
+          "home": false,
+          "home_spread": -5.06,
+          "source": "ratings",
+          "p_win": 0.6876
+        }
+      ],
+      "TB": [
+        {
+          "game_id": "2026_09_TB_CHI",
+          "week": 9,
+          "opp": "CHI",
+          "home": false,
+          "home_spread": 6.0,
+          "source": "line",
+          "p_win": 0.3028
+        },
+        {
+          "game_id": "2026_11_TB_DET",
+          "week": 11,
+          "opp": "DET",
+          "home": false,
+          "home_spread": 4.48,
+          "source": "ratings",
+          "p_win": 0.3519
+        },
+        {
+          "game_id": "2026_12_CAR_TB",
+          "week": 12,
+          "opp": "CAR",
+          "home": true,
+          "home_spread": -0.07,
+          "source": "ratings",
+          "p_win": 0.4858
+        },
+        {
+          "game_id": "2026_13_LAC_TB",
+          "week": 13,
+          "opp": "LAC",
+          "home": true,
+          "home_spread": 0.93,
+          "source": "ratings",
+          "p_win": 0.5224
+        },
+        {
+          "game_id": "2026_14_TB_BAL",
+          "week": 14,
+          "opp": "BAL",
+          "home": false,
+          "home_spread": 2.44,
+          "source": "ratings",
+          "p_win": 0.4226
+        },
+        {
+          "game_id": "2026_15_NO_TB",
+          "week": 15,
+          "opp": "NO",
+          "home": true,
+          "home_spread": 1.11,
+          "source": "ratings",
+          "p_win": 0.529
+        },
+        {
+          "game_id": "2026_16_TB_ATL",
+          "week": 16,
+          "opp": "ATL",
+          "home": false,
+          "home_spread": 1.67,
+          "source": "ratings",
+          "p_win": 0.4507
+        },
+        {
+          "game_id": "2026_17_LA_TB",
+          "week": 17,
+          "opp": "LA",
+          "home": true,
+          "home_spread": -3.65,
+          "source": "ratings",
+          "p_win": 0.3584
+        },
+        {
+          "game_id": "2026_18_TB_NO",
+          "week": 18,
+          "opp": "NO",
+          "home": false,
+          "home_spread": 1.36,
+          "source": "ratings",
+          "p_win": 0.462
+        }
+      ],
+      "TEN": [
+        {
+          "game_id": "2026_10_JAX_TEN",
+          "week": 10,
+          "opp": "JAX",
+          "home": true,
+          "home_spread": -9.5,
+          "source": "line",
+          "p_win": 0.1914
+        },
+        {
+          "game_id": "2026_11_TEN_DAL",
+          "week": 11,
+          "opp": "DAL",
+          "home": false,
+          "home_spread": 7.47,
+          "source": "ratings",
+          "p_win": 0.2593
+        },
+        {
+          "game_id": "2026_12_TEN_JAX",
+          "week": 12,
+          "opp": "JAX",
+          "home": false,
+          "home_spread": 10.13,
+          "source": "ratings",
+          "p_win": 0.1916
+        },
+        {
+          "game_id": "2026_13_WAS_TEN",
+          "week": 13,
+          "opp": "WAS",
+          "home": true,
+          "home_spread": -1.96,
+          "source": "ratings",
+          "p_win": 0.4173
+        },
+        {
+          "game_id": "2026_14_TEN_DET",
+          "week": 14,
+          "opp": "DET",
+          "home": false,
+          "home_spread": 7.71,
+          "source": "ratings",
+          "p_win": 0.2527
+        },
+        {
+          "game_id": "2026_15_IND_TEN",
+          "week": 15,
+          "opp": "IND",
+          "home": true,
+          "home_spread": -1.53,
+          "source": "ratings",
+          "p_win": 0.4328
+        },
+        {
+          "game_id": "2026_16_TEN_LV",
+          "week": 16,
+          "opp": "LV",
+          "home": false,
+          "home_spread": 3.68,
+          "source": "ratings",
+          "p_win": 0.379
+        },
+        {
+          "game_id": "2026_17_PIT_TEN",
+          "week": 17,
+          "opp": "PIT",
+          "home": true,
+          "home_spread": -3.9,
+          "source": "ratings",
+          "p_win": 0.3499
+        },
+        {
+          "game_id": "2026_18_TEN_HOU",
+          "week": 18,
+          "opp": "HOU",
+          "home": false,
+          "home_spread": 8.44,
+          "source": "ratings",
+          "p_win": 0.2329
+        }
+      ],
+      "WAS": [
+        {
+          "game_id": "2026_09_LA_WAS",
+          "week": 9,
+          "opp": "LA",
+          "home": true,
+          "home_spread": -5.5,
+          "source": "line",
+          "p_win": 0.2986
+        },
+        {
+          "game_id": "2026_10_WAS_NYG",
+          "week": 10,
+          "opp": "NYG",
+          "home": false,
+          "home_spread": 1.5,
+          "source": "line",
+          "p_win": 0.4567
+        },
+        {
+          "game_id": "2026_11_CIN_WAS",
+          "week": 11,
+          "opp": "CIN",
+          "home": true,
+          "home_spread": -2.94,
+          "source": "ratings",
+          "p_win": 0.3827
+        },
+        {
+          "game_id": "2026_12_WAS_ARI",
+          "week": 12,
+          "opp": "ARI",
+          "home": false,
+          "home_spread": -0.41,
+          "source": "ratings",
+          "p_win": 0.5266
+        },
+        {
+          "game_id": "2026_13_WAS_TEN",
+          "week": 13,
+          "opp": "TEN",
+          "home": false,
+          "home_spread": -1.96,
+          "source": "ratings",
+          "p_win": 0.5827
+        },
+        {
+          "game_id": "2026_14_HOU_WAS",
+          "week": 14,
+          "opp": "HOU",
+          "home": true,
+          "home_spread": -2.79,
+          "source": "ratings",
+          "p_win": 0.388
+        },
+        {
+          "game_id": "2026_15_ATL_WAS",
+          "week": 15,
+          "opp": "ATL",
+          "home": true,
+          "home_spread": 0.76,
+          "source": "ratings",
+          "p_win": 0.5161
+        },
+        {
+          "game_id": "2026_16_WAS_MIN",
+          "week": 16,
+          "opp": "MIN",
+          "home": false,
+          "home_spread": 3.14,
+          "source": "ratings",
+          "p_win": 0.3979
+        },
+        {
+          "game_id": "2026_17_WAS_JAX",
+          "week": 17,
+          "opp": "JAX",
+          "home": false,
+          "home_spread": 6.94,
+          "source": "ratings",
+          "p_win": 0.2746
+        },
+        {
+          "game_id": "2026_18_DAL_WAS",
+          "week": 18,
+          "opp": "DAL",
+          "home": true,
+          "home_spread": -1.82,
+          "source": "ratings",
+          "p_win": 0.4223
+        }
+      ]
+    }
+  },
+  "written_at": "2026-11-06T00:32:21+00:00"
+}

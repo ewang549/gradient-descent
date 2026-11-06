@@ -33,17 +33,11 @@ const nextConfig: NextConfig = {
       { source: "/ort/:path*", headers: MODEL_CACHE },
       { source: "/cards/:path*", headers: MODEL_CACHE },
       { source: "/data/:path*", headers: MODEL_CACHE },
-      // Cross-origin isolation for the calculator: onnxruntime's WASM probes for shared memory, which
-      // without isolation triggers Chrome's SharedArrayBuffer deprecation warning. Everything the
-      // page loads (fonts, models, WASM) is same-origin, so require-corp blocks nothing.
-      { source: "/calculator", headers: [
-        { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
-        { key: "Cross-Origin-Embedder-Policy", value: "require-corp" },
-      ] },
-      // a dedicated worker started by an isolated page must be served with COEP itself (the
-      // calculator's engine runs in one); harmless on every other static file. All of /_next/static,
-      // not just /chunks: on Vercel, Next 16.4 serves chunks from /_next/static/immutable/chunks.
-      { source: "/_next/static/:path*", headers: [{ key: "Cross-Origin-Embedder-Policy", value: "require-corp" }] },
+      // No cross-origin isolation (COOP/COEP) on /calculator. Its engine runs in a dedicated worker, and
+      // an isolated page can only start a worker whose script is served with COEP too. On Vercel,
+      // Next 16.4 serves Turbopack chunks as immutable assets from /_next/static/immutable/, which
+      // skip the headers() routes, so the worker was blocked and the model never loaded in production.
+      // onnxruntime runs single-threaded (numThreads = 1), so isolation bought nothing functional.
     ];
   },
 };

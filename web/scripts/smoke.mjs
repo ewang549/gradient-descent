@@ -47,8 +47,8 @@ const ok = (msg) => console.log(`  ✓ ${msg}`);
 /** Route-specific interaction: the things that only work if client JS and data loaded. */
 const CHECKS = {
   "/calculator": async (page, where) => {
-    const isolated = await page.evaluate(() => self.crossOriginIsolated);
-    if (!isolated) fail(where, "not crossOriginIsolated (COOP/COEP headers missing)");
+    // Not cross-origin isolated on purpose (see next.config.ts): an isolated page can't start the
+    // engine worker on Vercel. Model loading below is the real check.
     try {
       await page.getByText("Loading model…").waitFor({ state: "detached", timeout: 30_000 });
       ok("ONNX model loaded, recommendation shown");

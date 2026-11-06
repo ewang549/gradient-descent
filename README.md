@@ -1,15 +1,34 @@
-# NFL Analytics: 4th-Down Decision Grades
+# Gradient Descent: NFL 4th-Down Decision Grades
 
-Grading every NFL coach's 4th-down decisions with win-probability models ("how many wins are
-coaches giving away by playing it safe?"), plus broader ML findings from the same play-by-play data.
+**Live: https://your-app.vercel.app** · [Calculator](https://your-app.vercel.app/calculator) ·
+[You Make the Call](https://your-app.vercel.app/play) · [Methodology](https://your-app.vercel.app/methodology)
 
-![4th-down go rate by season](docs/img/go_rate_by_season.png)
+Every regulation NFL 4th down since 2006 (except the last 30 seconds of each half), graded by win probability:
+go for it, punt or kick, and what each choice cost.
+The calculator runs the full decision engine in your browser (XGBoost exported to ONNX, plus a TypeScript port of the Python engine).
+A GitHub Action re-scores the season every Tuesday and publishes the week's share cards.
+
+![The calculator: a 10-point underdog up 4 should go for it on 4th & 3; as the favorite, punt](docs/img/calculator.gif)
+
+**Headline results**
+
+- **Coaches still kick too often.** They went for it on 24% of 4th downs in 2025 (11% in 2006); the model says go on
+  51%. Kicking when the model says go cost about 0.5 wins per team in 2025; going when it says kick cost 0.01.
+- **The model holds up on data it never saw.** On 2024 (41,283 plays), Brier 0.139, vs 0.157 for nflverse's WP model
+  and 0.136 for its Vegas model, which was fit with 2024 included. It agrees with nfl4th on 96% of clear calls
+  (12,347 4th downs, 2023-2025).
+- **Hot starts cool off.** Teams that start 6-2 or better won 80% of their first 8 games and 64% after; luck
+  (winning more than point differential predicts) doesn't carry over (r = 0.02). Ten 2026 predictions were
+  [timestamped before week 9](https://your-app.vercel.app/findings/luck-skill) and are graded automatically after week 18.
 
 | Phase | What | Status |
 |---|---|---|
 | 1 | Data pipeline: nflverse → DuckDB → dbt marts, tests, weekly refresh | done |
 | 2 | Win-probability, conversion, FG and punt models + decision engine + exports | done |
-| 3 | Next.js site: 4th-down calculator, "You Make the Call", WP charts, leaderboard | planned |
+| 3 | Next.js site: calculator, "You Make the Call", weekly cards, game WP charts, coach leaderboard | done |
+| 4 | Findings: [offense style](https://your-app.vercel.app/findings/offense-style), [luck vs skill](https://your-app.vercel.app/findings/luck-skill) | 2 of 5 |
+
+![4th-down go rate by season](docs/img/go_rate_by_season.png)
 
 ## Quickstart
 

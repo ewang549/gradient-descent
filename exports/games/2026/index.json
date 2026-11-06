@@ -2098,6 +2098,22 @@
         "home": 0.0267,
         "away": 0.0166
       }
+    },
+    {
+      "game_id": "2026_09_JAX_BAL",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-05",
+      "home": "BAL",
+      "away": "JAX",
+      "home_score": 10,
+      "away_score": 33,
+      "overtime": false,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0114,
+        "away": 0.0133
+      }
     }
   ]
 }

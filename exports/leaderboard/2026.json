@@ -241,17 +241,6 @@
       "agreed_with_model": 0.6964
     },
     {
-      "coach": "Liam Coen",
-      "team": "JAX",
-      "decisions": 38,
-      "wins_lost": 0.2847,
-      "wins_lost_kicking": 0.2651,
-      "go_rate": 0.1053,
-      "clear_go_spots": 10,
-      "aggressiveness": 0.2,
-      "agreed_with_model": 0.5263
-    },
-    {
       "coach": "Mike Vrabel",
       "team": "NE",
       "decisions": 51,
@@ -272,6 +261,17 @@
       "clear_go_spots": 13,
       "aggressiveness": 0.3077,
       "agreed_with_model": 0.5385
+    },
+    {
+      "coach": "Liam Coen",
+      "team": "JAX",
+      "decisions": 45,
+      "wins_lost": 0.298,
+      "wins_lost_kicking": 0.2784,
+      "go_rate": 0.0889,
+      "clear_go_spots": 10,
+      "aggressiveness": 0.2,
+      "agreed_with_model": 0.5333
     },
     {
       "coach": "Jonathan Gannon",
@@ -353,13 +353,13 @@
     {
       "coach": "Jesse Minter",
       "team": "BAL",
-      "decisions": 54,
-      "wins_lost": 0.4379,
-      "wins_lost_kicking": 0.4377,
-      "go_rate": 0.1481,
-      "clear_go_spots": 17,
-      "aggressiveness": 0.2941,
-      "agreed_with_model": 0.6111
+      "decisions": 61,
+      "wins_lost": 0.4494,
+      "wins_lost_kicking": 0.4492,
+      "go_rate": 0.1639,
+      "clear_go_spots": 18,
+      "aggressiveness": 0.3333,
+      "agreed_with_model": 0.5738
     }
   ]
 }

@@ -154,31 +154,31 @@
       "n": 89,
       "go_rate": 0.6854,
       "model_go_rate": 0.9101,
-      "league_n": 3324,
-      "league_go_rate": 0.6983
+      "league_n": 3327,
+      "league_go_rate": 0.6982
     },
     {
       "bucket": "2-3",
       "n": 130,
       "go_rate": 0.3462,
       "model_go_rate": 0.7538,
-      "league_n": 4313,
-      "league_go_rate": 0.3241
+      "league_n": 4315,
+      "league_go_rate": 0.324
     },
     {
       "bucket": "4-6",
       "n": 195,
       "go_rate": 0.1436,
       "model_go_rate": 0.5641,
-      "league_n": 6476,
-      "league_go_rate": 0.1541
+      "league_n": 6479,
+      "league_go_rate": 0.154
     },
     {
       "bucket": "7-10",
       "n": 217,
       "go_rate": 0.0553,
       "model_go_rate": 0.2903,
-      "league_n": 7235,
+      "league_n": 7238,
       "league_go_rate": 0.0846
     },
     {
@@ -186,7 +186,7 @@
       "n": 236,
       "go_rate": 0.0424,
       "model_go_rate": 0.0636,
-      "league_n": 7233,
+      "league_n": 7236,
       "league_go_rate": 0.0554
     }
   ],

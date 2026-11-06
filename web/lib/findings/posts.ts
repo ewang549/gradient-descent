@@ -1,7 +1,8 @@
 /**
- * Draft X thread for finding 1. Same house rules as the weekly posts (checkPost: <= 280 weighted
- * chars, no em/en dashes, hashtags, exclamation marks or hype words); every number comes from the
- * export through loadOffenseStyle(), so the thread can't drift from the page.
+ * Draft X threads (finding 1 here, later findings in their own files, all rendered by threadToMarkdown).
+ * Same house rules as the weekly posts (checkPost: <= 280 weighted chars, no em/en dashes, hashtags,
+ * exclamation marks or hype words); every number comes from the finding's export loader, so a thread
+ * can't drift from its page.
  */
 import { checkPost } from "@/lib/weekly/posts";
 import { SITE_URL } from "@/lib/weekly/format";
@@ -51,15 +52,20 @@ export function offenseStyleThread(d: OffenseStyle): ThreadPost[] {
   ];
 }
 
-export function threadMarkdown(d: OffenseStyle): string {
-  const posts = offenseStyleThread(d);
+/** posts.md for any finding's thread; throws (writing nothing) if a post breaks the house rules. */
+export function threadToMarkdown(heading: string, slug: string, posts: ThreadPost[], extra: string[] = []): string {
   const problems = posts.flatMap((p, i) => checkPost(p.text).map((m) => `post ${i + 1}: ${m}`));
   if (problems.length) throw new Error(`thread breaks the post rules:\n${problems.join("\n")}`);
   return [
-    "# Finding 1: The NFL changed together. Teams didn't.",
+    `# ${heading}`,
     "",
-    `Draft thread, ${posts.length} posts. Numbers come from exports/findings/${d.slug}; regenerate with \`npm run findings\`.`,
+    `Draft thread, ${posts.length} posts. Numbers come from exports/findings/${slug}; regenerate with \`npm run findings\`.`,
     "",
     ...posts.flatMap((p, i) => [`## ${i + 1}/${posts.length}${p.card ? ` (attach ${p.card})` : ""}`, "", p.text, ""]),
+    ...extra,
   ].join("\n");
+}
+
+export function threadMarkdown(d: OffenseStyle): string {
+  return threadToMarkdown("Finding 1: The NFL changed together. Teams didn't.", d.slug, offenseStyleThread(d));
 }

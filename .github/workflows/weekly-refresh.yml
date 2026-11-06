@@ -45,22 +45,38 @@ jobs:
       - run: cd dbt && uv run dbt deps
       - run: cd web && npm ci
 
+      # Commit as the repo owner (GitHub noreply address). Vercel only deploys commits whose author
+      # owns the Vercel account (Hobby) or is on the team (Pro), and a push IS the deploy trigger.
+      - name: Configure the commit author
+        run: |
+          git config user.name "${{ github.repository_owner }}"
+          git config user.email "${{ github.repository_owner_id }}+${{ github.repository_owner }}@users.noreply.github.com"
+
       # Fails (and stops the job before anything is committed) if the engine's sanity situations
       # fail: models.score refuses to write scores.
       - run: make refresh
+
+      # Finding 2: once the 2026 regular season is over, grade the timestamped predictions by the rules
+      # written into each file and draw the results card. A no-op until then, and grades are written
+      # once. It runs before the weekly gate and commits only its own folder, so a postseason week
+      # that fails the gate can't hold the grades back.
+      - name: Grade the 2026 luck vs skill predictions
+        run: |
+          make grade
+          git add exports/findings/luck-skill
+          if git diff --cached --quiet; then echo "Nothing to grade yet."; exit 0; fi
+          git commit -m "data: grade the 2026 luck vs skill predictions" -m "Automated by the weekly-refresh workflow."
+          git push
 
       # The publish gate runs first inside `make weekly`: sanity situations again, and every
       # scheduled game of the latest week must be final with play-by-play and graded 4th downs.
       # Then: weekly JSON, the latest week's cards and draft posts (posts that break the rules fail here).
       - run: make weekly
 
-      # Commit as the repo owner (GitHub noreply address). Vercel only deploys commits whose author
-      # owns the Vercel account (Hobby) or is on the team (Pro), and this push IS the deploy trigger.
+      # This push IS the deploy trigger (author set above).
       - name: Commit exports
         id: commit
         run: |
-          git config user.name "${{ github.repository_owner }}"
-          git config user.email "${{ github.repository_owner_id }}+${{ github.repository_owner }}@users.noreply.github.com"
           git add exports
           if git diff --cached --quiet; then
             echo "No new exports; nothing to publish."

@@ -3,6 +3,7 @@
 //   exports/cards/**          -> public/cards/{season}/week_NN/*.png   (share cards)
 //   exports/play/pool.json    -> public/data/play-pool.json            ("You Make the Call", fetched by the page)
 //   exports/findings/<slug>/cards/*.png -> public/findings/<slug>/*.png (findings share cards + index thumbnails)
+//   exports/findings/<slug>/{predictions,grades}_*.json -> public/findings/<slug>/ (timestamped calls, linked from the page)
 import { copyFileSync, cpSync, existsSync, mkdirSync, readdirSync, rmSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -37,6 +38,8 @@ if (existsSync(findingsDir)) {
     if (!existsSync(cardsDir)) continue;
     mkdirSync(join(findingsOut, slug), { recursive: true });
     for (const f of readdirSync(cardsDir).filter((f) => f.endsWith(".png"))) copyFileSync(join(cardsDir, f), join(findingsOut, slug, f));
-    console.log(`copied exports/findings/${slug}/cards to public/findings/${slug}`);
+    const records = readdirSync(join(findingsDir, slug)).filter((f) => /^(predictions|grades)_.*\.json$/.test(f));
+    for (const f of records) copyFileSync(join(findingsDir, slug, f), join(findingsOut, slug, f));
+    console.log(`copied exports/findings/${slug}/cards${records.length ? ` and ${records.length} prediction/grade files` : ""} to public/findings/${slug}`);
   }
 }

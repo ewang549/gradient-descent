@@ -29,7 +29,9 @@ make test      # pytest (ingest logic, feature parity, model + engine behaviour)
 ```
 
 `make refresh` runs ingest → dbt → score → export → check in about 30 seconds. It never retrains.
-That's what the GitHub Action runs every Tuesday morning.
+That's what the GitHub Action runs every Tuesday morning. The Action also runs `make grade`, which
+grades finding 2's timestamped 2026 predictions (exports/findings/luck-skill) once the regular season
+is over and draws the results card; before that it does nothing.
 
 ## How it fits together
 

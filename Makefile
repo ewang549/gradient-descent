@@ -3,7 +3,7 @@
 NFL_DUCKDB_PATH ?= $(CURDIR)/data/nfl.duckdb
 export NFL_DUCKDB_PATH
 
-.PHONY: setup ingest dbt check test train score findings export benchmark refresh gate weekly
+.PHONY: setup ingest dbt check test train score findings export benchmark refresh gate weekly grade
 
 setup:  ## install Python deps and dbt packages
 	uv sync
@@ -45,3 +45,7 @@ gate:  ## publish gate: engine sanity situations pass and every scheduled game o
 weekly: gate  ## weekly content: exports/weekly JSON for the season, then the latest week's cards + draft posts
 	uv run python -m models.weekly
 	cd web && npm run cards
+
+grade:  ## finding 2: grade the timestamped 2026 predictions once the regular season is over, then draw the results card (no-op before; grades are written once)
+	uv run python -m analysis.findings.luck_grade
+	@if [ -f exports/findings/luck-skill/grades_2026.json ] && [ ! -f exports/findings/luck-skill/cards/results.png ]; then cd web && npm run findings; fi

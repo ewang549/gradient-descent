@@ -41,7 +41,7 @@ Min 30 calls. https://gradient-descent-eta.vercel.app/week/2026/8
 
 Gutsiest correct call of Week 8: Brian Schottenheimer went for it on 4th & 1 at DAL 32.
 
-Only 23% of coaches go there. The model agreed, by 2.6 points of win probability over punting. DAL was stopped. Still the right call.
+Only 22% of coaches go there. The model agreed, by 2.6 points of win probability over punting. DAL was stopped. Still the right call.
 
 https://gradient-descent-eta.vercel.app/calculator?yl=68&togo=1&diff=0&q=1&t=660&to=2&dto=3&spr=7&v=h&rk=1&oe=0.118141&de=0.121665&in=1
 

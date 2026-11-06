@@ -39,13 +39,13 @@ Min 24 calls. https://gradient-descent-eta.vercel.app/week/2026/6
 
 ## gutsiest.png
 
-Gutsiest correct call of Week 6: Sean Payton went for it on 4th & 3 at SEA 48, down 3 to SEA in the 1st quarter.
+Gutsiest correct call of Week 6: Kyle Shanahan went for it on 4th & 3 at WAS 11, up 4 on WAS in the 1st quarter.
 
-Only 18% of coaches go there. The model agreed, by 3.1 points of win probability over punting. DEN converted.
+Only 15% of coaches go there. The model agreed, by 2.8 points of win probability over kicking the field goal. SF converted.
 
-https://gradient-descent-eta.vercel.app/calculator?yl=48&togo=3&diff=-3&q=1&t=226&to=3&dto=2&spr=-2.5&v=h&rk=1&oe=-0.087691&de=-0.132346
+https://gradient-descent-eta.vercel.app/calculator?yl=11&togo=3&diff=4&q=1&t=342&to=2&dto=3&spr=7.5&v=h&oe=0.038391&de=0.098827
 
-<sub>248/280</sub>
+<sub>262/280</sub>
 
 ## Thread: the worst call (attach worst-call.png to post 1)
 

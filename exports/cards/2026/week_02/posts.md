@@ -30,7 +30,7 @@ https://gradient-descent-eta.vercel.app/week/2026/2
 
 Gutsiest correct call of Week 2: Todd Monken went for it on 4th & 1 at CLE 34, tied 6-6 with TB in the 2nd quarter.
 
-Only 25% of coaches go there. The model agreed, by 3.5 points of win probability over punting. CLE was stopped. Still the right call.
+Only 24% of coaches go there. The model agreed, by 3.5 points of win probability over punting. CLE was stopped. Still the right call.
 
 https://gradient-descent-eta.vercel.app/calculator?yl=66&togo=1&diff=0&q=2&t=170&to=2&dto=2&spr=-8.5&v=a&oe=-0.195951&de=0.053178&w=4&tmp=86
 

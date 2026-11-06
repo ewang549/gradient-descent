@@ -41,7 +41,7 @@ Min 16 calls. https://gradient-descent-eta.vercel.app/week/2026/4
 
 Gutsiest correct call of Week 4: Nick Sirianni went for it on 4th & 1 at PHI 38, up 10 on LA in the 3rd quarter.
 
-Only 23% of coaches go there. The model agreed, by 3.4 points of win probability over punting. PHI was stopped. Still the right call.
+Only 24% of coaches go there. The model agreed, by 3.4 points of win probability over punting. PHI was stopped. Still the right call.
 
 https://gradient-descent-eta.vercel.app/calculator?yl=62&togo=1&diff=10&q=3&t=67&to=3&dto=3&spr=-3.5&v=h&oe=0.034033&de=0.00726&w=9&tmp=62
 

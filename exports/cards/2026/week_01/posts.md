@@ -30,7 +30,7 @@ https://gradient-descent-eta.vercel.app/week/2026/1
 
 Gutsiest correct call of Week 1: Ben Johnson went for it on 4th & 1 at CHI 21, up 7 on CAR in the 2nd quarter.
 
-Only 8% of coaches go there. The model agreed, by 1.2 points of win probability over punting. CHI was stopped. Still the right call.
+Only 7% of coaches go there. The model agreed, by 1.2 points of win probability over punting. CHI was stopped. Still the right call.
 
 https://gradient-descent-eta.vercel.app/calculator?yl=79&togo=1&diff=7&q=2&t=635&to=3&dto=3&spr=3&v=a&oe=0.078504&de=0.061359&w=2&tmp=89
 

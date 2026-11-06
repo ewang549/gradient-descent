@@ -41,7 +41,7 @@ Min 20 calls. https://gradient-descent-eta.vercel.app/week/2026/5
 
 Gutsiest correct call of Week 5: Jim Harbaugh went for it on 4th & 1 at LAC 41, up 7 on DEN with 10:33 left.
 
-Only 31% of coaches go there. The model agreed, by 4.3 points of win probability over punting. LAC was stopped. Still the right call.
+Only 32% of coaches go there. The model agreed, by 4.3 points of win probability over punting. LAC was stopped. Still the right call.
 
 https://gradient-descent-eta.vercel.app/calculator?yl=59&togo=1&diff=7&q=4&t=633&to=1&dto=3&spr=-3.5&v=h&oe=-0.121192&de=-0.046614&in=1
 

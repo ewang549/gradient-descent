@@ -69,9 +69,13 @@ def season_decisions(season: int) -> pd.DataFrame:
 
 
 def expected_go_model(before_season: int) -> HistGradientBoostingClassifier:
+    # ORDER BY matters: with 10k+ rows the classifier early-stops on a validation split chosen by row
+    # position, so an unordered query (a fresh CI warehouse vs an incremental local one) trains a
+    # different model. Shuffled input moved P(go) by up to 0.22; ordered input is identical.
     train = data.query(f"""
         select {', '.join(GO_FEATURES)}, is_go from marts.fct_fourth_down_decisions
         where is_graded and season between {GO_MODEL_SEASONS_FROM} and {before_season - 1}
+        order by play_uid
     """)
     model = HistGradientBoostingClassifier(max_iter=300, learning_rate=0.05, max_leaf_nodes=31, random_state=0)
     return model.fit(train[GO_FEATURES].astype(float), train["is_go"].astype(int))

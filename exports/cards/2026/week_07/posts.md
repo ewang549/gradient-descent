@@ -41,7 +41,7 @@ Min 28 calls. https://gradient-descent-eta.vercel.app/week/2026/7
 
 Gutsiest correct call of Week 7: Matt LaFleur went for it on 4th & 5 at DET 33, scoreless vs DET in the 1st quarter.
 
-Only 20% of coaches go there. The model agreed, by 3.3 points of win probability over punting. GB converted.
+Only 16% of coaches go there. The model agreed, by 3.3 points of win probability over punting. GB converted.
 
 https://gradient-descent-eta.vercel.app/calculator?yl=33&togo=5&diff=0&q=1&t=755&to=2&dto=3&spr=-3.5&v=a&oe=-0.008408&de=0.108808&in=1
 

@@ -30,7 +30,7 @@ https://gradient-descent-eta.vercel.app/week/2026/3
 
 Gutsiest correct call of Week 3: Dan Campbell went for it on 4th & 2 at NYJ 9, down 4 to NYJ in the 2nd quarter.
 
-Only 44% of coaches go there. The model agreed, by 8.2 points of win probability over kicking the field goal. DET converted.
+Only 46% of coaches go there. The model agreed, by 8.2 points of win probability over kicking the field goal. DET converted.
 
 https://gradient-descent-eta.vercel.app/calculator?yl=9&togo=2&diff=-4&q=2&t=107&to=3&dto=2&spr=7&v=h&rk=1&oe=0.05597&de=0.162401&in=1&tf=1
 

@@ -1,0 +1,78 @@
+{
+  "slug": "luck-skill",
+  "metric": "pyth",
+  "boot": 2000,
+  "by_k": {
+    "7": {
+      "loso": {
+        "n": 640,
+        "seasons": [
+          2006,
+          2025
+        ],
+        "rmse_without": 0.1975226371792146,
+        "rmse_with": 0.1948570674610377,
+        "diff": -0.0026655697181768856,
+        "diff_ci": [
+          -0.004417732759026752,
+          -0.0009056489772260366
+        ],
+        "share_boot_better": 0.9995,
+        "excludes_zero": true
+      },
+      "forward": {
+        "n": 448,
+        "seasons": [
+          2012,
+          2025
+        ],
+        "rmse_without": 0.19978183418825096,
+        "rmse_with": 0.1973648860898921,
+        "diff": -0.002416948098358851,
+        "diff_ci": [
+          -0.004340219005885564,
+          -0.0004603881577613177
+        ],
+        "share_boot_better": 0.9925,
+        "excludes_zero": true
+      }
+    },
+    "8": {
+      "loso": {
+        "n": 640,
+        "seasons": [
+          2006,
+          2025
+        ],
+        "rmse_without": 0.2067021361374721,
+        "rmse_with": 0.2048061081878533,
+        "diff": -0.0018960279496187948,
+        "diff_ci": [
+          -0.004000040344281589,
+          0.0005390631455508611
+        ],
+        "share_boot_better": 0.9465,
+        "excludes_zero": false
+      },
+      "forward": {
+        "n": 448,
+        "seasons": [
+          2012,
+          2025
+        ],
+        "rmse_without": 0.20917336367284511,
+        "rmse_with": 0.20721338324189253,
+        "diff": -0.0019599804309525792,
+        "diff_ci": [
+          -0.00435819801515808,
+          0.0008788992534407567
+        ],
+        "share_boot_better": 0.9225,
+        "excludes_zero": false
+      }
+    }
+  },
+  "decided_on": "k=8 LOSO",
+  "reliable_gain": false,
+  "verdict": "no reliable gain: at k = 8 the 95% CI of the RMSE change includes zero, so no v2 forecast"
+}

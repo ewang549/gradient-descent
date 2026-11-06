@@ -1,7 +1,7 @@
 # Resume bullets
 
 **Gradient Descent: NFL 4th-Down Decision Grades** | Python, XGBoost, DuckDB, dbt, TypeScript, Next.js, ONNX |
-https://your-app.vercel.app
+https://gradient-descent-eta.vercel.app
 
 - Trained an XGBoost win-probability model with season-based splits; held-out 2024 Brier of 0.139 beat nflverse's
   WP model (0.157) and came within 0.003 of its Vegas model, which saw 2024.

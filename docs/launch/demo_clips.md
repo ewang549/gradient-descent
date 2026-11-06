@@ -12,7 +12,7 @@ GIF: X compresses GIFs much harder.
 Own 40, 4th & 3, up 4 with 10:00 left in the 4th. A 10-point underdog should go for it. Make them the favorite and
 the call flips to punt.
 
-URL: https://your-app.vercel.app/calculator?yl=60&togo=3&diff=4&q=4&t=600&to=3&dto=3&spr=-10&v=h
+URL: https://gradient-descent-eta.vercel.app/calculator?yl=60&togo=3&diff=4&q=4&t=600&to=3&dto=3&spr=-10&v=h
 
 1. Load the page and wait for the call to read **GO FOR IT** (+1.5 over punting).
 2. Scroll down until the **Point spread** slider and "The call" box are both on screen.
@@ -24,7 +24,7 @@ Post text idea: "Same spot, same score. A big underdog up 4 should keep attackin
 
 ## 2. "You Make the Call" reveal (15 s)
 
-URL: https://your-app.vercel.app/play
+URL: https://gradient-descent-eta.vercel.app/play
 
 1. Start recording on the landing page.
 2. Click **Play 10** (random spots, so you can retake until you get one where the coach and the model disagree).
@@ -38,7 +38,7 @@ Use Play 10, not the daily, so recording doesn't use up your daily score.
 CIN 27 at PIT 30, 2026 week 3. The lead changes hands 4 times, and Cincinnati gives away 13 WP points on 6 graded 4th
 downs, including a 4th & 3 punt in the 2nd quarter (-6.2).
 
-URL: https://your-app.vercel.app/games/2026/2026_03_CIN_PIT
+URL: https://gradient-descent-eta.vercel.app/games/2026/2026_03_CIN_PIT
 
 1. Start recording with the chart in view (scroll so the title "PIT WIN PROBABILITY" is near the top).
 2. Hover from left to right along the line slowly. The tooltip shows the clock, score and PIT's win probability.
@@ -47,7 +47,7 @@ URL: https://your-app.vercel.app/games/2026/2026_03_CIN_PIT
 
 ## 4. The luck vs skill predictions table (10 s)
 
-URL: https://your-app.vercel.app/findings/luck-skill#calls
+URL: https://gradient-descent-eta.vercel.app/findings/luck-skill#calls
 
 1. Start recording at the "4. The 2026 test" heading with the yellow "Recorded Nov 6, 2026, 00:31 UTC" badge visible.
 2. Scroll down slowly through both tables (5 teams point differential likes, 5 it doesn't).

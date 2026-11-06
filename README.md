@@ -1,7 +1,7 @@
 # Gradient Descent: NFL 4th-Down Decision Grades
 
-**Live: https://your-app.vercel.app** · [Calculator](https://your-app.vercel.app/calculator) ·
-[You Make the Call](https://your-app.vercel.app/play) · [Methodology](https://your-app.vercel.app/methodology)
+**Live: https://gradient-descent-eta.vercel.app** · [Calculator](https://gradient-descent-eta.vercel.app/calculator) ·
+[You Make the Call](https://gradient-descent-eta.vercel.app/play) · [Methodology](https://gradient-descent-eta.vercel.app/methodology)
 
 Every regulation NFL 4th down since 2006 (except the last 30 seconds of each half), graded by win probability:
 go for it, punt or kick, and what each choice cost.
@@ -19,14 +19,14 @@ A GitHub Action re-scores the season every Tuesday and publishes the week's shar
   (12,347 4th downs, 2023-2025).
 - **Hot starts cool off.** Teams that start 6-2 or better won 80% of their first 8 games and 64% after; luck
   (winning more than point differential predicts) doesn't carry over (r = 0.02). Ten 2026 predictions were
-  [timestamped before week 9](https://your-app.vercel.app/findings/luck-skill) and are graded automatically after week 18.
+  [timestamped before week 9](https://gradient-descent-eta.vercel.app/findings/luck-skill) and are graded automatically after week 18.
 
 | Phase | What | Status |
 |---|---|---|
 | 1 | Data pipeline: nflverse → DuckDB → dbt marts, tests, weekly refresh | done |
 | 2 | Win-probability, conversion, FG and punt models + decision engine + exports | done |
 | 3 | Next.js site: calculator, "You Make the Call", weekly cards, game WP charts, coach leaderboard | done |
-| 4 | Findings: [offense style](https://your-app.vercel.app/findings/offense-style), [luck vs skill](https://your-app.vercel.app/findings/luck-skill) | 2 of 5 |
+| 4 | Findings: [offense style](https://gradient-descent-eta.vercel.app/findings/offense-style), [luck vs skill](https://gradient-descent-eta.vercel.app/findings/luck-skill) | 2 of 5 |
 
 ![4th-down go rate by season](docs/img/go_rate_by_season.png)
 

@@ -43,8 +43,8 @@ A daily game: 5 real 4th downs from 2025-26. You make the call, then see the win
 
 On 2024, a season it never trained on, the win probability model scored a Brier of 0.139. nflverse's Vegas model, fit with 2024 in it, scored 0.136. On clear calls it agrees with nfl4th 96% of the time.
 
-Calculator: https://your-app.vercel.app/calculator
-How it works: https://your-app.vercel.app/methodology
+Calculator: https://gradient-descent-eta.vercel.app/calculator
+How it works: https://gradient-descent-eta.vercel.app/methodology
 
 ---
 

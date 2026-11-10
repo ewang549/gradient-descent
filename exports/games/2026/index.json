@@ -2114,6 +2114,230 @@
         "home": 0.0114,
         "away": 0.0133
       }
+    },
+    {
+      "game_id": "2026_09_ARI_SEA",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-08",
+      "home": "SEA",
+      "away": "ARI",
+      "home_score": 17,
+      "away_score": 3,
+      "overtime": false,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.0559,
+        "away": 0.0219
+      }
+    },
+    {
+      "game_id": "2026_09_CIN_ATL",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-08",
+      "home": "ATL",
+      "away": "CIN",
+      "home_score": 17,
+      "away_score": 34,
+      "overtime": false,
+      "graded": 8,
+      "wp_lost": {
+        "home": 0.0088,
+        "away": 0.0005
+      }
+    },
+    {
+      "game_id": "2026_09_CLE_NO",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-08",
+      "home": "NO",
+      "away": "CLE",
+      "home_score": 23,
+      "away_score": 22,
+      "overtime": true,
+      "graded": 19,
+      "wp_lost": {
+        "home": 0.039,
+        "away": 0.0711
+      }
+    },
+    {
+      "game_id": "2026_09_DAL_IND",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-08",
+      "home": "IND",
+      "away": "DAL",
+      "home_score": 23,
+      "away_score": 27,
+      "overtime": false,
+      "graded": 18,
+      "wp_lost": {
+        "home": 0.0522,
+        "away": 0.1077
+      }
+    },
+    {
+      "game_id": "2026_09_DEN_CAR",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-08",
+      "home": "CAR",
+      "away": "DEN",
+      "home_score": 21,
+      "away_score": 26,
+      "overtime": false,
+      "graded": 11,
+      "wp_lost": {
+        "home": 0.0119,
+        "away": 0.0234
+      }
+    },
+    {
+      "game_id": "2026_09_DET_MIA",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-08",
+      "home": "MIA",
+      "away": "DET",
+      "home_score": 9,
+      "away_score": 19,
+      "overtime": false,
+      "graded": 16,
+      "wp_lost": {
+        "home": 0.0026,
+        "away": 0.0073
+      }
+    },
+    {
+      "game_id": "2026_09_GB_NE",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-08",
+      "home": "NE",
+      "away": "GB",
+      "home_score": 27,
+      "away_score": 45,
+      "overtime": false,
+      "graded": 13,
+      "wp_lost": {
+        "home": 0.0054,
+        "away": 0.0276
+      }
+    },
+    {
+      "game_id": "2026_09_HOU_LAC",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-08",
+      "home": "LAC",
+      "away": "HOU",
+      "home_score": 22,
+      "away_score": 44,
+      "overtime": false,
+      "graded": 16,
+      "wp_lost": {
+        "home": 0.01,
+        "away": 0.0339
+      }
+    },
+    {
+      "game_id": "2026_09_LA_WAS",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-08",
+      "home": "WAS",
+      "away": "LA",
+      "home_score": 13,
+      "away_score": 20,
+      "overtime": false,
+      "graded": 17,
+      "wp_lost": {
+        "home": 0.1024,
+        "away": 0.027
+      }
+    },
+    {
+      "game_id": "2026_09_LV_SF",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-08",
+      "home": "SF",
+      "away": "LV",
+      "home_score": 38,
+      "away_score": 17,
+      "overtime": false,
+      "graded": 7,
+      "wp_lost": {
+        "home": 0.0006,
+        "away": 0.011
+      }
+    },
+    {
+      "game_id": "2026_09_NYG_PHI",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-08",
+      "home": "PHI",
+      "away": "NYG",
+      "home_score": 11,
+      "away_score": 19,
+      "overtime": false,
+      "graded": 21,
+      "wp_lost": {
+        "home": 0.0085,
+        "away": 0.0809
+      }
+    },
+    {
+      "game_id": "2026_09_NYJ_KC",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-08",
+      "home": "KC",
+      "away": "NYJ",
+      "home_score": 35,
+      "away_score": 12,
+      "overtime": false,
+      "graded": 14,
+      "wp_lost": {
+        "home": 0.0284,
+        "away": 0.0162
+      }
+    },
+    {
+      "game_id": "2026_09_TB_CHI",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-08",
+      "home": "CHI",
+      "away": "TB",
+      "home_score": 27,
+      "away_score": 24,
+      "overtime": false,
+      "graded": 15,
+      "wp_lost": {
+        "home": 0.0,
+        "away": 0.0558
+      }
+    },
+    {
+      "game_id": "2026_09_BUF_MIN",
+      "week": 9,
+      "game_type": "REG",
+      "date": "2026-11-09",
+      "home": "MIN",
+      "away": "BUF",
+      "home_score": 6,
+      "away_score": 23,
+      "overtime": false,
+      "graded": 17,
+      "wp_lost": {
+        "home": 0.0917,
+        "away": 0.0037
+      }
     }
   ]
 }

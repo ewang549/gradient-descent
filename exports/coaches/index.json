@@ -225,7 +225,7 @@
       "teams": [
         "NYJ"
       ],
-      "decisions": 194
+      "decisions": 204
     },
     {
       "slug": "adam-gase",
@@ -243,7 +243,7 @@
         "PHI",
         "KC"
       ],
-      "decisions": 2379
+      "decisions": 2383
     },
     {
       "slug": "anthony-lynn",
@@ -284,7 +284,7 @@
       "teams": [
         "CHI"
       ],
-      "decisions": 191
+      "decisions": 196
     },
     {
       "slug": "ben-mcadoo",
@@ -396,7 +396,7 @@
       "teams": [
         "DAL"
       ],
-      "decisions": 150
+      "decisions": 159
     },
     {
       "slug": "bruce-arians",
@@ -454,7 +454,7 @@
       "teams": [
         "DET"
       ],
-      "decisions": 633
+      "decisions": 642
     },
     {
       "slug": "dan-quinn",
@@ -463,7 +463,7 @@
         "ATL",
         "WAS"
       ],
-      "decisions": 883
+      "decisions": 891
     },
     {
       "slug": "darrell-bevell",
@@ -480,7 +480,7 @@
       "teams": [
         "CAR"
       ],
-      "decisions": 300
+      "decisions": 307
     },
     {
       "slug": "david-culley",
@@ -496,7 +496,7 @@
       "teams": [
         "HOU"
       ],
-      "decisions": 492
+      "decisions": 498
     },
     {
       "slug": "dennis-allen",
@@ -652,6 +652,14 @@
       "decisions": 1241
     },
     {
+      "slug": "jeff-hafley",
+      "coach": "Jeff Hafley",
+      "teams": [
+        "MIA"
+      ],
+      "decisions": 53
+    },
+    {
       "slug": "jeff-saturday",
       "coach": "Jeff Saturday",
       "teams": [
@@ -691,7 +699,7 @@
         "SF",
         "LAC"
       ],
-      "decisions": 857
+      "decisions": 867
     },
     {
       "slug": "jim-haslett",
@@ -784,7 +792,7 @@
         "BAL",
         "NYG"
       ],
-      "decisions": 2271
+      "decisions": 2282
     },
     {
       "slug": "jon-gruden",
@@ -801,7 +809,7 @@
       "teams": [
         "ARI"
       ],
-      "decisions": 410
+      "decisions": 346
     },
     {
       "slug": "josh-mcdaniels",
@@ -818,7 +826,7 @@
       "teams": [
         "NO"
       ],
-      "decisions": 179
+      "decisions": 187
     },
     {
       "slug": "ken-whisenhunt",
@@ -835,15 +843,16 @@
       "teams": [
         "MIN"
       ],
-      "decisions": 525
+      "decisions": 533
     },
     {
       "slug": "kevin-stefanski",
       "coach": "Kevin Stefanski",
       "teams": [
-        "CLE"
+        "CLE",
+        "ATL"
       ],
-      "decisions": 806
+      "decisions": 869
     },
     {
       "slug": "kliff-kingsbury",
@@ -854,12 +863,12 @@
       "decisions": 473
     },
     {
-      "slug": "klint-kubliak",
-      "coach": "Klint Kubliak",
+      "slug": "klint-kubiak",
+      "coach": "Klint Kubiak",
       "teams": [
         "LV"
       ],
-      "decisions": 57
+      "decisions": 60
     },
     {
       "slug": "kyle-shanahan",
@@ -867,7 +876,7 @@
       "teams": [
         "SF"
       ],
-      "decisions": 1029
+      "decisions": 1033
     },
     {
       "slug": "lane-kiffin",
@@ -941,7 +950,7 @@
       "teams": [
         "GB"
       ],
-      "decisions": 815
+      "decisions": 823
     },
     {
       "slug": "matt-nagy",
@@ -976,12 +985,20 @@
       "decisions": 399
     },
     {
+      "slug": "mike-lafleur",
+      "coach": "Mike LaFleur",
+      "teams": [
+        "ARI"
+      ],
+      "decisions": 73
+    },
+    {
       "slug": "mike-macdonald",
       "coach": "Mike Macdonald",
       "teams": [
         "SEA"
       ],
-      "decisions": 300
+      "decisions": 306
     },
     {
       "slug": "mike-mccarthy",
@@ -1082,7 +1099,7 @@
         "TEN",
         "NE"
       ],
-      "decisions": 865
+      "decisions": 870
     },
     {
       "slug": "mike-zimmer",
@@ -1114,7 +1131,7 @@
       "teams": [
         "PHI"
       ],
-      "decisions": 697
+      "decisions": 707
     },
     {
       "slug": "norv-turner",
@@ -1158,7 +1175,7 @@
         "TB",
         "ATL"
       ],
-      "decisions": 724
+      "decisions": 666
     },
     {
       "slug": "rex-ryan",
@@ -1235,7 +1252,7 @@
       "teams": [
         "BUF"
       ],
-      "decisions": 1063
+      "decisions": 1025
     },
     {
       "slug": "sean-mcvay",
@@ -1243,7 +1260,7 @@
       "teams": [
         "LA"
       ],
-      "decisions": 1140
+      "decisions": 1149
     },
     {
       "slug": "sean-payton",
@@ -1252,7 +1269,7 @@
         "NO",
         "DEN"
       ],
-      "decisions": 2077
+      "decisions": 2081
     },
     {
       "slug": "shane-steichen",
@@ -1260,7 +1277,7 @@
       "teams": [
         "IND"
       ],
-      "decisions": 416
+      "decisions": 425
     },
     {
       "slug": "steve-spagnuolo",
@@ -1288,7 +1305,7 @@
         "NYJ",
         "TB"
       ],
-      "decisions": 1095
+      "decisions": 1105
     },
     {
       "slug": "todd-haley",
@@ -1304,7 +1321,7 @@
       "teams": [
         "CLE"
       ],
-      "decisions": 63
+      "decisions": 74
     },
     {
       "slug": "tom-cable",
@@ -1378,7 +1395,7 @@
       "teams": [
         "CIN"
       ],
-      "decisions": 867
+      "decisions": 870
     }
   ],
   "league": [
@@ -1584,13 +1601,13 @@
     },
     {
       "season": 2026,
-      "decisions": 1697,
-      "go": 342,
-      "clear_spots": 459,
-      "clear_go": 208,
-      "agreed": 1139,
-      "wins_lost": 7.7609,
-      "wins_lost_kicking": 7.1996
+      "decisions": 1904,
+      "go": 381,
+      "clear_spots": 511,
+      "clear_go": 230,
+      "agreed": 1280,
+      "wins_lost": 8.6664,
+      "wins_lost_kicking": 8.054
     }
   ],
   "rows": [
@@ -1616,13 +1633,13 @@
       "teams": [
         "NYJ"
       ],
-      "decisions": 58,
-      "go": 10,
+      "decisions": 68,
+      "go": 12,
       "clear_spots": 18,
       "clear_go": 8,
-      "agreed": 37,
-      "wins_lost": 0.332,
-      "wins_lost_kicking": 0.302
+      "agreed": 44,
+      "wins_lost": 0.3483,
+      "wins_lost_kicking": 0.3183
     },
     {
       "slug": "aaron-kromer",
@@ -2021,13 +2038,13 @@
       "teams": [
         "KC"
       ],
-      "decisions": 48,
-      "go": 11,
-      "clear_spots": 13,
-      "clear_go": 7,
-      "agreed": 33,
-      "wins_lost": 0.1759,
-      "wins_lost_kicking": 0.1553
+      "decisions": 52,
+      "go": 12,
+      "clear_spots": 15,
+      "clear_go": 8,
+      "agreed": 35,
+      "wins_lost": 0.2043,
+      "wins_lost_kicking": 0.1837
     },
     {
       "slug": "anthony-lynn",
@@ -2216,11 +2233,11 @@
       "teams": [
         "CHI"
       ],
-      "decisions": 56,
+      "decisions": 61,
       "go": 18,
       "clear_spots": 16,
       "clear_go": 11,
-      "agreed": 43,
+      "agreed": 48,
       "wins_lost": 0.174,
       "wins_lost_kicking": 0.1412
     },
@@ -2996,13 +3013,13 @@
       "teams": [
         "DAL"
       ],
-      "decisions": 44,
-      "go": 12,
-      "clear_spots": 15,
-      "clear_go": 9,
-      "agreed": 32,
-      "wins_lost": 0.2386,
-      "wins_lost_kicking": 0.1794
+      "decisions": 53,
+      "go": 13,
+      "clear_spots": 19,
+      "clear_go": 10,
+      "agreed": 37,
+      "wins_lost": 0.3462,
+      "wins_lost_kicking": 0.2871
     },
     {
       "slug": "bruce-arians",
@@ -3431,13 +3448,13 @@
       "teams": [
         "DET"
       ],
-      "decisions": 48,
-      "go": 14,
-      "clear_spots": 13,
-      "clear_go": 9,
-      "agreed": 35,
-      "wins_lost": 0.1938,
-      "wins_lost_kicking": 0.1376
+      "decisions": 57,
+      "go": 18,
+      "clear_spots": 15,
+      "clear_go": 11,
+      "agreed": 42,
+      "wins_lost": 0.201,
+      "wins_lost_kicking": 0.1397
     },
     {
       "slug": "dan-quinn",
@@ -3566,13 +3583,13 @@
       "teams": [
         "WAS"
       ],
-      "decisions": 56,
-      "go": 12,
-      "clear_spots": 17,
-      "clear_go": 8,
-      "agreed": 39,
-      "wins_lost": 0.2741,
-      "wins_lost_kicking": 0.2517
+      "decisions": 64,
+      "go": 13,
+      "clear_spots": 23,
+      "clear_go": 9,
+      "agreed": 42,
+      "wins_lost": 0.3764,
+      "wins_lost_kicking": 0.3539
     },
     {
       "slug": "darrell-bevell",
@@ -3641,12 +3658,12 @@
       "teams": [
         "CAR"
       ],
-      "decisions": 53,
-      "go": 15,
-      "clear_spots": 15,
-      "clear_go": 9,
-      "agreed": 42,
-      "wins_lost": 0.1528,
+      "decisions": 60,
+      "go": 18,
+      "clear_spots": 17,
+      "clear_go": 11,
+      "agreed": 48,
+      "wins_lost": 0.1647,
       "wins_lost_kicking": 0.1388
     },
     {
@@ -3716,13 +3733,13 @@
       "teams": [
         "HOU"
       ],
-      "decisions": 50,
+      "decisions": 56,
       "go": 7,
-      "clear_spots": 17,
+      "clear_spots": 18,
       "clear_go": 5,
-      "agreed": 31,
-      "wins_lost": 0.3986,
-      "wins_lost_kicking": 0.3781
+      "agreed": 34,
+      "wins_lost": 0.4326,
+      "wins_lost_kicking": 0.412
     },
     {
       "slug": "dennis-allen",
@@ -5291,13 +5308,13 @@
       "teams": [
         "MIA"
       ],
-      "decisions": 46,
-      "go": 9,
-      "clear_spots": 12,
-      "clear_go": 6,
-      "agreed": 28,
-      "wins_lost": 0.1317,
-      "wins_lost_kicking": 0.1317
+      "decisions": 53,
+      "go": 11,
+      "clear_spots": 14,
+      "clear_go": 8,
+      "agreed": 34,
+      "wins_lost": 0.1343,
+      "wins_lost_kicking": 0.1343
     },
     {
       "slug": "jeff-saturday",
@@ -5546,13 +5563,13 @@
       "teams": [
         "LAC"
       ],
-      "decisions": 55,
-      "go": 12,
+      "decisions": 65,
+      "go": 16,
       "clear_spots": 13,
       "clear_go": 4,
-      "agreed": 37,
-      "wins_lost": 0.2505,
-      "wins_lost_kicking": 0.238
+      "agreed": 43,
+      "wins_lost": 0.2605,
+      "wins_lost_kicking": 0.2465
     },
     {
       "slug": "jim-haslett",
@@ -5733,6 +5750,21 @@
       "agreed": 72,
       "wins_lost": 0.9976,
       "wins_lost_kicking": 0.8836
+    },
+    {
+      "slug": "joe-brady",
+      "coach": "Joe Brady",
+      "season": 2026,
+      "teams": [
+        "BUF"
+      ],
+      "decisions": 47,
+      "go": 12,
+      "clear_spots": 14,
+      "clear_go": 10,
+      "agreed": 38,
+      "wins_lost": 0.1164,
+      "wins_lost_kicking": 0.1164
     },
     {
       "slug": "joe-gibbs",
@@ -6341,13 +6373,13 @@
       "teams": [
         "NYG"
       ],
-      "decisions": 48,
-      "go": 7,
-      "clear_spots": 11,
-      "clear_go": 5,
-      "agreed": 32,
-      "wins_lost": 0.1975,
-      "wins_lost_kicking": 0.1834
+      "decisions": 59,
+      "go": 8,
+      "clear_spots": 14,
+      "clear_go": 6,
+      "agreed": 39,
+      "wins_lost": 0.2785,
+      "wins_lost_kicking": 0.2643
     },
     {
       "slug": "jon-gruden",
@@ -6500,21 +6532,6 @@
       "wins_lost_kicking": 0.374
     },
     {
-      "slug": "jonathan-gannon",
-      "coach": "Jonathan Gannon",
-      "season": 2026,
-      "teams": [
-        "ARI"
-      ],
-      "decisions": 64,
-      "go": 13,
-      "clear_spots": 17,
-      "clear_go": 5,
-      "agreed": 36,
-      "wins_lost": 0.3099,
-      "wins_lost_kicking": 0.2969
-    },
-    {
       "slug": "josh-mcdaniels",
       "coach": "Josh McDaniels",
       "season": 2009,
@@ -6596,13 +6613,13 @@
       "teams": [
         "NO"
       ],
-      "decisions": 50,
-      "go": 13,
-      "clear_spots": 18,
-      "clear_go": 10,
-      "agreed": 36,
-      "wins_lost": 0.1703,
-      "wins_lost_kicking": 0.1702
+      "decisions": 58,
+      "go": 14,
+      "clear_spots": 20,
+      "clear_go": 11,
+      "agreed": 43,
+      "wins_lost": 0.2094,
+      "wins_lost_kicking": 0.2092
     },
     {
       "slug": "ken-whisenhunt",
@@ -6791,13 +6808,13 @@
       "teams": [
         "MIN"
       ],
-      "decisions": 56,
-      "go": 6,
-      "clear_spots": 15,
-      "clear_go": 5,
-      "agreed": 36,
-      "wins_lost": 0.3384,
-      "wins_lost_kicking": 0.329
+      "decisions": 64,
+      "go": 8,
+      "clear_spots": 18,
+      "clear_go": 6,
+      "agreed": 40,
+      "wins_lost": 0.4301,
+      "wins_lost_kicking": 0.4207
     },
     {
       "slug": "kevin-stefanski",
@@ -6890,6 +6907,21 @@
       "wins_lost_kicking": 0.5836
     },
     {
+      "slug": "kevin-stefanski",
+      "coach": "Kevin Stefanski",
+      "season": 2026,
+      "teams": [
+        "ATL"
+      ],
+      "decisions": 63,
+      "go": 14,
+      "clear_spots": 12,
+      "clear_go": 5,
+      "agreed": 41,
+      "wins_lost": 0.2365,
+      "wins_lost_kicking": 0.1695
+    },
+    {
       "slug": "kliff-kingsbury",
       "coach": "Kliff Kingsbury",
       "season": 2019,
@@ -6950,19 +6982,19 @@
       "wins_lost_kicking": 0.3494
     },
     {
-      "slug": "klint-kubliak",
-      "coach": "Klint Kubliak",
+      "slug": "klint-kubiak",
+      "coach": "Klint Kubiak",
       "season": 2026,
       "teams": [
         "LV"
       ],
-      "decisions": 57,
-      "go": 14,
-      "clear_spots": 11,
+      "decisions": 60,
+      "go": 15,
+      "clear_spots": 12,
       "clear_go": 7,
-      "agreed": 44,
-      "wins_lost": 0.1789,
-      "wins_lost_kicking": 0.1773
+      "agreed": 45,
+      "wins_lost": 0.1899,
+      "wins_lost_kicking": 0.1882
     },
     {
       "slug": "kyle-shanahan",
@@ -7106,13 +7138,13 @@
       "teams": [
         "SF"
       ],
-      "decisions": 35,
-      "go": 8,
-      "clear_spots": 8,
-      "clear_go": 5,
-      "agreed": 24,
-      "wins_lost": 0.1416,
-      "wins_lost_kicking": 0.0849
+      "decisions": 39,
+      "go": 11,
+      "clear_spots": 9,
+      "clear_go": 6,
+      "agreed": 27,
+      "wins_lost": 0.1422,
+      "wins_lost_kicking": 0.0855
     },
     {
       "slug": "lane-kiffin",
@@ -7781,13 +7813,13 @@
       "teams": [
         "GB"
       ],
-      "decisions": 61,
-      "go": 14,
+      "decisions": 69,
+      "go": 15,
       "clear_spots": 11,
       "clear_go": 9,
-      "agreed": 48,
-      "wins_lost": 0.0975,
-      "wins_lost_kicking": 0.0866
+      "agreed": 52,
+      "wins_lost": 0.1251,
+      "wins_lost_kicking": 0.0867
     },
     {
       "slug": "matt-nagy",
@@ -8000,6 +8032,21 @@
       "wins_lost_kicking": 0.5161
     },
     {
+      "slug": "mike-lafleur",
+      "coach": "Mike LaFleur",
+      "season": 2026,
+      "teams": [
+        "ARI"
+      ],
+      "decisions": 73,
+      "go": 15,
+      "clear_spots": 19,
+      "clear_go": 6,
+      "agreed": 43,
+      "wins_lost": 0.3318,
+      "wins_lost_kicking": 0.3188
+    },
+    {
       "slug": "mike-macdonald",
       "coach": "Mike Macdonald",
       "season": 2024,
@@ -8036,13 +8083,13 @@
       "teams": [
         "SEA"
       ],
-      "decisions": 59,
+      "decisions": 65,
       "go": 10,
-      "clear_spots": 15,
+      "clear_spots": 17,
       "clear_go": 5,
-      "agreed": 38,
-      "wins_lost": 0.3208,
-      "wins_lost_kicking": 0.3208
+      "agreed": 41,
+      "wins_lost": 0.3767,
+      "wins_lost_kicking": 0.3767
     },
     {
       "slug": "mike-mccarthy",
@@ -9266,13 +9313,13 @@
       "teams": [
         "NE"
       ],
-      "decisions": 51,
+      "decisions": 56,
       "go": 13,
       "clear_spots": 16,
       "clear_go": 8,
-      "agreed": 33,
-      "wins_lost": 0.2874,
-      "wins_lost_kicking": 0.2743
+      "agreed": 36,
+      "wins_lost": 0.2928,
+      "wins_lost_kicking": 0.2798
     },
     {
       "slug": "mike-zimmer",
@@ -9506,13 +9553,13 @@
       "teams": [
         "PHI"
       ],
-      "decisions": 64,
-      "go": 15,
-      "clear_spots": 17,
-      "clear_go": 10,
-      "agreed": 49,
-      "wins_lost": 0.1827,
-      "wins_lost_kicking": 0.1792
+      "decisions": 74,
+      "go": 17,
+      "clear_spots": 18,
+      "clear_go": 11,
+      "agreed": 58,
+      "wins_lost": 0.1912,
+      "wins_lost_kicking": 0.1877
     },
     {
       "slug": "norv-turner",
@@ -10008,21 +10055,6 @@
       "agreed": 75,
       "wins_lost": 0.9682,
       "wins_lost_kicking": 0.9
-    },
-    {
-      "slug": "raheem-morris",
-      "coach": "Raheem Morris",
-      "season": 2026,
-      "teams": [
-        "ATL"
-      ],
-      "decisions": 58,
-      "go": 14,
-      "clear_spots": 12,
-      "clear_go": 5,
-      "agreed": 37,
-      "wins_lost": 0.2276,
-      "wins_lost_kicking": 0.1607
     },
     {
       "slug": "rex-ryan",
@@ -10760,21 +10792,6 @@
       "wins_lost_kicking": 0.3672
     },
     {
-      "slug": "sean-mcdermott",
-      "coach": "Sean McDermott",
-      "season": 2026,
-      "teams": [
-        "BUF"
-      ],
-      "decisions": 38,
-      "go": 11,
-      "clear_spots": 13,
-      "clear_go": 9,
-      "agreed": 30,
-      "wins_lost": 0.1127,
-      "wins_lost_kicking": 0.1127
-    },
-    {
       "slug": "sean-mcvay",
       "coach": "Sean McVay",
       "season": 2017,
@@ -10916,13 +10933,13 @@
       "teams": [
         "LA"
       ],
-      "decisions": 46,
-      "go": 10,
-      "clear_spots": 16,
-      "clear_go": 8,
-      "agreed": 30,
-      "wins_lost": 0.2302,
-      "wins_lost_kicking": 0.2302
+      "decisions": 55,
+      "go": 13,
+      "clear_spots": 20,
+      "clear_go": 11,
+      "agreed": 37,
+      "wins_lost": 0.2572,
+      "wins_lost_kicking": 0.2572
     },
     {
       "slug": "sean-payton",
@@ -11201,13 +11218,13 @@
       "teams": [
         "DEN"
       ],
-      "decisions": 64,
+      "decisions": 68,
       "go": 6,
-      "clear_spots": 21,
+      "clear_spots": 22,
       "clear_go": 5,
-      "agreed": 41,
-      "wins_lost": 0.3897,
-      "wins_lost_kicking": 0.3897
+      "agreed": 44,
+      "wins_lost": 0.4132,
+      "wins_lost_kicking": 0.4132
     },
     {
       "slug": "shane-steichen",
@@ -11261,13 +11278,13 @@
       "teams": [
         "IND"
       ],
-      "decisions": 59,
+      "decisions": 68,
       "go": 17,
-      "clear_spots": 18,
+      "clear_spots": 21,
       "clear_go": 8,
-      "agreed": 36,
-      "wins_lost": 0.3486,
-      "wins_lost_kicking": 0.3227
+      "agreed": 42,
+      "wins_lost": 0.4007,
+      "wins_lost_kicking": 0.3749
     },
     {
       "slug": "steve-spagnuolo",
@@ -11501,13 +11518,13 @@
       "teams": [
         "TB"
       ],
-      "decisions": 58,
-      "go": 7,
-      "clear_spots": 9,
-      "clear_go": 3,
-      "agreed": 44,
-      "wins_lost": 0.1247,
-      "wins_lost_kicking": 0.1121
+      "decisions": 68,
+      "go": 9,
+      "clear_spots": 13,
+      "clear_go": 4,
+      "agreed": 49,
+      "wins_lost": 0.1804,
+      "wins_lost_kicking": 0.1628
     },
     {
       "slug": "todd-haley",
@@ -11561,13 +11578,13 @@
       "teams": [
         "CLE"
       ],
-      "decisions": 63,
-      "go": 11,
-      "clear_spots": 16,
-      "clear_go": 6,
-      "agreed": 43,
-      "wins_lost": 0.235,
-      "wins_lost_kicking": 0.2319
+      "decisions": 74,
+      "go": 13,
+      "clear_spots": 21,
+      "clear_go": 8,
+      "agreed": 51,
+      "wins_lost": 0.3061,
+      "wins_lost_kicking": 0.303
     },
     {
       "slug": "tom-cable",
@@ -12161,13 +12178,13 @@
       "teams": [
         "CIN"
       ],
-      "decisions": 35,
+      "decisions": 38,
       "go": 4,
       "clear_spots": 11,
       "clear_go": 4,
-      "agreed": 20,
-      "wins_lost": 0.2568,
-      "wins_lost_kicking": 0.2428
+      "agreed": 22,
+      "wins_lost": 0.2573,
+      "wins_lost_kicking": 0.2433
     }
   ]
 }

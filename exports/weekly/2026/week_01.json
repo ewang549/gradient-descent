@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "week": 1,
-  "generated_at": "2026-11-06T01:43:41+00:00",
+  "generated_at": "2026-11-10T19:17:52+00:00",
   "games": {
     "scheduled": 16,
     "final": 16,
@@ -269,7 +269,7 @@
       "week": 1,
       "posteam": "ARI",
       "defteam": "LAC",
-      "coach": "Jonathan Gannon",
+      "coach": "Mike LaFleur",
       "qtr": 4,
       "clock": "14:04",
       "posteam_score": 16,
@@ -811,7 +811,7 @@
       "week": 1,
       "posteam": "BUF",
       "defteam": "HOU",
-      "coach": "Sean McDermott",
+      "coach": "Joe Brady",
       "qtr": 1,
       "clock": "11:18",
       "posteam_score": 0,

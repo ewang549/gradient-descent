@@ -1,0 +1,14 @@
+{
+  "season": 2026,
+  "week": 9,
+  "posts": [
+    {
+      "card": "worst-call.png",
+      "text": "The costliest 4th-down call of Week 9: Brian Schottenheimer punted on 4th & 1 at DAL 39, up 3 on IND with 7:50 left.\n\nGoing for it: 75.2% win probability. What DAL did: 70.5%. That's 4.6 points given away."
+    },
+    {
+      "card": "leaderboard.png",
+      "text": "Wins given away on 4th down through Week 9: win probability lost vs the model's best call, summed over every graded call (1.00 = one win).\n\nFewest: Brady (BUF) 0.12, LaFleur (GB) 0.13\nMost: Minter (BAL) 0.45, Ryans (HOU) 0.43\n\nMin 30 calls."
+    }
+  ]
+}

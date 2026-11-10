@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "week": 3,
-  "generated_at": "2026-11-06T01:43:41+00:00",
+  "generated_at": "2026-11-10T19:17:52+00:00",
   "games": {
     "scheduled": 16,
     "final": 16,
@@ -751,7 +751,7 @@
       "week": 3,
       "posteam": "BUF",
       "defteam": "LAC",
-      "coach": "Sean McDermott",
+      "coach": "Joe Brady",
       "qtr": 4,
       "clock": "11:15",
       "posteam_score": 10,
@@ -1111,7 +1111,7 @@
       "week": 3,
       "posteam": "BUF",
       "defteam": "LAC",
-      "coach": "Sean McDermott",
+      "coach": "Joe Brady",
       "qtr": 1,
       "clock": "04:29",
       "posteam_score": 0,

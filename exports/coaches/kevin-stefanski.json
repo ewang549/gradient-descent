@@ -6,25 +6,30 @@
       "team": "CLE",
       "from": 2020,
       "to": 2025
+    },
+    {
+      "team": "ATL",
+      "from": 2026,
+      "to": 2026
     }
   ],
   "career": {
-    "decisions": 806,
-    "go": 200,
-    "clear_spots": 178,
-    "clear_go": 106,
-    "agreed": 586,
-    "wins_lost": 2.5949,
-    "wins_lost_kicking": 2.2628
+    "decisions": 869,
+    "go": 214,
+    "clear_spots": 190,
+    "clear_go": 111,
+    "agreed": 627,
+    "wins_lost": 2.8314,
+    "wins_lost_kicking": 2.4324
   },
   "out_of_sample": {
-    "decisions": 458,
-    "go": 106,
-    "clear_spots": 80,
-    "clear_go": 48,
-    "agreed": 343,
-    "wins_lost": 1.253,
-    "wins_lost_kicking": 1.0347
+    "decisions": 521,
+    "go": 120,
+    "clear_spots": 92,
+    "clear_go": 53,
+    "agreed": 384,
+    "wins_lost": 1.4895,
+    "wins_lost_kicking": 1.2042
   },
   "seasons": [
     {
@@ -116,48 +121,63 @@
       "agreed": 97,
       "wins_lost": 0.6893,
       "wins_lost_kicking": 0.5836
+    },
+    {
+      "slug": "kevin-stefanski",
+      "coach": "Kevin Stefanski",
+      "season": 2026,
+      "teams": [
+        "ATL"
+      ],
+      "decisions": 63,
+      "go": 14,
+      "clear_spots": 12,
+      "clear_go": 5,
+      "agreed": 41,
+      "wins_lost": 0.2365,
+      "wins_lost_kicking": 0.1695
     }
   ],
   "buckets": [
     {
       "bucket": "1",
-      "n": 91,
-      "go_rate": 0.8681,
-      "model_go_rate": 0.967,
-      "league_n": 2778,
-      "league_go_rate": 0.7048
+      "n": 97,
+      "go_rate": 0.8557,
+      "model_go_rate": 0.9691,
+      "league_n": 2990,
+      "league_go_rate": 0.709
     },
     {
       "bucket": "2-3",
-      "n": 100,
-      "go_rate": 0.44,
-      "model_go_rate": 0.7,
-      "league_n": 3550,
-      "league_go_rate": 0.333
+      "n": 106,
+      "go_rate": 0.4434,
+      "model_go_rate": 0.6981,
+      "league_n": 3836,
+      "league_go_rate": 0.3329
     },
     {
       "bucket": "4-6",
-      "n": 195,
-      "go_rate": 0.2103,
-      "model_go_rate": 0.4923,
-      "league_n": 5229,
-      "league_go_rate": 0.1562
+      "n": 214,
+      "go_rate": 0.215,
+      "model_go_rate": 0.4813,
+      "league_n": 5671,
+      "league_go_rate": 0.1539
     },
     {
       "bucket": "7-10",
-      "n": 214,
-      "go_rate": 0.0935,
-      "model_go_rate": 0.3271,
-      "league_n": 5841,
-      "league_go_rate": 0.0844
+      "n": 229,
+      "go_rate": 0.0961,
+      "model_go_rate": 0.3537,
+      "league_n": 6323,
+      "league_go_rate": 0.0837
     },
     {
       "bucket": "11+",
-      "n": 206,
-      "go_rate": 0.0777,
-      "model_go_rate": 0.0825,
-      "league_n": 5786,
-      "league_go_rate": 0.0562
+      "n": 223,
+      "go_rate": 0.0717,
+      "model_go_rate": 0.0807,
+      "league_n": 6268,
+      "league_go_rate": 0.057
     }
   ],
   "worst": [

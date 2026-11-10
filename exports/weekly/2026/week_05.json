@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "week": 5,
-  "generated_at": "2026-11-06T01:43:42+00:00",
+  "generated_at": "2026-11-10T19:17:52+00:00",
   "games": {
     "scheduled": 15,
     "final": 15,
@@ -509,7 +509,7 @@
       "week": 5,
       "posteam": "BUF",
       "defteam": "LA",
-      "coach": "Sean McDermott",
+      "coach": "Joe Brady",
       "qtr": 1,
       "clock": "00:13",
       "posteam_score": 3,
@@ -1310,7 +1310,7 @@
         "rank": 2
       },
       {
-        "coach": "Sean McDermott",
+        "coach": "Joe Brady",
         "team": "BUF",
         "decisions": 21,
         "wins_lost": 0.0742,

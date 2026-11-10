@@ -49,40 +49,40 @@
       "n": 7,
       "go_rate": null,
       "model_go_rate": null,
-      "league_n": 187,
-      "league_go_rate": 0.7807
+      "league_n": 212,
+      "league_go_rate": 0.7642
     },
     {
       "bucket": "2-3",
       "n": 11,
       "go_rate": 0.3636,
       "model_go_rate": 0.8182,
-      "league_n": 257,
-      "league_go_rate": 0.323
+      "league_n": 286,
+      "league_go_rate": 0.3322
     },
     {
       "bucket": "4-6",
       "n": 15,
       "go_rate": 0.0,
       "model_go_rate": 0.6667,
-      "league_n": 401,
-      "league_go_rate": 0.1372
+      "league_n": 442,
+      "league_go_rate": 0.1267
     },
     {
       "bucket": "7-10",
       "n": 13,
       "go_rate": 0.0,
       "model_go_rate": 0.5385,
-      "league_n": 433,
-      "league_go_rate": 0.0739
+      "league_n": 482,
+      "league_go_rate": 0.0747
     },
     {
       "bucket": "11+",
       "n": 15,
       "go_rate": 0.0,
       "model_go_rate": 0.1333,
-      "league_n": 419,
-      "league_go_rate": 0.0621
+      "league_n": 482,
+      "league_go_rate": 0.0664
     }
   ],
   "worst": [
@@ -319,7 +319,7 @@
         "spread": -3.0,
         "receives2hKickoff": false,
         "offEpa": 0.13800379236147509,
-        "defEpa": -0.041683496239872206,
+        "defEpa": -0.04168349623987219,
         "indoors": false,
         "turf": false,
         "windMph": 8.0,
@@ -465,7 +465,7 @@
         "spread": -3.0,
         "receives2hKickoff": false,
         "offEpa": 0.13800379236147509,
-        "defEpa": -0.041683496239872206,
+        "defEpa": -0.04168349623987219,
         "indoors": false,
         "turf": false,
         "windMph": 8.0,

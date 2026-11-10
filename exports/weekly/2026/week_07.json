@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "week": 7,
-  "generated_at": "2026-11-06T01:43:42+00:00",
+  "generated_at": "2026-11-10T19:17:52+00:00",
   "games": {
     "scheduled": 14,
     "final": 14,
@@ -1301,7 +1301,7 @@
         "rank": 1
       },
       {
-        "coach": "Sean McDermott",
+        "coach": "Joe Brady",
         "team": "BUF",
         "decisions": 28,
         "wins_lost": 0.0912,
@@ -1339,7 +1339,7 @@
     ],
     "bottom": [
       {
-        "coach": "Jonathan Gannon",
+        "coach": "Mike LaFleur",
         "team": "ARI",
         "decisions": 58,
         "wins_lost": 0.306,

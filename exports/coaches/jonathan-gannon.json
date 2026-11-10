@@ -5,26 +5,26 @@
     {
       "team": "ARI",
       "from": 2023,
-      "to": 2026
+      "to": 2025
     }
   ],
   "career": {
-    "decisions": 410,
-    "go": 95,
-    "clear_spots": 113,
-    "clear_go": 47,
-    "agreed": 276,
-    "wins_lost": 1.669,
-    "wins_lost_kicking": 1.6235
+    "decisions": 346,
+    "go": 82,
+    "clear_spots": 96,
+    "clear_go": 42,
+    "agreed": 240,
+    "wins_lost": 1.3591,
+    "wins_lost_kicking": 1.3266
   },
   "out_of_sample": {
-    "decisions": 410,
-    "go": 95,
-    "clear_spots": 113,
-    "clear_go": 47,
-    "agreed": 276,
-    "wins_lost": 1.669,
-    "wins_lost_kicking": 1.6235
+    "decisions": 346,
+    "go": 82,
+    "clear_spots": 96,
+    "clear_go": 42,
+    "agreed": 240,
+    "wins_lost": 1.3591,
+    "wins_lost_kicking": 1.3266
   },
   "seasons": [
     {
@@ -71,63 +71,48 @@
       "agreed": 78,
       "wins_lost": 0.3838,
       "wins_lost_kicking": 0.374
-    },
-    {
-      "slug": "jonathan-gannon",
-      "coach": "Jonathan Gannon",
-      "season": 2026,
-      "teams": [
-        "ARI"
-      ],
-      "decisions": 64,
-      "go": 13,
-      "clear_spots": 17,
-      "clear_go": 5,
-      "agreed": 36,
-      "wins_lost": 0.3099,
-      "wins_lost_kicking": 0.2969
     }
   ],
   "buckets": [
     {
       "bucket": "1",
-      "n": 48,
-      "go_rate": 0.75,
+      "n": 40,
+      "go_rate": 0.725,
       "model_go_rate": 1.0,
-      "league_n": 1588,
-      "league_go_rate": 0.7361
+      "league_n": 1401,
+      "league_go_rate": 0.7302
     },
     {
       "bucket": "2-3",
-      "n": 51,
-      "go_rate": 0.3725,
-      "model_go_rate": 0.7843,
-      "league_n": 2075,
-      "league_go_rate": 0.3614
+      "n": 38,
+      "go_rate": 0.4211,
+      "model_go_rate": 0.8158,
+      "league_n": 1818,
+      "league_go_rate": 0.3669
     },
     {
       "bucket": "4-6",
-      "n": 85,
-      "go_rate": 0.1765,
-      "model_go_rate": 0.6824,
-      "league_n": 3050,
-      "league_go_rate": 0.1649
+      "n": 76,
+      "go_rate": 0.1842,
+      "model_go_rate": 0.6711,
+      "league_n": 2649,
+      "league_go_rate": 0.1691
     },
     {
       "bucket": "7-10",
-      "n": 110,
-      "go_rate": 0.1545,
-      "model_go_rate": 0.4455,
-      "league_n": 3447,
-      "league_go_rate": 0.0798
+      "n": 90,
+      "go_rate": 0.1778,
+      "model_go_rate": 0.4222,
+      "league_n": 3014,
+      "league_go_rate": 0.0806
     },
     {
       "bucket": "11+",
-      "n": 116,
-      "go_rate": 0.069,
-      "model_go_rate": 0.0862,
-      "league_n": 3413,
-      "league_go_rate": 0.0563
+      "n": 102,
+      "go_rate": 0.0686,
+      "model_go_rate": 0.098,
+      "league_n": 2994,
+      "league_go_rate": 0.0554
     }
   ],
   "worst": [

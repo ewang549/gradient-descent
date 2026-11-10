@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "week": 6,
-  "generated_at": "2026-11-06T01:43:42+00:00",
+  "generated_at": "2026-11-10T19:17:52+00:00",
   "games": {
     "scheduled": 14,
     "final": 14,
@@ -209,7 +209,7 @@
       "week": 6,
       "posteam": "ARI",
       "defteam": "LA",
-      "coach": "Jonathan Gannon",
+      "coach": "Mike LaFleur",
       "qtr": 4,
       "clock": "07:06",
       "posteam_score": 15,
@@ -329,7 +329,7 @@
       "week": 6,
       "posteam": "LV",
       "defteam": "BUF",
-      "coach": "Klint Kubliak",
+      "coach": "Klint Kubiak",
       "qtr": 4,
       "clock": "04:21",
       "posteam_score": 23,
@@ -1171,7 +1171,7 @@
       "week": 6,
       "posteam": "ATL",
       "defteam": "CHI",
-      "coach": "Raheem Morris",
+      "coach": "Kevin Stefanski",
       "qtr": 3,
       "clock": "10:38",
       "posteam_score": 7,
@@ -1310,7 +1310,7 @@
         "rank": 2
       },
       {
-        "coach": "Sean McDermott",
+        "coach": "Joe Brady",
         "team": "BUF",
         "decisions": 28,
         "wins_lost": 0.0912,

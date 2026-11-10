@@ -10,26 +10,26 @@
     {
       "team": "ATL",
       "from": 2020,
-      "to": 2026
+      "to": 2025
     }
   ],
   "career": {
-    "decisions": 724,
-    "go": 144,
-    "clear_spots": 194,
-    "clear_go": 76,
-    "agreed": 433,
-    "wins_lost": 3.9815,
-    "wins_lost_kicking": 3.7146
+    "decisions": 666,
+    "go": 130,
+    "clear_spots": 182,
+    "clear_go": 71,
+    "agreed": 396,
+    "wins_lost": 3.7539,
+    "wins_lost_kicking": 3.5539
   },
   "out_of_sample": {
-    "decisions": 292,
-    "go": 74,
-    "clear_spots": 96,
-    "clear_go": 50,
-    "agreed": 186,
-    "wins_lost": 1.6356,
-    "wins_lost_kicking": 1.4572
+    "decisions": 234,
+    "go": 60,
+    "clear_spots": 84,
+    "clear_go": 45,
+    "agreed": 149,
+    "wins_lost": 1.4079,
+    "wins_lost_kicking": 1.2965
   },
   "seasons": [
     {
@@ -121,63 +121,48 @@
       "agreed": 75,
       "wins_lost": 0.9682,
       "wins_lost_kicking": 0.9
-    },
-    {
-      "slug": "raheem-morris",
-      "coach": "Raheem Morris",
-      "season": 2026,
-      "teams": [
-        "ATL"
-      ],
-      "decisions": 58,
-      "go": 14,
-      "clear_spots": 12,
-      "clear_go": 5,
-      "agreed": 37,
-      "wins_lost": 0.2276,
-      "wins_lost_kicking": 0.1607
     }
   ],
   "buckets": [
     {
       "bucket": "1",
-      "n": 76,
-      "go_rate": 0.6184,
-      "model_go_rate": 0.9474,
-      "league_n": 2894,
-      "league_go_rate": 0.5978
+      "n": 70,
+      "go_rate": 0.6143,
+      "model_go_rate": 0.9429,
+      "league_n": 2707,
+      "league_go_rate": 0.5851
     },
     {
       "bucket": "2-3",
-      "n": 111,
-      "go_rate": 0.3423,
-      "model_go_rate": 0.8018,
-      "league_n": 3743,
-      "league_go_rate": 0.2629
+      "n": 105,
+      "go_rate": 0.3333,
+      "model_go_rate": 0.8095,
+      "league_n": 3486,
+      "league_go_rate": 0.2585
     },
     {
       "bucket": "4-6",
-      "n": 171,
-      "go_rate": 0.1988,
-      "model_go_rate": 0.6199,
-      "league_n": 5674,
-      "league_go_rate": 0.1246
+      "n": 154,
+      "go_rate": 0.1883,
+      "model_go_rate": 0.6494,
+      "league_n": 5273,
+      "league_go_rate": 0.1236
     },
     {
       "bucket": "7-10",
-      "n": 200,
-      "go_rate": 0.07,
-      "model_go_rate": 0.455,
-      "league_n": 6362,
-      "league_go_rate": 0.0717
+      "n": 185,
+      "go_rate": 0.0649,
+      "model_go_rate": 0.4324,
+      "league_n": 5929,
+      "league_go_rate": 0.0715
     },
     {
       "bucket": "11+",
-      "n": 166,
-      "go_rate": 0.0663,
-      "model_go_rate": 0.1205,
-      "league_n": 6030,
-      "league_go_rate": 0.0517
+      "n": 152,
+      "go_rate": 0.0724,
+      "model_go_rate": 0.125,
+      "league_n": 5611,
+      "league_go_rate": 0.051
     }
   ],
   "worst": [

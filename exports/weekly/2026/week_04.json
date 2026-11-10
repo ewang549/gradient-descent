@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "week": 4,
-  "generated_at": "2026-11-06T01:43:42+00:00",
+  "generated_at": "2026-11-10T19:17:52+00:00",
   "games": {
     "scheduled": 16,
     "final": 16,
@@ -509,7 +509,7 @@
       "week": 4,
       "posteam": "ATL",
       "defteam": "NO",
-      "coach": "Raheem Morris",
+      "coach": "Kevin Stefanski",
       "qtr": 1,
       "clock": "00:56",
       "posteam_score": 7,
@@ -991,7 +991,7 @@
       "week": 4,
       "posteam": "LV",
       "defteam": "KC",
-      "coach": "Klint Kubliak",
+      "coach": "Klint Kubiak",
       "qtr": 3,
       "clock": "11:37",
       "posteam_score": 13,
@@ -1111,7 +1111,7 @@
       "week": 4,
       "posteam": "LV",
       "defteam": "KC",
-      "coach": "Klint Kubliak",
+      "coach": "Klint Kubiak",
       "qtr": 2,
       "clock": "09:21",
       "posteam_score": 7,
@@ -1301,7 +1301,7 @@
         "rank": 1
       },
       {
-        "coach": "Sean McDermott",
+        "coach": "Joe Brady",
         "team": "BUF",
         "decisions": 18,
         "wins_lost": 0.0459,

@@ -5,26 +5,26 @@
     {
       "team": "BUF",
       "from": 2017,
-      "to": 2026
+      "to": 2025
     }
   ],
   "career": {
-    "decisions": 1063,
-    "go": 203,
-    "clear_spots": 253,
-    "clear_go": 127,
-    "agreed": 731,
-    "wins_lost": 4.1003,
-    "wins_lost_kicking": 3.6796
+    "decisions": 1025,
+    "go": 192,
+    "clear_spots": 240,
+    "clear_go": 118,
+    "agreed": 701,
+    "wins_lost": 3.9876,
+    "wins_lost_kicking": 3.5669
   },
   "out_of_sample": {
-    "decisions": 371,
-    "go": 96,
-    "clear_spots": 114,
-    "clear_go": 67,
-    "agreed": 259,
-    "wins_lost": 1.4167,
-    "wins_lost_kicking": 1.3661
+    "decisions": 333,
+    "go": 85,
+    "clear_spots": 101,
+    "clear_go": 58,
+    "agreed": 229,
+    "wins_lost": 1.3039,
+    "wins_lost_kicking": 1.2534
   },
   "seasons": [
     {
@@ -161,63 +161,48 @@
       "agreed": 76,
       "wins_lost": 0.3792,
       "wins_lost_kicking": 0.3672
-    },
-    {
-      "slug": "sean-mcdermott",
-      "coach": "Sean McDermott",
-      "season": 2026,
-      "teams": [
-        "BUF"
-      ],
-      "decisions": 38,
-      "go": 11,
-      "clear_spots": 13,
-      "clear_go": 9,
-      "agreed": 30,
-      "wins_lost": 0.1127,
-      "wins_lost_kicking": 0.1127
     }
   ],
   "buckets": [
     {
       "bucket": "1",
-      "n": 128,
-      "go_rate": 0.7109,
-      "model_go_rate": 0.9062,
-      "league_n": 4129,
-      "league_go_rate": 0.6631
+      "n": 122,
+      "go_rate": 0.6967,
+      "model_go_rate": 0.9016,
+      "league_n": 3942,
+      "league_go_rate": 0.6575
     },
     {
       "bucket": "2-3",
-      "n": 165,
-      "go_rate": 0.3515,
-      "model_go_rate": 0.7273,
-      "league_n": 5425,
-      "league_go_rate": 0.2951
+      "n": 160,
+      "go_rate": 0.3438,
+      "model_go_rate": 0.725,
+      "league_n": 5168,
+      "league_go_rate": 0.2937
     },
     {
       "bucket": "4-6",
-      "n": 209,
-      "go_rate": 0.134,
-      "model_go_rate": 0.5167,
-      "league_n": 8157,
-      "league_go_rate": 0.1443
+      "n": 200,
+      "go_rate": 0.13,
+      "model_go_rate": 0.515,
+      "league_n": 7756,
+      "league_go_rate": 0.1447
     },
     {
       "bucket": "7-10",
-      "n": 302,
-      "go_rate": 0.0364,
-      "model_go_rate": 0.3179,
-      "league_n": 9222,
-      "league_go_rate": 0.0821
+      "n": 292,
+      "go_rate": 0.0377,
+      "model_go_rate": 0.3151,
+      "league_n": 8789,
+      "league_go_rate": 0.0825
     },
     {
       "bucket": "11+",
-      "n": 259,
-      "go_rate": 0.0579,
-      "model_go_rate": 0.0734,
-      "league_n": 9258,
-      "league_go_rate": 0.0525
+      "n": 251,
+      "go_rate": 0.0598,
+      "model_go_rate": 0.0757,
+      "league_n": 8839,
+      "league_go_rate": 0.052
     }
   ],
   "worst": [

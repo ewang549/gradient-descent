@@ -9,22 +9,22 @@
     }
   ],
   "career": {
-    "decisions": 1140,
-    "go": 191,
-    "clear_spots": 278,
-    "clear_go": 111,
-    "agreed": 770,
-    "wins_lost": 4.9531,
-    "wins_lost_kicking": 4.699
+    "decisions": 1149,
+    "go": 194,
+    "clear_spots": 282,
+    "clear_go": 114,
+    "agreed": 777,
+    "wins_lost": 4.9801,
+    "wins_lost_kicking": 4.726
   },
   "out_of_sample": {
-    "decisions": 421,
-    "go": 89,
-    "clear_spots": 120,
-    "clear_go": 62,
-    "agreed": 289,
-    "wins_lost": 1.7455,
-    "wins_lost_kicking": 1.6224
+    "decisions": 430,
+    "go": 92,
+    "clear_spots": 124,
+    "clear_go": 65,
+    "agreed": 296,
+    "wins_lost": 1.7725,
+    "wins_lost_kicking": 1.6494
   },
   "seasons": [
     {
@@ -169,55 +169,55 @@
       "teams": [
         "LA"
       ],
-      "decisions": 46,
-      "go": 10,
-      "clear_spots": 16,
-      "clear_go": 8,
-      "agreed": 30,
-      "wins_lost": 0.2302,
-      "wins_lost_kicking": 0.2302
+      "decisions": 55,
+      "go": 13,
+      "clear_spots": 20,
+      "clear_go": 11,
+      "agreed": 37,
+      "wins_lost": 0.2572,
+      "wins_lost_kicking": 0.2572
     }
   ],
   "buckets": [
     {
       "bucket": "1",
-      "n": 135,
-      "go_rate": 0.6815,
-      "model_go_rate": 0.9333,
-      "league_n": 4129,
-      "league_go_rate": 0.6631
+      "n": 136,
+      "go_rate": 0.6838,
+      "model_go_rate": 0.9338,
+      "league_n": 4154,
+      "league_go_rate": 0.663
     },
     {
       "bucket": "2-3",
-      "n": 191,
-      "go_rate": 0.2251,
-      "model_go_rate": 0.6963,
-      "league_n": 5425,
-      "league_go_rate": 0.2951
+      "n": 194,
+      "go_rate": 0.232,
+      "model_go_rate": 0.701,
+      "league_n": 5454,
+      "league_go_rate": 0.2957
     },
     {
       "bucket": "4-6",
-      "n": 261,
-      "go_rate": 0.1303,
-      "model_go_rate": 0.5211,
-      "league_n": 8157,
-      "league_go_rate": 0.1443
+      "n": 263,
+      "go_rate": 0.1293,
+      "model_go_rate": 0.5171,
+      "league_n": 8198,
+      "league_go_rate": 0.1437
     },
     {
       "bucket": "7-10",
-      "n": 264,
-      "go_rate": 0.0568,
-      "model_go_rate": 0.2955,
-      "league_n": 9222,
+      "n": 266,
+      "go_rate": 0.0564,
+      "model_go_rate": 0.297,
+      "league_n": 9271,
       "league_go_rate": 0.0821
     },
     {
       "bucket": "11+",
-      "n": 289,
-      "go_rate": 0.0242,
-      "model_go_rate": 0.0796,
-      "league_n": 9258,
-      "league_go_rate": 0.0525
+      "n": 290,
+      "go_rate": 0.0241,
+      "model_go_rate": 0.0793,
+      "league_n": 9321,
+      "league_go_rate": 0.0528
     }
   ],
   "worst": [
@@ -512,6 +512,54 @@
       }
     },
     {
+      "play_uid": "2026_09_LA_WAS_1707",
+      "game_id": "2026_09_LA_WAS",
+      "season": 2026,
+      "week": 9,
+      "posteam": "LA",
+      "defteam": "WAS",
+      "qtr": 2,
+      "clock": "04:39",
+      "posteam_score": 3,
+      "defteam_score": 10,
+      "ydstogo": 2,
+      "is_goal_to_go": false,
+      "yardline_label": "LA 44",
+      "decision": "go",
+      "recommendation": "go",
+      "wp_go": 0.4308,
+      "wp_punt": 0.3672,
+      "wp_fg": 0.3035,
+      "wp_lost": 0.0,
+      "is_converted": true,
+      "is_fg_made": null,
+      "play_description": "(4:39) 9-M.Stafford pass short middle to 12-P.Nacua to WAS 44 for 12 yards (20-Q.Martin).",
+      "expected_go_rate": 0.2164,
+      "value_vs_typical": 0.0498,
+      "situation": "4th & 2 at LA 44",
+      "input": {
+        "season": 2026,
+        "qtr": 2,
+        "scoreDiff": -7,
+        "gameSeconds": 2079,
+        "halfSeconds": 279,
+        "ydstogo": 2,
+        "yardline100": 56,
+        "goalToGo": false,
+        "posTimeouts": 1,
+        "defTimeouts": 3,
+        "home": -1,
+        "spread": 4.5,
+        "receives2hKickoff": true,
+        "offEpa": 0.04670518719799077,
+        "defEpa": 0.01841085073826525,
+        "indoors": false,
+        "turf": false,
+        "windMph": 8.0,
+        "tempF": 59.0
+      }
+    },
+    {
       "play_uid": "2026_06_ARI_LA_3519",
       "game_id": "2026_06_ARI_LA",
       "season": 2026,
@@ -653,54 +701,6 @@
         "turf": true,
         "windMph": 4.0,
         "tempF": 45.0
-      }
-    },
-    {
-      "play_uid": "2018_08_GB_LA_1243",
-      "game_id": "2018_08_GB_LA",
-      "season": 2018,
-      "week": 8,
-      "posteam": "LA",
-      "defteam": "GB",
-      "qtr": 2,
-      "clock": "08:29",
-      "posteam_score": 0,
-      "defteam_score": 10,
-      "ydstogo": 3,
-      "is_goal_to_go": false,
-      "yardline_label": "LA 45",
-      "decision": "go",
-      "recommendation": "go",
-      "wp_go": 0.4694,
-      "wp_punt": 0.4299,
-      "wp_fg": 0.3751,
-      "wp_lost": 0.0,
-      "is_converted": true,
-      "is_fg_made": null,
-      "play_description": "(8:29) (Punt formation) 6-J.Hekker pass short right to 37-S.Shields to GB 43 for 12 yards (36-R.Greene).",
-      "expected_go_rate": 0.0793,
-      "value_vs_typical": 0.0363,
-      "situation": "4th & 3 at LA 45",
-      "input": {
-        "season": 2018,
-        "qtr": 2,
-        "scoreDiff": -10,
-        "gameSeconds": 2309,
-        "halfSeconds": 509,
-        "ydstogo": 3,
-        "yardline100": 55,
-        "goalToGo": false,
-        "posTimeouts": 2,
-        "defTimeouts": 3,
-        "home": 1,
-        "spread": 7.5,
-        "receives2hKickoff": true,
-        "offEpa": 0.20056557083202028,
-        "defEpa": 0.026359541769410355,
-        "indoors": false,
-        "turf": false,
-        "windMph": 1.0,
-        "tempF": 82.0
       }
     }
   ]

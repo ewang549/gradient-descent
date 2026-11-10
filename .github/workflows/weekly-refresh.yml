@@ -2,7 +2,9 @@ name: weekly-refresh
 
 on:
   schedule:
-    - cron: "0 12 * * 2"  # Tuesdays 12:00 UTC (7-8am ET), after Monday Night Football
+    # Tuesdays 12:17 UTC (7-8am ET), after Monday Night Football. Off the top of the hour on purpose:
+    # GitHub drops scheduled events under load, and :00 is the busiest minute.
+    - cron: "17 12 * * 2"
   workflow_dispatch: {}    # adds a "Run workflow" button for manual runs
 
 permissions:
@@ -121,11 +123,16 @@ jobs:
         run: uv run python -m models.x_post ${{ steps.commit.outputs.season }} ${{ steps.commit.outputs.week }}
 
       # Commit the posted log even if posting failed halfway, so a retry can't post the same week twice.
-      # (Dry runs write no log, so this is a no-op until posting is enabled.)
+      # Dry runs write no log (exports/social never exists), so skip before touching git: `git add` on a
+      # missing path exits 128. Secrets can't be read in `if:`, hence the env check inside the script.
       - name: Commit the posted log
         if: always() && steps.post.outcome != 'skipped'
+        env:
+          X_POST_ENABLED: ${{ secrets.X_POST_ENABLED }}
         run: |
+          if [ "$X_POST_ENABLED" != "true" ]; then echo "Dry run (X_POST_ENABLED is not \"true\"); no post log to commit."; exit 0; fi
+          if [ ! -d exports/social ]; then echo "exports/social does not exist; nothing was posted."; exit 0; fi
           git add exports/social
-          if git diff --cached --quiet; then echo "No posts logged."; exit 0; fi
+          if git diff --cached --quiet -- exports/social; then echo "No posts logged."; exit 0; fi
           git commit -m "data: log X posts for week ${{ steps.commit.outputs.week }}" -m "Automated by the weekly-refresh workflow."
           git push

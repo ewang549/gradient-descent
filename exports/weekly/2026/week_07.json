@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "week": 7,
-  "generated_at": "2026-11-10T19:17:52+00:00",
+  "generated_at": "2026-11-10T19:28:14+00:00",
   "games": {
     "scheduled": 14,
     "final": 14,
@@ -709,7 +709,7 @@
       "p_convert": 0.4574828994900246,
       "wp_if_convert": 0.46658003330230713,
       "wp_if_fail": 0.3271635174751282,
-      "p_fg_make": 0.7273096723168674,
+      "p_fg_make": 0.7273096723168675,
       "fg_distance": 51,
       "fg_attempt_distance": null,
       "punt_receiving_yardline_100": 90.10810808070137,
@@ -1250,7 +1250,7 @@
     "p_convert": 0.4574828994900246,
     "wp_if_convert": 0.46658003330230713,
     "wp_if_fail": 0.3271635174751282,
-    "p_fg_make": 0.7273096723168674,
+    "p_fg_make": 0.7273096723168675,
     "fg_distance": 51,
     "fg_attempt_distance": null,
     "punt_receiving_yardline_100": 90.10810808070137,

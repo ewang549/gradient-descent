@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-10T19:28:10+00:00",
+  "generated_at": "2026-11-17T20:54:53+00:00",
   "data_through": {
     "season": 2026,
-    "week": 9
+    "week": 10
   },
   "counts": {
     "2025": {
@@ -12,8 +12,8 @@
     },
     "2026": {
       "leaderboard_coaches": 32,
-      "worst_decision_weeks": 9,
-      "games": 136
+      "worst_decision_weeks": 10,
+      "games": 150
     }
   },
   "models": {

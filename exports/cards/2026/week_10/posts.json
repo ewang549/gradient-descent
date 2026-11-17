@@ -1,0 +1,14 @@
+{
+  "season": 2026,
+  "week": 10,
+  "posts": [
+    {
+      "card": "worst-call.png",
+      "text": "The costliest 4th-down call of Week 10: John Harbaugh punted on 4th & 3 at WAS 46, down 3 to WAS with 14:15 left.\n\nGoing for it: 41.3% win probability. What NYG did: 34.4%. That's 6.9 points given away."
+    },
+    {
+      "card": "leaderboard.png",
+      "text": "Wins given away on 4th down through Week 10: win probability lost vs the model's best call, summed over every graded call (1.00 = one win).\n\nFewest: LaFleur (GB) 0.13, Brady (BUF) 0.14\nMost: Minter (BAL) 0.48, O'Connell (MIN) 0.45\n\nMin 30 calls."
+    }
+  ]
+}

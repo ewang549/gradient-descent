@@ -9,22 +9,22 @@
     }
   ],
   "career": {
-    "decisions": 74,
+    "decisions": 82,
     "go": 13,
-    "clear_spots": 21,
+    "clear_spots": 22,
     "clear_go": 8,
-    "agreed": 51,
-    "wins_lost": 0.3061,
-    "wins_lost_kicking": 0.303
+    "agreed": 56,
+    "wins_lost": 0.3381,
+    "wins_lost_kicking": 0.335
   },
   "out_of_sample": {
-    "decisions": 74,
+    "decisions": 82,
     "go": 13,
-    "clear_spots": 21,
+    "clear_spots": 22,
     "clear_go": 8,
-    "agreed": 51,
-    "wins_lost": 0.3061,
-    "wins_lost_kicking": 0.303
+    "agreed": 56,
+    "wins_lost": 0.3381,
+    "wins_lost_kicking": 0.335
   },
   "seasons": [
     {
@@ -34,55 +34,55 @@
       "teams": [
         "CLE"
       ],
-      "decisions": 74,
+      "decisions": 82,
       "go": 13,
-      "clear_spots": 21,
+      "clear_spots": 22,
       "clear_go": 8,
-      "agreed": 51,
-      "wins_lost": 0.3061,
-      "wins_lost_kicking": 0.303
+      "agreed": 56,
+      "wins_lost": 0.3381,
+      "wins_lost_kicking": 0.335
     }
   ],
   "buckets": [
     {
       "bucket": "1",
-      "n": 6,
+      "n": 8,
       "go_rate": null,
       "model_go_rate": null,
-      "league_n": 212,
-      "league_go_rate": 0.7642
+      "league_n": 238,
+      "league_go_rate": 0.7647
     },
     {
       "bucket": "2-3",
       "n": 10,
       "go_rate": 0.3,
       "model_go_rate": 0.9,
-      "league_n": 286,
-      "league_go_rate": 0.3322
+      "league_n": 318,
+      "league_go_rate": 0.327
     },
     {
       "bucket": "4-6",
-      "n": 20,
-      "go_rate": 0.15,
-      "model_go_rate": 0.4,
-      "league_n": 442,
-      "league_go_rate": 0.1267
+      "n": 21,
+      "go_rate": 0.1429,
+      "model_go_rate": 0.381,
+      "league_n": 487,
+      "league_go_rate": 0.1294
     },
     {
       "bucket": "7-10",
-      "n": 16,
+      "n": 19,
       "go_rate": 0.0,
-      "model_go_rate": 0.3125,
-      "league_n": 482,
-      "league_go_rate": 0.0747
+      "model_go_rate": 0.3158,
+      "league_n": 529,
+      "league_go_rate": 0.0718
     },
     {
       "bucket": "11+",
-      "n": 22,
-      "go_rate": 0.0909,
-      "model_go_rate": 0.1818,
-      "league_n": 482,
-      "league_go_rate": 0.0664
+      "n": 24,
+      "go_rate": 0.0833,
+      "model_go_rate": 0.1667,
+      "league_n": 536,
+      "league_go_rate": 0.0634
     }
   ],
   "worst": [

@@ -9,22 +9,22 @@
     }
   ],
   "career": {
-    "decisions": 61,
-    "go": 10,
-    "clear_spots": 18,
-    "clear_go": 6,
-    "agreed": 35,
-    "wins_lost": 0.4494,
-    "wins_lost_kicking": 0.4492
+    "decisions": 68,
+    "go": 11,
+    "clear_spots": 20,
+    "clear_go": 7,
+    "agreed": 41,
+    "wins_lost": 0.4805,
+    "wins_lost_kicking": 0.4803
   },
   "out_of_sample": {
-    "decisions": 61,
-    "go": 10,
-    "clear_spots": 18,
-    "clear_go": 6,
-    "agreed": 35,
-    "wins_lost": 0.4494,
-    "wins_lost_kicking": 0.4492
+    "decisions": 68,
+    "go": 11,
+    "clear_spots": 20,
+    "clear_go": 7,
+    "agreed": 41,
+    "wins_lost": 0.4805,
+    "wins_lost_kicking": 0.4803
   },
   "seasons": [
     {
@@ -34,55 +34,55 @@
       "teams": [
         "BAL"
       ],
-      "decisions": 61,
-      "go": 10,
-      "clear_spots": 18,
-      "clear_go": 6,
-      "agreed": 35,
-      "wins_lost": 0.4494,
-      "wins_lost_kicking": 0.4492
+      "decisions": 68,
+      "go": 11,
+      "clear_spots": 20,
+      "clear_go": 7,
+      "agreed": 41,
+      "wins_lost": 0.4805,
+      "wins_lost_kicking": 0.4803
     }
   ],
   "buckets": [
     {
       "bucket": "1",
-      "n": 7,
+      "n": 8,
       "go_rate": null,
       "model_go_rate": null,
-      "league_n": 212,
-      "league_go_rate": 0.7642
+      "league_n": 238,
+      "league_go_rate": 0.7647
     },
     {
       "bucket": "2-3",
       "n": 11,
       "go_rate": 0.3636,
       "model_go_rate": 0.8182,
-      "league_n": 286,
-      "league_go_rate": 0.3322
+      "league_n": 318,
+      "league_go_rate": 0.327
     },
     {
       "bucket": "4-6",
-      "n": 15,
+      "n": 17,
       "go_rate": 0.0,
-      "model_go_rate": 0.6667,
-      "league_n": 442,
-      "league_go_rate": 0.1267
+      "model_go_rate": 0.5882,
+      "league_n": 487,
+      "league_go_rate": 0.1294
     },
     {
       "bucket": "7-10",
-      "n": 13,
+      "n": 16,
       "go_rate": 0.0,
-      "model_go_rate": 0.5385,
-      "league_n": 482,
-      "league_go_rate": 0.0747
+      "model_go_rate": 0.5,
+      "league_n": 529,
+      "league_go_rate": 0.0718
     },
     {
       "bucket": "11+",
-      "n": 15,
+      "n": 16,
       "go_rate": 0.0,
-      "model_go_rate": 0.1333,
-      "league_n": 482,
-      "league_go_rate": 0.0664
+      "model_go_rate": 0.125,
+      "league_n": 536,
+      "league_go_rate": 0.0634
     }
   ],
   "worst": [
@@ -377,6 +377,54 @@
       }
     },
     {
+      "play_uid": "2026_10_LAC_BAL_3713",
+      "game_id": "2026_10_LAC_BAL",
+      "season": 2026,
+      "week": 10,
+      "posteam": "BAL",
+      "defteam": "LAC",
+      "qtr": 4,
+      "clock": "06:48",
+      "posteam_score": 20,
+      "defteam_score": 23,
+      "ydstogo": 1,
+      "is_goal_to_go": false,
+      "yardline_label": "BAL 40",
+      "decision": "go",
+      "recommendation": "go",
+      "wp_go": 0.4255,
+      "wp_punt": 0.3164,
+      "wp_fg": 0.2078,
+      "wp_lost": 0.0,
+      "is_converted": true,
+      "is_fg_made": null,
+      "play_description": "(6:48) 76-C.Vinson reported in as eligible. 43-J.Hill right tackle to BAL 41 for 1 yard (23-T.Jefferson; 45-T.Tuipulotu).",
+      "expected_go_rate": 0.7992,
+      "value_vs_typical": 0.0219,
+      "situation": "4th & 1 at BAL 40",
+      "input": {
+        "season": 2026,
+        "qtr": 4,
+        "scoreDiff": -3,
+        "gameSeconds": 408,
+        "halfSeconds": 408,
+        "ydstogo": 1,
+        "yardline100": 60,
+        "goalToGo": false,
+        "posTimeouts": 2,
+        "defTimeouts": 3,
+        "home": 1,
+        "spread": 4.5,
+        "receives2hKickoff": false,
+        "offEpa": -0.04773151952310914,
+        "defEpa": 0.005580313296292489,
+        "indoors": false,
+        "turf": false,
+        "windMph": 8.0,
+        "tempF": 59.0
+      }
+    },
+    {
       "play_uid": "2026_03_BAL_DAL_511",
       "game_id": "2026_03_BAL_DAL",
       "season": 2026,
@@ -518,54 +566,6 @@
         "turf": false,
         "windMph": 8.0,
         "tempF": 59.0
-      }
-    },
-    {
-      "play_uid": "2026_01_BAL_IND_1191",
-      "game_id": "2026_01_BAL_IND",
-      "season": 2026,
-      "week": 1,
-      "posteam": "BAL",
-      "defteam": "IND",
-      "qtr": 2,
-      "clock": "12:07",
-      "posteam_score": 14,
-      "defteam_score": 6,
-      "ydstogo": 3,
-      "is_goal_to_go": true,
-      "yardline_label": "IND 3",
-      "decision": "go",
-      "recommendation": "go",
-      "wp_go": 0.8449,
-      "wp_punt": 0.8129,
-      "wp_fg": 0.8378,
-      "wp_lost": 0.0,
-      "is_converted": false,
-      "is_fg_made": null,
-      "play_description": "(12:07) (Shotgun) 8-L.Jackson pass incomplete short right to 6-J.Lane.",
-      "expected_go_rate": 0.1451,
-      "value_vs_typical": 0.0061,
-      "situation": "4th & goal at IND 3",
-      "input": {
-        "season": 2026,
-        "qtr": 2,
-        "scoreDiff": 8,
-        "gameSeconds": 2527,
-        "halfSeconds": 727,
-        "ydstogo": 3,
-        "yardline100": 3,
-        "goalToGo": true,
-        "posTimeouts": 2,
-        "defTimeouts": 2,
-        "home": -1,
-        "spread": 3.0,
-        "receives2hKickoff": true,
-        "offEpa": 0.05046068466672656,
-        "defEpa": 0.0536410790800313,
-        "indoors": true,
-        "turf": true,
-        "windMph": 0.0,
-        "tempF": 70.0
       }
     }
   ]

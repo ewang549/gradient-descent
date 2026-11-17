@@ -9,22 +9,22 @@
     }
   ],
   "career": {
-    "decisions": 53,
-    "go": 11,
-    "clear_spots": 14,
+    "decisions": 61,
+    "go": 13,
+    "clear_spots": 16,
     "clear_go": 8,
-    "agreed": 34,
-    "wins_lost": 0.1343,
-    "wins_lost_kicking": 0.1343
+    "agreed": 39,
+    "wins_lost": 0.1714,
+    "wins_lost_kicking": 0.1714
   },
   "out_of_sample": {
-    "decisions": 53,
-    "go": 11,
-    "clear_spots": 14,
+    "decisions": 61,
+    "go": 13,
+    "clear_spots": 16,
     "clear_go": 8,
-    "agreed": 34,
-    "wins_lost": 0.1343,
-    "wins_lost_kicking": 0.1343
+    "agreed": 39,
+    "wins_lost": 0.1714,
+    "wins_lost_kicking": 0.1714
   },
   "seasons": [
     {
@@ -34,13 +34,13 @@
       "teams": [
         "MIA"
       ],
-      "decisions": 53,
-      "go": 11,
-      "clear_spots": 14,
+      "decisions": 61,
+      "go": 13,
+      "clear_spots": 16,
       "clear_go": 8,
-      "agreed": 34,
-      "wins_lost": 0.1343,
-      "wins_lost_kicking": 0.1343
+      "agreed": 39,
+      "wins_lost": 0.1714,
+      "wins_lost_kicking": 0.1714
     }
   ],
   "buckets": [
@@ -49,40 +49,40 @@
       "n": 4,
       "go_rate": null,
       "model_go_rate": null,
-      "league_n": 212,
-      "league_go_rate": 0.7642
+      "league_n": 238,
+      "league_go_rate": 0.7647
     },
     {
       "bucket": "2-3",
-      "n": 6,
-      "go_rate": null,
-      "model_go_rate": null,
-      "league_n": 286,
-      "league_go_rate": 0.3322
+      "n": 10,
+      "go_rate": 0.4,
+      "model_go_rate": 0.9,
+      "league_n": 318,
+      "league_go_rate": 0.327
     },
     {
       "bucket": "4-6",
       "n": 11,
       "go_rate": 0.1818,
       "model_go_rate": 0.8182,
-      "league_n": 442,
-      "league_go_rate": 0.1267
+      "league_n": 487,
+      "league_go_rate": 0.1294
     },
     {
       "bucket": "7-10",
-      "n": 17,
+      "n": 18,
       "go_rate": 0.0,
-      "model_go_rate": 0.5294,
-      "league_n": 482,
-      "league_go_rate": 0.0747
+      "model_go_rate": 0.5,
+      "league_n": 529,
+      "league_go_rate": 0.0718
     },
     {
       "bucket": "11+",
-      "n": 15,
-      "go_rate": 0.1333,
-      "model_go_rate": 0.2,
-      "league_n": 482,
-      "league_go_rate": 0.0664
+      "n": 18,
+      "go_rate": 0.1667,
+      "model_go_rate": 0.2222,
+      "league_n": 536,
+      "league_go_rate": 0.0634
     }
   ],
   "worst": [
@@ -128,6 +128,54 @@
         "receives2hKickoff": false,
         "offEpa": 0.005076040975444,
         "defEpa": 0.032338715970950595,
+        "indoors": true,
+        "turf": false,
+        "windMph": 0.0,
+        "tempF": 70.0
+      }
+    },
+    {
+      "play_uid": "2026_10_MIA_IND_4002",
+      "game_id": "2026_10_MIA_IND",
+      "season": 2026,
+      "week": 10,
+      "posteam": "MIA",
+      "defteam": "IND",
+      "qtr": 4,
+      "clock": "05:10",
+      "posteam_score": 22,
+      "defteam_score": 24,
+      "ydstogo": 3,
+      "is_goal_to_go": false,
+      "yardline_label": "MIA 33",
+      "decision": "punt",
+      "recommendation": "go",
+      "wp_go": 0.2793,
+      "wp_punt": 0.2611,
+      "wp_fg": 0.1424,
+      "wp_lost": 0.0182,
+      "is_converted": null,
+      "is_fg_made": null,
+      "play_description": "(5:10) 48-B.Pinion punts 42 yards to IND 25, Center-46-T.Addington, fair catch by 6-A.Gould.",
+      "expected_go_rate": 0.0737,
+      "value_vs_typical": -0.0013,
+      "situation": "4th & 3 at MIA 33",
+      "input": {
+        "season": 2026,
+        "qtr": 4,
+        "scoreDiff": -2,
+        "gameSeconds": 310,
+        "halfSeconds": 310,
+        "ydstogo": 3,
+        "yardline100": 67,
+        "goalToGo": false,
+        "posTimeouts": 3,
+        "defTimeouts": 3,
+        "home": -1,
+        "spread": -4.5,
+        "receives2hKickoff": false,
+        "offEpa": -0.06740360634171993,
+        "defEpa": 0.028975508455664392,
         "indoors": true,
         "turf": false,
         "windMph": 0.0,
@@ -276,54 +324,6 @@
         "turf": true,
         "windMph": 0.0,
         "tempF": 70.0
-      }
-    },
-    {
-      "play_uid": "2026_07_MIA_NYJ_1167",
-      "game_id": "2026_07_MIA_NYJ",
-      "season": 2026,
-      "week": 7,
-      "posteam": "MIA",
-      "defteam": "NYJ",
-      "qtr": 2,
-      "clock": "11:17",
-      "posteam_score": 14,
-      "defteam_score": 7,
-      "ydstogo": 2,
-      "is_goal_to_go": false,
-      "yardline_label": "MIA 23",
-      "decision": "punt",
-      "recommendation": "go",
-      "wp_go": 0.5222,
-      "wp_punt": 0.5118,
-      "wp_fg": 0.4101,
-      "wp_lost": 0.0104,
-      "is_converted": null,
-      "is_fg_made": null,
-      "play_description": "(11:17) 48-B.Pinion punts 47 yards to NYJ 30, Center-46-T.Addington, fair catch by 18-I.Williams.",
-      "expected_go_rate": 0.0213,
-      "value_vs_typical": -0.0002,
-      "situation": "4th & 2 at MIA 23",
-      "input": {
-        "season": 2026,
-        "qtr": 2,
-        "scoreDiff": 7,
-        "gameSeconds": 2477,
-        "halfSeconds": 677,
-        "ydstogo": 2,
-        "yardline100": 77,
-        "goalToGo": false,
-        "posTimeouts": 3,
-        "defTimeouts": 3,
-        "home": -1,
-        "spread": -3.5,
-        "receives2hKickoff": false,
-        "offEpa": -0.11878258645052192,
-        "defEpa": 0.0846991419530658,
-        "indoors": false,
-        "turf": false,
-        "windMph": 8.0,
-        "tempF": 59.0
       }
     }
   ],
